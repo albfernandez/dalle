@@ -75,7 +75,8 @@ namespace OpenHachaGtkGui
 		[Glade.Widget] Gtk.Entry SplitDialogComboEntry;
 		[Glade.Widget] Gtk.SpinButton SplitDialogNumberSpinButton; 
 		[Glade.Widget] Gtk.OptionMenu FileFormat;
-
+		[Glade.Widget] Gtk.Button SplitDialogSplitButton;
+		
 		private enum hachaformat
 		{
 			hacha1,
@@ -89,14 +90,22 @@ namespace OpenHachaGtkGui
 		{
 		       	Glade.XML gxml = new Glade.XML (null, "openhacha.glade", "SplitDialog", null);
 			gxml.Autoconnect (this);
+			
+			SplitDialogSplitButton.Sensitive = false;
 
 			this.format = (hachaformat)FileFormat.History;
 			Console.WriteLine(this.format);
+		}
+	
+		public void OnSplitDialogComboEntryChanged (System.Object b, EventArgs e)
+		{
+			SplitDialogSplitButton.Sensitive = true;			
 		}
 		
 		public void OnSplitDialogSplitButtonClicked (System.Object b, EventArgs e) 
 		{
 			string file = SplitDialogComboEntry.Text;
+			
 			if (File.Exists(file)) {
 				Dalle.Formatos.Manager.GetInstance().Partir (
 					Convert.ToString(this.format), 
@@ -104,6 +113,8 @@ namespace OpenHachaGtkGui
 					file.Substring(0, file.LastIndexOf('.')),
 					(int)SplitDialogSpinButton.Value);
 			}
+			
+			SplitDialogSplitButton.Sensitive = false;
 		}
 			
 		public void OnSplitDialogNumberSpinButtonChanged(System.Object b, EventArgs e)
@@ -146,24 +157,34 @@ namespace OpenHachaGtkGui
 	{
 		[Glade.Widget] Gtk.Dialog PasteDialog;
 		[Glade.Widget] Gtk.Entry PasteDialogComboEntry;
+		[Glade.Widget] Gtk.Button PasteDialogPasteButton;
 		
 		public OpenHachaPasteDialog ()
 		{
 			Glade.XML gxml = new Glade.XML (null, "openhacha.glade", "PasteDialog", null);
 			gxml.Autoconnect (this);
+
+			PasteDialogPasteButton.Sensitive = false;
 		}
 		
 		public void OnPasteDialogPasteButtonClicked (System.Object b, EventArgs e)
 		{
 			string file = PasteDialogComboEntry.Text;
+			
 			if (File.Exists(file)) {
 				Dalle.Formatos.Manager.GetInstance().Unir(
 					file,
 					new FileInfo (file).DirectoryName);
 			}
 			
+			PasteDialogPasteButton.Sensitive = false;			
 		}
 
+		public void OnPasteDialogComboEntryChanged (System.Object b, EventArgs e)
+		{
+			PasteDialogPasteButton.Sensitive = true;
+		}			
+		
 		public void OnPasteDialogCloseButtonClicked (System.Object b, EventArgs e)
 		{
 			PasteDialog.Destroy ();
