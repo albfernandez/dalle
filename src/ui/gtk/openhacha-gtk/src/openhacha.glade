@@ -164,6 +164,7 @@ Split in 2 or more fragments a file.</property>
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char" translatable="yes">*</property>
 			  <property name="activates_default">False</property>
+			  <signal name="changed" handler="OnSplitDialogComboEntryChanged" last_modification_time="Fri, 16 Jan 2004 18:02:58 GMT"/>
 			</widget>
 		      </child>
 		    </widget>
@@ -516,7 +517,7 @@ Create a file from his fragments</property>
 		  <child>
 		    <widget class="GtkLabel" id="label13">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Basename of the fragments (with .0):</property>
+		      <property name="label" translatable="yes">Basename of the fragments:</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -544,6 +545,7 @@ Create a file from his fragments</property>
 		      <child internal-child="entry">
 			<widget class="GtkEntry" id="PasteDialogComboEntry">
 			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Select the first fragment of the file. The &quot;.0&quot; ended filename.</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
@@ -552,6 +554,7 @@ Create a file from his fragments</property>
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char" translatable="yes">*</property>
 			  <property name="activates_default">False</property>
+			  <signal name="changed" handler="OnPasteDialogComboEntryChanged" last_modification_time="Fri, 16 Jan 2004 18:06:20 GMT"/>
 			</widget>
 		      </child>
 		    </widget>
