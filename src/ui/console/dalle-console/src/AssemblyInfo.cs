@@ -1,6 +1,6 @@
 /*
 
-    Copyright (C) 2003  Alberto Fern·ndez <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto Fern√°ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,12 +26,12 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Dalle")]
 [assembly: AssemblyProduct("dalle-console")]
-[assembly: AssemblyCopyright("Copyright (c) 2003 Alberto Fern·ndez")]
+[assembly: AssemblyCopyright("Copyright (c) 2003 Alberto Fern√°ndez")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 
-[assembly: AssemblyVersion("0.6.0.0")]
+[assembly: AssemblyVersion("0.7.1.0")]
 
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]

@@ -3,7 +3,7 @@
     Dalle - A split/join file utility library	
     Dalle.Formatos.Axman.Axman - 
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto FernÃ¡ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,25 +29,24 @@ namespace Dalle.Formatos.Axman
 {
 	public class Axman : Parte
 	{
-		public Axman()
+		public Axman() : base ("axman", "Axman", "http://www.mosaicware.com/", false, false)
 		{
-			nombre ="axman";
-			descripcion = "Axman";
-			web = "http://www.mosaicware.com/";
-			parteFicheros = false;
-			compatible = false;
+		}
+		protected Axman (string nombre, string descripcion, string web, bool parteFicheros, bool compatible):
+			base (nombre, descripcion, web, parteFicheros, compatible)
+		{
 		}
 		protected override void _Unir (string fichero, string dirDest)
 		{
-			// TODO:Implementar esta función.
+			// TODO:Implementar esta funciÃ³n.
 		}
 		protected override void _Partir (string fichero,string sal1, string dir, long kb)
 		{
-			// TODO:Implementar esta función.
+			// TODO:Implementar esta funciÃ³n.
 		}
 		public override bool PuedeUnir (string fichero)
 		{
-			//TODO: Implementar esta función
+			//TODO: Implementar esta funciÃ³n
 			return false;
 		}
 	}

@@ -1,5 +1,5 @@
 %define name dalle
-%define version 0.7.0
+%define version 0.7.1
 %define release 1
 %define prefix /usr
 
@@ -87,6 +87,9 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 /usr/lib/libDalle.dll
 
 %changelog
+
+* Sun Feb 15 2004 Alberto Fernandez <infjaf00@yahoo.es>
+- Version 0.7.1
 
 * Sun Feb 8 2004 Alberto Fernandez <infjaf00@yahoo.es>
 - Incluido el nuevo dalle-sfv-console

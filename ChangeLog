@@ -1,3 +1,13 @@
+
+2004-02-16
+	Version 0.7.1
+
+2004-02-15
+	Corregidos errores en el verificador sfv (ahora no falla con lineas en blanco)
+
+2004-02-12
+	Version 0.7.0
+	
 2004-02-10
 	Eliminados (casi) todos los warnings del compilador.
 	Soporte para verificar ficheros md5 y sfv recursivos.

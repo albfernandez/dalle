@@ -131,8 +131,6 @@ namespace Dalle.Formatos.Astrotite
 				return false;
 			string t = fichero.ToUpper();
 			return (t.EndsWith(".AST2"));
-		}
-		
-		
+		}		
 	}	
 }

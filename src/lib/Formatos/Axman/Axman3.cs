@@ -3,7 +3,7 @@
     Dalle - A split/join file utility library	
     Dalle.Formatos.Axman.Axman3 - Split and Join files in Axman3 format.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto FernÃ¡ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -38,13 +38,8 @@ namespace Dalle.Formatos.Axman
 	{
 		private CRC crc = new AxmanCRC();
 		
-		public Axman3()
+		public Axman3() : base ("axman3", "Axman 3", "http://www.mosaicware.com/", true, false)
 		{
-			nombre = "axman3";
-			descripcion = "Axman 3";
-			web = "http://www.mosaicware.com/";
-			parteFicheros = true;
-			compatible = false;
 		}
 		protected override void _Unir (string fichero, string dirDest)
 		{
@@ -81,9 +76,9 @@ namespace Dalle.Formatos.Axman
 				f = String.Format (formato, i);
 				CabeceraAxman cabAxman = CabeceraAxman.LoadFromFile (f);
 				if (cabAxman.Fragmento != i){
+					// TODO. Poner um buen mensaje de excepciÃ³n.
 					string msg = string.Format (I._("..."));
 					throw new Exception (msg);
-					//throw new Exception ("Fragmento fuera de rango");
 				}
 				crc.Reset();
 				transferidos += UtilidadesFicheros.CopiarIntervalo (f, destino, 23, crc);
@@ -93,7 +88,7 @@ namespace Dalle.Formatos.Axman
 				OnProgress (transferidos, c.TamanoOriginal);
 			}
 			
-			// El último fragmento...
+			// El Ãºltimo fragmento...
 			f = String.Format (formato, i);
 			crc.Reset();
 			transferidos += UtilidadesFicheros.CopiarIntervalo (f, destino, 23, c.TamanoOriginal - transferidos,crc);
@@ -119,7 +114,7 @@ namespace Dalle.Formatos.Axman
 			long totales = new FileInfo(fichero).Length;
 			//if (totales < (kb*1024)){
 			//	string msg = string.Format (I.__("Source file is too small"));
-			//	throw new Exception ("El fichero es más pequeño que los fragmentos");
+			//	throw new Exception ("El fichero es mÃ¡s pequeÃ±o que los fragmentos");
 			//}
 			long tf = kb*1024 - 23;
 			OnProgress (0,1);
