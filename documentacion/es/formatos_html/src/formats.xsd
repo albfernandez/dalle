@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<xs:schema id="formats" targetNamespace="http://dalle.sourceforge.net/formats.xsd" xmlns="http://dalle.sourceforge.net/formats.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="format">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+				<xs:element name="progname" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="web" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="license" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="popularity" type="xs:integer" minOccurs="0" maxOccurs="1" />
+				<xs:element name="supportssplit" type="xs:integer" minOccurs="0" maxOccurs="1" />
+				<xs:element name="supportsjoin" type="xs:integer" minOccurs="0" maxOccurs="1" />
+				<xs:element name="sinceversion" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="naming" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="checksums" type="xs:string"minOccurs="0" maxOccurs="1" />
+				<xs:element name="headers" type="xs:string" minOccurs="0" maxOccurs="1" />					
+				<xs:element name="tails" type="xs:string" minOccurs="0" maxOccurs="1" />					
+				<xs:element name="auxfiles" type="xs:string" minOccurs="0" maxOccurs="1" />				
+				<xs:element name="notes" type="xs:string" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

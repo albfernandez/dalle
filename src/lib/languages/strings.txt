@@ -1,0 +1,27 @@
+# src/lib/Formatos/Hacha/CabeceraHacha_v1.cs: 1139
+Warning:_Header_checksum_verification_failed = Warning: Header checksum verification failed
+
+# src/lib/Formatos/Hacha/ParteHachaPro.cs: 1283
+{0}:File_not_found = {0}:File not found
+
+# src/lib/Formatos/Hacha/ParteHachaPro.cs: 1309
+Checksum_verification_failed_on_{0}! = Checksum verification failed on {0}!
+
+# src/lib/Formatos/Hacha/ParteHacha_v1.cs: 1612
+File__{0}_is_corrupt_(incorrect_size)! = File  {0} is corrupt (incorrect size)!
+
+# src/lib/Formatos/Hacha/ParteHacha_v1.cs: 1625
+File_{0}_is_corrupt_(incorrect_size)! = File {0} is corrupt (incorrect size)!
+
+# src/lib/Formatos/Hacha/ParteHacha_v2.cs: 1705
+Checksum_verification_failed! = Checksum verification failed!
+
+# src/lib/Formatos/EasyFileSplitter/EasyFileSplitter.cs: 2018
+File_not_found:_{0} = File not found: {0}
+
+# src/lib/Formatos/Parte.cs: 4443
+{0}_exists_and_is_a_file. = {0} exists and is a file.
+
+# src/lib/Utilidades/UtilidadesFicheros.cs: 4805
+File_{0}_already_exists = File {0} already exists
+

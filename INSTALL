@@ -1,0 +1,36 @@
+Para instalar desde las fuentes.
+
+./configure
+make
+(hacerse root).
+make install
+
+En build/ quedan los exes, las dlls y los wrappers.
+
+
+
+Para ejecutar el programa de linea de comandos
+
+dalle-console <comando> < [opciones] ficheros>
+ 
+<comandos>
+-s Partir ficheros
+-j Unir ficheros
+-i Mostrar información de los ficheros (formato)
+-l Lista de los formatos soportados
+(ausente) unir los ficheros.
+ 
+<opciones>
+-d=directorio Especifica el directorio de destino
+-f=formato Formato para partir
+-b=fichero Nombre del fichero destino, o prefijo de los fragmentos
+-t=tamano Tamaño de los fragmentos en kb (si es aplicable).
+
+
+Para instalar el rpm
+
+rpm -vih dalle-VERSION.noarch.rpm
+
+Para instalar el rpm cambiando el directorio de instalación por otro
+
+rpm -vih --prefix=directorio dalle-VERSION.noarch.rpm

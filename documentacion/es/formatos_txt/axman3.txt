@@ -1,0 +1,41 @@
+
+Axman 3
+http://www.mosaicware.com/
+
+Version shareware.
+
+Capacidades:
+	Comprimir antes de partir
+	verificacion crc
+	posibilidad de crear archivos compatibles
+
+Formato del nombre de los archivos:
+	<basename>.<numero fragmento, comenzando en 1>.axman
+para archivos comprimidos previamente:
+	<basename>.zip.<numerofragmento>.axman
+
+El formato para los archivos axman3 es el siguiente:
+Pone una cabecera de 23 bytes en todos los archivos de la siguiente manera:
+15 bytes - > nombre de la aplicación y versión: "AXMAN_03-12r   " 
+		(completa con espacios en blanco 0x20)
+4 bytes - > un entero con el número de fragmento.
+4 bytes - > crc de los datos del fragmento (0xFFFFFFFF si no hay).
+
+En el último archivo lleva una cola con la siguiente información:
+1 byte  -> 0x7c (|) separador.
+? bytes -> ruta completa ms-dos del archivo original. (C:\temp\target.zip)
+1 byte  -> 0x7c
+15 bytes-> Versión de axman con la que se creo (= que la cabecera).
+1 byte  -> 0x7c
+4 bytes -> 3 ¿número de la versión con la que se creó?
+1 byte  -> 0x7c
+4 bytes -> entero con el número de fragmentos creados.
+1 byte  -> 0x7c
+8 bytes -> long con el tamaño del archivo original.
+1 byte  -> 0x7c
+4 bytes -> Entero con la longitud de la ruta + 2 (+ los dos separadores).
+
+Nota: 
+Se supone que el formato es distinto en la versión 3 de las anteriores 
+para poder trabajar con archivos de +4Gb. ¿
+Será el único cambio el del long de la cola para el tamaño del archivo original?.
