@@ -1,68 +1,74 @@
-# src/Consola.cs: 109
-Time___{0}_seconds_({1:00}:{2:00}) = Tiempo = {0} segundos ({1:00}:{2:00})
+# src/HelpJob.cs: 170
+Bad_options = Parámetros incorrectos
 
-# src/Consola.cs: 171
-Finished = Terminado
-
-# src/HelpJob.cs: 234
-Bad_options = Opciones incorrectas
-
-# src/HelpJob.cs: 237
+# src/HelpJob.cs: 173
 dalle-console_<command>_<_[options]_files> = dalle-console <commando> < [opciones] ficheros>
 
-# src/HelpJob.cs: 239
+# src/HelpJob.cs: 175
 <commands> = <commandos>
 
-# src/HelpJob.cs: 240
--s_Split_files = -s Cortar fichero
+# src/HelpJob.cs: 176
+-s_Split_files = -s Cortar archivos
 
-# src/HelpJob.cs: 241
--j_Join_files = -j Unir ficheros
+# src/HelpJob.cs: 177
+-j_Join_files = -j Unir archivos
 
-# src/HelpJob.cs: 242
--i_Show_info_about_files_(format) = -i Mostrar información acerca del formato de los ficheros
+# src/HelpJob.cs: 178
+-i_Show_info_about_files_(format) = -i Muestra información acerca del formato de los ficheros.
 
-# src/HelpJob.cs: 243
--l_List_all_supported_formats = -l Mostrar una lista con los formatos soportados
+# src/HelpJob.cs: 179
+-l_List_all_supported_formats = -l Muestra un listado con todos los formatos soportados
 
-# src/HelpJob.cs: 244
-(no_command)_Join_files = (no command) Unir ficheros
+# src/HelpJob.cs: 180
+(no_command)_Join_files = (sin comando) Une archivos
 
-# src/HelpJob.cs: 246
+# src/HelpJob.cs: 182
 <options> = <opciones>
 
-# src/HelpJob.cs: 247
+# src/HelpJob.cs: 183
 -d_dir_ = -d=dir 
 
-# src/HelpJob.cs: 248
--f_format_Format_used_to_split_the_file = -f=format Formato usado para cortar un fichero
+# src/HelpJob.cs: 184
+-f_format_Format_used_to_split_the_file = -f=format Formato para partir el fichero
 
-# src/HelpJob.cs: 249
--b_file_Name_of_dest_file,_or_prefix_for_fragments = -b=file Nombre del fichero de destino, o prefijo de los fragmentos
+# src/HelpJob.cs: 185
+-b_file_Name_of_dest_file,_or_prefix_for_fragments = -b=file Nombre del archivo de destino, o nombre base de los fragmentos
 
-# src/HelpJob.cs: 250
+# src/HelpJob.cs: 186
 -t_size_Size_of_pieces_(in_kb) = -t=size Tamaño de los fragmentos (en kb)
 
-# src/InfoJob.cs: 336
+# src/InfoJob.cs: 280
 Unknown_format = Formato desconocido
 
-# src/InfoJob.cs: 340
+# src/InfoJob.cs: 284
 Is_a_directory = Es un directorio
 
-# src/InfoJob.cs: 342
+# src/InfoJob.cs: 286
 File_not_found = Fichero no encontrado
 
-# src/JoinJob.cs: 394
-Bad_parameter = Bad parameter
+# src/JoinJob.cs: 343
+Bad_parameter = Parámetro incorrecto
 
-# src/ListJob.cs: 447
+# src/JoinJob.cs: 357
+Joining_file_{0}_({1}) = Uniendo {0} ({1})
+
+# src/JoinJob.cs: 365
+{0}._Error,_Unknown_format. = {0}. Error, Formato desconocido.
+
+# src/ListJob.cs: 415
 Join_Supported_Formats = Formatos soportados para unir
 
-# src/ListJob.cs: 456
+# src/ListJob.cs: 424
 Split_Supported_Formats = Formatos soportados para cortar
 
-# src/VersionJob.cs: 586
+# src/LongJob.cs: 484
+Finished = Terminado
+
+# src/LongJob.cs: 507
+Time___{0}_seconds_({1:00}:{2:00}) = Tiempo = {0} segundos ({1:00}:{2:00})
+
+# src/VersionJob.cs: 646
 dalle-console_v.{0} = dalle-console v.{0}
 
-# src/VersionJob.cs: 588
-Using_libDalle_v.{0} = Using libDalle v.{0}
+# src/VersionJob.cs: 648
+Using_libDalle_v.{0} = Utiliza libDalle v.{0}
