@@ -1,33 +1,33 @@
-# src/AboutDialog.cs: 68
-Close = Close
-
-# src/DalleSWF.cs: 186
-Execute = Execute
-
-# src/DalleSWF.cs: 193
-Exit = Exit
-
-# src/DalleSWF.cs: 200
-About = About
-
-# src/DalleSWF.cs: 207
-Split = Split
-
-# src/DalleSWF.cs: 214
-Merge = Merge
-
-# src/DalleSWF.cs: 219
-What_do_you_want_to_do? = What do you want to do?
-
-# src/DalleSWF.cs: 225
+# src/DalleSWF.cs: 118
 Welcome_to_dalle = Welcome to dalle
 
-# src/DalleSWF.cs: 247
-Dalle-swf = Dalle-swf
+# src/DalleSWF.cs: 100
+Split = Split
 
-# src/JoinDialog.cs: 325
+# src/JoinDialog.cs: 54
 Merge__ = Merge__
 
-# src/SplitDialog.cs: 369
+# src/DalleSWF.cs: 86
+Exit = Exit
+
+# src/DalleSWF.cs: 107
+Merge = Merge
+
+# src/DalleSWF.cs: 112
+What_do_you_want_to_do? = What do you want to do?
+
+# src/AboutDialog.cs: 86
+Close = Close
+
+# src/DalleSWF.cs: 93
+About = About
+
+# src/DalleSWF.cs: 140
+Dalle-swf = Dalle-swf
+
+# src/SplitDialog.cs: 53
 Split__ = Split__
+
+# src/DalleSWF.cs: 79
+Execute = Execute
 

@@ -24,5 +24,5 @@
 	* Dai SET <dai_set@yahoo.com>
 		- deskama, a complete utility tool.
 		  deskama is written in C and has support for multiple file types
-		  (Kamaleon 1 and 2, Hacha, Hacha Pro, Splitter & Merger 3.0, 4.0 y 5.0,
-		  Camouflage, MD5, SFV, CRC, PAR, MD5, MD4)
+		  (Kamaleon 1 and 2, Hacha, Hacha Pro, Splitter & Merger 3.0, 4.0 and 5.0,
+		  Camouflage, SFV, CRC, PAR, MD5, MD4)

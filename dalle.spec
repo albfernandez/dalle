@@ -1,5 +1,5 @@
 %define name dalle
-%define version 0.7.3
+%define version 0.7.4
 %define release 1
 %define prefix /usr
 
@@ -17,7 +17,7 @@ BuildArch:		noarch
 Prefix:			%{prefix}
 Distribution:   Any
 Packager:       Alberto Fernandez  <infjaf00@yahoo.es>
-Requires:   	mono >= 0.30, gtk-sharp >= 0.15
+Requires:   	mono-core >= 1.0, mono-ziplib >= 1.0, gtk-sharp >= 1.0
 
 %description
 
@@ -25,7 +25,7 @@ Requires:   	mono >= 0.30, gtk-sharp >= 0.15
 %setup
 
 %build
-./configure --prefix=%{prefix} --build-release
+./configure --prefix=%{prefix} --build-release --mono-path=/usr/lib/mono/2.0:/usr/lib/mono/gtk-sharp
 make
 
 %install
@@ -87,6 +87,9 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 /usr/lib/libDalle.dll
 
 %changelog
+
+
+
 
 * Sun Feb 15 2004 Alberto Fernandez <infjaf00@yahoo.es>
 - Version 0.7.1

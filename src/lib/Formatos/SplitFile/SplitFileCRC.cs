@@ -29,7 +29,7 @@ namespace Dalle.Formatos.SplitFile
 	
 	public class SplitFileCRC : CRC
 	{
-		private int value;
+		private int v;
 		private int contador;
 		private int mask = 0x00FFFFFF;
 		
@@ -37,7 +37,7 @@ namespace Dalle.Formatos.SplitFile
 
 		public SplitFileCRC ()
 		{
-			value = 0;
+			v = 0;
 			contador = 0;
 		}
 		
@@ -46,7 +46,7 @@ namespace Dalle.Formatos.SplitFile
 		/// </summary>
 
 		public long Value{
-			get { return value; }
+			get { return v; }
 		}
 		
 		/// <summary>
@@ -55,7 +55,7 @@ namespace Dalle.Formatos.SplitFile
 
 		public void Reset ()
 		{
-			value = 0;
+			v = 0;
 			contador = 0;
 		}
 
@@ -68,7 +68,7 @@ namespace Dalle.Formatos.SplitFile
 
 		public void Update (int bval)
 		{
-			value = (value + contador + bval) & mask;
+			v = (v + contador + bval) & mask;
 			contador++;
 		}
 
@@ -107,7 +107,7 @@ namespace Dalle.Formatos.SplitFile
 			}
 
 			while (--len >= 0) {
-				value = (value + contador + buf[off]) & mask;
+				v = (v + contador + buf[off]) & mask;
 				contador++;
 				off++;
 			}

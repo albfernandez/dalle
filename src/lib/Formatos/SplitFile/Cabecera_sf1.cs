@@ -32,12 +32,12 @@ namespace Dalle.Formatos.SplitFile
 	{
 		//TODO: Que ponemos en comentario.
 		public const String COMENTARIO = "";
-		private string comentario = ";Created by Dalle v." + 
-				Assembly.GetExecutingAssembly().GetName().Version;
+		private String comentario = null;
 		private String fileName = null;
 		private long fileSize = 0;
 		
 		/// <summary>La fecha de modificación del archivo original (UTC).</summary>
+		
 		private DateTime fileTime = DateTime.Now.ToUniversalTime();
 		private int fileAttr = 32;
 		private int number = 0;
@@ -48,11 +48,16 @@ namespace Dalle.Formatos.SplitFile
 		
 		public Cabecera_sf1 () 
 		{
+			this.comentario = 
+			";Created by Dalle v." + 
+				Assembly.GetExecutingAssembly().GetName().Version;
+
 		}
 		
 		
-		private Cabecera_sf1 (char[] buffer)
+		private Cabecera_sf1 (char[] buffer) : this()
 		{
+			
 			int cont = 0;
 			while (buffer[cont] != '\0')
 			{
@@ -161,7 +166,6 @@ namespace Dalle.Formatos.SplitFile
 			ret += "IsLast=" + ( IsLast ? 1 : 0 ) + "\r\n";
 			ret += "CheckSum=" + CheckSum + "\r\n";
 			return ret;
-
 		}
 		
 		public byte[] ToByteArray()
@@ -202,7 +206,8 @@ namespace Dalle.Formatos.SplitFile
 			catch (Exception){
 				return DateTime.Now;
 			}
-		}	
+			
+		}
 		public static Cabecera_sf1 LeerCabecera (String fichero)
 		{
 			byte[] buffer = new byte[CAB_SIZE];
@@ -222,7 +227,7 @@ namespace Dalle.Formatos.SplitFile
 				buffer2[i] = Convert.ToChar(buffer[i]);
 			}			
 			Cabecera_sf1 ret = new Cabecera_sf1(buffer2);
-			return ret;			
+			return ret;		
 		}
 	}
 	

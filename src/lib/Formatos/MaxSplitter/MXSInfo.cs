@@ -39,15 +39,17 @@ namespace Dalle.Formatos.MaxSplitter
 		private long tamanoOriginal;
 		private int fragmentos;
 		private bool zipped = false;
-		private string version = "Created by Dalle v." + 
-					Assembly.GetExecutingAssembly().GetName().Version;
+		private string version = null;
 		private string atributos = "a";
 		private int batch = 1;
 	
 		public MXSInfo()
-		{			
+		{
+			this.version = "Created by Dalle v." + 
+					Assembly.GetExecutingAssembly().GetName().Version;
+
 		}
-		public MXSInfo (string fichero)
+		public MXSInfo (string fichero) : this ()
 		{
 			// TODO: Poner excepciones personalizada.
 			if ((new FileInfo(fichero).Length) > 512){

@@ -59,24 +59,27 @@ namespace Dalle.UI.Consola
 
 			if (args.Length == 0)
 				return new HelpJob(false);				
-			else if (args[0] == "-h" || args[0] == "--h" || args[0] == "-help" ||
-				args[0] == "--help"){
+			else if (args[0] == "-h" || args[0] == "--help"){
 					return new HelpJob(false);
 			}
-			else if (args[0] == "--version")
+			else if ((args[0] == "--version") || (args[0] == "-v")){
 				return new VersionJob();
-			else if (! args[0].StartsWith ("-") )
-				return new JoinJob (args);
-			else if (args[0] == "-j")
+			}
+			else if ((args[0] == "-j") || (args[0] == "--join")){
 				return new JoinJob(args);
-			else if (args[0] == "-s")
+			}
+			else if ((args[0] == "-s") || (args[0] == "--split")){
 				return new SplitJob (args);
-			else if (args[0] == "-i")
+			}
+			else if ((args[0] == "-i") || (args[0] == "--info")){
 				return new InfoJob (args);
-			else if (args[0] == "-l")
+			}
+			else if ((args[0] == "-l") || (args[0] == "--list")) {
 				return new ListJob(args);
-			else
-				return null; 		
+			}
+			else {
+				return null;
+			} 		
 		}	
 	}
 }

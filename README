@@ -7,8 +7,8 @@ con programas como hacha, splitfile, winsplit ...
 
 Los requerimientos son los siguientes:
 
-Mono >= 0.30
-gtk-sharp >= 0.15
+Mono >= 1.0
+gtk-sharp >= 1.0
 
 La versión en línea de comandos puede funcionar en otros CLRs 
 (.Net y Portable.net), pero no está muy probado.

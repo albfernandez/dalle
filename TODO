@@ -1,8 +1,16 @@
-Por hacer:
-	A continuación se indican los cambios que se realizarán y las versiones correspondientes
-	que serán liberadas, una vez un grupo de ellos se haya terminado.
+
+A continuación se indican los cambios que se realizarán y las versiones correspondientes
+que serán liberadas, una vez un grupo de ellos se haya terminado.
+No se indican plazos de tiempo porque se que no voy a ser capaz 
+de cumplirlos ;-)
+
+
+Leyenda:
+	[ ] Tarea por hacer
+	[-] A medias/sin probar
+	[X] Completo (o casi).
 	
-	
+
 ===============================
 
 	Versión 0.6
@@ -67,7 +75,7 @@ Por hacer:
 	- [ ]  Repaso de dalle-console.
 	- [ ]  Repaso de dalle-gtk.
 	- [ ]  Repaso de dalle-crcs.
-	- [ ]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
+	- [-]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
 	- [ ]  Hacer los programas compatibles con pnet.
 	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
 	- [X]  Paquete deb.
@@ -114,14 +122,18 @@ Por hacer:
 
 
 
-	
-	
-Otras cosas por hacer (cuando haya tiempo):
+==============================================
+
+Otras cosas por hacer (cuando haya tiempo)
+
+==============================================
+
 	- [ ]  Hacer que Axman3 soporte la verificación crc que tiene.
 	- [ ]  Hacer un soporte completo para los archivos FSI de FileSplit
 	
 	Soporte para archivos de verificación:
 	- [X]  Soporte sfv
 	- [X]  Soporte md5
+	- [X]  Soporte sha1
 	- [ ]  Soporte PAR1
 	- [ ]  Soporte PAR2

@@ -1,3 +1,15 @@
+2004-12-13
+	Soporte para verificacion de archivos con hash sha1
+	Retoques en OpenHacha para quitar los warnings del compilador
+
+2004-10-12
+	Modificado getstrings.pl - Ahora no genera strings repetidos.
+	Revisión de MaxSplitter y FileSpliter (provocaban fallos del
+	compilador en determinadas circunstancias)
+
+2004-09-24
+        Version 0.7.3
+
 2004-09-05
 	Dialogo de Acerca para dalle-gtk
 	Comienzo de dalle-swf

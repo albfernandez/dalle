@@ -19,12 +19,10 @@ BASEPATH=../../../..
 include $(BASEPATH)/rules.make
 
 PROGNAME=openhacha-gtk.exe
-WRAPNAME1=openhacha-gtk
-WRAPNAME2=openhacha
+WRAPNAME=openhacha
 
 TARGET=$(BUILDDIR)/$(PROGNAME)
-WRAPPER=$(BUILDDIR)/$(WRAPNAME1)
-WRAPPER2=$(BUILDDIR)/$(WRAPNAME2)
+WRAPPER=$(BUILDDIR)/$(WRAPNAME)
 SOURCEDIR=src
 GNOME_ASSEMBLY = -r gnome-sharp
 GLADE_ASSEMBLY = -r glade-sharp
@@ -42,23 +40,18 @@ $(TARGET): $(LIBRARY) $(SOURCEDIR)/*.cs
 	$(GNOME_ASSEMBLY) $(GLADE_ASSEMBLY) $(RESOURCES) -recurse:$(SOURCEDIR)/*.cs 
 	@echo "#!/bin/sh" > $(WRAPPER)
 	@echo "" >> $(WRAPPER)
-	@echo "$(MONO) $(MONO_FLAGS) $(PREFIX)/bin/$(PROGNAME)" >>$(WRAPPER)
+	@echo "$(MONO) $(MONO_FLAGS) $(PREFIX)/bin/$(PROGNAME)" >> $(WRAPPER)
 	@echo "" >> $(WRAPPER)
-	@echo "#!/bin/sh" > $(WRAPPER2)
-	@echo "$(PREFIX)/bin/$(WRAPNAME1)" >> $(WRAPPER2)
-	@echo "" >> $(WRAPPER2)
 	   
 install: all
 	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/bin
 	$(INSTALL) $(WRAPPER)  $(DESTDIR)/$(PREFIX)/bin
-	$(INSTALL) $(WRAPPER2) $(DESTDIR)/$(PREFIX)/bin
 
 uninstall:
-	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPNAME1)
-	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPNAME2)
+	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPNAME)
 	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(PROGNAME)
 	
 clean:
-	rm -f $(TARGET) $(WRAPPER) $(WRAPPER2)
+	rm -f $(TARGET) $(WRAPPER)
 	
 .PHONY: clean uninstall
