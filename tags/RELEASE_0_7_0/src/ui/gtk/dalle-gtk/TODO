@@ -1,0 +1,11 @@
+TODO
+	- [X]  I18N
+	- [X]  Verificar si existe el fichero antes de partir o unir.
+	- [X]  Hacer que no se pueda cerrar el diálogo.
+	- [X]  Especificar archivo a partir.
+	- [ ]  Especificar directorio de destino (partir).
+	- [X]  Especificar Formato (partir).
+	- [X]  Especificar tamaño en kb (partir).
+	- [X]  Especificar número de fragmentos (partir).
+	- [X]  Especificar archivo a unir(unir).
+	- [ ]  Especificar directorio de destino (unir).

@@ -1,0 +1,105 @@
+
+
+Página principal:
+
++-----------------------------------------------------------------------------+
+|                                                                             |
+| Img al indice                                                               |
+|                                                                             |
++-----------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------+
+|                                                                             |
+|  Indice y resumen de formatos en una tabla.                                 |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                                                                             |
++-----------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------+
+|                                                                             |
+| Banner al pie                                                               |
+|                                                                             |
++-----------------------------------------------------------------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Página de formatos:
+
+
++-----------------------------------------------------------------------------+
+|                                                                             |
+| Img al indice                                                               |
+|                                                                             |
++-----------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------+
+| Anterior (si exi)            Inicio                     siguiente (si exist)|
++-----------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------+
+|                                                                             |
+|  Descripción del formato                                                    |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                                                                             |
++-----------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------+
+| Anterior (si exi)            Inicio                     siguiente (si exist)|
++-----------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------+
+|                                                                             |
+| Banner al pie                                                               |
+|                                                                             |
++-----------------------------------------------------------------------------+
+
+
+
+
+
+
+descripción del xml
+
+<xml>
+  <name>nombre del formato</name>
+  <progname>nombre original del programa</progname>
+  <web>página web del programa original(si se conoce)</web>
+  <license>Licencia original</license>
+  <popularity>Grado de popularidad y conocimiento de este programa</popularity>
+  <supportssplit>nº 0-10 indicando el grado</supportssplit>
+  <supportsjoin>nº 0-10 indicando el grado</supportsjoin>
+  <sinceversion>Versión desde la que se incluye en dalle.</sinceversion>
+  <description>Código html con la descripción del formato</description>
+	<naming>Descipción de la nomenclatura de los fragmentos</naming> con paragraph.
+	<headers>Descripción de las cabeceras</headers> paragraphs y tablas.
+	<tails>Descripción de las colas </headers> paragraphs y tablas.
+	<auxfiles>Descripcion de los archivos auxiliares </auxfiles> paragraphs y tablas...
+	<checksums>Descripción de las sumas de comprobación</checksums>paragraphs...
+</xml>

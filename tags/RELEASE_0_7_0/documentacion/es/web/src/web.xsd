@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<xs:schema id="contributors" targetNamespace="http://dalle.sourceforge.net/web.xsd" xmlns="http://dalle.sourceforge.net/web.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="page">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+				<xs:element name="filename" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="content" type="xs:string" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

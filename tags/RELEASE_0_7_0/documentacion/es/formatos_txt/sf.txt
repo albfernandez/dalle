@@ -1,0 +1,21 @@
+
+El formato del nombre de los ficheros es:
+SFXXXX.SF
+Siendo XXXX el numero de secuencia comenzando en 0001
+
+El formato del fichero es el siguiente:
+
+byte 0 ---> 0x53 (S)
+byte 1 ---> 0x46 (F)
+byte 2 ---> 0x00
+byte 3 ---> 0x00
+byte 4 ---> 0x06
+byte 5 ---> numero de fragmento, comenzando en 1 (Leer nota).
+byte 6 y siguientes ---> nombre del archivo original, terminado en null.
+finalmente, los datos.
+
+0x5346000006(num_secuencia)(nombre_original)00(datos).
+
+
+* NOTA: Debido a que utiliza un sólo byte para almacenar el número de fragmento, y a que comienza a numerar en 1, este formato solo permite crear 255 fragmentos.
+Además, el formato del nombre de los fragmentos es fijo, por lo que antes de partir, debemos eliminar cualquier resto de una labor anterior del directorio de trabajo.
