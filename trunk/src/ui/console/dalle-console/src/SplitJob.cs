@@ -3,7 +3,7 @@
 	Dalle-console - A split/join file utility command-line tool.
 	Dalle.UI.Consola.SplitJob - Split files.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto FernÃ¡ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -57,13 +57,13 @@ namespace Dalle.UI.Consola
 						dirDest = args[i].Substring (3);
 					}
 					else{
-						// TODO: Excepción personalizada.
+						// TODO: ExcepciÃ³n personalizada.
 						throw new Exception ("0");
 					}
 				}
 				else{
 					if (fichero != ""){
-						// TODO: Poner una excepción personalizada.
+						// TODO: Poner una excepciÃ³n personalizada.
 						throw new Exception ("1");
 					}
 					fichero = args[i];
@@ -71,7 +71,7 @@ namespace Dalle.UI.Consola
 			}
 			
 			if (fichero == ""){
-				// TODO: Excepción personalizada.
+				// TODO: ExcepciÃ³n personalizada.
 				throw new Exception ("2");
 			}
 			
@@ -84,7 +84,6 @@ namespace Dalle.UI.Consola
 			Manager.GetInstance().Partir(formato, fichero,bas, dirDest, tFragmento);
 			OnFinish();
 			int final = Environment.TickCount;
-			int total = (final - inicio) / 1000;
 			this.ShowTotalTime ((final - inicio) / 1000);
 		}
 		
