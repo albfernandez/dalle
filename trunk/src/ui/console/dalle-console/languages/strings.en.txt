@@ -1,0 +1,69 @@
+# src/Consola.cs: 109
+Time___{0}_seconds_({1:00}:{2:00}) = Time = {0} seconds ({1:00}:{2:00})
+
+# src/Consola.cs: 171
+Finished = Finished
+
+# src/HelpJob.cs: 234
+Bad_options = Bad options
+
+# src/HelpJob.cs: 237
+dalle-console_<command>_<_[options]_files> = dalle-console <command> < [options] files>
+
+# src/HelpJob.cs: 239
+<commands> = <commands>
+
+# src/HelpJob.cs: 240
+-s_Split_files = -s Split files
+
+# src/HelpJob.cs: 241
+-j_Join_files = -j Join files
+
+# src/HelpJob.cs: 242
+-i_Show_info_about_files_(format) = -i Show info about files (format)
+
+# src/HelpJob.cs: 243
+-l_List_all_supported_formats = -l List all supported formats
+
+# src/HelpJob.cs: 244
+(no_command)_Join_files = (no command) Join files
+
+# src/HelpJob.cs: 246
+<options> = <options>
+
+# src/HelpJob.cs: 247
+-d_dir_ = -d=dir 
+
+# src/HelpJob.cs: 248
+-f_format_Format_used_to_split_the_file = -f=format Format used to split the file
+
+# src/HelpJob.cs: 249
+-b_file_Name_of_dest_file,_or_prefix_for_fragments = -b=file Name of dest file, or prefix for fragments
+
+# src/HelpJob.cs: 250
+-t_size_Size_of_pieces_(in_kb) = -t=size Size of pieces (in kb)
+
+# src/InfoJob.cs: 336
+Unknown_format = Unknown format
+
+# src/InfoJob.cs: 340
+Is_a_directory = Is a directory
+
+# src/InfoJob.cs: 342
+File_not_found = File not found
+
+# src/JoinJob.cs: 394
+Bad_parameter = Bad parameter
+
+# src/ListJob.cs: 447
+Join_Supported_Formats = Join Supported Formats
+
+# src/ListJob.cs: 456
+Split_Supported_Formats = Split Supported Formats
+
+# src/VersionJob.cs: 586
+dalle-console_v.{0} = dalle-console v.{0}
+
+# src/VersionJob.cs: 588
+Using_libDalle_v.{0} = Using libDalle v.{0}
+

@@ -1,0 +1,111 @@
+body {
+font-family: Verdana, Arial, sans-serif;
+background-color: white;
+}
+
+a {
+color: gray;
+text-decoration: none;
+}
+
+a:hover {
+color: red;
+}
+
+p {
+margin-top: 0;
+margin-bottom: 0;
+padding-top: 0;
+padding-bottom: 0;
+}
+
+.banner {
+border: thin solid;
+height: 110px;
+padding: 0px;
+background-color: #f3f3f3;
+border-color: #c8c8c8;
+}
+.bottombanner {
+font-size: 13px;
+float: center;
+padding: 6px;
+border: thin solid;
+background-color: #f3f3f3;
+border-color: #c8c8c8;
+margin-top: 15px;
+text-align: center;
+}
+
+.left {
+text-align: left;
+position: absolute;
+padding-left: 90px;
+}
+
+.cds {
+float:left;
+margin-right:10px;
+border:0px;
+}
+
+.title {
+font-size: 36px;
+font-weight: bold;
+}
+
+.statement {
+font-size: 14px;
+font-weight: bold;
+}
+
+.irc {
+font-size: 13px;
+text-align: right;
+}
+
+.middletable {
+float: center;
+background-color: white;
+border: thin solid;
+border-color: #c8c8c8;
+margin-top: 10px;
+padding: 6px;
+}
+
+.menutext {
+font-size: 13px;
+text-align: left;
+margin-top: 0px;
+margin-left: 5px;
+width: 90px;
+position: absolute;
+}
+
+.bold {
+font-size: 13px;
+font-weight: bold;
+}
+
+.content {
+font-size: 13px;
+margin-top: -5px;
+/* margin-top: -98px; */
+padding-left: 120px;
+}
+
+.versions {
+font-size: 12px;
+float: right;
+}
+
+
+
+.sflogo {
+font-size: 13px;
+font-weight: bold;
+float: right;
+text-align: right;
+margin-top: -45px;
+margin-right: 3px;
+}
