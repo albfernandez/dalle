@@ -79,7 +79,7 @@ namespace OpenHachaTextGui
 		public void ShowWarningMessage()
 		{
 			Console.WriteLine("\nWarning: Unknown command\n");
-			Console.WriteLine("OpenHacha 0.4");
+			Console.WriteLine("OpenHacha 0.5");
 			Console.WriteLine("\nUsage:\n\t- split a file:\n\t\topenhacha-text split filename size(in KiB)\n\n\t- paste the fragments of a file:\n\t\topenhacha-text paste basename.0\n");	
 		}
 	}
