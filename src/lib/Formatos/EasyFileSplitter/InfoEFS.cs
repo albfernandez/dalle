@@ -44,7 +44,7 @@ namespace Dalle.Formatos.EasyFileSplitter
 			string c = fichero.Substring (fichero.LastIndexOf('.')+1);
 			if (b==String.Empty){
 				// TODO: Poner una excepcion personalizada.
-				throw new Exception ();
+				throw new Exception ("...");
 			}
 			string tmp = new FileInfo (fichero).Name;
 			tmp = tmp.Substring (0, tmp.LastIndexOf('.'));

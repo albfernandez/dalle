@@ -30,6 +30,8 @@ using Dalle.Formatos;
 using Dalle.Utilidades;
 using Dalle.Checksums;
 
+using I = Dalle.I18N.GetText;
+
 namespace Dalle.Formatos.SplitFile
 {
 	
@@ -47,29 +49,31 @@ namespace Dalle.Formatos.SplitFile
 			compatible = false;
 		}
 
-		protected override void _Unir (String fichero, String dirDest)
+		protected override void _Unir (string fichero, string dirDest)
 		{
 			
-			// TODO:Hacer que utilice la informacion de directorio
 			ArrayList lista = new ArrayList ();
-			String b = fichero.Substring(0, fichero.Length - 4);
+			string b = fichero.Substring(0, fichero.Length - 4);
 			for (int f=1; File.Exists(b+f+".sf"); f++){
 				lista.Add (Cabecera_sf1.LeerCabecera(b+f+".sf"));
 			}			
 			Cabecera_sf1 cab = (Cabecera_sf1) lista[lista.Count -1];
 			
 			if (!cab.IsLast){
-				//TODO: indicar cuantos ficheros faltan.
+				//TODO: indicar cuantos ficheros faltan.ç
+				//TODO: I18N
 				throw new Exception ("Falta ultimo o ultimos");
 			}
-			String destino = dirDest + Path.DirectorySeparatorChar + cab.FileName;
+			string destino = dirDest + Path.DirectorySeparatorChar + cab.FileName;
 			UtilidadesFicheros.ComprobarSobreescribir(destino);
 
 			// Comprobamos que todos pertenecen a la secuencia.
 			int i=1;
 			foreach (Cabecera_sf1 c in lista){
 				if (c.Number != i){
-					throw new Exception ("Fuera de secuencia");
+					// TODO: indicar en q fichero.
+					string msg = string.Format (I._("Single verification failed"));
+					throw new Exception (msg);
 				}				
 				i++;
 			}
@@ -80,8 +84,9 @@ namespace Dalle.Formatos.SplitFile
 				long leidos = UtilidadesFicheros.CopiarIntervalo(
 					b + c.Number + ".sf", destino, c.CAB_SIZE , crc);
 				if ( crc.Value != c.CheckSum){
-					//TODO: Poner una excepcion personalizada.
-					Console.WriteLine ("Checsum error en filesplit");
+					// TODO: Indicar en q fichero.
+					throw new Exception (I._("Checksum verfication failed"));
+					
 				}
 				transferidos += leidos;		
 				OnProgress (transferidos, cab.FileSize);
@@ -92,11 +97,9 @@ namespace Dalle.Formatos.SplitFile
 		{
 			
 			Cabecera_sf1 cabecera = new Cabecera_sf1();
-			// TODO: reducir fichero a su ultimo elemento (quitar el path)
 			cabecera.FileName = new FileInfo(fichero).Name;
 			cabecera.FileSize = (int) (new FileInfo(fichero).Length);
 			
-			// TODO: Rellenar el FileTime con datos reales...
 			cabecera.FileTime = File.GetLastWriteTime(fichero).ToUniversalTime();
 			// Atributos normales por defecto.			
 			cabecera.FileAttr = 32;
@@ -131,6 +134,9 @@ namespace Dalle.Formatos.SplitFile
 		}
 		public override bool PuedeUnir (String fichero)
 		{
+			if (! File.Exists (fichero) )
+				return false;
+			
 			if (! fichero.ToUpper().EndsWith(".SF"))
 				return false;
 			try{

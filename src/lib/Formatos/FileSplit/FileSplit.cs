@@ -48,23 +48,27 @@ namespace Dalle.Formatos.FileSplit
 		{
 			
 			FileSplit_FSI fsi = FileSplit_FSI.LoadFromFile (fichero);
-			String destino = dirDest + Path.DirectorySeparatorChar + fsi.NombreOriginal;
+			string destino = dirDest + Path.DirectorySeparatorChar + fsi.NombreOriginal;
 			UtilidadesFicheros.ComprobarSobreescribir (destino);
 			long transferidos = 0;
 			OnProgress (0,1);
-			String bas = fichero.Substring (0, fichero.Length -4);			
-			for (int i=1; File.Exists (bas + "." + UtilidadesCadenas.Format(i,3));i++){
-				transferidos += UtilidadesFicheros.CopiarTodo (
-					bas+ "." + UtilidadesCadenas.Format(i,3), destino);
+			string fmt = fichero.Substring (0, fichero.Length -4) + ".{0:000}";	
+			
+			for (int i=0; File.Exists (string.Format (fmt, i)); i++){
+				transferidos += 
+					UtilidadesFicheros.CopiarTodo (string.Format (fmt, i), destino);
 				OnProgress (transferidos, fsi.TamanoOriginal);
 			}
 		}
-		protected override void _Partir (String fichero,String sal1, String dir, long kb)
+		protected override void _Partir (string fichero,string sal1, string dir, long kb)
 		{			
 		}
 		
-		public override bool PuedeUnir (String fichero)
+		public override bool PuedeUnir (string fichero)
 		{
+			if (! File.Exists (fichero) )
+				return false;
+
 			return (fichero.ToUpper().EndsWith(".FSI"));
 		}
 	}

@@ -28,6 +28,8 @@ using System.IO;
 using Dalle.Formatos;
 using Dalle.Utilidades;
 
+using I = Dalle.I18N.GetText;
+
 namespace Dalle.Formatos.Kamaleon
 {
 	public class ParteKamaleon : Parte
@@ -40,33 +42,55 @@ namespace Dalle.Formatos.Kamaleon
 			parteFicheros = true;
 			compatible = false;
 		}
+		
 		protected override void _Unir (string fichero, string dirDest)
 		{
 			// TODO: Cambiar de alguna forma para que utilice el progreso.
+			string baseDir = new FileInfo (fichero).DirectoryName;
 			MetaInfoKamaleon metaInfo = new MetaInfoKamaleon (fichero);
-			//metaInfo.Unir();
 			long transferidos = 0;
 			if (metaInfo.PrimerInfo == null)
 				throw new NoMetaInfoException();
-			metaInfo.ComprobarExistenciaFicheros();
-			metaInfo.ComprobarTamanosFicheros();
-			metaInfo.ComprobarPrimerUltimoBytes();
-			// TODO: Sustituir por lo de UtilidadesFicheros			
-			String f = metaInfo.PrimerInfo.NombreOriginal;
-			if (File.Exists(f)){
-				throw new NoMetaInfoException ("El fichero de destino existe");
+				
+				
+				
+			// Verificamos que todo está en su sitio.
+			foreach (InfoFicheroKamaleon i in metaInfo.infos){
+				OnProgress (0,1);
+				string fich = baseDir + Path.DirectorySeparatorChar + i.NombreFragmento;
+				
+				
+				if (! File.Exists (fich) ){
+					string msg = string.Format (I._("File not found:{0}"), i.NombreFragmento);
+					throw new Exception (msg);
+				}
+								
+				byte primer = UtilidadesFicheros.LeerByte (fich, 0);
+				byte ultimo = UtilidadesFicheros.LeerByte (fich, i.TamanoFragmento - 1);
+				if ((primer != i.PrimerByte) || (ultimo != i.UltimoByte)){
+					string msg = string.Format (I._("Byte verfication failed on {0}"), i.NombreFragmento);
+					throw new Exception (msg);
+				}
+				
+				
+				
 			}
-			//debug();
+						
+			string f = metaInfo.PrimerInfo.NombreOriginal;
+			UtilidadesFicheros.ComprobarSobreescribir (f);
+			
+			
 			OnProgress (0, 1);
 			foreach (InfoFicheroKamaleon i in metaInfo.infos){
 				//Copiar la zona de datos del fragmento al archivo destino
+				string fich = baseDir + Path.DirectorySeparatorChar + i.NombreFragmento;
 				transferidos += UtilidadesFicheros.CopiarIntervalo
-					(i.NombreFragmento, f, i.TamanoPiel, i.TamanoDatos);
+					(fich, f, i.TamanoPiel, i.TamanoDatos);
 				OnProgress (transferidos, i.TamanoOriginal); 
 			}
 
 		}
-		protected override void _Partir (String fichero,String salida1, String dir, long kb)
+		protected override void _Partir (string fichero,string salida1, string dir, long kb)
 		{
 			_Partir (fichero, salida1,dir, kb, "1");
 		}
@@ -78,7 +102,7 @@ namespace Dalle.Formatos.Kamaleon
 			if ((s1 == null) || (s1 =="")){
 				s1 = fichero.Substring (0, fichero.LastIndexOf('.'));
 			}
-			String salida1 = dir + Path.DirectorySeparatorChar + s1;
+			string salida1 = dir + Path.DirectorySeparatorChar + s1;
 			int secuencia = 1;
 			int tamanoOriginal = (int) new FileInfo(fichero).Length;
 			long transferidos = 0;
@@ -92,7 +116,7 @@ namespace Dalle.Formatos.Kamaleon
 				inf.NombreOriginal = fichero;
 				inf.TamanoOriginal = tamanoOriginal;
 				inf.Password = "";
-				inf.NombreFragmento = salida1 + UtilidadesCadenas.Format(secuencia, 3) + ".jpg";
+				inf.NombreFragmento = string.Format (salida1 + "{0:000}.jpg", secuencia);
 				inf.TamanoFragmento = piel.Length + b.Length;
 				inf.PrimerByte = piel[0];
 				inf.UltimoByte = b[b.Length - 1];
@@ -109,14 +133,13 @@ namespace Dalle.Formatos.Kamaleon
 				OnProgress (transferidos, tamanoOriginal);
 			}while (transferidos < tamanoOriginal);
 			
-			// TODO: Modificar aqui para que el ultimo fichero no se salga de madre.
 			long t_ultimo = new FileInfo (mi.UltimoInfo.NombreFragmento).Length;
 			if ((t_ultimo + mi.Size) > (kb * 1024) ){
 				InfoFicheroKamaleon inf = InfoFicheroKamaleon.NewFromVersion (version);
 				inf.NombreOriginal = fichero;
 				inf.TamanoOriginal = tamanoOriginal;
 				inf.Password = "";
-				inf.NombreFragmento = salida1 + UtilidadesCadenas.Format(secuencia, 3) + ".jpg";
+				inf.NombreFragmento = string.Format (salida1 + "{0:000}.jpg", secuencia);
 				inf.TamanoFragmento = piel.Length;
 				inf.PrimerByte = piel[0];
 				inf.UltimoByte = piel[piel.Length - 1];
@@ -166,7 +189,9 @@ namespace Dalle.Formatos.Kamaleon
 			
 		}
 		public override bool PuedeUnir (string fichero)
-		{				
+		{
+			if (! File.Exists (fichero) )
+				return false;			
 			return (VersionKamaleon(fichero) == "1");
 		}
 	}

@@ -69,16 +69,16 @@ namespace Dalle.Formatos.Generico
 		
 		}
 		
-		protected override void _Partir (String fichero,String sal1, String dir, long kb)
+		protected override void _Partir (string fichero,string sal1, string dir, long kb)
 		{
-			Partir (fichero, kb, sal1 + ".{0}", 0, 3);	
+			Partir (fichero, kb, dir + Path.DirectorySeparatorChar + sal1 + ".{0}", 0, 3);	
 		}
 		
-		protected override void _Unir (String fichero, String dirDest)
+		protected override void _Unir (string fichero, string dirDest)
 		{
-			String bas = fichero.Substring(0, fichero.LastIndexOf("."));
+			string bas = fichero.Substring(0, fichero.LastIndexOf("."));
 			//--
-			String destino = new FileInfo(fichero).Name;
+			string destino = new FileInfo(fichero).Name;
 			destino = destino.Substring (0, destino.LastIndexOf("."));
 			destino = dirDest + Path.DirectorySeparatorChar + destino;
 			//--
@@ -87,7 +87,7 @@ namespace Dalle.Formatos.Generico
 			int ini = Convert.ToInt32 (num);
 			Unir (bas + ".{0}", destino, ini, num.Length);
 		}		
-		public void Unir (String formato, int ini, int digitos)
+		public void Unir (string formato, int ini, int digitos)
 		{
 			Unir (formato, formato.Substring (0, formato.LastIndexOf('.')), 
 				ini, digitos);
@@ -119,6 +119,9 @@ namespace Dalle.Formatos.Generico
 
 		public override bool PuedeUnir (String fichero)
 		{
+			if (! File.Exists (fichero))
+				return false;
+				
 			if (fichero.LastIndexOf(".") < 0)
 				return false;
 			

@@ -25,6 +25,7 @@
 using Dalle.Checksums;
 
 // TODO: Implementar.
+// Not implemented
 
 namespace Dalle.Formatos.Axman
 {

@@ -28,7 +28,6 @@ using System.IO;
 using System.Collections;
 
 using Dalle.Formatos;
-using Dalle.Formatos.Generico;
 using Dalle.Formatos.Zip;
 using Dalle.Utilidades;
 using Dalle.Checksums;
@@ -50,10 +49,11 @@ namespace Dalle.Formatos.Hacha
 			
 			zip.Progress += new ProgressEventHandler (this.OnProgress);
 		}
-		protected override void _Unir (string fichero, string dirDest){
+		protected override void _Unir (string fichero, string dirDest)
+		{
 		
-			string destino = new FileInfo (fichero).Name;
 			string nombre = fichero.Substring (0, fichero.Length - 4);
+			string destino = new FileInfo (fichero).Name;
 			destino = destino.Substring (0, destino.Length - 4);
 			destino = dirDest + Path.DirectorySeparatorChar + destino;
 			
@@ -118,7 +118,7 @@ namespace Dalle.Formatos.Hacha
 			// No utilizamos el parametro sal1.
 			// TODO: Comprimir a zip primero?
 			ArrayList vector = new ArrayList();
-			String destino = dir + Path.DirectorySeparatorChar + (new FileInfo(fichero).Name);
+			string destino = dir + Path.DirectorySeparatorChar + (new FileInfo(fichero).Name);
 			
 			
 			long tamano = new FileInfo (fichero).Length;
@@ -129,7 +129,7 @@ namespace Dalle.Formatos.Hacha
 			do{
 				long tF = ( (tamano - transferidos) > tFragmento)? tFragmento:(tamano - transferidos); 
 				CRC crc = new HachaCRC(tF);
-				String nombre = String.Format (destino + ".{0:000}", fragmento);
+				string nombre = String.Format (destino + ".{0:000}", fragmento);
 				UtilidadesFicheros.ComprobarSobreescribir (nombre);
 				transferidos += UtilidadesFicheros.CopiarIntervalo 
 						(fichero, nombre, transferidos, tFragmento, crc);
@@ -181,8 +181,10 @@ namespace Dalle.Formatos.Hacha
 			writer.Write (buf, 0, buf.Length);
 			writer.Close();
 		}
-		public override bool PuedeUnir (String fichero)
+		public override bool PuedeUnir (string fichero)
 		{
+			if (! File.Exists (fichero) )
+				return false;
 			//TODO: Depurar un poco.
 			return fichero.EndsWith(".000");
 		}

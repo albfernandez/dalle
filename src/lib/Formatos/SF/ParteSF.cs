@@ -26,6 +26,7 @@ using System.IO;
 using System.Collections;
 
 using Dalle.Utilidades;
+using I = Dalle.I18N.GetText;
 
 namespace Dalle.Formatos.SF
 {
@@ -40,48 +41,52 @@ namespace Dalle.Formatos.SF
 			compatible = false;
 			parteFicheros = true;
 		}
-		protected override void _Unir (String fichero, String dirDest)
+		protected override void _Unir (string fichero, string dirDest)
 		{
 
 			ArrayList lista = new ArrayList();
-			String destino = "";
-			for (int i = 1 ; File.Exists ("SF" + UtilidadesCadenas.Format (i, 4) + ".SF"); i++)
+			string destino = "";			
+			string f = new FileInfo(fichero).DirectoryName;
+			f += Path.DirectorySeparatorChar + "SF{0:0000}.SF";
+			for (int i = 1 ; File.Exists (string.Format (f,i)); i++)
 			{
-				CabeceraSF c = new CabeceraSF("SF" + UtilidadesCadenas.Format(i,4) + ".SF");
-				if (c.Numero != i)
-				{
+				CabeceraSF c = new CabeceraSF(string.Format (f,i));
+				if (c.Numero != i){
 					//TODO: Lanzar excepcion personalizada.
 					throw new Exception ();
 				}
 				destino = dirDest + Path.DirectorySeparatorChar + c.Nombre;
 				lista.Add (c);
 			}
+			
 			UtilidadesFicheros.ComprobarSobreescribir(destino);
 			int contador = 0;
 			OnProgress (0, 1);
 			foreach (CabeceraSF c in lista){
-				String nombre = "SF" + UtilidadesCadenas.Format(c.Numero, 4) +".SF";
+				String nombre = string.Format (f, c.Numero);
 				UtilidadesFicheros.CopiarIntervalo(nombre, destino, c.Tamano);
 				OnProgress (++contador, lista.Count);
 			}
 		}
 		// TODO: Comprobar que no se excederá el limite de ficheros..
-		protected override void _Partir (String fichero,String sal1, String dir, long kb)
+		protected override void _Partir (string fichero,string sal1, string dir, long kb)
 		{
 
-			String bas = dir + Path.DirectorySeparatorChar;
+			string bas = dir + Path.DirectorySeparatorChar + "SF{0:0000}.SF";
 			long tamano = kb*1024;
 			CabeceraSF cab = new CabeceraSF();
 			cab.Nombre = fichero;
 			tamano -= cab.Tamano;
 			int contador = 1;
 			long total_a_leer = new FileInfo(fichero).Length;
+			if ((total_a_leer / tamano) > 255)
+				throw new Exception (I._("Too much fragments"));
 			long transferidos  = 0;
 			OnProgress (0, 1);
 			do{
 				byte[] b = UtilidadesFicheros.LeerSeek(fichero, transferidos, tamano);
 				cab.Numero = contador;
-				String nombreFichero = bas + "SF"+UtilidadesCadenas.Format(contador,4) + ".SF";
+				string nombreFichero = string.Format (bas, contador);
 				transferidos += b.Length;
 				UtilidadesFicheros.Append (nombreFichero, cab.ToByteArray());
 				UtilidadesFicheros.Append (nombreFichero, b);
@@ -92,6 +97,9 @@ namespace Dalle.Formatos.SF
 		
 		public override bool PuedeUnir (string fichero)
 		{
+			if (! File.Exists (fichero) )
+				return false;
+				
 			try{
 				CabeceraSF c = new CabeceraSF(fichero);
 			}

@@ -26,7 +26,6 @@ using System;
 using System.IO;
 
 using Dalle.Formatos;
-using Dalle.Formatos.Generico;
 using Dalle.Utilidades;
 using I = Dalle.I18N.GetText;
 
@@ -48,19 +47,21 @@ namespace Dalle.Formatos.EasyFileSplitter
 		protected override void _Unir (string fichero, string dirDest)
 		{
 			InfoEFS info = new InfoEFS (fichero);			
-			String original = dirDest + Path.DirectorySeparatorChar + 
+			string original = dirDest + Path.DirectorySeparatorChar + 
 					info.NombreOriginal;
 			UtilidadesFicheros.ComprobarSobreescribir (original);
 			OnProgress (0, info.TotalFragmentos);	
+			
 			for (int i=1; i <= info.TotalFragmentos; i++){
 				info.Fragmento = i;
-				if (!File.Exists (dirDest + Path.DirectorySeparatorChar + info.ToString())){
+				string source = dirDest + Path.DirectorySeparatorChar + info.ToString();
+				if (!File.Exists (source)){
 					string msg = String.Format (I._("File not found: {0}"), info);
 					throw new Exception (msg);
 				}
+				UtilidadesFicheros.CopiarTodo (source, original);
 				OnProgress (i, info.TotalFragmentos);
 			}
-			new ParteGenerico().Unir (dirDest + Path.DirectorySeparatorChar + info.Formato, 1, 1);	
 		}
 		protected override void _Partir (string fichero,string sal1, string dir, long kb)
 		{
@@ -70,18 +71,30 @@ namespace Dalle.Formatos.EasyFileSplitter
 			long tamano = new FileInfo (fichero).Length;
 			long tFragmento = kb * 1024;		
 			
-			info.NombreOriginal = fichero;
+			info.NombreOriginal = new FileInfo(fichero).Name;
 			info.TotalFragmentos = (int) Math.Ceiling ((double) tamano / (double) tFragmento);
 			
-			String formato = new FileInfo (fichero).Name;
+			string formato = new FileInfo (fichero).Name;
 			formato = dir + Path.DirectorySeparatorChar + formato;
 			formato += "." + info.TotalFragmentos + "_{0}";			
-			
-			new ParteGenerico().Partir(fichero, kb,formato, 1,1);
+			long transferidos = 0;
+			info.Fragmento = 1;
+			do{
+				string dest = string.Format (formato, info.Fragmento);
+				UtilidadesFicheros.ComprobarSobreescribir (dest);
+				transferidos += UtilidadesFicheros.CopiarIntervalo 
+						(fichero, dest, transferidos, tFragmento);				
+				info.Fragmento++;
+				OnProgress (transferidos, tamano);
+				
+			}while (transferidos < tamano);
 		}
 		
 		public override bool PuedeUnir (string fichero)
 		{
+			if (! File.Exists(fichero) )
+				return false;
+			
 			try {
 				InfoEFS i = new InfoEFS (fichero);
 				return (i.Fragmento == 1);

@@ -28,6 +28,7 @@ using System.IO;
 using System.Reflection;
 	
 using Dalle.Utilidades;
+using I = Dalle.I18N.GetText;
 
 namespace Dalle.Formatos.MaxSplitter
 {	
@@ -50,7 +51,7 @@ namespace Dalle.Formatos.MaxSplitter
 		{
 			// TODO: Poner excepciones personalizada.
 			if ((new FileInfo(fichero).Length) > 512){
-				throw new Exception ("Demasiado grande para ser MXS");
+				throw new Exception (I._("Too large to be a MXS file"));
 			}
 			
 			byte[] datos = UtilidadesFicheros.LeerTodo(fichero);
@@ -117,11 +118,9 @@ namespace Dalle.Formatos.MaxSplitter
 				i++;
 			}
 			batch = Convert.ToInt32 (tmp);
-			if (i != (datos.Length -1)){
-				throw new Exception ();
-			}	
-			//TODO: QUitar de aqui,
-			//debug();			
+			// TODO: Mejorar esta excepción.
+			if (i != (datos.Length -1))
+				throw new Exception ();	
 		}
 		
 		public string NombreOriginal{
@@ -173,17 +172,6 @@ namespace Dalle.Formatos.MaxSplitter
 				i++;
 			}
 			return ret;
-		}
-		
-		private void debug()
-		{
-			Console.WriteLine ("NombreOriginal = {0}", NombreOriginal);
-			Console.WriteLine ("TamanoOriginal = {0}", TamanoOriginal);
-			Console.WriteLine ("Fragmentos     = {0}", Fragmentos);
-			Console.WriteLine ("Zipped    = {0}" , zipped);
-			Console.WriteLine ("Version   = {0}", version);
-			Console.WriteLine ("Atributos = {0}", atributos);
-			Console.WriteLine ("Batch     = {0}", batch);
 		}
 	}
 }

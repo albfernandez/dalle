@@ -49,7 +49,7 @@ namespace Dalle.Formatos.Hacha
 			CRC crc = null;
 			if (version == "1")
 				crc = new NullHachaCRC();
-			else
+			else	
 				crc = new HachaCRC(new FileInfo (fichero).Length);
 			
 			CabeceraHacha_v1 cab = CabeceraHacha_v1.NewFromVersion (version);
@@ -62,7 +62,7 @@ namespace Dalle.Formatos.Hacha
 			
 			cab.NombreOriginal = new FileInfo(fichero).Name;
 			
-			String salida1 = dir + Path.DirectorySeparatorChar + s1;
+			string salida1 = dir + Path.DirectorySeparatorChar + s1;
 
 			UtilidadesFicheros.ComprobarSobreescribir(salida1 + ".0");
 			
@@ -71,9 +71,12 @@ namespace Dalle.Formatos.Hacha
 			OnProgress (0,1);
 			long transferidos = 0;
 			int fragmento = 0;
+			
 			do{
 				string s = salida1 + "." + fragmento;
-				UtilidadesFicheros.ComprobarSobreescribir (s);
+				if (fragmento != 0)
+					UtilidadesFicheros.ComprobarSobreescribir (s);
+					
 				transferidos += UtilidadesFicheros.CopiarIntervalo (
 					fichero, s, transferidos, cab.TamanoFragmento, crc);
 				fragmento++;
@@ -136,6 +139,8 @@ namespace Dalle.Formatos.Hacha
 		
 		public override bool PuedeUnir (string fichero)
 		{
+			if (! File.Exists (fichero) )
+				return false;
 			try{
 				CabeceraHacha_v1.LeerCabecera (fichero);
 				return true;

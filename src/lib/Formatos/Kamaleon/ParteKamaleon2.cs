@@ -41,12 +41,14 @@ namespace Dalle.Formatos.Kamaleon
 		{
 			base._Unir (fichero, dirDest);			
 		}
-		protected override void _Partir (String fichero,String salida1, String dir, long kb)
+		protected override void _Partir (string fichero,string salida1, string dir, long kb)
 		{
 			_Partir (fichero, salida1, dir, kb, "2");
 		}
-		public override bool PuedeUnir (String fichero)
+		public override bool PuedeUnir (string fichero)
 		{
+			if (! File.Exists (fichero) )
+				return false;
 			return (VersionKamaleon(fichero) == "2");
 		}
 	}

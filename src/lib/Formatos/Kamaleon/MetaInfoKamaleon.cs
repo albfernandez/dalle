@@ -86,14 +86,14 @@ namespace Dalle.Formatos.Kamaleon
 				return ( (InfoFicheroKamaleon) infos[infos.Count - 1]);
 			}
 		}
-		public String GetNombreUltimoFragmento ()
+		public string GetNombreUltimoFragmento ()
 		{
 			if (infos.Count == 0)
 				return "";
 			InfoFicheroKamaleon k = (InfoFicheroKamaleon) infos[infos.Count-1];
 			return k.NombreFragmento;
 		}
-		public MetaInfoKamaleon(String fichero)
+		public MetaInfoKamaleon(string fichero)
 		{		
 			FileStream reader = new FileStream (fichero, FileMode.Open);
 			reader.Seek(-0x13, SeekOrigin.End);
@@ -130,11 +130,11 @@ namespace Dalle.Formatos.Kamaleon
 			}
 			reader.Close();		
 		}	
-		public void Unir()
+		/*public void Unir()
 		{
 			
-		}
-		private void debug ()
+		}*/
+		/*private void debug ()
 		{
 			Console.WriteLine ("\n\n\n\nDepurando KAMALEON\n\n\n\n\n");
 			foreach (InfoFicheroKamaleon i in infos){
@@ -149,51 +149,6 @@ namespace Dalle.Formatos.Kamaleon
 				Console.WriteLine("tamDatos:  " + i.TamanoDatos);
 				Console.WriteLine("");
 			}
-		}
-		public void ComprobarTamanosFicheros()
-		{
-			for (int i=0; i < infos.Count -1; i++){
-				InfoFicheroKamaleon ka = (InfoFicheroKamaleon) infos[i];
-				long t = new FileInfo (ka.NombreFragmento).Length;
-				if (t != ka.TamanoFragmento){
-					//TODO: Excepcion personalizada y mensaje descriptivo.
-					throw new Exception ("Error en el formato");
-				}
-			}
-			InfoFicheroKamaleon k = (InfoFicheroKamaleon) infos[infos.Count-1];
-			long ta = new FileInfo(k.NombreFragmento).Length;
-			long esperado = k.TamanoFragmento + 560*infos.Count + 0x13;
-			if (ta != esperado){
-				//TODO: Excepcion personalizada y mensaje descriptivo
-				throw new Exception ("Error en el formato");
-			}
-			// El tamano debe ser el tamano indicado o + si es el ultimo.
-			//TODO: Completar la funcion
-		}
-		public void ComprobarPrimerUltimoBytes()
-		{
-			// TODO: Completar la funcion
-			foreach (InfoFicheroKamaleon k in infos){
-				byte primer = UtilidadesFicheros.LeerByte (k.NombreFragmento, 0);
-				byte ultimo = UtilidadesFicheros.LeerByte (k.NombreFragmento, k.TamanoFragmento-1);
-				if (primer != k.PrimerByte){
-					//TODO:Lanzar excepcion personalizada y mensaje descriptivo
-					throw new Exception (String.Format("Primer byte no valido en {0}", k.NombreFragmento));
-				}
-				if (ultimo != k.UltimoByte){
-					//TODO: Lanzar excepcion personalizada y mensaje descriptivo
-					throw new Exception (String.Format("Ultimo byte no valido en {0}", k.NombreFragmento));
-				}
-			}			
-		}
-		public void ComprobarExistenciaFicheros()
-		{
-			foreach (InfoFicheroKamaleon i in infos){
-				if (!File.Exists(i.NombreFragmento)){
-					throw new NoMetaInfoException("Falta el archivo:" + i.NombreFragmento);
-				}
-			}
-		
-		}
+		}*/
 	}
 }

@@ -108,7 +108,7 @@ namespace Dalle.Utilidades
 			writer.Close();
 		}
 		
-		/// <summary>Copia el contendio de un fichero al final de otro</summary>
+		/// <summary>Copia el contenido de un fichero al final de otro</summary>
 		/// <param name="desde">El fichero origen de datos.</param>
 		/// <param name="hacia">El fichero destido de los datos.</param>
 		/// <returns>El número de bytes copiados</returns>
