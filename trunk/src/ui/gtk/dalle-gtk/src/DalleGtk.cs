@@ -33,6 +33,26 @@ namespace Dalle.UI.DalleGtk
 {	
 	public class DalleGtk : Gtk.Window
 	{
+		/*
+		 * Los widgets de la ventana
+		 */
+		Gtk.VBox vbox;
+		Gtk.VBox vbox2;
+		
+		Gtk.HBox hbox1;
+		Gtk.HBox hbox2;
+		Gtk.HBox hbox3;
+
+		Gtk.Label texto;
+		Gtk.Label texto2;
+		
+		Gtk.RadioButton SplitOption;	
+		Gtk.RadioButton PasteOption;
+		
+		Gtk.HButtonBox hbbox;
+
+		Gtk.Button Run;		
+		
 		private static DalleGtk instance = null;
 				
 		public static DalleGtk Instance{
@@ -74,26 +94,72 @@ namespace Dalle.UI.DalleGtk
 		}
 		private void InitComponents()
 		{
-			Gtk.Button SplitButton = new Gtk.Button (Gtk.Stock.Cut);
-			Gtk.Button JoinButton  = new Gtk.Button (Gtk.Stock.Paste);
-			SplitButton.Clicked += new EventHandler (this.SplitFiles);
-			JoinButton.Clicked += new EventHandler (this.JoinFiles);
+			vbox = new Gtk.VBox (false, 4);
+			
+			/*
+			 * Añadiendo las cajas horizontales donde se van
+			 * a distribuir los widgets
+			 */
+			hbox1 = new Gtk.HBox (false, 1);
+			hbox2 = new Gtk.HBox (false, 1);
+			hbox3 = new Gtk.HBox (false, 1);
+			
+			/*
+			 * Primera caja horizontal
+			 */
+			texto = new Gtk.Label ("<big><b>Welcome to Dalle</b></big>.");
+			texto.UseMarkup = true;
 
-			Gtk.VBox vbox = new Gtk.VBox (false, 2);
+			hbox1.PackStart(texto, false , false, 7);
+			
+			/*
+			 * Segunda caja horizontal
+			 */
+			vbox2 = new Gtk.VBox (false, 3);
+			texto2 = new Gtk.Label ("¿Qué quieres hacer?");
+			
+			SplitOption = new Gtk.RadioButton ("Cortar");
+			
+			PasteOption = new Gtk.RadioButton (SplitOption, "Pegar");
 
-			vbox.PackStart(SplitButton);
-			vbox.PackStart(JoinButton);
+			vbox2.PackStart(texto2, false, false, 7);
+			vbox2.PackStart(SplitOption, false , false, 7);
+			vbox2.PackStart(PasteOption, false, false, 7);
+			
+			hbox2.PackStart(vbox2, false, false, 7);
+			
+			/*
+			 * Tercera caja horizontal
+			 */
+			hbbox = new Gtk.HButtonBox();
+			Run = new Gtk.Button(Gtk.Stock.Execute);
+
+			hbbox.PackStart(Run, false, false, 7);
+			hbox3.PackStart(hbbox, false ,false, 7);
 
 			
+			/*
+			 * Empaquetando las cajas horizontales en la caja
+			 * vertical que ocupa la ventana principal
+			 */
+			vbox.PackStart(hbox1, false, false, 7);
+			vbox.PackStart(hbox2, false, false, 7);
+			vbox.PackStart(hbox3, false, false, 7);
+			
 			this.Add (vbox);
+
+			/*
+			 * Eventos
+			 */
+			Run.Clicked += new EventHandler(run_click);
 		}
-		private void SplitFiles (object sender, EventArgs args)
+	
+		private void run_click (object sender, EventArgs args)
 		{
-			SplitDialog.Instance.ShowAll();
-		}
-		private void JoinFiles (object sender, EventArgs args)
-		{
-			JoinDialog.Instance.ShowAll ();
+			if (SplitOption.Active == true)
+				SplitDialog.Instance.ShowAll();
+			if (PasteOption.Active == true)
+				JoinDialog.Instance.ShowAll();
 		}
 		
 		public static void HideWindow (object o, DeleteEventArgs args)
