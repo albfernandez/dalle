@@ -49,18 +49,18 @@ namespace Dalle.UI.Consola
 				Console.WriteLine (I._("Bad options"));
 			}
 			Console.WriteLine ("");
-			Console.WriteLine (I._("dalle-console <command> < [options] files>"));
+			Console.WriteLine (I._("dalle-console <command> [options] <files>"));
 			Console.WriteLine ("");
 			Console.WriteLine (I._("<commands>"));
-			Console.WriteLine (I._("-s Split files"));
-			Console.WriteLine (I._("-j Join files"));
-			Console.WriteLine (I._("-i Show info about files (format)"));
-			Console.WriteLine (I._("-l List all supported formats"));
+			Console.WriteLine (I._("-s, --split Split files"));
+			Console.WriteLine (I._("-j, --join  Join files"));
+			Console.WriteLine (I._("-i, --info  Show info about files (format)"));
+			Console.WriteLine (I._("-l, --list  List all supported formats"));
 			Console.WriteLine (I._("(no command) Join files"));
 			Console.WriteLine ("");
-			Console.WriteLine (I._("<options>"));
+			Console.WriteLine (I._("[options]"));
 			Console.WriteLine (I._("-d=dir "));
-			Console.WriteLine (I._("-f=format Format used to split the file"));
+			Console.WriteLine (I._("-f=format  Format used to split the file"));
 			Console.WriteLine (I._("-b=file Name of dest file, or prefix for fragments"));
 			Console.WriteLine (I._("-t=size Size of pieces (in kb)"));
 

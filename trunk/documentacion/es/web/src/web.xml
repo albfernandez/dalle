@@ -20,6 +20,7 @@
 			<ul>
 				<li>Astrotite</li>
 				<li>Axman 3</li>
+				<li>Camouflage</li>
 				<li>Easy File Splitter</li>
 				<li>File Splitter</li>
 				<li>Gen&eacute;rico</li>
@@ -29,17 +30,7 @@
 				<li>SplitFile</li>
 				<li>Zip</li>				
 			</ul>
-			<h2>Versiones liberadas</h2>
-			<table width="50%" align="center">
-				<tr><td><b>0.7.2</b></td><td>17 de marzo de 2004</td></tr>
-				<tr><td><b>0.7.1</b></td><td>16 de febrero de 2004</td></tr>
-				<tr><td><b>0.7.0</b></td><td>12 de febrero de 2004</td></tr>
-				<tr><td><b>0.6.0</b></td><td>27 de enero de 2004</td></tr>
-				<tr><td><b>0.5.1</b></td><td>18 de diciembre de 2003</td></tr>
-				<tr><td><b>0.5.0</b></td><td>16 de diciembre de 2003</td></tr>
-				<tr><td><b>0.4.0</b></td><td>26 de noviembre de 2003</td></tr>
-			</table>
-				
+							
 			<h2>Multiplataforma</h2>
 			<p>
 			La librer&iacute;a y los programas est&aacute;n escritos en C#, por lo que deberían poder
@@ -55,13 +46,33 @@
 			<tr><td>openhacha-text</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td></tr>
 			<tr><td>dalle-console</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td></tr>
 			<tr><td>openhacha-gtk</td><td>No</td><td>S&iacute;</td><td>No</td><td>No</td></tr>
-			<tr><td>dalle-gtk</td><td>No</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
+			<tr><td>dalle-gtk</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
 			</table>
 		
 		</content>
 	</page>
 	
-	
+	<!--<page>
+		<name>Versiones</name>
+		<content>
+		
+
+			<h2>Versiones liberadas</h2>
+			<table width="50%" align="center">
+				<tr><td><b>0.7.3</b></td><td>24 de septiembre de 2004</td></tr>
+				<tr><td><b>0.7.2</b></td><td>17 de marzo de 2004</td></tr>
+				<tr><td><b>0.7.1</b></td><td>16 de febrero de 2004</td></tr>
+				<tr><td><b>0.7.0</b></td><td>12 de febrero de 2004</td></tr>
+				<tr><td><b>0.6.0</b></td><td>27 de enero de 2004</td></tr>
+				<tr><td><b>0.5.1</b></td><td>18 de diciembre de 2003</td></tr>
+				<tr><td><b>0.5.0</b></td><td>16 de diciembre de 2003</td></tr>
+				<tr><td><b>0.4.0</b></td><td>26 de noviembre de 2003</td></tr>
+			</table>
+			
+			
+		
+		</content>
+	</page> -->
 	
 	
 	
@@ -87,11 +98,11 @@
 						<li>Nuevas interfaces gr&aacute;ficas (qt#, swf, swt).</li>
 					</ul>
 				</li>
-				<li>Haciendo paquetes de instalaci&oacute;n para distintas plataformas:
+				<li>Haciendo o manteniendo paquetes de instalaci&oacute;n para distintas plataformas/distros:
 					<ul>
 						<li>RPM.</li>
-						<li>deb.</li>
-						<li>Instalador de Windows.</li>
+						<li>DEB.</li>
+						<li>Windows.</li>
 					</ul>				
 				</li>
 				<li>Traduciendo la aplicación a otros idiomas.</li>
@@ -141,7 +152,7 @@
 		</content>
 	</page>
 	
-	<page>
+	<!--<page>
 		<name>FAQ</name>
 		<item>
 			<question>¿Habr&aacute; una versi&oacute;n para Windows?</question>
@@ -179,7 +190,7 @@
 			</answer>
 			
 		</item>
-	</page>
+	</page>-->
 	
 	<page>
 		<name>News</name>
@@ -200,11 +211,13 @@
 					<li><b>dalle-VERSION-bin.zip.</b> Contiene los programa las y 
 						librerias compilados, as&iacute; como la libreria 
 						ICSharpCode.SharZipLib.dll, necesaria si trabajas con MS.NET.</li>
+					<li><b>dalle_VERSION_all.deb</b>  Paquete para instalar en distribuciones
+						basadas en DEB (como Debian).</li>
 					<li><b>dalle-VERSION.noarch.rpm.</b>  Paquete para instalar en distribuciones
 					   basadas en RPM (RedHat, Fedora, Mandrake ...)
 					</li>
 					<li><b>dalle-VERSION.src.rpm.</b> Archivo necesario para crear el 
-					  paquete rpm anterior.
+					  paquete RPM anterior.
 					</li>
 				</ul>
 			</p>
@@ -215,9 +228,6 @@
 	cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/dalle login
 	cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/dalle co dalle
 			</pre>
-			<h2>Sobre la numeraci&oacute;n de las versiones.</h2>
-			<p>Para numerar las versiones se sigue un sistema como el del kernel
-			de Linux.</p>							
 		</content>
 	</page>
 	
@@ -274,7 +284,13 @@
 				<p><b>A partir de los binarios ya compilados</b></p>
 				<p>El procedimiento es similar al descrito anteriormente para Windows.</p>
 				<p><br/></p>
-				<p><b>A partir del instalador RPM</b></p>
+
+				<p><b>A partir del paquete deb</b></p>
+				<pre>
+		dpkg -i dalle_VERSION_all.deb
+				</pre>
+				
+				<p><b>A partir del paquete RPM</b></p>
 				<p>Para un uso normal:</p>
 				<pre>
 		rpm -vih dalle-VERSION.noarch.rpm

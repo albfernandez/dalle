@@ -32,14 +32,15 @@ namespace OpenHachaGtkGui
 {
 	public class OpenHachaGui
 	{
-		[Glade.Widget] Gtk.Window MainWindow;
-		[Glade.Widget] Gtk.RadioButton SplitOption;
-		[Glade.Widget] Gtk.RadioButton PasteOption;
+		//[Glade.Widget] Gtk.Window MainWindow = null;
+		[Glade.Widget] Gtk.RadioButton SplitOption = null;
+		[Glade.Widget] Gtk.RadioButton PasteOption = null;
 		
 		public static void Main (string[] args) 
 		{
 			Application.Init();
-			OpenHachaGui OpenHachaGtkMain = new OpenHachaGui();
+			//OpenHachaGui OpenHachaGtkMain = new OpenHachaGui();
+			new OpenHachaGui();			
 			Application.Run();
 		}
 
@@ -52,7 +53,7 @@ namespace OpenHachaGtkGui
 		public void OnQuitButtonClicked (object o, EventArgs args) 
 		{
                 	Application.Quit ();
-                }
+		}
 
 		public void OnAboutButtonClicked (object o, EventArgs args) 
 		{
@@ -70,12 +71,12 @@ namespace OpenHachaGtkGui
 
 	public class OpenHachaSplitDialog 
 	{
-		[Glade.Widget] Gtk.Dialog SplitDialog;
-		[Glade.Widget] Gtk.SpinButton SplitDialogSpinButton;
-		[Glade.Widget] Gtk.Entry SplitDialogComboEntry;
-		[Glade.Widget] Gtk.SpinButton SplitDialogNumberSpinButton; 
-		[Glade.Widget] Gtk.OptionMenu FileFormat;
-		[Glade.Widget] Gtk.Button SplitDialogSplitButton;
+		[Glade.Widget] Gtk.Dialog SplitDialog = null;
+		[Glade.Widget] Gtk.SpinButton SplitDialogSpinButton = null;
+		[Glade.Widget] Gtk.Entry SplitDialogComboEntry = null;
+		[Glade.Widget] Gtk.SpinButton SplitDialogNumberSpinButton = null; 
+		[Glade.Widget] Gtk.OptionMenu FileFormat = null;
+		[Glade.Widget] Gtk.Button SplitDialogSplitButton = null;
 		
 		private enum hachaformat
 		{
@@ -88,7 +89,7 @@ namespace OpenHachaGtkGui
 
 		public OpenHachaSplitDialog () 
 		{
-		       	Glade.XML gxml = new Glade.XML (null, "openhacha.glade", "SplitDialog", null);
+		    Glade.XML gxml = new Glade.XML (null, "openhacha.glade", "SplitDialog", null);
 			gxml.Autoconnect (this);
 			
 			SplitDialogSplitButton.Sensitive = false;
@@ -136,28 +137,25 @@ namespace OpenHachaGtkGui
 
 		public void OnHachaV1Activate (System.Object b, EventArgs e)
 		{
-			this.format = hachaformat.hacha1;
-			Console.WriteLine(this.format);			
+			this.format = hachaformat.hacha1;	
 		}
 		
 		public void OnHachaV2Activate (System.Object b, EventArgs e)
 		{
-			this.format = hachaformat.hacha2;
-			Console.WriteLine(this.format);			
+			this.format = hachaformat.hacha2;	
 		}
 		
 		public void OnHachaProActivate (System.Object b, EventArgs e)
 		{
 			this.format = hachaformat.hachapro;
-			Console.WriteLine(this.format);
 		}
 	}
 
 	public class OpenHachaPasteDialog 
 	{
-		[Glade.Widget] Gtk.Dialog PasteDialog;
-		[Glade.Widget] Gtk.Entry PasteDialogComboEntry;
-		[Glade.Widget] Gtk.Button PasteDialogPasteButton;
+		[Glade.Widget] Gtk.Dialog PasteDialog = null;
+		[Glade.Widget] Gtk.Entry PasteDialogComboEntry = null;
+		[Glade.Widget] Gtk.Button PasteDialogPasteButton = null;
 		
 		public OpenHachaPasteDialog ()
 		{
@@ -193,7 +191,7 @@ namespace OpenHachaGtkGui
 
 	public class OpenHachaAboutDialog
 	{
-		[Glade.Widget] Gnome.About AboutDialog;
+		[Glade.Widget] Gnome.About AboutDialog = null;
 		
 		public OpenHachaAboutDialog()
 		{

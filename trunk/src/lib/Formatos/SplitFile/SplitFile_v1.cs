@@ -39,20 +39,20 @@ namespace Dalle.Formatos.SplitFile
 	public class SplitFile_v1 : Parte
 	{
 
-		private CRC crc = new SplitFileCRC ();
+		//private CRC crc = new SplitFileCRC ();
 		public SplitFile_v1 ()
 		{
-			nombre = "splitfile";
+			/*nombre = "splitfile";
 			descripcion = "SplitFile v 1.1";
 			web = "http://www.methods.co.nz";
 			parteFicheros = true;
-			compatible = false;
+			compatible = false;*/
 		}
 
 		protected override void _Unir (string fichero, string dirDest)
 		{
 			
-			ArrayList lista = new ArrayList ();
+			/*ArrayList lista = new ArrayList ();
 			string b = fichero.Substring(0, fichero.Length - 4);
 			for (int f=1; File.Exists(b+f+".sf"); f++){
 				lista.Add (Cabecera_sf1.LeerCabecera(b+f+".sf"));
@@ -91,11 +91,11 @@ namespace Dalle.Formatos.SplitFile
 				transferidos += leidos;		
 				OnProgress (transferidos, cab.FileSize);
 			}
-			File.SetLastWriteTime (cab.FileName, cab.FileTime.ToLocalTime());
+			File.SetLastWriteTime (cab.FileName, cab.FileTime.ToLocalTime());*/
 		}
 		protected override void _Partir (string fichero,string salida1, string dir, long kb)
 		{
-			
+			/*
 			Cabecera_sf1 cabecera = new Cabecera_sf1();
 			cabecera.FileName = new FileInfo(fichero).Name;
 			cabecera.FileSize = (int) (new FileInfo(fichero).Length);
@@ -130,11 +130,11 @@ namespace Dalle.Formatos.SplitFile
 				secuencia++;
 				OnProgress (transferidos, cabecera.FileSize);
 				
-			}while (transferidos < cabecera.FileSize);
+			}while (transferidos < cabecera.FileSize);*/
 		}
 		public override bool PuedeUnir (string fichero)
 		{
-			if (! File.Exists (fichero) )
+			/*if (! File.Exists (fichero) )
 				return false;
 			
 			if (! fichero.ToUpper().EndsWith(".SF"))
@@ -145,6 +145,7 @@ namespace Dalle.Formatos.SplitFile
 			catch (Exception e){
 				return false;
 			}
+			return true;*/
 			return true;
 		}
 	}

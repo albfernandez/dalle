@@ -174,8 +174,9 @@ namespace Dalle
 			Pregunta[] list = new Pregunta [preguntas.Count];
 			Console.WriteLine ("Numero de elementos en FAQ = "+ preguntas.Count);
 			int count = 0;
-			foreach (XmlNode n in preguntas){			
-				list[count++] = new Pregunta (n);
+			foreach (XmlNode _n_ in preguntas){
+				Console.WriteLine ("" + _n_.OuterXml );
+				list[count++] = new Pregunta (_n_);
 			}
 			ret += Pregunta.MakeIndex(list);
 			ret += "<hr /> \n";
@@ -216,8 +217,16 @@ namespace Dalle
 		
 		public Pregunta (XmlNode node)
 		{
-			pregunta = Pagina.GetInnerXml (node, "t:question");
-			respuesta = Pagina.GetInnerXml (node, "t:answer");
+			Console.WriteLine ("---\n" + node.OuterXml);
+			this.pregunta = Pagina.GetInnerXml (node, "t:question");
+
+			Console.WriteLine (this.pregunta);
+
+
+
+
+
+			this.respuesta = Pagina.GetInnerXml (node, "t:answer");
 		}
 		
 		public string Question{

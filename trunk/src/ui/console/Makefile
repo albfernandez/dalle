@@ -1,7 +1,7 @@
 BASEPATH=../../..
 include $(BASEPATH)/rules.make
 
-SUBDIRS=dalle-crcs dalle-console openhacha-text dalle-sfv-console
+SUBDIRS=dalle-crcs dalle-console dalle-sfv-console
 
 all:
 	@list='$(SUBDIRS)'; for d in $$list ; do \

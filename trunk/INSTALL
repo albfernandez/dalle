@@ -33,7 +33,7 @@ dpkg -i dalle_$VERSION_all.deb
 
 Para ejecutar el programa de linea de comandos
 
-dalle-console <comando> < [opciones] ficheros>
+dalle-console <comando> [opciones] <ficheros>
  
 <comandos>
 -s Partir ficheros
