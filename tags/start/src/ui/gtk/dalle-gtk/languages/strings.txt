@@ -1,0 +1,18 @@
+# src/BaseDialog.cs: 128
+Browse... = Browse...
+
+# src/BaseDialog.cs: 140
+Select_a_file = Select_a_file
+
+# src/JoinDialog.cs: 505
+JoinDialog.Title = JoinDialog.Title
+
+# src/JoinDialog.cs: 519
+JoinDialog.JoinLbl1 = JoinDialog.JoinLbl1
+
+# src/JoinDialog.cs: 520
+JoinDialog.JoinLbl2 = JoinDialog.JoinLbl2
+
+# src/SplitDialog.cs: 624
+SplitDialog.Title = SplitDialog.Title
+
