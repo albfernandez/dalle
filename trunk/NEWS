@@ -1,6 +1,7 @@
-???? - Version 0.6.0
+27-ene-2004 - Version 0.6.0
+	OpenHacha actualizado a 0.5cvs
+	Nueva interfaz gtk# (dalle-gtk)
 	RPM relocalizable.
-	OpenHacha actualizado a 0.4+
 	Nuevo sistema I18N
 	Incluido openhacha-text
 	Nuevo configure (shell-script)
