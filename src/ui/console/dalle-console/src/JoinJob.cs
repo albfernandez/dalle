@@ -72,7 +72,6 @@ namespace Dalle.UI.Consola
 				}
 			}
 			int final = Environment.TickCount;
-			int total = (final - inicio) / 1000;
 			this.ShowTotalTime ((final - inicio) / 1000);
 		}
 

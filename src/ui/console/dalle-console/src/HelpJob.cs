@@ -3,7 +3,7 @@
 	Dalle-console - A split/join file utility command-line tool.
 	Dalle.UI.Consola.HelpJob - Shows help for the application.
 	
-    Copyright (C) 2003  Alberto Fern·ndez <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto Fern√°ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ namespace Dalle.UI.Consola
 		private bool error = false;
 		/// <summary>Crea una nueva instancia de la clase.</summary>
 		/// <param name="error">Nos indica si se debe a un error
-		/// en el formato de los par·metros.</param>
+		/// en el formato de los par√°metros.</param>
 
 		public HelpJob (bool error)
 		{
@@ -43,8 +43,6 @@ namespace Dalle.UI.Consola
 
 		public void Ejecutar ()
 		{
-			
-			string version = Assembly.GetExecutingAssembly ().GetName ().Version.ToString ();
 			new VersionJob().Ejecutar();
 			if (error){
 				Console.WriteLine ("");
