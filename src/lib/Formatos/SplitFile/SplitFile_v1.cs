@@ -93,7 +93,7 @@ namespace Dalle.Formatos.SplitFile
 			}
 			File.SetLastWriteTime (cab.FileName, cab.FileTime.ToLocalTime());
 		}
-		protected override void _Partir (String fichero,String salida1, String dir, long kb)
+		protected override void _Partir (string fichero,string salida1, string dir, long kb)
 		{
 			
 			Cabecera_sf1 cabecera = new Cabecera_sf1();
@@ -106,7 +106,7 @@ namespace Dalle.Formatos.SplitFile
 			int secuencia = 1;
 			long transferidos = 0;
 			long tamano = (kb * 1024) - 512;
-			String bas = new FileInfo (fichero).Name;
+			string bas = new FileInfo (fichero).Name;
 			bas = bas.Substring (0, bas.LastIndexOf('.')) + "_";
 			OnProgress (0, cabecera.FileSize);
 			do {
@@ -132,7 +132,7 @@ namespace Dalle.Formatos.SplitFile
 				
 			}while (transferidos < cabecera.FileSize);
 		}
-		public override bool PuedeUnir (String fichero)
+		public override bool PuedeUnir (string fichero)
 		{
 			if (! File.Exists (fichero) )
 				return false;

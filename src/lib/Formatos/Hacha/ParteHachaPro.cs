@@ -112,7 +112,7 @@ namespace Dalle.Formatos.Hacha
 				File.Delete(destino);
 			}			
 		}
-		protected override void _Partir (String fichero,String sal1, String dir, long kb)
+		protected override void _Partir (string fichero,string sal1, string dir, long kb)
 		{
 			
 			// No utilizamos el parametro sal1.
@@ -143,7 +143,7 @@ namespace Dalle.Formatos.Hacha
 			
 		}
 		
-		private ArrayList LeerCRCS (String fich)
+		private ArrayList LeerCRCS (string fich)
 		{
 			ArrayList lst = new ArrayList();
 			
@@ -164,7 +164,7 @@ namespace Dalle.Formatos.Hacha
 		
 		}
 		
-		private void EscribirCRCS (String fich, ArrayList lst)
+		private void EscribirCRCS (string fich, ArrayList lst)
 		{
 
 			byte[] buf = new byte [4 * (lst.Count + 1)];

@@ -71,6 +71,8 @@ namespace Dalle.Formatos.Generico
 		
 		protected override void _Partir (string fichero,string sal1, string dir, long kb)
 		{
+			if ((sal1 == null) || (sal1 == string.Empty))
+				sal1 = new FileInfo (fichero).Name;
 			Partir (fichero, kb, dir + Path.DirectorySeparatorChar + sal1 + ".{0}", 0, 3);	
 		}
 		

@@ -61,8 +61,11 @@ namespace Dalle.Formatos.Zip
 		{
 			Descomprimir(fichero, dirDest);
 		}
-		protected override void _Partir (String fichero,String salida1, String dir, long kb)
+		protected override void _Partir (string fichero,string salida1, string dir, long kb)
 		{
+			if ((salida1 == null) || (salida1 == string.Empty))
+				salida1 = new FileInfo(fichero).Name + ".zip";
+				
 			Comprimir (fichero, dir + Path.DirectorySeparatorChar + salida1);
 		}
 		public override bool PuedeUnir (string fichero)
