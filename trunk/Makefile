@@ -137,7 +137,7 @@ clean:
 	done
 	(cd src/tests && $(MAKE) clean) || exit 1
 
-dist-clean: clean
+distclean: clean
 	rm -f rules.make
 	
 .PHONY: clean docs zip interfaces uninstall dist-clean tests

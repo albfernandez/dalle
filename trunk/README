@@ -1,38 +1,28 @@
-¿Qué es Dalle?
+Â¿QuÃ© es Dalle?
 
 Dalle pretende ser una herramienta para trabajar con archivos partidos 
-con programas como hacha, splitfile, winsplit ... 
-En futuras versiones se incluirá (además de más formatos) 
-soporte para trabajar con archivos de verificación (sfv, md5, PAR).
+con programas como hacha, splitfile, winsplit ...
 
-¿Requerimientos?
+Â¿Requerimientos?
 
 Los requerimientos son los siguientes:
 
-Versión de linea de comandos:
--  Un entorno de ejecución .NET: mono, Portable.NET (pnet) o incluso MS .NET
--  Las librerias ICSharpCode.SharpZipLib <http://icsharpcode.net>. 
-	(Están incluidas en las distribuciones de mono y Portable.NET)
+Mono >= 0.30
+gtk-sharp >= 0.15
 
-Versión Gráfica (OpenHacha)
-	- Linux.
-	- Entorno de ejecución Mono. (http://www.go-mono.com)
-	- Librerías gtk-sharp. (http://gtk-sharp.sourceforge.net)
-
-Versión gráfica (dalle-gtk)
-	- Linux o Windows.
-	- Entorno de ejecución Mono. (http://www.go-mono.com)
-	- Librerías gtk-sharp. (http://gtk-sharp.sourceforge.net)
+La versiÃ³n en lÃ­nea de comandos puede funcionar en otros CLRs 
+(.Net y Portable.net), pero no estÃ¡ muy probado.
 
 Para compilar:
-- Linux y mono (lo siento, pero no lo he preparado para más).
+- Linux y mono (lo siento, pero no lo he preparado para mÃ¡s).
+  Lea INSTALL
 
 
-¿Dónde conseguir la última versión?
-	Visita http://sourceforge.net/projects/dalle
+Â¿DÃ³nde conseguir la Ãºltima versiÃ³n?
+	Visita http://dalle.sf.net
 
-¿Cómo contactar con el autor?
-	En los foros en la página del programa en sourceforge 
+Â¿CÃ³mo contactar con el autor?
+	En los foros en la pÃ¡gina del programa en sourceforge 
 	(http://sourceforge.net/projects/dalle)
 
 	Enviando un correo a <infjaf00@yahoo.es>
