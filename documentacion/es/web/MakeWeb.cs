@@ -76,6 +76,7 @@ namespace Dalle
 						p.Name
 					);
 			}
+			ret +="<tr><td><img src=\"images/lazo-negro.jpg\"></img></td></tr>";
 			ret += "</table>\n";
 			return ret;
 		}

@@ -18,7 +18,7 @@ $(SOURCEDIR)/NEWS: ../../../NEWS
 	cp $< $@
 	
 clean:
-	rm -f $(DESTDIR)/*.html *.exe
+	rm -f $(DESTDIR)/*.html *.exe $(DESTDIR)/*.css src/NEWS
 
 upload:
 	 scp -r deploy/*.* infjaf@shell.sf.net:/home/groups/d/da/dalle/htdocs
