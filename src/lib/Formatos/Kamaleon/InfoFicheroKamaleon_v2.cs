@@ -23,6 +23,8 @@
 
 using System;
 
+using Dalle.Utilidades;
+
 namespace Dalle.Formatos.Kamaleon
 {
 	
@@ -33,7 +35,9 @@ namespace Dalle.Formatos.Kamaleon
 		}
 		public InfoFicheroKamaleon_v2 (byte[] bytes) : base(bytes)
 		{
+			checksum = UtArrays.LeerInt64(bytes, 0x1C0);
 			nombrePiel = GetText (bytes, 0x1C9);
+			
 			Password = "";
 			for (int i=0x105; bytes[i] != 0; i++)
 				Password += Convert.ToChar(255 - bytes[i]);
@@ -42,14 +46,11 @@ namespace Dalle.Formatos.Kamaleon
 		{
 			byte[] ret = base.ToByteArray();
 			for (int i=0; i < Password.Length; i++)
-				ret[0x105 + i] = (byte )(255 - Convert.ToByte (Password[i]));
-			
-			// TODO: Averiguar para que sirven los 5 bytes raros.
-			// TODO: y por supuesto, generarlos.
+				ret[0x105 + i] = (byte )(255 - Convert.ToByte (Password[i]));			
 			
 			ret[0x1C8] = (byte) NombrePiel.Length;
 			SetText (ret, NombrePiel, 0x1C9);
-			
+			UtArrays.EscribirInt (ret, this.Checksum, 0x1C0);
 			return ret;			
 		}		
 	}

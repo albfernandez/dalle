@@ -4,7 +4,7 @@
 	Dalle.UI.DalleGtk.BaseDialog - 
 		Abstract base dialog for Split and Join dialogs
 		
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2004  Alberto Fernández <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -54,12 +54,17 @@ namespace Dalle.UI.DalleGtk
 			InitComponents();
 			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
 			this.DeleteEvent += new DeleteEventHandler (this.HideDialog);
-			this.Icon = new Gdk.Pixbuf (null, "gears.png");		
+			try{
+				this.Icon = new Gdk.Pixbuf (Assembly.GetExecutingAssembly(), "gears.png");
+			}
+			catch (Exception){
+			}		
 			TransientFor = parent;
 			Modal = true;
 			Resizable = false;
 			BorderWidth = 10;
 			HasSeparator = false;
+			this.WindowPosition = Gtk.WindowPosition.CenterOnParent;
 			
 		}
 		

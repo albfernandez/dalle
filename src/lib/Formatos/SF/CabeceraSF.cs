@@ -40,26 +40,38 @@ namespace Dalle.Formatos.SF
 		}
 		public CabeceraSF(string fichero)
 		{
-			FileStream reader = new FileStream (fichero, FileMode.Open);
-			reader.Seek(4,SeekOrigin.Begin);
-			int contador = 4;
-			do{
-				contador++;
-			}while ((contador < LIMITE) && (contador < reader.Length) && (reader.ReadByte()!= 0));
-			//TODO: Poner limite al while
+			FileStream reader = null;
 			
-			reader.Seek(0, SeekOrigin.Begin);
-			byte[] b = new byte[contador];
-			reader.Read (b, 0, contador);
-			
-			if ((b[0]!=0x53) || (b[1]!=0x46) || (b[2]!=0) || (b[3]!=0) || (b[4] != 6)){
-				// TODO: Poner una excepcion personalizada
-				throw new Exception();
+			try{
+				reader = new FileStream (fichero, FileMode.Open);
+				reader.Seek(4,SeekOrigin.Begin);
+				int contador = 4;
+				do{
+					contador++;
+				}while ((contador < LIMITE) && (contador < reader.Length) && (reader.ReadByte()!= 0));
+				//TODO: Poner limite al while
+				
+				reader.Seek(0, SeekOrigin.Begin);
+				byte[] b = new byte[contador];
+				reader.Read (b, 0, contador);
+				
+				if ((b[0]!=0x53) || (b[1]!=0x46) || (b[2]!=0) || (b[3]!=0) || (b[4] != 6)){
+					// TODO: Poner una excepcion personalizada
+					throw new Exception();
+				}
+				numero = b[5];
+				nombre = "";
+				for (int i=6; (i < b.Length) && (b[i]!=0); i++)
+					nombre += Convert.ToChar(b[i]);
 			}
-			numero = b[5];
-			nombre = "";
-			for (int i=6; (i < b.Length) && (b[i]!=0); i++)
-				nombre += Convert.ToChar(b[i]);
+			catch (Exception){
+				throw;
+			}
+			finally{
+				if (reader != null){
+					reader.Close();
+				}
+			}
 					
 		}
 		public int Numero{

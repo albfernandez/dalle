@@ -96,7 +96,7 @@ namespace Dalle.Utilidades
 			b0 = bytes [pos_ini];
 			b1 = bytes [pos_ini + 1];
 			
-			return ((short) (b0 + (b1 << 8)));
+			return ((short) (b0 | (b1 << 8)));
 		}
 		
 		
@@ -133,7 +133,7 @@ namespace Dalle.Utilidades
 			b2 = bytes[pos_ini + 2];
 			b3 = bytes[pos_ini + 3];
 			
-			return ((int) (b0 + (b1 << 8) + (b2 << 16) + (b3 << 24)));			
+			return ((int) (b0 | (b1 << 8) | (b2 << 16) | (b3 << 24)));			
 		}
 		
 		/// <summary>Escribe un entero de 32 bits en la posición dada.</summary>
@@ -143,7 +143,8 @@ namespace Dalle.Utilidades
 		
 		public static void EscribirInt (byte[] bytes, int value, int pos)
 		{
-					int i0, i1, i2, i3;
+			//Console.WriteLine ("EscribirInt32 = " + value);
+			int i0, i1, i2, i3;
 			
 			i0 = value & 0x000000FF;
 			i1 = (value & 0x0000FF00) >> 8;
@@ -170,7 +171,7 @@ namespace Dalle.Utilidades
 			
 			i0 = LeerInt32(bytes, pos_ini);
 			i1 = LeerInt32(bytes, pos_ini + 4);
-			v1 = i0 + (i1 << 32);
+			v1 = (i0 & 0xFFFFFFFF) | (i1 << 32);
 			return v1;
 		}
 		
@@ -187,6 +188,31 @@ namespace Dalle.Utilidades
 			EscribirInt (bytes, (int) i0, pos);
 			EscribirInt (bytes, (int) i1, pos+4);
 			
-		}	
+		}
+		
+		public static void EscribirDateTime (byte[] bytes, DateTime value, int pos)
+		{
+		
+			long i0, i1;
+			i0 = value.Ticks & 0x00000000FFFFFFFF;
+			i1 = (value.Ticks >> 32) & 0x00000000FFFFFFFF;
+			EscribirInt (bytes, (int) i1, pos);
+			EscribirInt (bytes, (int) i0, pos+4);
+		
+		}
+		
+		
+		public static DateTime LeerDateTime (byte[] bytes, int pos_ini)
+		{
+			long v1;
+			long i0, i1;
+			
+			i0 = LeerInt32(bytes, pos_ini);
+			i1 = LeerInt32(bytes, pos_ini + 4);
+			v1 = (i1 & 0xFFFFFFFF) | (i0 << 32);
+			Console.WriteLine ("" + v1 + " " + v1.ToString("X"));
+
+			return new DateTime(v1);
+		}
 	}
 }

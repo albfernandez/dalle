@@ -33,6 +33,7 @@ RESS= $(foreach res,$(TRAD), $(addprefix -resource:,$(res)),$(notdir $(res)))
 
 
 
+
 REC_TRAD= $(foreach res,$(TRAD), $(addprefix -resource:,$(res)),$(notdir $(res)))
 
 
@@ -65,13 +66,13 @@ $(LIBRARY) : $(PIXMAPS) $(TRAD) $(shell find src/lib -name "*.cs")
 	@echo $(LINEA)
 	@echo "Compilando la libreria $(LIBRARY)."
 	@echo $(LINEA)
-	$(MCS) $(MCS_FLAGS) -target:library $(RESS) -o $(LIBRARY) -recurse:src/lib/*.cs
+	$(MCS) $(MCS_FLAGS) -target:library $(RESS) -resource:$(PIXMAPS),Pixmaps.resources -o $(LIBRARY) -recurse:src/lib/*.cs
 
-#Construcción de los recursos de imágenes.
+#ConstrucciÃ³n de los recursos de imÃ¡genes.
 
 $(PIXMAPS): $(AUXRESGEN) pixmaps/Piel-01.jpg
 	@echo $(LINEA)
-	@echo "Generando los recursos de imágenes."
+	@echo "Generando los recursos de imÃ¡genes."
 	@echo $(LINEA)
 	$(MONO) $(MONO_FLAGS) $(AUXRESGEN) pixmaps/Piel-01.jpg $(PIXMAPS)
 
@@ -93,7 +94,7 @@ tests:
 	
 
 
-#Construcción de los paquetes del lenguaje.
+#ConstrucciÃ³n de los paquetes del lenguaje.
 
 $(TRAD):$(LANGDIR)/strings%resources: $(LANGDIR)/strings%txt
 	@echo $(LINEA)
@@ -105,7 +106,7 @@ $(LANGDIR)/strings.txt: $(shell find src/lib/ -name "*.cs")
 	$(GETSTRINGS) $(shell find src/lib/ -name "*.cs") > $@
 
 
-#Documentación
+#DocumentaciÃ³n
 docs:
 	install -d $(APIDOCS)
 	rm -f $(APIDOCS)/doc.xml
@@ -138,6 +139,7 @@ clean:
 	(cd src/tests && $(MAKE) clean) || exit 1
 
 distclean: clean
-	rm -f rules.make
+	echo "" > rules.make
+	rm -f $(shell find . -name "*.resources")
 	
 .PHONY: clean docs zip interfaces uninstall dist-clean tests

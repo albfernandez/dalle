@@ -129,25 +129,5 @@ namespace Dalle.Formatos.Kamaleon
 			}
 			reader.Close();		
 		}	
-		/*public void Unir()
-		{
-			
-		}*/
-		/*private void debug ()
-		{
-			Console.WriteLine ("\n\n\n\nDepurando KAMALEON\n\n\n\n\n");
-			foreach (InfoFicheroKamaleon i in infos){
-				Console.WriteLine("Nombre orig: " + i.NombreOriginal);
-				Console.WriteLine("tamano orig: " + i.TamanoOriginal);
-				Console.WriteLine("passwd: " + i.Password);
-				Console.WriteLine("fragmento: " + i.NombreFragmento);
-				Console.WriteLine("tam frag : " + i.TamanoFragmento);
-				Console.WriteLine("prim byte: " + i.PrimerByte);
-				Console.WriteLine("ulti byte: " + i.UltimoByte);
-				Console.WriteLine("tam piel:  " + i.TamanoPiel);
-				Console.WriteLine("tamDatos:  " + i.TamanoDatos);
-				Console.WriteLine("");
-			}
-		}*/
 	}
 }

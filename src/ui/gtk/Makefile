@@ -1,7 +1,7 @@
 BASEPATH=../../../
 include $(BASEPATH)/rules.make
 
-SUBDIRS=dalle-gtk openhacha-gtk
+SUBDIRS=dalle-gtk
 
 all:
 	@list='$(SUBDIRS)'; for d in $$list ; do \

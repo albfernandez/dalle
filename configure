@@ -61,7 +61,6 @@ build_type="debug"
 prefix=
 interfaces="console"
 
-
 for a in $*; do
 	case $a in
 		--help)
@@ -70,6 +69,9 @@ for a in $*; do
 			;;
 		--prefix=*)
 			prefix=`echo $a | sed 's/--prefix=//'`;
+			;;
+		--mono-path=*)
+			mono_libs=$mono_libs:`echo $a | sed 's/--mono-path=//'`;
 			;;
 		--build-release)
 			build_type=release;
@@ -98,6 +100,9 @@ for a in $*; do
 		--disable-swf)
 			disable_build_swf=yes;
 			;;
+		--disable-glade)
+			disable_build_glade=yes;
+			;;
 		*)
 			echo Unknown option: $a
 			help
@@ -118,11 +123,17 @@ else
 	exit 1;
 fi
 
+
 mono_home=`pkg-config --variable=prefix mono`
-mono_libs=$mono_home/lib
+#mono_libs=`pkg-config --variable=libdir mono`
+
 if (test $MONO_PATH); then
 	mono_libs=$mono_libs:$MONO_PATH;
 fi
+
+
+echo $mono_libs
+
 if test -z $prefix  ; then prefix=$mono_home;    fi
 
 echo -n "checking for mcs... "
@@ -159,6 +170,17 @@ if test -z $disable_build_gtk ; then
 	fi
 	
 fi
+
+if test -z $disable_build_glade; then
+	echo -n "checking for glade#...";
+	if (check_for_file_in_libs "glade-sharp.dll"); then
+		echo "yes";
+		interfaces="$interfaces glade"
+	else
+		echo "not found";
+	fi
+fi
+
 if test -z $disable_build_qt; then
 	echo -n "checking for qt#... ";
 	if (check_for_file_in_libs "Qt.dll"); then
@@ -200,10 +222,12 @@ echo ""
 cat rules.make.in | sed "s/@INTERFACES@/$interfaces/g" | \
 sed "s/@MCSFLAGS@/$mcs_flags/g"  | \
 sed "s/@CSDOC@/$comcsdoc/g" | \
-sed "s/@MONO_FLAGS@/$mono_flags/g"  > rules.make
+sed "s/@MONO_FLAGS@/$mono_flags/g" > rules.make
 
 cadena=s/@PREFIX@/`echo $prefix | sed s/\\\\//\\\\\\\\\\\\//g`/g;
+cadena_mono_path=s/@MONO_PATH@/`echo $mono_libs | sed s/\\\\//\\\\\\\\\\\\//g`/g;
 cat rules.make | sed `echo $cadena` > rules.make
+cat rules.make | sed `echo $cadena_mono_path` > rules.make
 
 echo ""
 echo "Configuration finished ! "

@@ -58,14 +58,21 @@ namespace Dalle.UI.Consola
 			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
 			IParte p;
 			foreach (String fichero in lista){
+				//Console.WriteLine("Mierda fichero " + fichero);
+				//System.Threading.Thread.Sleep(5000);
 				p = Manager.Instance.GetFormatoFichero (fichero);
+				
 				if (p != null){
-					Console.WriteLine (I._("Joining file {0} ({1})"),
-						fichero, p.Nombre);
-					
+					Console.WriteLine (I._("Joining file {0} ({1})"), fichero, p.Nombre);					
 					OnBegin();
+					//Console.WriteLine("OnBegin " + fichero);
+					//System.Threading.Thread.Sleep(5000);
 					Manager.Instance.Unir (fichero, dirDest);
+					//Console.WriteLine("Unir " + fichero);
+					//System.Threading.Thread.Sleep(5000);
 					OnFinish();
+					//Console.WriteLine("Finish " + fichero);
+					//System.Threading.Thread.Sleep(5000);
 				}
 				else {
 					Console.WriteLine (I._("{0}. Error, Unknown format."), fichero);

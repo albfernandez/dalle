@@ -34,7 +34,8 @@ namespace Dalle.Formatos.Kamaleon
 			descripcion = "KamaleoN v 2.0";
 			web = "http://www.kamaleonsoft.com";
 			compatible = false;
-			parteFicheros = false;
+			parteFicheros = true;
+			crc = new Kamaleon2CRC();
 
 		}
 		protected override void _Unir (string fichero, string dirDest)

@@ -33,6 +33,7 @@ LANGDIR=languages
 TRAD=$(LANGDIR)/strings.resources $(addprefix $(LANGDIR)/strings., $(addsuffix .resources, $(LANGS)))
 RESOURCES=$(TRAD)
 RESS= $(foreach res,$(RESOURCES), $(addprefix -resource:,$(res)),$(notdir $(res)))
+
 all: $(TARGET)
 
 

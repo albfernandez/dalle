@@ -3,7 +3,7 @@
 	Dalle - A split/join file utility library
 	Dalle.UI.DalleGtk.DalleGtk - Main Window
 		
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2004  Alberto Fernández <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -51,7 +51,9 @@ namespace Dalle.UI.DalleGtk
 		
 		Gtk.HButtonBox hbbox;
 
-		Gtk.Button Run;		
+		Gtk.Button run;
+		Gtk.Button about;
+		Gtk.Button exit;
 		
 		private static DalleGtk instance = null;
 				
@@ -66,13 +68,17 @@ namespace Dalle.UI.DalleGtk
 
 		private DalleGtk () : base (Gtk.WindowType.Toplevel)
 		{
-			this.Title = "DalleGtk";
-			this.SetDefaultSize(300,200);
+			this.Title = I._("DalleGtk");
+			this.SetDefaultSize(350,250);
 			this.DeleteEvent += new DeleteEventHandler (WindowExit);
 			
 			this.InitComponents();
-			this.Icon = new Gdk.Pixbuf (null, "gears.png");
-			
+			this.WindowPosition = Gtk.WindowPosition.Center; 
+			try{
+				this.Icon = new Gdk.Pixbuf (Assembly.GetExecutingAssembly(), "gears.png");
+			}
+			catch (Exception){
+			}
 			
 		}
 	
@@ -107,7 +113,10 @@ namespace Dalle.UI.DalleGtk
 			/*
 			 * Primera caja horizontal
 			 */
-			texto = new Gtk.Label ("<big><b>Welcome to Dalle</b></big>.");
+			texto = new Gtk.Label (
+				String.Format (
+				"<big><b>{0}</b></big>",
+				I._("Welcome to Dalle.")));
 			texto.UseMarkup = true;
 
 			hbox1.PackStart(texto, false , false, 7);
@@ -116,11 +125,11 @@ namespace Dalle.UI.DalleGtk
 			 * Segunda caja horizontal
 			 */
 			vbox2 = new Gtk.VBox (false, 3);
-			texto2 = new Gtk.Label ("¿Qué quieres hacer?");
+			texto2 = new Gtk.Label (I._("What do you want to do?"));
 			
-			SplitOption = new Gtk.RadioButton ("Cortar");
+			SplitOption = new Gtk.RadioButton (I._("Split0 files"));
 			
-			PasteOption = new Gtk.RadioButton (SplitOption, "Pegar");
+			PasteOption = new Gtk.RadioButton (SplitOption, I._("Merge Files"));
 
 			vbox2.PackStart(texto2, false, false, 7);
 			vbox2.PackStart(SplitOption, false , false, 7);
@@ -132,10 +141,19 @@ namespace Dalle.UI.DalleGtk
 			 * Tercera caja horizontal
 			 */
 			hbbox = new Gtk.HButtonBox();
-			Run = new Gtk.Button(Gtk.Stock.Execute);
+			
+			run = new Gtk.Button(Gtk.Stock.Execute);			
+			exit = new Gtk.Button(Gtk.Stock.Quit);
+			about = new Gtk.Button(I._("About"));
+			
 
-			hbbox.PackStart(Run, false, false, 7);
-			hbox3.PackStart(hbbox, false ,false, 7);
+			hbbox.PackStart(about, false, false, 7);
+			
+			hbbox.PackStart(exit, false, false, 7);
+			hbbox.PackStart(run, false, false, 7);			
+			
+			
+			hbox3.PackEnd(hbbox, false ,false, 7);
 
 			
 			/*
@@ -144,37 +162,53 @@ namespace Dalle.UI.DalleGtk
 			 */
 			vbox.PackStart(hbox1, false, false, 7);
 			vbox.PackStart(hbox2, false, false, 7);
-			vbox.PackStart(hbox3, false, false, 7);
+			vbox.PackEnd(hbox3, false, false, 7);
 			
 			this.Add (vbox);
+
+
+
+
 
 			/*
 			 * Eventos
 			 */
-			Run.Clicked += new EventHandler(run_click);
+			run.Clicked += new EventHandler(run_click);
+			exit.Clicked += new EventHandler(exit_click);
+			about.Clicked += new EventHandler(about_click);
+		}
+		private void about_click (object sender, EventArgs args)
+		{
+			AboutDialog.Instance.ShowAll();
+		}
+		private void exit_click (object sender, EventArgs args)
+		{
+			this.WindowExit();
 		}
 	
 		private void run_click (object sender, EventArgs args)
 		{
-			if (SplitOption.Active == true)
+			if (SplitOption.Active == true){
 				SplitDialog.Instance.ShowAll();
-			if (PasteOption.Active == true)
+			}
+			if (PasteOption.Active == true){
 				JoinDialog.Instance.ShowAll();
+			}
 		}
 		
 		public static void HideWindow (object o, DeleteEventArgs args)
 		{
 			Gtk.Window w = o as Gtk.Window;
 			w.Hide();
-			if (args != null)
+			if (args != null){
 				args.RetVal = true;
+			}
 		}
 		
 		public static void Main (String[] args)
 		{
 			Application.Init();
 			DalleGtk v = DalleGtk.Instance;
-			v.SetSizeRequest (300,200);
 			v.ShowAll();
 			Application.Run ();
 		}

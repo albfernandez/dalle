@@ -27,6 +27,7 @@ using System.IO;
 
 using Dalle.Formatos;
 using Dalle.Utilidades;
+using Dalle.Checksums;
 
 using I = Dalle.I18N.GetText;
 
@@ -34,6 +35,7 @@ namespace Dalle.Formatos.Kamaleon
 {
 	public class ParteKamaleon : Parte
 	{	
+		protected CRC crc;
 		public ParteKamaleon ()
 		{
 			nombre = "kamaleon1";
@@ -41,11 +43,12 @@ namespace Dalle.Formatos.Kamaleon
 			web = "http://www.kamaleonsoft.com";
 			parteFicheros = true;
 			compatible = false;
+			crc = new NullCRC();
 		}
 		
 		protected override void _Unir (string fichero, string dirDest)
 		{
-			// TODO: Cambiar de alguna forma para que utilice el progreso.
+			
 			string baseDir = new FileInfo (fichero).DirectoryName;
 			MetaInfoKamaleon metaInfo = new MetaInfoKamaleon (fichero);
 			long transferidos = 0;
@@ -75,7 +78,7 @@ namespace Dalle.Formatos.Kamaleon
 				
 				
 			}
-						
+			
 			string f = metaInfo.PrimerInfo.NombreOriginal;
 			UtilidadesFicheros.ComprobarSobreescribir (f);
 			
@@ -84,14 +87,23 @@ namespace Dalle.Formatos.Kamaleon
 			foreach (InfoFicheroKamaleon i in metaInfo.infos){
 				//Copiar la zona de datos del fragmento al archivo destino
 				string fich = baseDir + Path.DirectorySeparatorChar + i.NombreFragmento;
+				
+				crc.Reset();				
+				UtilidadesFicheros.CalcularCRC (fich, 0, i.TamanoPiel, crc);
+				
 				transferidos += UtilidadesFicheros.CopiarIntervalo
-					(fich, f, i.TamanoPiel, i.TamanoDatos);
+					(fich, f, i.TamanoPiel, i.TamanoDatos, crc);
+				if (crc.Value != i.Checksum){
+					String msg = String.Format ("Checksum failed on {0}", i.NombreFragmento);
+					throw new Exception (msg);
+				}					
 				OnProgress (transferidos, i.TamanoOriginal); 
 			}
 
 		}
 		protected override void _Partir (string fichero,string salida1, string dir, long kb)
 		{
+
 			_Partir (fichero, salida1,dir, kb, "1");
 		}
 		
@@ -109,6 +121,7 @@ namespace Dalle.Formatos.Kamaleon
 			OnProgress (0,1);
 			MetaInfoKamaleon mi = new MetaInfoKamaleon();
 			do{
+				
 				byte[] b = UtilidadesFicheros.LeerSeek (fichero, transferidos, tamano);
 				transferidos += b.Length;
 				
@@ -122,11 +135,16 @@ namespace Dalle.Formatos.Kamaleon
 				inf.UltimoByte = b[b.Length - 1];
 				inf.TamanoPiel = piel.Length;
 				
+				crc.Reset();
+				
+				UtilidadesFicheros.Append (inf.NombreFragmento, piel, crc);
+				UtilidadesFicheros.Append (inf.NombreFragmento, b, crc);
+				
+				inf.Checksum = crc.Value;
 				mi.Add (inf);
 				
 				// TODO: Comprobar que no se sobreescribe ningun fichero.
-				UtilidadesFicheros.Append (inf.NombreFragmento, piel);
-				UtilidadesFicheros.Append (inf.NombreFragmento, b);
+				
 								
 				secuencia++;
 				
@@ -157,12 +175,14 @@ namespace Dalle.Formatos.Kamaleon
 		
 		protected string VersionKamaleon (string fichero)
 		{
+			FileStream reader = null;
 			try{			
-				FileStream reader = new FileStream (fichero, FileMode.Open);
+				reader = new FileStream (fichero, FileMode.Open);
 				reader.Seek(-0x13, SeekOrigin.End);
 				byte[] buffer = new byte[0x13];
 				reader.Read (buffer, 0, buffer.Length);
-				reader.Close();
+				
+				
 				String s = "";
 				for (int i=0; i < buffer.Length; i++)
 					s += Convert.ToChar(buffer[i]);
@@ -186,6 +206,11 @@ namespace Dalle.Formatos.Kamaleon
 			{
 				return "";
 			}
+			finally{
+				if (reader != null){
+					reader.Close();
+				}
+			}	
 			
 		}
 		public override bool PuedeUnir (string fichero)

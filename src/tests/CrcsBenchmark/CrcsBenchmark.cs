@@ -30,6 +30,8 @@ using ICSharpCode.SharpZipLib.Checksums;
 
 using Dalle.Formatos.Hacha;
 using Dalle.Formatos.SplitFile;
+using Dalle.Formatos.Kamaleon;
+
 using I = Dalle.I18N.GetText;
 
 namespace Dalle
@@ -51,6 +53,7 @@ namespace Dalle
 			table.Add ("StrangeCRC", new StrangeCRC());
 			table.Add ("HachaCRC", new HachaCRC (TEST_LENGTH));
 			table.Add ("SplitFileCRC", new SplitFileCRC ());
+			table.Add ("Kamaleon2CRC", new Kamaleon2CRC ());
 			
 			Console.WriteLine (I._("Calculating crcs. This may take a while..."));
 			

@@ -32,6 +32,8 @@ using ICSharpCode.SharpZipLib.Checksums;
 
 using Dalle.Formatos.Hacha;
 using Dalle.Formatos.SplitFile;
+using Dalle.Formatos.Kamaleon;
+
 using I = Dalle.I18N.GetText;
 
 namespace Dalle {
@@ -80,6 +82,7 @@ namespace Dalle {
 			table.Add ("StrangeCRC", new StrangeCRC());
 			table.Add ("HachaCRC", new HachaCRC (new FileInfo(s).Length));
 			table.Add ("SplitFileCRC", new SplitFileCRC());
+			table.Add ("Kamaleon2CRC", new Kamaleon2CRC());
 			
 			foreach (Object ics in table.Values){
 				(ics as IChecksum).Reset();

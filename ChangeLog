@@ -1,3 +1,26 @@
+2004-09-05
+	Dialogo de Acerca para dalle-gtk
+	Comienzo de dalle-swf
+
+2004-09-04
+	Completado el soporte para Camouflage (solo falta soporte de fechas)
+	Corregido bug en SF. Ahora ya cierra el archivo despues de usarlo
+
+2004-08-28
+	Paquete debian para todas las arquitecturas y
+	con las dependencias incluidas
+
+2004-08-28
+	Primer paquete debian
+	Nueva ubicacion de openhacha (en src/ui/glade)
+	OpenHacha actulizado a 0.7cvs
+
+2004-06-12
+	Puede unir archivos de Camouflage.
+
+2004-06-09
+	Soporte completo para KamaleoN2 (con Checksum)
+	Arreglo: Error en UtArrays que no leia bien los Int64
 
 2004-03-17
 	Version 0.7.2
@@ -155,7 +178,7 @@
 	Arreglado un bug con los directorios de salida.
 
 2003-12-04
-	Creado el SPEC para la creación de RPMS.
+	SPEC para la creación de RPMS.
 
 2003-11-27
 	Internacionalización completa de la interfaz por consola.
