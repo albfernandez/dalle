@@ -30,7 +30,8 @@ LANGDIR=languages
 TRAD=$(LANGDIR)/strings.resources $(addprefix $(LANGDIR)/strings., $(addsuffix .resources, $(LANGS)))
 RESOURCES=$(TRAD) \
 			pixmaps/split.gif \
-			pixmaps/join.gif
+			pixmaps/join.gif \
+			pixmaps/gears.png
 RESS= $(foreach res,$(RESOURCES), $(addprefix -resource:,$(res)),$(notdir $(res)))
 
 all: $(TARGET)

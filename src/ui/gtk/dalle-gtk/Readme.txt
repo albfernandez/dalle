@@ -1,1 +1,1 @@
-Aún en prematuro estado de desarrollo
+Interfaz gráfica en gtk# para partir y unir archivos.

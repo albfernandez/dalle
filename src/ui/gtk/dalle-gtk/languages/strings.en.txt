@@ -1,0 +1,51 @@
+# src/BaseDialog.cs: 117
+Browse... = Browse...
+
+# src/BaseDialog.cs: 129
+Select_a_file = Select a file
+
+# src/BaseDialog.cs: 175
+Selected_file_does_not_exist = Selected file does not exist
+
+# src/BaseDialog.cs: 222
+Do_you_want_to_stop_file_operation? = Do you want to stop file operation?
+
+# src/JoinDialog.cs: 486
+Join_File_Fragments = Join File Fragments
+
+# src/JoinDialog.cs: 510
+Join_the_fragments_of_a_file = Join the fragments of a file
+
+# src/JoinDialog.cs: 511
+Re-create_a_file_from_its_fragments = Re-create a file from its fragments
+
+# src/JoinDialog.cs: 520
+Fragment_to_join = Fragment to join
+
+# src/JoinDialog.cs: 551
+Unknown_file_format = Unknown file format
+
+# src/SplitDialog.cs: 621
+Split_Files = Split Files
+
+# src/SplitDialog.cs: 645
+Split_a_File = Split a File
+
+# src/SplitDialog.cs: 646
+Split_a_file_in_small_pieces = Split a file in small pieces
+
+# src/SplitDialog.cs: 658
+Select_a_file_to_split = Select a file to split
+
+# src/SplitDialog.cs: 671
+Number_of_fragments = Number of fragments
+
+# src/SplitDialog.cs: 682
+Size_of_fragments = Size of fragments
+
+# src/SplitDialog.cs: 692
+KiB = KiB
+
+# src/SplitDialog.cs: 695
+File_Format = File Format
+

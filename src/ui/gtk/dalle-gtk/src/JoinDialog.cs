@@ -48,8 +48,8 @@ namespace Dalle.UI.DalleGtk
 		}
 		private JoinDialog (Gtk.Window parent) : base (parent)
 		{
-			this.SetSizeRequest (475, 230);
-			this.Title = I._("JoinDialog.Title");
+			this.SetSizeRequest (500, 230);
+			this.Title = I._("Join File Fragments");
 			
 			this.LayoutComponents();
 		}
@@ -59,33 +59,45 @@ namespace Dalle.UI.DalleGtk
 						
 			Gtk.HBox hbox1 = new Gtk.HBox (false, 6);
 			hbox1.BorderWidth = 0;
-			//hbox1.Homogeneous = false;
+				
+			Gtk.Image img = new Gtk.Image (new Gdk.Pixbuf (null, "join.gif"));
+
+			img.Xalign = 0.5f;
+			img.Yalign = 0.0f;
+			hbox1.PackStart (img, false, false, 0);			
+			
+			
+			
+			Gtk.VBox vbox1 = new Gtk.VBox (false, 12);
+			
 			Gtk.Label lbl = new Gtk.Label (String.Empty);
 			lbl.Markup = String.Format (
 				"<big><b>{0}</b></big>\n{1}",
-				I._("JoinDialog.JoinLbl1"),
-				I._("JoinDialog.JoinLbl2"));
-
-			hbox1.PackStart (new Gtk.Image(new Gdk.Pixbuf (Assembly.GetExecutingAssembly(), "join.gif")), false, false, 0);
-			hbox1.PackStart (lbl, false, false, 0);
+				I._("Join the fragments of a file"),
+				I._("Re-create a file from its fragments"));
+			lbl.Xalign = 0.0f;
+			lbl.Yalign = 0.0f;
+			
+			vbox1.PackStart (lbl, false, false, 0);
 			
 			Gtk.HBox hbox2 = new Gtk.HBox (false, 6);
 			hbox2.BorderWidth = 0;
 			
-			hbox2.PackStart (new Gtk.Label ("Nombre del fichero"), false,false,2);
+			Gtk.Label lbl2 = new Gtk.Label (I._("Fragment to join"));
+			
+			hbox2.PackStart (lbl2, false, false, 2);
 			
 			hbox2.PackStart (FileEntry, true, true ,2);
 			hbox2.PackStart (BrowseButton, false, false, 3);
 
+			vbox1.PackStart (hbox2, true, true, 2);
 			
-			
-
 			Gtk.HBox hbox3 = new Gtk.HBox(false, 12);
 			hbox3.PackStart (Progress);
 			
+			hbox1.PackStart (vbox1, true, true, 0);
 			
 			this.VBox.PackStart (hbox1, false, false, 15);
-			this.VBox.PackStart (hbox2, false, false, 10);
 			this.VBox.PackStart (hbox3, false, false, 3);
 			
 			LayoutActionArea();
@@ -102,7 +114,7 @@ namespace Dalle.UI.DalleGtk
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Error,
 					Gtk.ButtonsType.Ok,
-					"El formato del fichero no es conocido.");
+					I._("Unknown file format"));
 				d.Run();
 				d.Destroy();
 				return;
