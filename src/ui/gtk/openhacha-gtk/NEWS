@@ -1,9 +1,10 @@
 
-OpenHacha 0.5cvs
+OpenHacha 0.5 (2004-01-29)
 ==========================
 	- Now you can select the Hacha format you wish for splitting 
 	files (Hacha v1, v2 or pro).
 	- More fixes of the Gtk# interface from Álvaro Peña.
+	- libhacha2 synced with Dalle 0.6.0
 
 OpenHacha 0.4 (2004-01-10)
 ==========================
