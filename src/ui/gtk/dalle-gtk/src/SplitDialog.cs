@@ -59,7 +59,7 @@ namespace Dalle.UI.DalleGtk
 		private SplitDialog (Gtk.Window parent) : base (parent)
 		{
 			this.Title = I._("Split Files");
-			this.SetSizeRequest (500,300);
+			this.SetSizeRequest (550,300);
 			this.FileEntry.Changed += new EventHandler (OnEntryChanged);
 			Formats = CreateFormatsOptionMenu();
 			LayoutComponents();
