@@ -28,6 +28,8 @@ using Dalle.Utilidades;
 using Dalle.Checksums;
 using Dalle.Formatos.Zip;
 
+using I = Dalle.I18N.GetText;
+
 
 namespace Dalle.Formatos.Axman
 {
@@ -48,18 +50,18 @@ namespace Dalle.Formatos.Axman
 		{
 			
 			long transferidos = 0;
-			String formato = "";
+			string formato = "";
 			bool comprimido = false;
 			
-			String bas = fichero.Substring (0, fichero.LastIndexOf('.', fichero.Length - 7));
+			string bas = fichero.Substring (0, fichero.LastIndexOf('.', fichero.Length - 7));
 
-			if (bas.EndsWith("ZIP")){
+			if (bas.EndsWith("ZIP"))
 				comprimido = true;
-			}
+	
 			formato = bas + ".{0}." + fichero.Substring(fichero.Length -5);
 			
 			int i = 1;
-			String f = String.Format (formato, i);
+			string f = String.Format (formato, i);
 			while (File.Exists(f)){
 				i++;
 				f = String.Format(formato, i);
@@ -71,14 +73,17 @@ namespace Dalle.Formatos.Axman
 
 			ColaAxman c = ColaAxman3.LoadFromFile (f);
 
-			String destino = dirDest + Path.DirectorySeparatorChar + c.Nombre;
+			string destino = dirDest + Path.DirectorySeparatorChar + c.Nombre;
 			UtilidadesFicheros.ComprobarSobreescribir (destino);
+			
 			for (i=1; i < c.Fragmentos; i++){
 
 				f = String.Format (formato, i);
 				CabeceraAxman cabAxman = CabeceraAxman.LoadFromFile (f);
 				if (cabAxman.Fragmento != i){
-					throw new Exception ("Fragmento fuera de rango");
+					string msg = string.Format (I._("..."));
+					throw new Exception (msg);
+					//throw new Exception ("Fragmento fuera de rango");
 				}
 				crc.Reset();
 				transferidos += UtilidadesFicheros.CopiarIntervalo (f, destino, 23, crc);
@@ -106,12 +111,14 @@ namespace Dalle.Formatos.Axman
 		}
 		protected override void _Partir (string fichero,string sal1, String dir, long kb)
 		{
-			String formato = dir + Path.DirectorySeparatorChar + sal1 + ".{0}.axman";
+			string formato = dir + Path.DirectorySeparatorChar + sal1 + ".{0}.axman";
 			int i = 1;
 			long transferidos = 0;
 			long totales = new FileInfo(fichero).Length;
-			if (totales < (kb*1024))
-				throw new Exception ("El fichero es más pequeño que los fragmentos");
+			//if (totales < (kb*1024)){
+			//	string msg = string.Format (I._("Source file is too small"));
+			//	throw new Exception ("El fichero es más pequeño que los fragmentos");
+			//}
 			long tf = kb*1024 - 23;
 			OnProgress (0,1);
 			CabeceraAxman cab = new CabeceraAxman ();
@@ -149,6 +156,8 @@ namespace Dalle.Formatos.Axman
 		
 		public override bool PuedeUnir (string fichero)
 		{
+			if (! File.Exists(fichero) )
+				return false;
 			return fichero.ToUpper().EndsWith(".AXMAN");
 		}
 	}

@@ -59,7 +59,7 @@ namespace Dalle.Formatos.Axman
 			
 			return bytes;
 		}
-		public static new ColaAxman LoadFromFile (String file)
+		public static new ColaAxman LoadFromFile (string file)
 		{
 			byte[] b = UtilidadesFicheros.LeerSeek (file, new FileInfo(file).Length -4, 4);
 			int tRuta = UtArrays.LeerInt32 (b, 0);

@@ -43,11 +43,11 @@ namespace Dalle.Formatos.Hacha
 			parteFicheros = true;
 			compatible = false;
 		}
-		protected override void _Partir (String fichero, String sal1, String dir, long kb)
+		protected override void _Partir (string fichero, string sal1, string dir, long kb)
 		{
 			Partir (fichero, sal1, dir, kb, "2");
 		}
-		protected override void _Unir (String fichero, String dirDest)
+		protected override void _Unir (string fichero, string dirDest)
 		{
 			CRC crc = new HachaCRC (new FileInfo (fichero).Length);
 			base.UnirHacha (fichero, dirDest,crc);
@@ -58,8 +58,11 @@ namespace Dalle.Formatos.Hacha
 				throw new Exception (I._("Checksum verification failed!"));
 		}
 		
-		public override bool PuedeUnir (String fichero)
+		public override bool PuedeUnir (string fichero)
 		{
+			if (! File.Exists (fichero) )
+				return false;
+				
 			try{
 				CabeceraHacha_v1 cab = CabeceraHacha_v1.LeerCabecera (fichero);
 				return (cab.Version == "2");

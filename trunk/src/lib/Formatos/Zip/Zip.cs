@@ -57,7 +57,7 @@ namespace Dalle.Formatos.Zip
 					buffSize = value;
 			}
 		}
-		protected override void _Unir (String fichero, String dirDest)
+		protected override void _Unir (string fichero, string dirDest)
 		{
 			Descomprimir(fichero, dirDest);
 		}
@@ -65,14 +65,17 @@ namespace Dalle.Formatos.Zip
 		{
 			Comprimir (fichero, dir + Path.DirectorySeparatorChar + salida1);
 		}
-		public override bool PuedeUnir (String fichero){
+		public override bool PuedeUnir (string fichero)
+		{
 			// TODO: Mejorar la deteccion del formato zip.
 			// TODO: Hacer que detecte el contenido en lugar de la extension.
 			// TODO: Cuidado con los ficheros zip cortados (tarda mucho).
-
+			if ( ! File.Exists (fichero) )
+				return false;
 			return fichero.ToUpper().EndsWith(".ZIP");
 		}
-		public bool EsZipPorContenido (String fichero)
+		
+		public bool EsZipPorContenido (string fichero)
 		{
 			try{
 				ZipFile zf = new ZipFile(fichero);
@@ -83,7 +86,7 @@ namespace Dalle.Formatos.Zip
 			return true;
 		}
 		
-		public long ObtenerTamanoDatos (String fichero)
+		public long ObtenerTamanoDatos (string fichero)
 		{
 			long ret = 0;
 			ZipInputStream s = new ZipInputStream (File.OpenRead (fichero));
@@ -95,7 +98,7 @@ namespace Dalle.Formatos.Zip
 			return ret;
 		}
 		
-		public void Descomprimir (String fichero, String dirDest)
+		public void Descomprimir (string fichero, string dirDest)
 		{	
 			
 			ZipInputStream s = new ZipInputStream (File.OpenRead(fichero));
@@ -129,7 +132,7 @@ namespace Dalle.Formatos.Zip
 		}		
 		// Comprimir
 		
-		public void Comprimir (String fichero, String salida)
+		public void Comprimir (string fichero, string salida)
 		{
 			Comprimir (fichero, salida, 9);
 		}
@@ -137,7 +140,7 @@ namespace Dalle.Formatos.Zip
 		// TODO: Hacer una funcion que soporte pasarle como paramentros
 		// multiples archivos y directorios para comprimir.
 		
-		public void Comprimir (String fichero, String salida, int level)
+		public void Comprimir (string fichero, string salida, int level)
 		{
 			// TODO: A ver si podemos hacer que funcione el metodo STORED.
 			// sino dejar todo con DEFLATED. (¿Se puede con los directorios?)
