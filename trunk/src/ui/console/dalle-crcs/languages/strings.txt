@@ -1,9 +1,9 @@
-# src/crcs.cs: 71
+# src/crcs.cs: 73
 {0},_File_not_found = {0}, File not found
 
-# src/crcs.cs: 73
+# src/crcs.cs: 75
 {0}_is_a_directory = {0} is a directory
 
-# src/crcs.cs: 99
+# src/crcs.cs: 102
 crcs_of_file_{0}: = crcs of file {0}:
 

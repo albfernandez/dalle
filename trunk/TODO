@@ -70,9 +70,10 @@ Por hacer:
 	- [ ]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
 	- [ ]  Hacer los programas compatibles con pnet.
 	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
-	- [ ]  Paquete deb.
-	- [ ]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
-
+	- [X]  Paquete deb.
+	- [X]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
+    - [ ]  Soporte para Splitter & Merger
+    - [X]  Revisar todos los scripts para que funcione bien con mono 1.0
 
 ===============================
 
@@ -81,7 +82,7 @@ Por hacer:
 ===============================
 
 	- [ ] DragNDrop.
-	- [ ] Soporte para cortar en kamaleon2.
+	- [X] Soporte para cortar en kamaleon2.
 	- [ ] Kamaleon-gtk (supone revisar formato Kamaleon.)
 	- [ ] Manual de usuario.
 	

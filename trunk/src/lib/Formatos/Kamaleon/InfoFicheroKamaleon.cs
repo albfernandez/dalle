@@ -115,6 +115,7 @@ namespace Dalle.Formatos.Kamaleon
 		private int tamanoPiel;
 		private byte ultimoByte;
 		protected String nombrePiel;
+		protected long checksum = 0;
 				
 		public string NombreOriginal{
 			get{ return nombreOriginal; }
@@ -176,6 +177,10 @@ namespace Dalle.Formatos.Kamaleon
 		}
 		public int TamanoDatos{
 			get{ return (TamanoFragmento - TamanoPiel); }
+		}
+		public long Checksum {
+			get { return checksum; }
+			set { checksum = value; }
 		}
 	}
 }

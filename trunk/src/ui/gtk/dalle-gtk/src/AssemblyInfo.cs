@@ -1,6 +1,6 @@
 /*
 
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2004  Alberto Fernández <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCulture("")]
 
 
-[assembly: AssemblyVersion("0.7.1.0")]
+[assembly: AssemblyVersion("0.7.3.0")]
 
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]

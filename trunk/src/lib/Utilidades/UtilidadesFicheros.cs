@@ -246,16 +246,30 @@ namespace Dalle.Utilidades
 			return ret;
 		}
 		
-		/// <summary>Añade datos al final de un fichero.</summary>
-		/// <param name="fichero">El nombre del fichero al que se añadirán los datos.</param>
-		/// <param name="data">Los datos a añadir.</param>
 		
-		public static void Append (String fichero, byte[] data)
-		{		
+		
+		
+		
+		public static void Append (String fichero, byte[] data, IChecksum crc)
+		{
+			if (crc != null){
+				crc.Update (data);
+			}
 			FileStream writer = new FileStream (fichero, FileMode.Append, FileAccess.Write);
 			writer.Seek (writer.Length, SeekOrigin.Begin);
 			writer.Write(data, 0, data.Length);
 			writer.Close();
+		}
+		
+		/// <summary>Añade datos al final de un fichero.</summary>
+		/// <param name="fichero">El nombre del fichero al que se añadirán los datos.</param>
+		/// <param name="data">Los datos a añadir.</param>
+		
+		
+		
+		public static void Append (String fichero, byte[] data)
+		{		
+			Append (fichero, data, null);
 		}
 		
 		/// <summary>Lee un byte del fichero.</summary>
@@ -269,6 +283,15 @@ namespace Dalle.Utilidades
 			byte ret = (byte)reader.ReadByte();
 			reader.Close();
 			return ret;
+		}
+		
+		public static void CalcularCRC (string file, int offset, int count ,IChecksum crc)
+		{
+			FileStream reader = new FileStream (file, FileMode.Open);
+			reader.Seek (offset, SeekOrigin.Begin);
+			for (int i=0; i < count; i++){
+				crc.Update (reader.ReadByte());
+			}
 		}
 		
 		/// <summary>Obtiene el stream para escribir en un fichero.
@@ -291,6 +314,7 @@ namespace Dalle.Utilidades
 			nfo.Create();			
 			return File.Open(file, FileMode.CreateNew);
 		}
+		
 		public static long GenerateHash (string file, IChecksum crc)
 		{
 			FileStream reader = new FileStream (file, FileMode.Open);

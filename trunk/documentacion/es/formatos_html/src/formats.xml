@@ -171,4 +171,25 @@
 		<license>Freeware</license>
 		<sinceversion>0.4.0</sinceversion>
 	</format>	
+	<format>
+		<name>kamaleon1</name>
+		<progname>KamaleoN</progname>
+		<web></web>
+		<popularity>8</popularity>
+		<supportsjoin>10</supportsjoin>
+		<supportssplit>10</supportssplit>
+		<license>Freeware</license>
+		<sinceversion>0.4.0</sinceversion>
+	</format>
+	<format>
+		<name>kamaleon2</name>
+		<progname>KamaleoN 2</progname>
+		<web></web>
+		<popularity>8</popularity>
+		<supportsjoin>9</supportsjoin>
+		<supportssplit>0</supportssplit>
+		<license>Freeware</license>
+		<sinceversion>0.4.0</sinceversion>
+	</format>
+		
 </formats>

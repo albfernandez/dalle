@@ -1,16 +1,25 @@
 BASEPATH=../../../
 include $(BASEPATH)/rules.make
 
+SUBDIRS=dalle-swf
+
 all:
-	@echo Makefile de swf
-
+	@list='$(SUBDIRS)'; for d in $$list ; do \
+	    (cd $$d && $(MAKE)) || exit 1 ; \
+	done
 install: all
-	@echo install swf
+	@list='$(SUBDIRS)'; for d in $$list ; do \
+	    (cd $$d && $(MAKE) install) || exit 1 ; \
+	done
 
-uninstall:
-	@echo uninstall swf
-
+uninstall: 
+	@list='$(SUBDIRS)'; for d in $$list ; do \
+	    (cd $$d && $(MAKE) uninstall) || exit 1 ; \
+	done
 clean:
-	@echo clean swf
+	@list='$(SUBDIRS)'; for d in $$list ; do \
+	    (cd $$d && $(MAKE) clean) || exit 1 ; \
+	done
+
 
 .PHONY: uninstall clean

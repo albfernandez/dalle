@@ -6,7 +6,29 @@ make
 (hacerse root).
 make install
 
+
 En build/ quedan los exes, las dlls y los wrappers.
+
+
+
+
+Para instalar el rpm
+
+rpm -vih dalle-VERSION.noarch.rpm
+
+Para instalar el rpm cambiando el directorio de instalación por otro
+
+rpm -vih --prefix=directorio dalle-VERSION.noarch.rpm
+
+
+
+
+Para instalar el paquete deb
+
+dpkg -i dalle_$VERSION_all.deb
+
+
+
 
 
 Para ejecutar el programa de linea de comandos
@@ -25,12 +47,3 @@ dalle-console <comando> < [opciones] ficheros>
 -f=formato Formato para partir
 -b=fichero Nombre del fichero destino, o prefijo de los fragmentos
 -t=tamano Tamaño de los fragmentos en kb (si es aplicable).
-
-
-Para instalar el rpm
-
-rpm -vih dalle-VERSION.noarch.rpm
-
-Para instalar el rpm cambiando el directorio de instalación por otro
-
-rpm -vih --prefix=directorio dalle-VERSION.noarch.rpm

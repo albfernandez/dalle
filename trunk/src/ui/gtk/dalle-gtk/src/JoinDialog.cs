@@ -3,7 +3,7 @@
 	Dalle - A split/join file utility library
 	Dalle.UI.DalleGtk.JoinDialog - Dialog to join files
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2004  Alberto Fernández <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,12 +37,13 @@ namespace Dalle.UI.DalleGtk
 	public class JoinDialog : BaseDialog
 	{
 	
-		private static JoinDialog instance;
+		private static JoinDialog instance = null;
 		
 		public static JoinDialog Instance{
 			get{
-				if (instance == null)
+				if (instance == null){
 					instance = new JoinDialog (DalleGtk.Instance);
+				}
 				return instance;
 			}
 		}
@@ -50,21 +51,26 @@ namespace Dalle.UI.DalleGtk
 		{
 			this.SetSizeRequest (500, 230);
 			this.Title = I._("Join File Fragments");
-			
+
 			this.LayoutComponents();
+
 		}
 		private void LayoutComponents()
 		{
-		
+			Gtk.Image img = null;
 						
 			Gtk.HBox hbox1 = new Gtk.HBox (false, 6);
 			hbox1.BorderWidth = 0;
-				
-			Gtk.Image img = new Gtk.Image (new Gdk.Pixbuf (null, "join.gif"));
+			
+			try{	
+				img = new Gtk.Image (new Gdk.Pixbuf (Assembly.GetExecutingAssembly(), "join.gif"));
+				img.Xalign = 0.5f;
+				img.Yalign = 0.0f;
+				hbox1.PackStart (img, false, false, 0);			
+			}
+			catch (Exception){
+			}
 
-			img.Xalign = 0.5f;
-			img.Yalign = 0.0f;
-			hbox1.PackStart (img, false, false, 0);			
 			
 			
 			

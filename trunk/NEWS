@@ -1,3 +1,11 @@
+xx-xx-xxxx - Version 0.7.3
+	Paquete debian
+	Soporte para archivos de Camouflage
+	Soporte completado para KamaleoN 2
+	Retoques en dalle-gtk
+	Openhacha actulizado	
+
+
 17-mar-2004 - Version 0.7.2
 	Corregido un bug "muy tonto" de soporte de formatos
 	Inicio de una nueva ventana principal de dalle-gtk (Ramón Rey Vicente)

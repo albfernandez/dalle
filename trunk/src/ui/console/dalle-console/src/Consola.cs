@@ -50,6 +50,7 @@ namespace Dalle.UI.Consola
 			catch (Exception e){
 				Console.WriteLine ("\n\n");
 				Console.WriteLine ("Error: " + e.Message);
+				Console.WriteLine (e.StackTrace);
 			}
 		}
 		

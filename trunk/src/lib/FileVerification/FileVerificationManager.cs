@@ -71,37 +71,40 @@ namespace Dalle.FileVerification
 				files[i++]=s;
 				
 			FVerification verifier = supported[algorithm] as FVerification;
-			if (verifier == null)
+			if (verifier == null){
 				throw new Exception ("Format not supported");
+			}
 			
 			verifier.CreateSFV(files, recursive, writer);			
 		}
 		
 		protected void OnFileCheck (SFVElement e, FileCheckResult res)
 		{
-			if (this.FileCheck != null)
+			if (this.FileCheck != null){
 				this.FileCheck (e, res);
+			}
 		}
 		
 		protected void OnInitialList (ArrayList l)
 		{
-			if (this.InitialList != null)
+			if (this.InitialList != null){
 				this.InitialList (l);
+			}
 		}
 		public void Verify (string file)
 		{
 			IFVerification type = null;
-			//for (int i=0; i < supported.Length; i++){
-			//	IFVerification f = (IFVerification)supported[i];
+			
 			foreach (IFVerification f in supported.Values){
-				Console.WriteLine ("aaa " + f.Name);
 				if (f.IsFormatRecognized (file) ){
 					type = f;
 					break;
 				}
 			}
-			if (type == null)
+			if (type == null){
 				return;
+			}
+			// TODO: I18N
 			Console.WriteLine ("Format = " + type.Name);
 			type.VerifySFV (file);
 		}	
@@ -109,8 +112,9 @@ namespace Dalle.FileVerification
 		{
 			ArrayList l = new ArrayList();
 			foreach (IFVerification f in supported.Values){
-				if (f.CanCreate)
+				if (f.CanCreate){
 					l.Add (f);
+				}
 			}
 			return l;
 		}

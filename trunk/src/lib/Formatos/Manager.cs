@@ -28,16 +28,6 @@ using System.Reflection;
 using System.IO;
 using System.Threading;
 
-using Dalle.Formatos.Hacha;
-using Dalle.Formatos.SplitFile;
-using Dalle.Formatos.FileSplit;
-using Dalle.Formatos.Kamaleon;
-using Dalle.Formatos.SF;
-using Dalle.Formatos.EasyFileSplitter;
-using Dalle.Formatos.MaxSplitter;
-using Dalle.Formatos.Generico;
-using Dalle.Formatos.Zip;
-using Dalle.Formatos.Axman;
 
 using I = Dalle.I18N.GetText;
 
@@ -73,22 +63,24 @@ namespace Dalle.Formatos
 		private Manager ()
 		{
 			formatos.Add (new Dalle.Formatos.Astrotite.Astrotite());
-			formatos.Add (new Axman3());
-			formatos.Add (new Zip());
-			formatos.Add (new MaxSplitter());
-			formatos.Add (new EasyFileSplitter());
-			formatos.Add (new ParteSF());
-			formatos.Add (new ParteKamaleon2());
-			formatos.Add (new ParteKamaleon());
-			formatos.Add (new FileSplit());
-			formatos.Add (new SplitFile_v1());
-			formatos.Add (new ParteHacha_v2());
-			formatos.Add (new ParteHacha_v1());
-			formatos.Add (new ParteHachaPro());
-			formatos.Add (new ParteGenerico());
+			formatos.Add (new Dalle.Formatos.Axman.Axman3());
+			formatos.Add (new Dalle.Formatos.Zip.Zip());
+			formatos.Add (new Dalle.Formatos.MaxSplitter.MaxSplitter());
+			formatos.Add (new Dalle.Formatos.EasyFileSplitter.EasyFileSplitter());
+			formatos.Add (new Dalle.Formatos.SF.ParteSF());
+			formatos.Add (new Dalle.Formatos.Kamaleon.ParteKamaleon2());
+			formatos.Add (new Dalle.Formatos.Kamaleon.ParteKamaleon());
+			formatos.Add (new Dalle.Formatos.Camouflage.Camouflage());
+			formatos.Add (new Dalle.Formatos.FileSplit.FileSplit());
+			formatos.Add (new Dalle.Formatos.SplitFile.SplitFile_v1());
+			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v2());
+			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v1());
+			formatos.Add (new Dalle.Formatos.Hacha.ParteHachaPro());
+			formatos.Add (new Dalle.Formatos.Generico.ParteGenerico());
 
-			foreach (Parte p in formatos)
+			foreach (Parte p in formatos){
 				p.Progress += new ProgressEventHandler (this.OnProgress);
+			}
 		}
 		
 		
@@ -175,9 +167,11 @@ namespace Dalle.Formatos
 		
 		public IParte GetFormatoFichero (String fichero)
 		{
-			foreach (IParte p in formatos)
-				if (p.PuedeUnir(fichero))
+			foreach (IParte p in formatos){
+				if (p.PuedeUnir(fichero)){
 					return p;
+				}
+			}
 			return null;
 		}
 		
@@ -215,12 +209,15 @@ namespace Dalle.Formatos
 		
 		public void Partir (String formato, String fichero, String salida1, String dir, long kb)
 		{
+			
 			this.SetStopRequest (false);
 			IParte p = GetFormatByName(formato);
-			if (p==null)
+			if (p==null){
 				throw new FormatNotSupportedException (formato);
-			if (!p.ParteFicheros)
+			}
+			if (!p.ParteFicheros){
 				throw new SplitNotSupportedException (formato);
+			}
 			try{
 				p.Partir (fichero, salida1, dir, kb);
 			}
@@ -264,13 +261,8 @@ namespace Dalle.Formatos
 		public void Unir (String fichero, String dir)
 		{
 			this.SetStopRequest (false);
-			IParte f = null;
-			foreach (IParte p in formatos){
-				if (p.PuedeUnir(fichero)){
-					f = p;
-					break;
-				}
-			}
+			
+			IParte f = this.GetFormatoFichero(fichero);
 			if (f == null)
 				throw new UnknownFormatException (fichero);
 				
