@@ -1,5 +1,10 @@
+2004-01-26
+	Limpieza de código en toda la librería.
+	Por fin el RPM es relocalizable real.
+
 2004-01-20
-	Por fin disponible en CVS
+	Por fin disponible en CVS.
+	
 2004-01-19
 	Revisión en los formatos que pueden estar comprimidos en zip
 	Retoques de estilo en todo el código.

@@ -15,10 +15,10 @@
 			veces no est&aacute; disponible para Linux.</p>
 			<p>Dalle ha venido a solucionar este problema, permitiendo trabajar con una
 			gran variedad de formatos. As&iacute; no tenemos que preocuparnos de buscar
-			el programa, sino que simplemente desenpaquetamos el fichero.</p>
+			el programa, sino que simplemente desempaquetamos el fichero.</p>
 			<h2>Versiones liberadas</h2>
 			<table width="50%" align="center">
-				<tr><td><b>0.5.1</b></td><td>18 de diciemtre de 2003</td></tr>
+				<tr><td><b>0.5.1</b></td><td>18 de diciembre de 2003</td></tr>
 				<tr><td><b>0.5.0</b></td><td>16 de diciembre de 2003</td></tr>
 				<tr><td><b>0.4.0</b></td><td>26 de noviembre de 2003</td></tr>
 			</table>
@@ -38,12 +38,10 @@
 	
 	
 	<page>
-		<name>Proyecto</name>
+		<name>Colabora</name>
 		<content>
-			<h1>Proyecto</h1>
+			<h1>Colabora</h1>
 			
-			<p>La p&aacute;gina del proyecto est&aacute; en Sourceforge:</p>
-			<a href="http://sourceforge.net/projects/dalle">http://sourceforge.net/projects/dalle</a><br/>
 			<p> <br/>
 			</p>
 			<p> Puedes colaborar de diversas formas: </p>
@@ -51,8 +49,21 @@
 				<li>Enviando informes de fallos (bugs).</li>
 				<li>Proponiendo nuevas caracter&iacute;sticas.</li>
 				<li>Haciendo iconos y/o logos.</li>
-				<li>Escribiendo algo de c&oacute;digo (soporte para nuevos formatos, otras interfaces gr&aacute;ficas).</li>
-				<li>Informando de situaciones de exito en distintas plataformas.</li>
+				<li>Escribiendo algo de c&oacute;digo:
+					<ul>
+						<li>Soporte para nuevos formatos.</li>
+						<li>Nuevas interfaces gr&aacute;ficas (qt#, swf, swt).</li>
+					</ul>
+				</li>
+				<li>Haciendo paquetes de instalaci&oacute;n para distintas plataformas:
+					<ul>
+						<li>RPM.</li>
+						<li>deb.</li>
+						<li>Instalador de Windows.</li>
+					</ul>				
+				</li>
+				<li>Traduciendo la aplicación a otros idiomas.</li>
+				<li>Informando de situaciones de &eacute;xito en distintas plataformas.</li>
 				<li>Simplemente dando &aacute;nimos.</li>
 			</ul>
 			<p>Si quieres colaborar: </p>
@@ -73,8 +84,7 @@
 			<h1>Capturas de pantalla</h1>
 			<p>He aqu&iacute; algunas capturas de pantalla. <br/><br/></p>
 			<p align="center">
-				<img  src="images/screenshot-01.png" border="0" /><br/><br/>
-				
+				<img  src="images/screenshot-01.png" border="0" /><br/><br/>				
 			</p>
 			<p align="center">
 				<img  src="images/screenshot-02.png" border="0" /><br/><br/>
