@@ -48,7 +48,6 @@ namespace Dalle.Formatos.Kamaleon
 		{
 			byte[] ret = new byte[Size];
 			int contador = 0;
-			int aux=0;
 			int tamano_ultimoFragmento = 0;
 			foreach (InfoFicheroKamaleon k in infos){
 				CopiarArray (k.ToByteArray(), ret, contador);

@@ -3,7 +3,7 @@
     Dalle - A split/join file utility library	
     Dalle.Utilidades.UtilidadesFicheros - Useful file functions.
 	
-    Copyright (C) 2003  Alberto Fern·ndez <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto Fern√°ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,27 +31,27 @@ using I = Dalle.I18N.GetText;
 namespace Dalle.Utilidades
 {	
 
-	/// <summary>Esta clase proporciona mÈtodos est·ticos para copiar 
+	/// <summary>Esta clase proporciona m√©todos est√°ticos para copiar 
 	/// datos de unos ficheros a otros.</summary>
 
 	public class UtilidadesFicheros
 	{
 	
-		/// <summary>TamaÒo m·ximo del buffer de lectura/escritura.
+		/// <summary>Tama√±o m√°ximo del buffer de lectura/escritura.
 		/// (Por defecto 1 Mb)</summary>
 		
 		private const long MAXIMOBUFFER = 0x100000; // 1 Mb
 		
-		/// <summary>TamaÒo mÌnimo del buffer de lectura/escritura.
+		/// <summary>Tama√±o m√≠nimo del buffer de lectura/escritura.
 		/// (Por defecto 512 bytes)</summary>
 		
 		private const long MINIMOBUFFER = 0x200;    // 512 bytes
 		
-		/// <summary>TamaÒo del buffer (1 Mb).</summary>
+		/// <summary>Tama√±o del buffer (1 Mb).</summary>
 		
 		private static long _bufferSize = 0x100000; // 1 Mb
 		
-		/// <summary>TamaÒo del buffer</summary>
+		/// <summary>Tama√±o del buffer</summary>
 		
 		public static long Buffer {
 			get{ return _bufferSize; }
@@ -82,23 +82,23 @@ namespace Dalle.Utilidades
 				string error = String.Format (
 					I._("File {0} already exists"),
 					fich);
-				//TODO:Poner una excepciÛn personalizada.
+				//TODO:Poner una excepci√≥n personalizada.
 				throw new Exception (error);
 			}
 		}
 
 		
 		/// <summary>
-		/// Escribe unos datos en una posiciÛn del fichero, sobreescribiendo
+		/// Escribe unos datos en una posici√≥n del fichero, sobreescribiendo
 		/// el contenido de ese fragmento y dejando intacto el 
 		/// resto del fichero.
 		/// </summary>
 		/// <param name="fich">
-		/// El nombre del fichero en el que se escribir·. </param>
+		/// El nombre del fichero en el que se escribir√°. </param>
 		/// <param name="datos">El array que contiene los datos a escribir. Se 
-		/// escribir· entero al fichero.</param>
-		/// <param name="off">PosiciÛn del fichero a partir de la cual 
-		/// se empezar· a escribir.</param>
+		/// escribir√° entero al fichero.</param>
+		/// <param name="off">Posici√≥n del fichero a partir de la cual 
+		/// se empezar√° a escribir.</param>
 		
 		public static void Sobreescribir (String fich, byte[] datos, long off)
 		{
@@ -111,7 +111,7 @@ namespace Dalle.Utilidades
 		/// <summary>Copia el contenido de un fichero al final de otro</summary>
 		/// <param name="desde">El fichero origen de datos.</param>
 		/// <param name="hacia">El fichero destido de los datos.</param>
-		/// <returns>El n˙mero de bytes copiados</returns>
+		/// <returns>El n√∫mero de bytes copiados</returns>
 		
 		public static long CopiarTodo (String desde, String hacia)
 		{
@@ -119,38 +119,38 @@ namespace Dalle.Utilidades
 		}
 		
 		/// <summary>Copia el contendio de un fichero al final de otro y realiza
-		/// la suma de comprobaciÛn de los datos transferidos.</summary>
+		/// la suma de comprobaci√≥n de los datos transferidos.</summary>
 		/// <param name="desde">El fichero origen de datos.</param>
 		/// <param name="hacia">El fichero destido de los datos.</param>
 		/// <param name="crc">El checsum a aplicar a los datos.</param>
-		/// <returns>El n˙mero de bytes copiados</returns>
+		/// <returns>El n√∫mero de bytes copiados</returns>
 		
 		public static long CopiarTodo (String desde, String hacia, IChecksum crc)
 		{			
 			return CopiarIntervalo (desde, hacia, 0, new FileInfo(desde).Length, crc);
 		}
 		
-		/// <summary>Copia el contendio de un fichero, a partir de una posiciÛn
+		/// <summary>Copia el contendio de un fichero, a partir de una posici√≥n
 		///	dada al final de otro y realiza
-		/// la suma de comprobaciÛn de los datos transferidos.</summary>
+		/// la suma de comprobaci√≥n de los datos transferidos.</summary>
 		/// <param name="desde">El fichero origen de datos.</param>
 		/// <param name="hacia">El fichero destido de los datos.</param>
-		/// <param name="pos">El n˙mero de bytes que no se leer·n del 
+		/// <param name="pos">El n√∫mero de bytes que no se leer√°n del 
 		/// principio de origen</param>
 		/// <param name="crc">El checsum a aplicar a los datos.</param>
-		/// <returns>El n˙mero de bytes copiados</returns>
+		/// <returns>El n√∫mero de bytes copiados</returns>
 
 		public static long CopiarIntervalo (String desde, String hacia, long pos, IChecksum crc)
 		{
 			return CopiarIntervalo (desde, hacia, pos, new FileInfo(desde).Length - pos, crc);
 		}
 		
-		/// <summary>Copia el contendio de un fichero, a partir de una posiciÛn
+		/// <summary>Copia el contendio de un fichero, a partir de una posici√≥n
 		///	dada al final de otro.</summary>
 		/// <param name="desde">El fichero origen de datos.</param>
 		/// <param name="hacia">El fichero destido de los datos.</param>
-		/// <param name="pos">El n˙mero de bytes que no se leer·n del principio de origen</param>
-		/// <returns>El n˙mero de bytes copiados</returns>
+		/// <param name="pos">El n√∫mero de bytes que no se leer√°n del principio de origen</param>
+		/// <returns>El n√∫mero de bytes copiados</returns>
 		
 		public static long CopiarIntervalo (String desde, String hacia, long pos)
 		{
@@ -159,9 +159,9 @@ namespace Dalle.Utilidades
 		/// <summary>Copia una parte de un fichero final de otro.</summary>
 		/// <param name="desde">El fichero origen de datos.</param>
 		/// <param name="hacia">El fichero destido de los datos.</param>
-		/// <param name="from">El n˙mero de bytes que no se leer·n del principio de origen</param>
-		/// <param count="count">El tamaÒo del fragmento a copiar.</param>
-		/// <returns>El n˙mero de bytes copiados</returns>
+		/// <param name="from">El n√∫mero de bytes que no se leer√°n del principio de origen</param>
+		/// <param count="count">El tama√±o del fragmento a copiar.</param>
+		/// <returns>El n√∫mero de bytes copiados</returns>
 		
 		public static long CopiarIntervalo (String desde, String hacia, long from, long count)
 		{
@@ -169,13 +169,13 @@ namespace Dalle.Utilidades
 		}
 		
 		/// <summary>Copia una parte de un fichero final de otro y realiza
-		/// el checksum de comprobaciÛn de los datos transferidos.</summary>
+		/// el checksum de comprobaci√≥n de los datos transferidos.</summary>
 		/// <param name="desde">El fichero origen de datos.</param>
 		/// <param name="hacia">El fichero destido de los datos.</param>
-		/// <param name="from">El n˙mero de bytes que no se leer·n del principio de origen</param>
-		/// <param count="count">El tamaÒo del fragmento a copiar.</param>
+		/// <param name="from">El n√∫mero de bytes que no se leer√°n del principio de origen</param>
+		/// <param count="count">El tama√±o del fragmento a copiar.</param>
 		/// <param name="crc">El checsum a aplicar a los datos.</param>
-		/// <returns>El n˙mero de bytes copiados</returns>
+		/// <returns>El n√∫mero de bytes copiados</returns>
 
 		public static long CopiarIntervalo (String desde, String hacia, long from, long count, IChecksum crc)
 		{
@@ -205,12 +205,12 @@ namespace Dalle.Utilidades
 		}
 		
 		
-		/// <summary>Obtiene el contenido de un fichero a partir de una posiciÛn
+		/// <summary>Obtiene el contenido de un fichero a partir de una posici√≥n
 		/// dada.</summary>
-		/// <param name="fichero">El nombre del fichero del que se leer·.</param>
-		/// <param name="seek">PosiciÛn a partir de la que se leer· (n˙mero de bytes
-		/// al principio del fichero que se saltar·n.</param>
-		/// <returns>Los datos contenidos en fichero, desde la posiciÛn seek
+		/// <param name="fichero">El nombre del fichero del que se leer√°.</param>
+		/// <param name="seek">Posici√≥n a partir de la que se leer√° (n√∫mero de bytes
+		/// al principio del fichero que se saltar√°n.</param>
+		/// <returns>Los datos contenidos en fichero, desde la posici√≥n seek
 		/// hasta el final.</returns>
 		
 		public static byte[] LeerSeek (String fichero, long seek)
@@ -229,9 +229,9 @@ namespace Dalle.Utilidades
 		}
 
 		/// <summary>Obtiene los datos de un fragmento de un fichero.</summary>
-		/// <param name="fichero">Nombre del fichero del que se leer·n los datos.</param>
-		/// <param name="seek">PosiciÛn inicial.</param>
-		/// <param name="count">Cantidad de datos que se leer·n.</param>
+		/// <param name="fichero">Nombre del fichero del que se leer√°n los datos.</param>
+		/// <param name="seek">Posici√≥n inicial.</param>
+		/// <param name="count">Cantidad de datos que se leer√°n.</param>
 		
 	
 		public static byte[] LeerSeek (String fichero, long seek, long count)
@@ -246,9 +246,9 @@ namespace Dalle.Utilidades
 			return ret;
 		}
 		
-		/// <summary>AÒade datos al final de un fichero.</summary>
-		/// <param name="fichero">El nombre del fichero al que se aÒadir·n los datos.</param>
-		/// <param name="data">Los datos a aÒadir.</param>
+		/// <summary>A√±ade datos al final de un fichero.</summary>
+		/// <param name="fichero">El nombre del fichero al que se a√±adir√°n los datos.</param>
+		/// <param name="data">Los datos a a√±adir.</param>
 		
 		public static void Append (String fichero, byte[] data)
 		{		
@@ -259,8 +259,8 @@ namespace Dalle.Utilidades
 		}
 		
 		/// <summary>Lee un byte del fichero.</summary>
-		/// <param name="fichero">El nombre del fichero del que se leer· el byte.</param>
-		/// <param name="pos">PosiciÛn del fichero que se leer·.</param>
+		/// <param name="fichero">El nombre del fichero del que se leer√° el byte.</param>
+		/// <param name="pos">Posici√≥n del fichero que se leer√°.</param>
 		
 		public static byte LeerByte (String fichero, long pos)
 		{		
@@ -269,6 +269,44 @@ namespace Dalle.Utilidades
 			byte ret = (byte)reader.ReadByte();
 			reader.Close();
 			return ret;
+		}
+		
+		/// <summary>Obtiene el stream para escribir en un fichero.
+		/// </summar>
+		/// <remarks>Crea la estructura de directorios necesaria.</remarks>
+		/// <param name="file">El nombre del fichero a crear.</param>
+		/// <returns>Un stream en el que escribir.</returns>
+		
+		public static FileStream CreateWriter (string file)
+		{
+			UtilidadesFicheros.ComprobarSobreescribir (file);
+			
+			int last = file.LastIndexOf('/');
+			if (last < 0)
+				return File.Open (file, FileMode.CreateNew);
+			
+			
+			string dir = file.Substring (0, file.LastIndexOf(Path.DirectorySeparatorChar));
+			DirectoryInfo nfo = new DirectoryInfo(dir);
+			nfo.Create();			
+			return File.Open(file, FileMode.CreateNew);
+		}
+		public static long GenerateHash (string file, IChecksum crc)
+		{
+			FileStream reader = new FileStream (file, FileMode.Open);
+			byte[] buffer = new byte[_bufferSize];
+			long total = 0;
+			long count = 0;
+			
+			do{
+				count = reader.Read (buffer, 0, buffer.Length);
+				crc.Update (buffer, 0, (int) count);
+				total += count;
+			}while (count > 0);
+			
+			
+			reader.Close ();
+			return total;
 		}
 	}
 }

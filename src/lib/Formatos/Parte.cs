@@ -3,7 +3,7 @@
 	Dalle - A split/join file utility library
 	Dalle.Formatos.IParte - Common abstract base class for all formats.
 	
-    Copyright (C) 2003  Alberto Fern醤dez <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto Fern谩ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -43,13 +43,13 @@ namespace Dalle.Formatos
 		protected string nombre = string.Empty;
 
 		/// <summary>
-		/// Breve descripci髇 del formato.
+		/// Breve descripci贸n del formato.
 		/// </summary>
 		
 		protected string descripcion = string.Empty;
 
 		/// <summary>
-		/// Direcci髇 de la p醙ina oficial del programa original.
+		/// Direcci贸n de la p谩gina oficial del programa original.
 		/// </summary>
 		
 		protected string web = string.Empty;
@@ -68,12 +68,12 @@ namespace Dalle.Formatos
 		protected bool parteFicheros = false;
 		
 		/// <summary>
-		/// Indica si se debe detener la operaci髇.
+		/// Indica si se debe detener la operaci贸n.
 		/// </summary>
 		
 		private bool stopRequest = false;
 
-		/// <summary>Obtiene la descripci髇 del formato.</summary>
+		/// <summary>Obtiene la descripci贸n del formato.</summary>
 		
 		public String Descripcion{
 			get{ return descripcion;}
@@ -84,7 +84,7 @@ namespace Dalle.Formatos
 			get{ return nombre;}
 		}
 
-		/// <summary>Obtiene la direcci髇 web del programa original.</summary>
+		/// <summary>Obtiene la direcci贸n web del programa original.</summary>
 		
 		public String Web{
 			get{ return web; }
@@ -104,8 +104,22 @@ namespace Dalle.Formatos
 			get{ return compatible;	}
 		}
 
+		protected Parte ()
+		{
+		}
+
+		protected Parte (string nombre, string descripcion, string web,
+			bool compatible, bool parteFicheros)
+		{
+			this.nombre = nombre;
+			this.descripcion = descripcion;
+			this.web = web;
+			this.compatible = compatible;
+			this.parteFicheros = parteFicheros;
+		
+		}
 		/// <summary>
-		/// M閠odo que deben implementar las clases 
+		/// M茅todo que deben implementar las clases 
 		/// herederas para unir ficheros.
 		/// </summary>
 		/// <param name="fichero">El nombre del fichero a unir</param>
@@ -116,7 +130,7 @@ namespace Dalle.Formatos
 		protected abstract void _Unir (string fichero, string dirDest);
 		
 		/// <summary>
-		/// M閠odo que deben implementar las clases 
+		/// M茅todo que deben implementar las clases 
 		/// herederas para partir ficheros.
 		/// </summary>
 		/// <param name="fichero">El nombre del fichero a partir.</param>
@@ -127,13 +141,13 @@ namespace Dalle.Formatos
 		/// Directorio donde se pondran los nuevos archivos.
 		/// </param>
 		/// <param name="kb">
-		/// Tama駉 de los fragmentos generados (en kb).
+		/// Tama帽o de los fragmentos generados (en kb).
 		/// </param>
 		
 		protected abstract void _Partir (string fichero, string sal1, string dir, long kb);
 		
 		/// <summary>
-		/// M閠odo que deben implementar las clases herederas 
+		/// M茅todo que deben implementar las clases herederas 
 		/// para indicar si puede unir un determinado fichero.
 		/// </summary>
 		/// <param name="fichero">
@@ -156,7 +170,7 @@ namespace Dalle.Formatos
 		/// Directorio donde se pondran los nuevos archivos.
 		/// </param>
 		/// <param name="kb">
-		/// Tama駉 de los fragmentos generados (en kb).
+		/// Tama帽o de los fragmentos generados (en kb).
 		/// </param>
 		
 		public void Partir (string fichero, string sal1, string dir, long kb)
@@ -177,7 +191,7 @@ namespace Dalle.Formatos
 		public void Unir (String fichero, String dirDest)
 		{
 			if (! Directory.Exists (dirDest)){
-				//TODO: Poner una excepci髇 personalizada.
+				//TODO: Poner una excepci贸n personalizada.
 				if (File.Exists(dirDest))
 					throw new Exception(I._("{0} exists and is a file."));
 				new DirectoryInfo(dirDest).Create();
@@ -191,7 +205,7 @@ namespace Dalle.Formatos
 		/// Nombre del archivo de destino, o nombre base de los fragmentos.
 		/// </param>
 		/// <param name="kb">
-		/// Tama駉 de los fragmentos generados (en kb).
+		/// Tama帽o de los fragmentos generados (en kb).
 		/// </param>
 
 		public void Partir (String fichero, String sal1, long kb)
@@ -204,7 +218,7 @@ namespace Dalle.Formatos
 		}
 
 		/// <summary>
-		/// M閠odo que deben implementar las clases 
+		/// M茅todo que deben implementar las clases 
 		/// herederas para unir ficheros.
 		/// </summary>
 		/// <param name="fichero">El nombre del fichero a unir</param>
@@ -235,7 +249,7 @@ namespace Dalle.Formatos
 		}
 		
 		/// <summary>Evento que se provoca para mostrar el progreso
-		/// de una operaci髇.</summary>
+		/// de una operaci贸n.</summary>
 		
 		public event ProgressEventHandler Progress;	
 	}

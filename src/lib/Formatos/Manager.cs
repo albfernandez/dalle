@@ -4,7 +4,7 @@
 	Dalle.Formatos.Manager - 	
 		Provides a single access point for all supported formats.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto FernÃ¡ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -73,7 +73,7 @@ namespace Dalle.Formatos
 				
 		private Manager ()
 		{
-			
+			formatos.Add (new Dalle.Formatos.Astrotite.Astrotite());
 			formatos.Add (new Axman3());
 			formatos.Add (new Zip());
 			formatos.Add (new MaxSplitter());
@@ -95,22 +95,22 @@ namespace Dalle.Formatos
 		
 		
 		/// <summary>
-		/// Obtiene la única instancia de la clase.</summary>
-		/// <returns>La única instancia de la clase.</returns>
+		/// Obtiene la Ãºnica instancia de la clase.</summary>
+		/// <returns>La Ãºnica instancia de la clase.</returns>
 		
 		public static Manager Instance{
 			get { return GetInstance(Thread.CurrentThread); }
 		}
 		
-		/// <summary>Versión de la librería.</summary>
+		/// <summary>VersiÃ³n de la librerÃ­a.</summary>
 		
 		public static Version Version{
 			get{ return Assembly.GetExecutingAssembly().GetName().Version; }
 		}
 		
 		/// <summary>
-		/// Obtiene la única instancia de la clase.</summary>
-		/// <returns>La única instancia de la clase.</returns>
+		/// Obtiene la Ãºnica instancia de la clase.</summary>
+		/// <returns>La Ãºnica instancia de la clase.</returns>
 		
 		public static Manager GetInstance ()
 		{
@@ -199,7 +199,7 @@ namespace Dalle.Formatos
 
 		/// <summary>Parte un fichero</summary>
 		/// <param name="formato">
-		/// El nombre del formato que se utilizará para partir el fichero.
+		/// El nombre del formato que se utilizarÃ¡ para partir el fichero.
 		/// </param>
 		/// <param name="fichero">El fichero a partir.</param>
 		/// <param name="salida1">
@@ -207,10 +207,10 @@ namespace Dalle.Formatos
 		/// No todos los formatos hacen uso de este parametro.
 		/// </param>
 		/// <param name="dir">
-		/// Directorio donde se pondrán los fragmentos obtenidos.
+		/// Directorio donde se pondrÃ¡n los fragmentos obtenidos.
 		/// </param>
 		/// <param name="kb">
-		/// Tamaño de los fragmentos (hay formatos, como zip, que no hacen uso
+		/// TamaÃ±o de los fragmentos (hay formatos, como zip, que no hacen uso
 		/// de este dato). 
 		/// </param>
 		
@@ -233,7 +233,7 @@ namespace Dalle.Formatos
 		
 		/// <summary>Parte un fichero</summary>
 		/// <param name="formato">
-		/// El nombre del formato que se utilizará para partir el fichero.
+		/// El nombre del formato que se utilizarÃ¡ para partir el fichero.
 		/// </param>
 		/// <param name="fichero">
 		/// El fichero a partir.
@@ -243,7 +243,7 @@ namespace Dalle.Formatos
 		/// No todos los formatos hacen uso de este parametro.
 		/// </param>
 		/// <param name="kb">
-		/// Tamaño de los fragmentos (hay formatos, como zip, que no hacen uso
+		/// TamaÃ±o de los fragmentos (hay formatos, como zip, que no hacen uso
 		/// de este dato). 
 		/// </param>
 
@@ -308,11 +308,11 @@ namespace Dalle.Formatos
 		}	
 		
 		/// <summary>Evento que se provoca para mostrar el progreso
-		/// de una operación.</summary>
+		/// de una operaciÃ³n.</summary>
 		
 		public event ProgressEventHandler Progress;
 		
-		/// <summary>Provoca la detención de la operación actual.</summary>
+		/// <summary>Provoca la detenciÃ³n de la operaciÃ³n actual.</summary>
 
 		public void Stop()
 		{
@@ -335,7 +335,7 @@ namespace Dalle.Formatos
 	public class ParteComparer : System.Collections.IComparer 
 	{
 		/// <summary>
-		/// Única instancia de la clase (patrón singleton).
+		/// Ãšnica instancia de la clase (patrÃ³n singleton).
 		/// </summary>
 		
 		private static ParteComparer instance = null;
@@ -349,7 +349,7 @@ namespace Dalle.Formatos
 		{
 		}
 		
-		/// <summary>La única instancia de la clase.</summary>
+		/// <summary>La Ãºnica instancia de la clase.</summary>
 		
 		public static ParteComparer Instance{
 			get{

@@ -3,7 +3,7 @@
 	Dalle - A split/join file utility library
 	Dalle.Formatos.Zip.Zip - Basic support for compressed zip files.
 	
-    Copyright (C) 2003  Alberto Fern·ndez <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto Fern√°ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -146,13 +146,13 @@ namespace Dalle.Formatos.Zip
 		public void Comprimir (string fichero, string salida, int level)
 		{
 			// TODO: A ver si podemos hacer que funcione el metodo STORED.
-			// sino dejar todo con DEFLATED. (øSe puede con los directorios?)
+			// sino dejar todo con DEFLATED. (¬øSe puede con los directorios?)
 			
 			level = (level > 9) ? 9 : level;
 			level = (level < 1) ? 1 : level;
 			ZipOutputStream zOutstream = new ZipOutputStream (File.Create(salida));
 
-			String basePath = "." +  Path.DirectorySeparatorChar;
+			//String basePath = "." +  Path.DirectorySeparatorChar;
 			OnProgress (0, 1);
 			if (File.Exists (fichero)){
 				FileStream fStream = File.OpenRead (fichero);
@@ -168,7 +168,7 @@ namespace Dalle.Formatos.Zip
 					long leidos = fStream.Read(buffer, 0, buffer.Length);
 					zOutstream.Write(buffer, 0, (int) leidos);
 					transferidos+=leidos;
-					// TODO:Comprobar esta funciÛn
+					// TODO:Comprobar esta funci√≥n
 					OnProgress (transferidos, fStream.Length);
 				}while (transferidos < fStream.Length);
 				fStream.Close();

@@ -4,7 +4,7 @@
 	Dalle.Formatos.MaxSplitter.MaxSplitter -
 		Split and Join files in MaxSplitter format.		
 	
-    Copyright (C) 2003  Alberto Fern·ndez <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto Fern√°ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -71,7 +71,7 @@ namespace Dalle.Formatos.MaxSplitter
 				OnProgress (i, info.Fragmentos);
 			}
 			if ( (new FileInfo (destino).Length) != info.TamanoOriginal){
-				// TODO: Poner una excepciÛn bien.
+				// TODO: Poner una excepci√≥n bien.
 				//Console.WriteLine ("Size of generated file is incorrect");
 				string msg = I._("MXS: Incorrect size of regenerated file");
 				throw new Exception (msg);
@@ -106,7 +106,7 @@ namespace Dalle.Formatos.MaxSplitter
 				return false;
 			
 			try{
-				MXSInfo info = new MXSInfo (fichero);
+				new MXSInfo (fichero);
 				return fichero.ToUpper().EndsWith(".MXS");;
 			}
 			catch (Exception){
