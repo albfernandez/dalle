@@ -1,7 +1,7 @@
 /*
 
     OpenHacha, a "free as in freedom" implementation of Hacha.	
-    Copyright (C) 2003  Ramón Rey Vicente <ramon.rey@hispalinux.es>
+    Copyright (C) 2003, 2004  Ramón Rey Vicente <ramon.rey@hispalinux.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -51,8 +51,8 @@ namespace OpenHachaGtkGui
 		
 		public void OnQuitButtonClicked (object o, EventArgs args) 
 		{
-			Application.Quit ();
-        }
+                	Application.Quit ();
+                }
 
 		public void OnAboutButtonClicked (object o, EventArgs args) 
 		{
@@ -94,6 +94,7 @@ namespace OpenHachaGtkGui
 			SplitDialogSplitButton.Sensitive = false;
 
 			this.format = (hachaformat)FileFormat.History;
+			Console.WriteLine(this.format);
 		}
 	
 		public void OnSplitDialogComboEntryChanged (System.Object b, EventArgs e)
@@ -136,19 +137,19 @@ namespace OpenHachaGtkGui
 		public void OnHachaV1Activate (System.Object b, EventArgs e)
 		{
 			this.format = hachaformat.hacha1;
-			//Console.WriteLine(this.format);			
+			Console.WriteLine(this.format);			
 		}
 		
 		public void OnHachaV2Activate (System.Object b, EventArgs e)
 		{
 			this.format = hachaformat.hacha2;
-			//Console.WriteLine(this.format);			
+			Console.WriteLine(this.format);			
 		}
 		
 		public void OnHachaProActivate (System.Object b, EventArgs e)
 		{
 			this.format = hachaformat.hachapro;
-			//Console.WriteLine(this.format);
+			Console.WriteLine(this.format);
 		}
 	}
 
@@ -194,19 +195,13 @@ namespace OpenHachaGtkGui
 	{
 		[Glade.Widget] Gnome.About AboutDialog;
 		
-		/*
-		 * FIXME: The About dialog appears without icon and label 
-		 * on "credits" button
-		 * */
 		public OpenHachaAboutDialog()
 		{
 			Glade.XML gxml = new Glade.XML (null, "openhacha.glade", "AboutDialog", null);
 			gxml.Autoconnect (this);
 			
 			AboutDialog.Name = "OpenHacha";
-			AboutDialog.Version = "0.5";
-			AboutDialog.Copyright = "Copyright © 2003 Ramón Rey Vicente <ramon.rey@hispalinux.es>";
-			AboutDialog.Comments = "OpenHacha, a \"free as in freedom\" implementation of Hacha";
+			AboutDialog.Version = "0.6";
 		}
 	}
 }

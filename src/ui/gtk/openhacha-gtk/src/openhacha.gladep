@@ -2,10 +2,6 @@
 <!DOCTYPE glade-project SYSTEM "http://glade.gnome.org/glade-project-2.0.dtd">
 
 <glade-project>
-  <name>openhacha</name>
-  <program_name>openhacha</program_name>
-  <gettext_support>FALSE</gettext_support>
-  <output_main_file>FALSE</output_main_file>
-  <output_support_files>FALSE</output_support_files>
-  <output_build_files>FALSE</output_build_files>
+  <name></name>
+  <program_name></program_name>
 </glade-project>
