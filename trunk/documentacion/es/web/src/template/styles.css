@@ -28,7 +28,7 @@ border-color: #c8c8c8;
 }
 .bottombanner {
 font-size: 13px;
-float: center;
+float: 0.5;
 padding: 6px;
 border: thin solid;
 background-color: #f3f3f3;
@@ -44,7 +44,7 @@ padding-left: 90px;
 }
 
 .cds {
-float:left;
+float:0;
 margin-right:10px;
 border:0px;
 }
@@ -65,7 +65,7 @@ text-align: right;
 }
 
 .middletable {
-float: center;
+float: 0.5;
 background-color: white;
 border: thin solid;
 border-color: #c8c8c8;
@@ -90,21 +90,13 @@ font-weight: bold;
 .content {
 font-size: 13px;
 margin-top: -5px;
-/* margin-top: -98px; */
 padding-left: 120px;
 }
-
-.versions {
-font-size: 12px;
-float: right;
-}
-
-
 
 .sflogo {
 font-size: 13px;
 font-weight: bold;
-float: right;
+float: 1.0;
 text-align: right;
 margin-top: -45px;
 margin-right: 3px;

@@ -18,6 +18,7 @@
 			el programa, sino que simplemente desempaquetamos el fichero con Dalle.</p>
 			<h2>Formatos soportados</h2>
 			<ul>
+				<li>Astrotite</li>
 				<li>Axman 3</li>
 				<li>Easy File Splitter</li>
 				<li>File Splitter</li>
@@ -50,7 +51,7 @@
 			<tr><td>&nbsp;</td><td>Portable.Net Linux</td><td>Mono Linux</td><td>Mono Windows</td><td>Ms.NET</td></tr>
 			<tr><td>openhacha-text</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td></tr>
 			<tr><td>dalle-console</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td></tr>
-			<tr><td>openhacha-gtk</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td><td>No</td></tr>
+			<tr><td>openhacha-gtk</td><td>No</td><td>S&iacute;</td><td>No</td><td>No</td></tr>
 			<tr><td>dalle-gtk</td><td>No</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
 			</table>
 		
@@ -204,6 +205,9 @@
 					</li>
 				</ul>
 			</p>
+			<h2>Sobre la numeraci&oacute;n de las versiones.</h2>
+			<p>Para numerar las versiones se sigue un sistema como el del kernel
+			de Linux.</p>							
 		</content>
 	</page>
 	
@@ -220,20 +224,27 @@
 			</blockquote>
 			<p><b>OpenHacha</b></p>
 			<blockquote>
-			Mono >= 0.28
-			gtk-sharp >= 0.14 <br/>
+			Mono >= 0.30
+			gtk-sharp >= 0.15<br/>
 			Funciona s&oacute;lo en Linux <br/>
 			</blockquote>
 			<p><b>Dalle-gtk</b></p>
 			<blockquote>
-			Mono >= 0.28
-			gtk-sharp >= 0.14 <br/>
+			Mono >= 0.30
+			gtk-sharp >= 0.15 <br/>
 			(Funciona en Windows y en Linux)
 			</blockquote>
 			
 			
 			<h2>Instalaci&oacute;n en Windows</h2>
 			<blockquote>
+			<h3>Instalaci&oacute;n de Mono y gtk-sharp.</h3>
+			<p>Primero hay que descargar e instalar Mono y gtk-sharp. Puedes encontrar
+			un instalador conjunto para ambos 
+			<a href="http://go-mono.com/archive/0.30/windows/mono-0.30-gtksharp-0.15-win32-1.exe">aqu&iacute;.</a></p>
+			<p>Si falta alguna dll (como msvcr70.dll) puedes bajartelas en 
+			<a href="http://www.dll-files.com">http://www.dll-files.com</a></p>
+			<h3>Instalaci&oacute;n de dalle.</h3>
 			De momento no hay un instalador para Windows, por lo que el procedimiento ser&aacute;:
 			<ul>
 				<li>Descargar dalle-VERSION-bin.zip</li>
