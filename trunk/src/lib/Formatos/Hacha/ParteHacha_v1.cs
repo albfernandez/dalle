@@ -62,6 +62,9 @@ namespace Dalle.Formatos.Hacha
 			
 			cab.NombreOriginal = new FileInfo(fichero).Name;
 			
+			if ((s1 == null) || (s1 == string.Empty))
+				s1 = new FileInfo (fichero).Name;
+			
 			string salida1 = dir + Path.DirectorySeparatorChar + s1;
 
 			UtilidadesFicheros.ComprobarSobreescribir(salida1 + ".0");
@@ -111,7 +114,6 @@ namespace Dalle.Formatos.Hacha
 			string fich = b + fragmento;
 			transferidos = UtilidadesFicheros.CopiarIntervalo (fich, salida, cab.Size, crc);
 			if ((transferidos != cab.TamanoFragmento) && (transferidos != cab.Tamano)){
-				// TODO : I18N
 				string msg = string.Format (
 					I._("File  {0} is corrupt (incorrect size)!"), fich);
 				throw new Exception (msg);

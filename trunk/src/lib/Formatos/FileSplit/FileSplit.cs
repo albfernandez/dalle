@@ -44,7 +44,7 @@ namespace Dalle.Formatos.FileSplit
 			parteFicheros = false;
 		}
 
-		protected override void _Unir (String fichero, String dirDest)
+		protected override void _Unir (string fichero, string dirDest)
 		{
 			
 			FileSplit_FSI fsi = FileSplit_FSI.LoadFromFile (fichero);

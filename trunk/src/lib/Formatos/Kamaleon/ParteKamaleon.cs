@@ -99,8 +99,8 @@ namespace Dalle.Formatos.Kamaleon
 		{
 			byte[] piel = UtilidadesRecursos.GetImagen("Piel-01.jpg");
 			long tamano = 1024 * kb - piel.Length;
-			if ((s1 == null) || (s1 =="")){
-				s1 = fichero.Substring (0, fichero.LastIndexOf('.'));
+			if ((s1 == null) || (s1 == string.Empty)){
+				s1 = new FileInfo(fichero).Name;
 			}
 			string salida1 = dir + Path.DirectorySeparatorChar + s1;
 			int secuencia = 1;

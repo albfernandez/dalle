@@ -109,14 +109,16 @@ namespace Dalle.Formatos.Axman
 			}
 			
 		}
-		protected override void _Partir (string fichero,string sal1, String dir, long kb)
+		protected override void _Partir (string fichero,string sal1, string dir, long kb)
 		{
+			if ((sal1 == null) || (sal1 == string.Empty))
+				sal1 = new FileInfo (fichero).Name;
 			string formato = dir + Path.DirectorySeparatorChar + sal1 + ".{0}.axman";
 			int i = 1;
 			long transferidos = 0;
 			long totales = new FileInfo(fichero).Length;
 			//if (totales < (kb*1024)){
-			//	string msg = string.Format (I._("Source file is too small"));
+			//	string msg = string.Format (I.__("Source file is too small"));
 			//	throw new Exception ("El fichero es más pequeño que los fragmentos");
 			//}
 			long tf = kb*1024 - 23;
