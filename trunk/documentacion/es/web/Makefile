@@ -19,6 +19,9 @@ $(SOURCEDIR)/NEWS: ../../../NEWS
 	
 clean:
 	rm -f $(DESTDIR)/*.html *.exe
+
+upload:
+	 scp -r deploy/*.* infjaf@shell.sf.net:/home/groups/d/da/dalle/htdocs
 	
 
 .PHONY: clean

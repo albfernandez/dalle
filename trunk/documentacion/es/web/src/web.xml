@@ -207,6 +207,13 @@
 					</li>
 				</ul>
 			</p>
+			<h2>Descargar del cvs</h2>
+			<p>Si quieres descargarte la &uacute;ltima versi&oacute;n del
+			cvs, solo tienes que usar el acceso anonimo.</p>
+			<pre>
+	cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/dalle login
+	cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/dalle co dalle
+			</pre>
 			<h2>Sobre la numeraci&oacute;n de las versiones.</h2>
 			<p>Para numerar las versiones se sigue un sistema como el del kernel
 			de Linux.</p>							
@@ -252,7 +259,7 @@
 				<li>Descargar dalle-VERSION-bin.zip</li>
 				<li>Descomprimir.</li>
 				<li>Copiar el directorio los programas compilados y las
-				librer&iacute;s al sitio de su disco duro que desee.</li>
+				librer&iacute;as al sitio de su disco duro que desee.</li>
 				<li>Para ejecutar, desde la linea de comandos, y en ese directorio, mono dalle-gtk.exe,
 				o doble click en el archivo dalle-gtk.bat</li>
 			</ul>
