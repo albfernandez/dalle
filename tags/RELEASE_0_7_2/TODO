@@ -1,0 +1,126 @@
+Por hacer:
+	A continuación se indican los cambios que se realizarán y las versiones correspondientes
+	que serán liberadas, una vez un grupo de ellos se haya terminado.
+	
+	
+===============================
+
+	Versión 0.6
+
+===============================
+
+	- [X]  Terminar wrapper para dalle-console
+	- [-]  Página web del proyecto.
+	- [-]  Terminar el formato Axman3
+	- [-]  Terminar el soporte FileSplit
+	- [X]  Mostrar el progreso en:
+			- [X]  Axman3
+			- [-]  FileSplit
+			- [X]  Zip (en descomprimir)
+	- [X]  Depurar configure./(¿pasarlo a shell-script?)
+	- [-]  Mejorar la verificación de sobreescribirFicheros.	
+	- [X]  Cambiar el nombre de ProgresListener por otro que indique más claramente
+	- [X]  La salida de listar los formatos ordenada por orden alfabetico.
+	- [X]  Mejorar dalle-crcs.
+	- [X]  I18N de dalle-crcs.
+	- [X]  Limpieza de código en Manager.cs
+	- [X]  Hacer soporte para I18N completo en libDalle.
+	- [X]  Añadir el objetivo clean en todos los makefiles.
+	- [X]  Cambiar el sistema en el que se compilan los recursos de idiomas en el Makefile (a tipo nunit-gtk)
+	- [X]  Quitar IMessageListener y controlarlo ahora con events y delegados.
+	- [X]  Soporte del objetivo uninstall en los makefiles.
+	- [X]  Quitar OnBegin OnFinish en Dalle.Formatos.
+	- [-]  Comentar Dalle.Formatos
+	- [X]  Interfaz gtk#.	
+	- [-]  Hacer que se compruebe antes de empezar si se puede partir (si no se 
+		   generarán más ficheros de los que se pueden "direccionar").
+	- [X]  Hacer que se compruebe que no se sobreescribe ningún fichero.
+	
+	- [-]  Soporte completo de las situaciones de error, con nuevas excepciones personalizadas.
+	- [-]  Revisión completa del código en los formatos.
+	- [X]  Mejorar lo de detener.
+	- [X]  Repasar todas la AssemblyInfo.cs.
+	- [-]  Soporte I18N completo (en la libreria y en la interfaz).
+	- [X]  Revisar el estilo de codificación / cabeceras.
+		-	[X] Dalle-gtk
+		-	[X] Dalle-console
+		-	[X] Librería
+		-	[X] Otras aplicaciones auxiliares (dalle-crcs, testcrcs, web ...)
+	- [-]  Revisión completa de MaxSplitter.
+	- [X]  Hacer por fin bien el RPM (relocalizable real y +).
+	- [X]  Que todos los formatos, a la hora de devolver si pueden unir un fichero,
+			comprueben primero su existencia.
+	- [X]  Añadir SplitFileCRC a dalle-crs y a crcsBenchmark
+	
+===============================
+
+	Versión 0.8
+
+===============================
+
+	- [ ]  Soporte split (/usr/bin/split de coreutils).
+	- [ ]  Soporte gcutter.
+	- [ ]  Soporte HJSplit.
+	- [ ]  Documentar los formatos.
+	- [ ]  Hacer tests (NUnit) de los formatos y demás.
+	- [ ]  Todo el código comentado.
+	- [ ]  Repaso de dalle-console.
+	- [ ]  Repaso de dalle-gtk.
+	- [ ]  Repaso de dalle-crcs.
+	- [ ]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
+	- [ ]  Hacer los programas compatibles con pnet.
+	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
+	- [ ]  Paquete deb.
+	- [ ]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
+
+
+===============================
+
+	Versión 0.10
+
+===============================
+
+	- [ ] DragNDrop.
+	- [ ] Soporte para cortar en kamaleon2.
+	- [ ] Kamaleon-gtk (supone revisar formato Kamaleon.)
+	- [ ] Manual de usuario.
+	
+
+
+===============================
+
+	Versión 0.12
+
+===============================
+	
+	
+	- [ ] Diagramas de clases.
+	- [-] Soporte "completo" para zip.
+	- [ ] Soporte "completo" para tar, gz, bz2.
+
+
+===============================
+
+	Versión 1.0
+
+===============================
+
+	
+	- [ ] Interfaz swf.
+	- [ ] Instalador NSIS para Windows
+
+
+
+
+
+	
+	
+Otras cosas por hacer (cuando haya tiempo):
+	- [ ]  Hacer que Axman3 soporte la verificación crc que tiene.
+	- [ ]  Hacer un soporte completo para los archivos FSI de FileSplit
+	
+	Soporte para archivos de verificación:
+	- [X]  Soporte sfv
+	- [X]  Soporte md5
+	- [ ]  Soporte PAR1
+	- [ ]  Soporte PAR2
