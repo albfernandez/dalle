@@ -1,5 +1,5 @@
 %define name dalle
-%define version 0.5.5
+%define version 0.6.0
 %define release 1
 %define prefix /usr
 
@@ -81,6 +81,9 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-crcs
 /usr/lib/libDalle.dll
 
 %changelog
+
+* Tue Jan 27 2004 Alberto Fernandez <infjaf00@yahoo.es>
+- Version 0.6.0
 
 * Mon Jan 26 2004 Alberto Fernandez <infjaf00@yahoo.es>
 - Por fin es relocalizable real.
