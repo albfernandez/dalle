@@ -1,3 +1,11 @@
+
+2004-01-27
+	Versión 0.6.0
+
+2004-01-27
+	Interfaz gráfica gtk# terminada.
+	Actualizado OpenHacha a su versión del cvs.
+
 2004-01-26
 	Limpieza de código en toda la librería.
 	Por fin el RPM es relocalizable real.

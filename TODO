@@ -31,7 +31,7 @@ Por hacer:
 	- [X]  Soporte del objetivo uninstall en los makefiles.
 	- [X]  Quitar OnBegin OnFinish en Dalle.Formatos.
 	- [-]  Comentar Dalle.Formatos
-	- [ ]  Interfaz gtk#.	
+	- [X]  Interfaz gtk#.	
 	- [-]  Hacer que se compruebe antes de empezar si se puede partir (si no se 
 		   generarán más ficheros de los que se pueden "direccionar").
 	- [X]  Hacer que se compruebe que no se sobreescribe ningún fichero.
@@ -67,6 +67,7 @@ Por hacer:
 	- [ ]  Repaso de dalle-console.
 	- [ ]  Repaso de dalle-gtk.
 	- [ ]  Repaso de dalle-crcs.
+	- [ ]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
 	- [ ]  Hacer los programas compatibles con pnet.
 	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
 
