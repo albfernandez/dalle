@@ -35,7 +35,7 @@ namespace Dalle.FileVerification
 		public bool IsOk ()
 		{
 			realHash = GenerateHash();
-			return (realHash == hash);
+			return (realHash.ToUpper() == hash.ToUpper());
 		}
 	}
 }

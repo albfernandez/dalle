@@ -50,12 +50,20 @@ namespace Dalle.FileVerification.Verifiers
 			string linea;
 			linea = reader.ReadLine ();
 			while (linea != null){
-				if (! linea.StartsWith (";") ){
-					string fname = linea.Substring (0, linea.LastIndexOf (" ")).Trim();
-					string hash = linea.Substring (linea.LastIndexOf(" ")).Trim();
-					fname = fname.Replace ('\\', Path.DirectorySeparatorChar);
-					SFVElement el = new SFVElement (fname, hash, new FileHasherCrc32()); 
-					ret.Add (el);
+				int idx = linea.IndexOf (';');
+				if (idx >=0)
+					linea = linea.Substring (0, linea.IndexOf(';'));
+				linea = linea.Trim();
+				if (linea != string.Empty) {
+					try{
+						string fname = linea.Substring (0, linea.LastIndexOf (" ")).Trim();
+						string hash = linea.Substring (linea.LastIndexOf(" ")).Trim();
+						fname = fname.Replace ('\\', Path.DirectorySeparatorChar);
+						SFVElement el = new SFVElement (fname, hash, new FileHasherCrc32()); 
+						ret.Add (el);
+					}
+					catch (System.Exception) {
+					}
 				}				
 				linea = reader.ReadLine ();
 			}

@@ -37,13 +37,14 @@ namespace Dalle.Formatos.MaxSplitter
 	
 	public class MaxSplitter : Parte
 	{	
-		public MaxSplitter()
+		public MaxSplitter() : base (
+				"mxs", 
+				"MaxSplitter v 1.x Free Edition", 
+				"http://www.acc.umu.se/~max/", 
+				true, 
+				true)
 		{
-			nombre = "mxs";	
-			descripcion = "MaxSplitter v 1.x Free Edition";
-			web = "http://www.acc.umu.se/~max/";
-			compatible = true;
-			parteFicheros = true;			
+	
 		}
 		
 		protected override void _Unir (string fichero, string dirDest)
@@ -59,7 +60,7 @@ namespace Dalle.Formatos.MaxSplitter
 			for (int i=1; i<= info.Fragmentos; i++){
 				string f = String.Format (bas + ".{0:000}" , i);
 				if (!File.Exists(f)){
-					//Console.WriteLine ("File not found " + f);
+					//TODO Mensaje bien puesto.
 					string msg = string.Format (I._("MXS: File not found {0}"), f);
 					throw new Exception (msg);
 				}
@@ -104,14 +105,12 @@ namespace Dalle.Formatos.MaxSplitter
 		{
 			if (! File.Exists (fichero) )
 				return false;
-			
-			try{
+			try {
 				new MXSInfo (fichero);
-				return fichero.ToUpper().EndsWith(".MXS");;
+				return fichero.ToUpper().EndsWith (".MXS");
+			}catch (Exception){
 			}
-			catch (Exception){
-				return false;
-			}
+			return false;
 		}	
 	}
 }

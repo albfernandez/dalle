@@ -28,8 +28,7 @@ using System.Reflection;
 using System.IO;
 using System.Threading;
 
-using Dalle.Formatos;
-using Dalle.Formatos.Hacha;
+/*using Dalle.Formatos.Hacha;
 using Dalle.Formatos.SplitFile;
 using Dalle.Formatos.FileSplit;
 using Dalle.Formatos.Kamaleon;
@@ -38,7 +37,7 @@ using Dalle.Formatos.EasyFileSplitter;
 using Dalle.Formatos.MaxSplitter;
 using Dalle.Formatos.Generico;
 using Dalle.Formatos.Zip;
-using Dalle.Formatos.Axman;
+using Dalle.Formatos.Axman;*/
 
 using I = Dalle.I18N.GetText;
 
@@ -73,7 +72,7 @@ namespace Dalle.Formatos
 				
 		private Manager ()
 		{
-			formatos.Add (new Dalle.Formatos.Astrotite.Astrotite());
+			/*formatos.Add (new Dalle.Formatos.Astrotite.Astrotite());
 			formatos.Add (new Axman3());
 			formatos.Add (new Zip());
 			formatos.Add (new MaxSplitter());
@@ -86,7 +85,7 @@ namespace Dalle.Formatos
 			formatos.Add (new ParteHacha_v2());
 			formatos.Add (new ParteHacha_v1());
 			formatos.Add (new ParteHachaPro());
-			formatos.Add (new ParteGenerico());
+			formatos.Add (new ParteGenerico());*/
 
 			foreach (Parte p in formatos)
 				p.Progress += new ProgressEventHandler (this.OnProgress);
