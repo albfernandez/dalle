@@ -21,6 +21,7 @@
 
 */
 using System;
+using System.Reflection;
 
 using Gtk;
 using Gdk;
@@ -50,17 +51,8 @@ namespace Dalle.UI.DalleGtk
 			this.DeleteEvent += new DeleteEventHandler (WindowExit);
 			
 			this.InitComponents();
-			/*this.Icon = IconManager.GetPixmap ("gears.png");
-			this.Title = String.Format (GetText ("Ventana_Titulo"),
-					       GetText ("Programa_Nombre"),
-					       GetText ("Ventana_No_Archivo"));
-
-			this.SetDefaultSize (100, 100);
-			this.DeleteEvent += new DeleteEventHandler (VentanaSalir);
-			this.CrearComponentes ();
-			GLib.Timeout.Add (
-				50, 
-				new GLib.TimeoutHandler(dArea.ProcesarEventosPendientes));*/
+			this.Icon = new Gdk.Pixbuf (null, "gears.png");
+			
 			
 		}
 	

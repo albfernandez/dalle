@@ -23,6 +23,8 @@
 
 using System;
 using System.Collections;
+using System.Reflection;
+using System.IO;
 
 using Gtk;
 using Gdk;
@@ -37,9 +39,11 @@ namespace Dalle.UI.DalleGtk
 	public class SplitDialog : BaseDialog
 	{
 	
-		private const string FORMATO_DEFECTO = "hacha1";
+		private const string FORMATO_DEFECTO = "generico";
 		
 		private Gtk.OptionMenu Formats;
+		private Gtk.SpinButton numberSpin;
+		private Gtk.SpinButton sizeSpin;
 		private ArrayList listaFormatos;
 		
 		private static SplitDialog instance;
@@ -54,14 +58,97 @@ namespace Dalle.UI.DalleGtk
 		
 		private SplitDialog (Gtk.Window parent) : base (parent)
 		{
-			this.Title = I._("SplitDialog.Title");
-			this.VBox.PackStart (new Gtk.Label ("Split"));
+			this.Title = I._("Split Files");
+			this.SetSizeRequest (500,300);
+			this.FileEntry.Changed += new EventHandler (OnEntryChanged);
 			Formats = CreateFormatsOptionMenu();
-			this.VBox.PackStart (Formats);
 			LayoutComponents();
 		}
 		private void LayoutComponents()
-		{
+		{			
+			
+			Gtk.HBox hbox1 = new Gtk.HBox (false, 12);
+			hbox1.BorderWidth = 0;
+			
+			Gtk.Image img = new Gtk.Image (new Gdk.Pixbuf (null, "split.gif"));
+			img.Xalign = 0.5f;
+			img.Yalign = 0.0f;			
+			hbox1.PackStart (img, false, false, 0);
+			
+			
+			Gtk.VBox vbox1 = new Gtk.VBox (false, 12);
+			
+						
+			Gtk.Label lbl = new Gtk.Label (String.Empty);
+			lbl.Markup = String.Format (
+				"<big><b>{0}</b></big>\n{1}",
+				I._("Split a File"),
+				I._("Split a file in small pieces"));
+			
+			lbl.Xalign = 0.0f;
+			lbl.Yalign = 0.0f;
+			
+			vbox1.PackStart (lbl, false, false, 0);
+			
+			
+			Gtk.Table table = new Gtk.Table (4, 2, false);
+			table.ColumnSpacing = 6;
+			table.RowSpacing = 6;
+			
+			Gtk.Label lbl1 = new Gtk.Label (I._("Select a file to split"));
+			lbl1.Xalign = 0.0f;
+			lbl1.Yalign = 0.5f;
+			
+			table.Attach (lbl1, 0, 1, 0,1);
+			
+			Gtk.HBox hbox2 = new Gtk.HBox (false, 6);
+			hbox2.PackStart (FileEntry);
+			hbox2.PackStart (BrowseButton);
+			
+			table.Attach (hbox2, 1,2, 0,1);
+			
+			
+			Gtk.Label lbl2 = new Gtk.Label (I._("Number of fragments"));
+			lbl2.Xalign = 0.0f;
+			lbl2.Yalign = 0.5f;
+			table.Attach (lbl2, 0,1, 1,2);
+			
+			
+			Gtk.Adjustment adj = new Gtk.Adjustment (1.0,1.0,999.0, 1.0, 10.0, 10.0);
+			numberSpin = new Gtk.SpinButton (adj, 1.0, 0);
+			numberSpin.ValueChanged += new EventHandler (this.OnNumberSpinChanged);
+			table.Attach (numberSpin, 1,2, 1,2);
+			
+			Gtk.Label lbl3 = new Gtk.Label (I._("Size of fragments"));
+			lbl3.Xalign = 0.0f;
+			lbl3.Yalign = 0.5f;
+			table.Attach (lbl3, 0, 1, 2, 3);
+			
+			Gtk.Adjustment adj2 = new Gtk.Adjustment (1420.0, 1.0, 1.024e6, 10.0,100.0,100.0); 
+			sizeSpin = new Gtk.SpinButton (adj2, 10.0, 0);
+			sizeSpin.ValueChanged += new EventHandler (this.OnSizeSpinChanged);
+			Gtk.HBox hbox3 = new Gtk.HBox (false, 6);
+			hbox3.PackStart (sizeSpin, true, true, 0);
+			hbox3.PackStart (new Gtk.Label (I._("KiB")), false, false, 0);
+			table.Attach (hbox3, 1,2, 2, 3);
+			
+			Gtk.Label lbl4 = new Gtk.Label (I._("File Format"));
+			lbl4.Xalign = 0.0f;
+			lbl3.Yalign = 0.5f;
+			table.Attach (lbl4, 0, 1, 3, 4);
+			
+			table.Attach (Formats, 1,2,3,4);
+			
+			
+			
+			
+			
+			vbox1.PackStart (table, true, true, 0);
+			hbox1.PackStart (vbox1, true, true, 0);
+			
+			
+			this.VBox.PackStart (hbox1, false, false, 0);
+			this.VBox.PackStart(Progress, true, false, 0);
 			
 			LayoutActionArea();
 		}
@@ -72,7 +159,29 @@ namespace Dalle.UI.DalleGtk
 		protected override void ExecuteAction()
 		{
 			string format = (listaFormatos [Formats.History] as IParte).Nombre;
-			//Manager.Instance.Partir (format, FileEntry.Text, "salida", 1440);
+			
+			Manager.Instance.Partir (format, FileEntry.Text, "", sizeSpin.ValueAsInt);
+		}
+		
+		protected void OnSizeSpinChanged (object o, EventArgs args)
+		{
+			OnEntryChanged (o, args);
+		}
+		protected void OnNumberSpinChanged (object o, EventArgs args)
+		{
+			if (! File.Exists (this.FileEntry.Text) )
+				return;
+			long tamano = new FileInfo(this.FileEntry.Text).Length;
+			sizeSpin.Value = Math.Ceiling ((double) (tamano) / (numberSpin.ValueAsInt * 1024));
+		}
+		
+		protected void OnEntryChanged (object sender, EventArgs args)
+		{
+			if (! File.Exists (this.FileEntry.Text) )
+				return;
+			long tamano = new FileInfo(this.FileEntry.Text).Length;
+			numberSpin.Value = Math.Ceiling ((double) (tamano) / (sizeSpin.ValueAsInt * 1024));
+			
 		}
 		private Gtk.OptionMenu CreateFormatsOptionMenu()
 		{

@@ -25,6 +25,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 
 using Gtk;
 using GtkSharp;
@@ -47,29 +48,18 @@ namespace Dalle.UI.DalleGtk
 		protected CustomProgressBar Progress;
 		protected bool running = false;
 		
-		//private Gtk.FileSelection fileSelect;
-		//private Gtk.Label lblFichero;
-		//private Gtk.Label lblInfo;
-		//private Gtk.Button btnBuscar;
-		//private Gtk.Button btnCerrar;
-		//private Gtk.Button btnPegar;
-		//private MiBarraDeProgreso progress;
-		//private Gtk.Entry nombreFichero;
-	
 		public BaseDialog (Gtk.Window parent) : 
 			base ("", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
 			InitComponents();
 			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
 			this.DeleteEvent += new DeleteEventHandler (this.HideDialog);
-			
-			
+			this.Icon = new Gdk.Pixbuf (null, "gears.png");		
 			TransientFor = parent;
 			Modal = true;
-			this.SetSizeRequest (400,200);
 			Resizable = false;
-			BorderWidth = 15;
-			HasSeparator = true;
+			BorderWidth = 10;
+			HasSeparator = false;
 			
 		}
 		
@@ -99,7 +89,7 @@ namespace Dalle.UI.DalleGtk
 				
 		protected virtual Gtk.FileSelection CreateFileSelection ()
 		{
-			Gtk.FileSelection f = new Gtk.FileSelection(I._("Select_a_file"));
+			Gtk.FileSelection f = new Gtk.FileSelection(I._("Select a file"));
 			
 			f.TransientFor = this;
 			f.Modal = true;
@@ -145,7 +135,7 @@ namespace Dalle.UI.DalleGtk
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Error,
 					Gtk.ButtonsType.Ok,
-					"Selecciona un fichero valido");
+					I._("Selected file does not exist"));
 				d.Run();
 				d.Destroy();
 				return;
@@ -160,10 +150,15 @@ namespace Dalle.UI.DalleGtk
 				ExecuteAction();
 			}
 			catch (Exception e){
-				//TODO: Soportar todas las excepciones que pueda lanzar.
-				//TODO: Y mostrar un diálogo en lugar de esto.
-				Console.WriteLine ("Exception  ......");
-				Console.WriteLine (e.Message);
+				
+				Gtk.MessageDialog d = new Gtk.MessageDialog (
+					this, 
+					Gtk.DialogFlags.DestroyWithParent,
+					Gtk.MessageType.Error,
+					Gtk.ButtonsType.Ok,
+					e.Message);
+				d.Run();
+				d.Destroy();
 			}
 			OnFinish();
 			running = false;
@@ -187,17 +182,15 @@ namespace Dalle.UI.DalleGtk
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Question,
 					Gtk.ButtonsType.YesNo,
-					"¿Desea cerrar la ventana y detener el trabajo con los ficheros?");
+					I._("Do you want to stop file operation?"));
 				int ret = d.Run();
 				d.Destroy();
 				
 				switch (ret){
 				
 				case (int) Gtk.ResponseType.No:
-					Console.WriteLine ("No");
 					break;
 				case (int) Gtk.ResponseType.Yes:
-					Console.WriteLine ("Yes");
 					Manager.Instance.Stop();
 					this.Hide();
 					break;				
@@ -224,7 +217,6 @@ namespace Dalle.UI.DalleGtk
 		protected virtual void OnFinish()
 		{
 			this.FileEntry.Sensitive = true;
-			//this.CloseButton.Sensitive = true;
 			this.BrowseButton.Sensitive = true;
 			this.ActionButton.Sensitive  = true;
 			DalleGtk.DoEvents();
@@ -234,7 +226,6 @@ namespace Dalle.UI.DalleGtk
 			this.FileEntry.Sensitive = false;
 			this.ActionButton.Sensitive = false;
 			this.BrowseButton.Sensitive = false;
-			//this.CloseButton.Sensitive  = false;
 			DalleGtk.DoEvents();
 		}				
 	}
