@@ -1,5 +1,5 @@
 %define name dalle
-%define version 0.6.0
+%define version 0.7.0
 %define release 1
 %define prefix /usr
 
@@ -17,7 +17,7 @@ BuildArch:		noarch
 Prefix:			%{prefix}
 Distribution:   Any
 Packager:       Alberto Fernandez  <infjaf00@yahoo.es>
-Requires:   	mono >= 0.24, gtk-sharp >= 0.10
+Requires:   	mono >= 0.30, gtk-sharp >= 0.15
 
 %description
 
@@ -59,8 +59,12 @@ echo "mono $RPM_INSTALL_PREFIX/bin/openhacha-text.exe" >> "$RPM_INSTALL_PREFIX"/
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/openhacha-text
 
 echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/dalle-crcs
-echo "mon $RPM_INSTALL_PREFIX/bin/dalle-crcs.exe " >> "$RPM_INSTALL_PREFIX"/bin/dalle-crcs
+echo "mono $RPM_INSTALL_PREFIX/bin/dalle-crcs.exe " >> "$RPM_INSTALL_PREFIX"/bin/dalle-crcs
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-crcs
+
+echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/dalle-sfv-console
+echo "mono $RPM_INSTALL_PREFIX/bin/dalle-sfv-console.exe " >> "$RPM_INSTALL_PREFIX"/bin/dalle-sfv-console
+echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 
 
 
@@ -77,10 +81,16 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-crcs
 /usr/bin/openhacha-gtk
 /usr/bin/dalle-console
 /usr/bin/dalle-gtk
+/usr/bin/dalle-sfv-console.exe
+/usr/bin/dalle-sfv-console
 
 /usr/lib/libDalle.dll
 
 %changelog
+
+* Sun Feb 8 2004 Alberto Fernandez <infjaf00@yahoo.es>
+- Incluido el nuevo dalle-sfv-console
+- Version 0.7.0
 
 * Tue Jan 27 2004 Alberto Fernandez <infjaf00@yahoo.es>
 - Version 0.6.0

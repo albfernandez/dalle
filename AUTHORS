@@ -2,18 +2,21 @@
 	Dalle Authors
 	=================
 	
-	* Alberto Fern·ndez <infjaf00@yahoo.es>
+	* Alberto Fern√°ndez <infjaf00@yahoo.es>
 		- libDalle.
 		- dalle-console.
 		- dalle-gtk.
 	
-	* RamÛn Rey Vicente <ramon.rey@hispalinux.es>
+	* Ram√≥n Rey Vicente <ramon.rey@hispalinux.es>
 		- OpenHacha GTK# interface
 		- OpenHacha command line interface
 	
-	* ¡lvaro PeÒa <apg@esware.com>
+	* √Ålvaro Pe√±a <apg@esware.com>
 		- HIG'ed the OpenHacha Gtk# interface.
 	
-	* Eduardo GarcÌa Cebollero <kiwnix@yahoo.es>
+	* Eduardo Garc√≠a Cebollero <kiwnix@yahoo.es>
 		- libhacha, the "free as in freedom" C# implementation of
 		  Hacha (starting point of libDalle)
+	
+	* Daniel Martinez Contador <dmcontador@terra.es>
+		- lastre, unpacker for Astrotite files written in C.

@@ -1,24 +1,44 @@
+2004-02-10
+	Eliminados (casi) todos los warnings del compilador.
+	Soporte para verificar ficheros md5 y sfv recursivos.
+
+2004-02-08
+	Soporte para unir archivos creados con Astrotite.
+	Soporte para crear md5 y sfv recursivo.
+
+2004-02-03
+	Soporte para crear Md5 (tipo linux y bsd, no recursivo).
+
+2004-02-02
+	Puede verificar archivos sfv (no recursivos).
+	Puede crear archivos sfv (no recursivos).
+
+2004-02-01
+	Soporte preliminar para archivos de verificaci√≥n. (SFV)
+
+2004-01-31
+	Actualizado OpenHacha 0.5
 
 2004-01-27
-	VersiÛn 0.6.0
+	Versi√≥n 0.6.0
 
 2004-01-27
-	Interfaz gr·fica gtk# terminada.
-	Actualizado OpenHacha a su versiÛn del cvs.
+	Interfaz gr√°fica gtk# terminada.
+	Actualizado OpenHacha a su versi√≥n del cvs.
 
 2004-01-26
-	Limpieza de cÛdigo en toda la librerÌa.
+	Limpieza de c√≥digo en toda la librer√≠a.
 	Por fin el RPM es relocalizable real.
 
 2004-01-20
 	Por fin disponible en CVS.
 	
 2004-01-19
-	RevisiÛn en los formatos que pueden estar comprimidos en zip
-	Retoques de estilo en todo el cÛdigo.
-	RevisiÛn ligera en Dalle.Formatos.MaxSplitter
-	RevisiÛn de dalle-console.
-		CreaciÛn de la clase LongJob (abstracta, base para SplitJob y JoinJob).
+	Revisi√≥n en los formatos que pueden estar comprimidos en zip
+	Retoques de estilo en todo el c√≥digo.
+	Revisi√≥n ligera en Dalle.Formatos.MaxSplitter
+	Revisi√≥n de dalle-console.
+		Creaci√≥n de la clase LongJob (abstracta, base para SplitJob y JoinJob).
 		Muestra mensajes en lugar del trace de las excepciones.
 
 2004-01-18
@@ -28,11 +48,11 @@
 2004-01-17
 	Nuevo sistema I18N (a ver si este es el definitivo...)
 	Cambios de estilo en Dalle.Utilidades.
-	CreaciÛn del nuevo paquete Dalle.Checksum, con las clases CRC y NullCRC, que
-	antes estaban en Utilidades (no se que pintaban allÌ).
+	Creaci√≥n del nuevo paquete Dalle.Checksum, con las clases CRC y NullCRC, que
+	antes estaban en Utilidades (no se que pintaban all√≠).
 
 2004-01-16
-	Actualizado OpenHacha a 0.4+ (versiÛn del cvs)
+	Actualizado OpenHacha a 0.4+ (versi√≥n del cvs)
 
 2004-01-12
 	Eliminado IMessageListener. Ahora el progreso se maneja con delegates y events.
@@ -41,23 +61,23 @@
 	Nuevo cambio en el sistema de Makefiles, esta vez para las traducciones.
 	
 2004-01-10
-	Nueva documentaciÛn de los formatos, basada en xml.
-	Nueva p·gina web, con fuente en xml.
+	Nueva documentaci√≥n de los formatos, basada en xml.
+	Nueva p√°gina web, con fuente en xml.
 
 2004-01-09
-	AÒadido el objetivo clean a todos los makefiles.
+	A√±adido el objetivo clean a todos los makefiles.
 
 2004-01-08
 	La salida de la funcion Manager.GetFormatosUne() y Manager.GetFormatosParte()
-	ordenadas alfabÈticamente.
+	ordenadas alfab√©ticamente.
 	Nuevo I18N en la libreria, disponible para todos los programas.
-	Un pequeÒo bug arreglado en ParteGenerico, que hacia que la aplicaciÛn
-	fallase si se intentaba unir un archivo sin extensiÛn.
-	RevisiÛn completa a dalle-crcs, pequeÒa utilidad para calcular crcs
+	Un peque√±o bug arreglado en ParteGenerico, que hacia que la aplicaci√≥n
+	fallase si se intentaba unir un archivo sin extensi√≥n.
+	Revisi√≥n completa a dalle-crcs, peque√±a utilidad para calcular crcs
 	de ficheros.
 
 2004-01-02
-	AÒadido el objetivo uninstall en los makefiles
+	A√±adido el objetivo uninstall en los makefiles
 
 2003-12-29
 	Incluido openhacha-text
@@ -74,18 +94,18 @@
 
 2003-12-23
 	Axman3 ya puede unir (no verifica CRC).
-	Terminada la internacionalizaciÛn de la interfaz por consola.
+	Terminada la internacionalizaci√≥n de la interfaz por consola.
 	
 2003-12-22
 	Ya funciona el wrapper para dalle-console
 	Nuevo configure (ahora en shellScript, menos variables, sin Makefile.in, 
 	solo rules.make.in).
-	Cambiado el nombre ProgressListener por IMessageListener, m·s correcto.
+	Cambiado el nombre ProgressListener por IMessageListener, m√°s correcto.
 	Cambiado en console, el nombre Job por IJob, para reflejar que se trata
 	de una interfaz.
 
 2003-12-21
-	Primera documentaciÛn sobre los formatos.
+	Primera documentaci√≥n sobre los formatos.
 
 2003-12-19
 	El RPM es "relocalizable".
@@ -93,20 +113,20 @@
 
 
 2003-12-18
-	VersiÛn 0.5.1
+	Versi√≥n 0.5.1
 
 2003-12-18
 	Interfaz grafica actualizada a OpenHacha 0.2.
 
 2003-12-17
-	El proyecto ya tiene p·gina web.
+	El proyecto ya tiene p√°gina web.
 	Retoques en configure.pl: 
-		El directorio de instalaciÛn por defecto es el de mono.
-		Mejor detecciÛn de las librerÌas instaladas.
+		El directorio de instalaci√≥n por defecto es el de mono.
+		Mejor detecci√≥n de las librer√≠as instaladas.
 
 
 2003-12-16
-	VersiÛn 0.5.0
+	Versi√≥n 0.5.0
 
 2003-12-16
 	Creados los wrappers para llamar a mono.
@@ -116,10 +136,10 @@
 	Arreglado un bug con los directorios de salida.
 
 2003-12-04
-	Creado el SPEC para la creaciÛn de RPMS.
+	Creado el SPEC para la creaci√≥n de RPMS.
 
 2003-11-27
-	InternacionalizaciÛn completa de la interfaz por consola.
+	Internacionalizaci√≥n completa de la interfaz por consola.
 	Creado el objetivo install en Makefiles
 	Se comprueba la existencia de ICSharpCode.SharpZipLib.dll en configure.
 	Terminado hachapro.
@@ -128,10 +148,10 @@
 
 
 2003-11-26
-	VersiÛn 0.4 - Primera versiÛn p˙blica.
+	Versi√≥n 0.4 - Primera versi√≥n p√∫blica.
 
 2003-11-25
-	Nueva interfaz por lÌnea de comandos (con I18N).
+	Nueva interfaz por l√≠nea de comandos (con I18N).
 
 2003-11-21
 	HachaPro genera el archivo de crcs al partir y lo utiliza al unir.
@@ -152,11 +172,11 @@
 	
 
 2003-11-16
-	VersiÛn 0.3 - Libreria separada de las aplicaciones.
+	Versi√≥n 0.3 - Libreria separada de las aplicaciones.
 
 2003-11-16
 	Soporte para SplitFile completado (salvo por los permisos de los
-	ficheros, que nunca ser· soportado - permisos de windows).
+	ficheros, que nunca ser√° soportado - permisos de windows).
 	Separado por fin en libreria y aplicaciones que hacen uso de esa libreria.
 	Retocado el sistema de construccion (para soportar crear la libreria y
 	las aplicaciones).
@@ -164,19 +184,19 @@
 
 2003-11-15
 	Revisado el soporte para SplitFile (Cambios en el Checksum y las
-	funciones utilizadas, ahora deberÌa comportarse mejor).
+	funciones utilizadas, ahora deber√≠a comportarse mejor).
 	Soporte completo hacha1. Faltan pruebas intensivas.
-	Posibilidad de indicar el tamaÒo del buffer de datos en ParteZip.
+	Posibilidad de indicar el tama√±o del buffer de datos en ParteZip.
 
 2003-11-14
-	AÒadido soporte para descomprimir archivos zip.
-	AÒadido soporte b·sico para comprimir archivos zip.
-	RevisiÛn de las funciones de acceso a ficheros: Ahora soportan CRC.
+	A√±adido soporte para descomprimir archivos zip.
+	A√±adido soporte b√°sico para comprimir archivos zip.
+	Revisi√≥n de las funciones de acceso a ficheros: Ahora soportan CRC.
 
 2003-11-13
-	AÒadido soporte para unir y cortar Easy File Splitter v 1.05
-	AÒadido soporte para unir cortar MaxSplitter v 1.53 Free Edition
-	AÒadido soporte genÈrico para cortar.
+	A√±adido soporte para unir y cortar Easy File Splitter v 1.05
+	A√±adido soporte para unir cortar MaxSplitter v 1.53 Free Edition
+	A√±adido soporte gen√©rico para cortar.
 
 
 
@@ -191,17 +211,17 @@
 2003-11-11
 	Formato Kamaleon1. soporte completo para cortar y unir.
 	Soporte preliminar para cortar el formato Kamaleon2 (falta por determinar
-		la funcion de 5 bytes extraÒos)
-		Ademas, el tamaÒo del ultimo fragmento nunca sera superior al indicado.
+		la funcion de 5 bytes extra√±os)
+		Ademas, el tama√±o del ultimo fragmento nunca sera superior al indicado.
 	Revisado el formato Hacha1. (cortar y unir perfectamente soportados ahora).
-	VersiÛn preliminar de la interfaz por linea de comandos (mejorable):
+	Versi√≥n preliminar de la interfaz por linea de comandos (mejorable):
 		Por fin se puede unir y juntar sin modificar codigo.
 
 2003-11-10
 	Corta en formato Kamaleon1.
 
 2003-11-08
-	AÒadido soporte para SF
+	A√±adido soporte para SF
 		- Unir y Partir completo.
 	Mejorado el soporte para SplitFile.
 		- Soporta el checksum y los numeros de secuencia completamente.
@@ -217,11 +237,11 @@
 
 
 2003-09-22
-	VersiÛn 0.1
+	Versi√≥n 0.1
 
 2003-09-21
 	
-	Une (a˙n no muy depurado):
+	Une (a√∫n no muy depurado):
 		- Hacha 1
 		- Hacha Pro (el formato comprimido solo lo une, no lo descomprime)
 		- SplitFile 1
