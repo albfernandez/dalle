@@ -64,11 +64,59 @@ namespace Dalle.Utilidades
 		
 		public static string LeerTexto (byte[] bytes, int pos_ini)
 		{
+			return LeerTexto (bytes, pos_ini, System.Int32.MaxValue);
+		}
+		
+		/// <summary>Lee una cadena de texto desde una posición dada.</summary>
+		/// <remarks>Lee hasta que se acabe el array, hasta que encuentre
+		/// un valor nulo '\0', o hasta length bytes </remarks>
+		/// <param name="bytes">El array en el que se leerá</param>
+		/// <param name="pos_ini">Indice a partir del que se leerá</param>
+		/// <param name="length">El número máximo de bytes a leer.</param>
+		/// <returns>La cadena que se encuentra a partir de pos_ini</returns>
+		
+		public static string LeerTexto (byte[] bytes, int pos_ini, int length)
+		{
 			string ret = "";
-			for (int i= pos_ini; (i < bytes.Length) && (bytes[i] != 0); i++)
-				ret += Convert.ToChar(bytes[i]);
+			for (int i = pos_ini; (i < bytes.Length) && (bytes[i] != 0) && ((i - pos_ini) < length); i++)
+					ret += Convert.ToChar (bytes[i]);
 			return ret;
 		}
+		
+		/// <summary>Lee un entero de 16 bits a partir de una posición.
+		/// </summary>
+		/// <param name="bytes">El array en el que se leerá</param>
+		/// <param name="pos_ini">Posición en la que se encuentra el entero.
+		/// </param>
+		/// <returns>El entero</returns>
+		
+		public static short LeerInt16 (byte[] bytes, int pos_ini)
+		{
+			byte b0, b1;
+			b0 = bytes [pos_ini];
+			b1 = bytes [pos_ini + 1];
+			
+			return ((short) (b0 + (b1 << 8)));
+		}
+		
+		
+		/// <summary>Escribe un entero de 32 bits en la posición dada.</summary>
+		/// <param name="bytes">El array en el que se escribirá</param>
+		/// <param name="value">El valor entero que se escribirá</param>
+		/// <param name="pos">La posición en la que se escribirá</param>
+		
+		public static void EscribirInt (byte[] bytes, short value, int pos)
+		{
+			int i0, i1;
+			
+			i0 = value & 0x000000FF;
+			i1 = (value & 0x0000FF00) >> 8;
+		
+			bytes[pos] = (byte) i0;
+			bytes[pos+1] = (byte) i1;
+		}
+		
+			
 		
 		/// <summary>Lee un entero de 32 bits a partir de una posición.
 		/// </summary>

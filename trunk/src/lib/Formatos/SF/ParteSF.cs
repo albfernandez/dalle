@@ -101,7 +101,7 @@ namespace Dalle.Formatos.SF
 				return false;
 				
 			try{
-				CabeceraSF c = new CabeceraSF(fichero);
+				new CabeceraSF(fichero);
 			}
 			catch (Exception)
 			{
