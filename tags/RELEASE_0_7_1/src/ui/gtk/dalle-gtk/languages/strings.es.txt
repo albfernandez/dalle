@@ -1,0 +1,50 @@
+# src/BaseDialog.cs: 126
+Browse... = Explorar...
+
+# src/BaseDialog.cs: 138
+Select_a_file = Seleccione un fichero
+
+# src/BaseDialog.cs: 184
+Selected_file_does_not_exist = El fichero seleccionado no existe
+
+# src/BaseDialog.cs: 222
+Do_you_want_to_stop_file_operation? = ¿Desea cerrar la ventana y detener el trabajo con los ficheros?
+
+# src/JoinDialog.cs: 494
+Join_File_Fragments = Unir fragmentos de un fichero
+
+# src/JoinDialog.cs: 518
+Join_the_fragments_of_a_file = Unir los fragmentos de un fichero
+
+# src/JoinDialog.cs: 519
+Re-create_a_file_from_its_fragments = Reconstruir un fichero a partir de sus fragmentos
+
+# src/JoinDialog.cs: 528
+Fragment_to_join = Fragmento a unir
+
+# src/JoinDialog.cs: 559
+Unknown_file_format = Formato desconocido
+
+# src/SplitDialog.cs: 629
+Split_Files = Partir ficheros
+
+# src/SplitDialog.cs: 653
+Split_a_File = Partir un fichero
+
+# src/SplitDialog.cs: 654
+Split_a_file_in_small_pieces = Partir un fichero en fragmentos menores
+
+# src/SplitDialog.cs: 666
+Select_a_file_to_split = Seleccione el fichero a partir
+
+# src/SplitDialog.cs: 679
+Number_of_fragments = Número de fragmentos
+
+# src/SplitDialog.cs: 690
+Size_of_fragments = Tamaño de los fragmentos
+
+# src/SplitDialog.cs: 700
+KiB = KiB
+
+# src/SplitDialog.cs: 703
+File_Format = Formato de fichero

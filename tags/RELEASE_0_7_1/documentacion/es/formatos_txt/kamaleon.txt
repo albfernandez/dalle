@@ -1,0 +1,45 @@
+
+KAMALEON 1
+
+Los primeros archivos contienen la piel + los datos
+
+El archivo final contiene:
+
+Piel +
+
+datos +
+
+una lista con los archivos partidos, de 560 bytes cada unidad, repartidos:
+	
+	256 bytes (1 byte para la longitud del nombre, nombre, completa con nulos)
+	4 bytes con el tamaño del archivo original
+	1 byte para indicar la longitud del password.
+	30 bytes de password.
+	1 byte indicando la longitud del nombre del fragmento.
+	256 bytes con el nombre del fragmento
+	4 bytes tamano del fragmento (piel + datos)
+	1 byte primer byte del fragmento (primer byte de la piel, si hay)
+	1 byte ultimo byte de datos
+	2 bytes a null
+	4 bytes tamaño de la piel.
+
++
+
+numero en ascii (10 digitos) con el tamaño de la ultima particion (piel + datos, el resto es de control)
+ASCII con el texto "<-LISTA->"
+
+
+KAMALEON 2
+
+basicamente igual.  Los cambios son en el ultimo archivo y son los siguientes:
+	el password no se guarda en texto plano, sino que se cifra antes caracter
+		a caracter con 255 - valor.
+	en el campo de nombre de fragmento se utilizan los ultimos 97 bytes
+		- 5 para no se sabe bien que (4 de comprobaci�n + 0x41 'A')
+		- 1 para indicar la longitud del nombre de la piel
+		- 91 para guardar el nombre orginal de la piel.
+	el archivo termina con el texto ASCII "<-LIST2->"
+
+
+Limitaciones:
+A trabajar con archivos de un maximo de 4 Gb.

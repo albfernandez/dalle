@@ -1,0 +1,3 @@
+Formato utilizado por el programa /usr/bin/split
+
+El formato es cortar los archivos tal cual, poniendo un prefijo y un sufijo alfabético de una longitud dada (por defecto 2).

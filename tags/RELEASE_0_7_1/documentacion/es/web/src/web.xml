@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<web xmlns="http://dalle.sourceforge.net/web.xsd">
+	<page>
+		<name>Home</name>
+		<filename>index</filename>
+		<content>
+		
+			<h1>Dalle</h1>
+			<p>Dalle es un conjunto de librer&iacute;as y programas 
+			para trabajar con archivos cortados por diversas aplicaciones.</p>
+			<p>En muchas ocasiones nos hemos descargado de internet archivos
+			que han sido cortados y/o camuflados con una aplicaci&oacute;n 
+			y nos vemos obligados a bajarnos el programa, que la mayor&iacute;a 
+			de las veces no est&aacute; disponible para Linux.</p>
+			<p>Dalle ha venido a solucionar este problema, permitiendo trabajar con una
+			gran variedad de formatos. As&iacute; no tenemos que preocuparnos de buscar
+			el programa, sino que simplemente desempaquetamos el fichero con Dalle.</p>
+			<h2>Formatos soportados</h2>
+			<ul>
+				<li>Astrotite</li>
+				<li>Axman 3</li>
+				<li>Easy File Splitter</li>
+				<li>File Splitter</li>
+				<li>Gen&eacute;rico</li>
+				<li>Hacha (1, 2 y Pro)</li>
+				<li>KamaleoN (1 y 2)</li>
+				<li>MaxSplitter</li>
+				<li>SplitFile</li>
+				<li>Zip</li>				
+			</ul>
+			<h2>Versiones liberadas</h2>
+			<table width="50%" align="center">
+				<tr><td><b>0.7.1</b></td><td>16 de febrero de 2004</td></tr>
+				<tr><td><b>0.7.0</b></td><td>12 de febrero de 2004</td></tr>
+				<tr><td><b>0.6.0</b></td><td>27 de enero de 2004</td></tr>
+				<tr><td><b>0.5.1</b></td><td>18 de diciembre de 2003</td></tr>
+				<tr><td><b>0.5.0</b></td><td>16 de diciembre de 2003</td></tr>
+				<tr><td><b>0.4.0</b></td><td>26 de noviembre de 2003</td></tr>
+			</table>
+				
+			<h2>Multiplataforma</h2>
+			<p>
+			La librer&iacute;a y los programas est&aacute;n escritos en C#, por lo que deberían poder
+			ser compilados y ejecutados con varios entornos de ejecuci&oacute;n en varias plataformas.
+			</p>
+			<p>Sin embargo, gtk# da problemas con algunos entornos.</p>
+			<p>En la siguiente tabla se muestran los principales programas
+			de Dalle y los entornos en los que he conseguido que funcionen:
+			</p>
+			<p><br/></p>
+			<table border="1">
+			<tr><td>&nbsp;</td><td>Portable.Net Linux</td><td>Mono Linux</td><td>Mono Windows</td><td>Ms.NET</td></tr>
+			<tr><td>openhacha-text</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td></tr>
+			<tr><td>dalle-console</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td><td>S&iacute;</td></tr>
+			<tr><td>openhacha-gtk</td><td>No</td><td>S&iacute;</td><td>No</td><td>No</td></tr>
+			<tr><td>dalle-gtk</td><td>No</td><td>S&iacute;</td><td>S&iacute;</td><td>No</td></tr>
+			</table>
+		
+		</content>
+	</page>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<page>
+		<name>Colabora</name>
+		<content>
+			<h1>Colabora</h1>
+			
+			<p> <br/>
+			</p>
+			<p> Puedes colaborar de diversas formas: </p>
+			<ul>
+				<li>Enviando informes de fallos (bugs).</li>
+				<li>Proponiendo nuevas caracter&iacute;sticas.</li>
+				<li>Haciendo iconos y/o logos.</li>
+				<li>Escribiendo algo de c&oacute;digo:
+					<ul>
+						<li>Soporte para nuevos formatos.</li>
+						<li>Nuevas interfaces gr&aacute;ficas (qt#, swf, swt).</li>
+					</ul>
+				</li>
+				<li>Haciendo paquetes de instalaci&oacute;n para distintas plataformas:
+					<ul>
+						<li>RPM.</li>
+						<li>deb.</li>
+						<li>Instalador de Windows.</li>
+					</ul>				
+				</li>
+				<li>Traduciendo la aplicación a otros idiomas.</li>
+				<li>Informando de situaciones de &eacute;xito en distintas plataformas.</li>
+				<li>Simplemente dando &aacute;nimos.</li>
+			</ul>
+			<p>Si quieres colaborar: </p>
+			<ul>
+			<li> Participa en los foros y dem&aacute;s secciones en la 
+			<a href="http://sourceforge.net/projects/dalle/">p&aacute;gina del proyecto.</a>
+			</li>
+			<li>Enviame directamente un mail a &lt;infjaf00_ARROBA_yahoo.es&gt;.
+			</li>
+			</ul>
+		</content>
+	</page>
+	
+	
+	<page>
+		<name>Screenshots</name>
+		<content>
+			<h1>Capturas de pantalla</h1>
+			
+			<h2>Dalle-gtk</h2>
+			<p><br/><br/></p>
+			<p align="center">
+				<img src="images/dalle-screenshot-01.png" border="0" /><br/><br/>
+			</p>
+			<p align="center">
+				<img src="images/dalle-screenshot-02.png" border="0" /><br/><br/>
+			</p>
+			<p align="center">
+				<img src="images/dalle-screenshot-03.png" border="0" /><br/><br/>
+			</p>
+			<p><br/><br/></p>
+			<h2>OpenHacha</h2>
+			<p><br/><br/></p>
+			<p align="center">
+				<img  src="images/main-screenshot.png" border="0" /><br/><br/>				
+			</p>
+			<p align="center">
+				<img  src="images/paste-screenshot.png" border="0" /><br/><br/>
+			</p>
+			<p align="center">
+				<img src="images/split-screenshot.png" border="0" /><br/><br/>
+			</p>
+		</content>
+	</page>
+	
+	<page>
+		<name>FAQ</name>
+		<item>
+			<question>¿Habr&aacute; una versi&oacute;n para Windows?</question>
+			<answer>En principio una con Gtk# que funcione en Mono.  Puede que si
+			tengo tiempo haga una con System.Windows.Forms que funcione en .Net y 
+			en Mono
+			</answer>
+		</item>
+		<item>
+			<question>¿Habr&aacute; un port de la aplicaci&oacute;n a C/C++?</question>
+			<answer>De momento utiliz&oacute; C# porque me permite desarrollar m&aacute;s r&aacute;pido.
+			Si algui&eacute;n se anima a participar en el port, yo le ayudar&iacute;a encantado.
+			</answer>
+		</item>
+		<item>
+			<question>El programa falla. ¿C&oacute;mo envi&oacute; un informe de error?</question>
+			<answer>
+				Lo mejor es que lo hagas a trav&eacute;s de la 
+				<a href="http://sourceforge.net/projects/dalle/">p&aacute;gina del proyecto.</a><br/>
+				Aunque si lo prefieres puedes mandarme un mail a &lt;infjaf00_ARROBA_yahoo.es&gt;.<br/>
+				Lo mismo se aplica para las sugerencias sobre nuevas caracter&iacute;sticas.
+			</answer>
+		</item>
+		<item>
+			<question>¿Qué debo indicar en un informe de error? </question>
+			<answer>
+				Para un buen informe de error, debes indicar:
+				<ul>
+					<li>Sistema operativo que utilizas.</li>
+					<li>Versión de Mono y Gtk# que tienes instaladas</li>
+					<li>Versión de Dalle.</li>
+					<li>Mensajes completos del error.</li>
+					<li>Forma de reproducir el error.</li>
+				</ul>
+			</answer>
+			
+		</item>
+	</page>
+	
+	<page>
+		<name>News</name>
+	</page>
+	
+	
+	<page>
+		<name>Descargas</name>
+		<content>
+			<h1>Descargas</h1>
+			<p>Puedes descargarte el programa ya compilado as&iacute; como las fuentes
+			de la <a href="http://sourceforge.net/project/showfiles.php?group_id=95720">
+			 p&aacute;gina de descargas del proyecto </a> en SourceForge.</p>
+			 
+			<p>En la p&aacute;gina de descargas encontrar&aacute;s:
+				<ul>
+					<li><b>dalle-VERSION.tar.bz2.</b>  Contiene las fuentes.</li>
+					<li><b>dalle-VERSION-bin.zip.</b> Contiene los programa las y 
+						librerias compilados, as&iacute; como la libreria 
+						ICSharpCode.SharZipLib.dll, necesaria si trabajas con MS.NET.</li>
+					<li><b>dalle-VERSION.noarch.rpm.</b>  Paquete para instalar en distribuciones
+					   basadas en RPM (RedHat, Fedora, Mandrake ...)
+					</li>
+					<li><b>dalle-VERSION.src.rpm.</b> Archivo necesario para crear el 
+					  paquete rpm anterior.
+					</li>
+				</ul>
+			</p>
+			<h2>Sobre la numeraci&oacute;n de las versiones.</h2>
+			<p>Para numerar las versiones se sigue un sistema como el del kernel
+			de Linux.</p>							
+		</content>
+	</page>
+	
+	<page>
+		<name>Instalar</name>
+		<content>
+		<h1>Instalaci&oacute;n</h1>
+			
+			<h2>Requerimientos</h2>
+			<p><b>Libreria e interfaz por linea de comandos</b></p>
+			<blockquote>
+			Mono ( >= 0.26, aunque s&oacute;lo se ha probado con 0.29)<br/>
+			Librer&iacute;a ICSharpCode.SharpZipLib (incluida en Mono y en Portable.NET)
+			</blockquote>
+			<p><b>OpenHacha</b></p>
+			<blockquote>
+			Mono >= 0.30
+			gtk-sharp >= 0.15<br/>
+			Funciona s&oacute;lo en Linux <br/>
+			</blockquote>
+			<p><b>Dalle-gtk</b></p>
+			<blockquote>
+			Mono >= 0.30
+			gtk-sharp >= 0.15 <br/>
+			(Funciona en Windows y en Linux)
+			</blockquote>
+			
+			
+			<h2>Instalaci&oacute;n en Windows</h2>
+			<blockquote>
+			<h3>Instalaci&oacute;n de Mono y gtk-sharp.</h3>
+			<p>Primero hay que descargar e instalar Mono y gtk-sharp. Puedes encontrar
+			un instalador conjunto para ambos 
+			<a href="http://go-mono.com/archive/0.30/windows/mono-0.30-gtksharp-0.15-win32-1.exe">aqu&iacute;.</a></p>
+			<p>Si falta alguna dll (como msvcr70.dll) puedes bajartelas en 
+			<a href="http://www.dll-files.com">http://www.dll-files.com</a></p>
+			<h3>Instalaci&oacute;n de dalle.</h3>
+			De momento no hay un instalador para Windows, por lo que el procedimiento ser&aacute;:
+			<ul>
+				<li>Descargar dalle-VERSION-bin.zip</li>
+				<li>Descomprimir.</li>
+				<li>Copiar el directorio los programas compilados y las
+				librer&iacute;s al sitio de su disco duro que desee.</li>
+				<li>Para ejecutar, desde la linea de comandos, y en ese directorio, mono dalle-gtk.exe,
+				o doble click en el archivo dalle-gtk.bat</li>
+			</ul>
+			</blockquote>
+			
+			
+			<h2>Instalaci&oacute;n en Linux</h2>
+			
+			<blockquote>
+				
+				<p><b>A partir de los binarios ya compilados</b></p>
+				<p>El procedimiento es similar al descrito anteriormente para Windows.</p>
+				<p><br/></p>
+				<p><b>A partir del instalador RPM</b></p>
+				<p>Para un uso normal:</p>
+				<pre>
+		rpm -vih dalle-VERSION.noarch.rpm
+				</pre>
+				Esto instalar&aacute; los programas en /usr/bin y las librerias en /usr/lib.
+				Si desea cambiar este comportamiento, para instalar en /usr/local, por ejemplo:
+				
+				<pre>
+		rpm -vih --prefix=/usr/local dalle-VERSION.noarch.rpm
+				</pre>
+				<p>Esto instalar&aacute; los programas en /usr/local/bin y las librerias en /usr/local/lib</p>
+				
+				<p><br/></p>
+				<p><b>A partir de las fuentes</b></p>
+				<pre>		
+		$ tar jxvf dalle-VERSION.tar.bz2
+		$ cd dalle-VERSION
+		$ ./configure
+		$ make
+		$ su
+		# make install
+				</pre>	
+				
+			</blockquote>
+			
+		
+		</content>
+	</page>
+	
+	
+	<page>
+		<name>Links</name>
+		<content>
+			<h1>Links</h1>
+
+			<h3>Programaci&oacute;n</h3>
+			
+			<a href="http://www.go-mono.com">Proyecto Mono</a><br />
+			<a href="http://www.southern-storm.com.au/index.html">Portable .NET</a><br/>
+			<a href="http://gtk-sharp.sourceforge.net">Gtk#</a><br/>
+			<a href="http://www.icsharpcode.net">ICSharpCode</a><br/>
+			
+			
+			<h3>OpenHacha</h3>
+			<a href="http://www.nongnu.org/openhacha/">P&aacute;gina principal</a><br/>
+			<a href="http://savannah.gnu.org/projects/openhacha">P&aacute;gina del proyecto en Savannah</a><br/>
+		
+		</content>
+	</page>
+	
+	
+
+
+
+</web>
