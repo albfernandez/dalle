@@ -57,11 +57,11 @@ namespace Dalle.FileVerification.Verifiers
 				linea = linea.Trim();
 				if (linea != string.Empty){
 					try{				
-					string fname = linea.Substring (linea.IndexOf (" ")).Trim();
-					string hash = linea.Substring (0, linea.IndexOf(" ")).Trim();
-					fname = fname.Replace ('/', Path.DirectorySeparatorChar);
-					SFVElement el = new SFVElement (fname, hash, new FileHasherSHA1()); 
-					ret.Add (el);
+						string fname = linea.Substring (linea.IndexOf (" ")).Trim();
+						string hash = linea.Substring (0, linea.IndexOf(" ")).Trim();
+						fname = fname.Replace ('/', Path.DirectorySeparatorChar);
+						SFVElement el = new SFVElement (fname, hash, new FileHasherSHA1()); 
+						ret.Add (el);
 					}
 					catch (System.Exception){
 					}

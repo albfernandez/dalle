@@ -1,3 +1,9 @@
+2005-01-21
+	Retocado el soporte de I18N (por getstrings.pl maneja claves duplicadas)
+	Revisión de OpenHacha, ahora es un Gnome.Program y no da Warnings
+	ni mensajes de depuración en tiempo de ejecución.
+	Revisión del configure. Se han quitado las opciones de qt# y swt(no usadas).
+
 2004-12-13
 	Soporte para verificacion de archivos con hash sha1
 	Retoques en OpenHacha para quitar los warnings del compilador

@@ -9,13 +9,14 @@ help()
 	echo ""
 	echo "--prefix=PREFIX         install architecture-independent files in PREFIX"
 	echo "                        [autodetect - same as mono]"
+	echo "--mono-path=PATH    List of paths for searching libraries"
 	echo "--build-release"
 	echo "--build-debug"
 	echo "--build-test"
-	echo "--disable-gtk		Disable all gtk# related targets [autodetect]"
-	echo "--disable-qt		Disable all qt# related targets   [autodetect]"
-	echo "--disable-swt		Disable all swt related targets  [autodetect]"
-	echo "--disable-swf		Disable all swf related targets  [autodetect]"
+	echo "--disable-gtk		  Disable all gtk# related targets [autodetect]"
+#	echo "--disable-qt		  Disable all qt# related targets   [autodetect]"
+#	echo "--disable-swt		  Disable all swt related targets  [autodetect]"
+	echo "--disable-swf		  Disable all swf related targets  [autodetect]"
 
 }
 
@@ -91,12 +92,12 @@ for a in $*; do
 		--disable-gtk)
 			disable_build_gtk=yes;
 			;;
-		--disable-qt)
-			disable_build_qt=yes;
-			;;
-		--disable-swt)
-			disable_build_swt=yes;
-			;;
+#		--disable-qt)
+#			disable_build_qt=yes;
+#			;;
+#		--disable-swt)
+#			disable_build_swt=yes;
+#			;;
 		--disable-swf)
 			disable_build_swf=yes;
 			;;
@@ -181,24 +182,24 @@ if test -z $disable_build_glade; then
 	fi
 fi
 
-if test -z $disable_build_qt; then
-	echo -n "checking for qt#... ";
-	if (check_for_file_in_libs "Qt.dll"); then
-		echo "yes";
-		interfaces="$interfaces qt";
-	else
-		echo "not found";
-	fi
-fi
-if test -z $disable_build_swt; then
-	echo -n "checking for swt... ";
-	if (check_for_file_in_libs "ICSharpCode.SWT.dll"); then
-		echo "yes";
-		interfaces="$interfaces swt";
-	else
-		echo "not found";
-	fi	
-fi
+#if test -z $disable_build_qt; then
+#	echo -n "checking for qt#... ";
+#	if (check_for_file_in_libs "Qt.dll"); then
+#		echo "yes";
+#		interfaces="$interfaces qt";
+#	else
+#		echo "not found";
+#	fi
+#fi
+#if test -z $disable_build_swt; then
+#	echo -n "checking for swt... ";
+#	if (check_for_file_in_libs "ICSharpCode.SWT.dll"); then
+#		echo "yes";
+#		interfaces="$interfaces swt";
+#	else
+#		echo "not found";
+#	fi	
+#fi
 if test -z $disable_build_swf; then
 	echo -n "checking for swf... ";
 	if (check_for_file_in_libs "System.Windows.Forms.dll"); then

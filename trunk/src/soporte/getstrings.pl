@@ -29,11 +29,11 @@ while (<ARGV>) {
 		#print "# $ARGV: $linenum\n";
 		#print "$k = $v\n\n";
 		
-		$totales{"$k = $v"} = $totales{"$k = $v"} . "# $ARGV: $linenum\n";
+		$totales{"$k = $v"} = $totales{"$k = $v"} . "\n# $ARGV: $linenum\n";
 	}
 }
 #print "---\n";
 my @claves = keys (%totales);
 foreach (keys(%totales)) {
-	print $totales{$_} . $_ . "\n\n";
+	print $totales{$_} ."\n". $_ . "\n\n";
 }

@@ -7,7 +7,7 @@ Standards-Version: 3.6.1.1
 
 Package: dalle
 Architecture: all
-Depends: mono-assemblies-base(>=1.0), libgtk-cil (>=1.0), libglade-cil(>=1.0), libgnome-cil(>=1.0), ${shlibs:Depends}, ${misc:Depends}
+Depends: mono-common(>=1.0), mono-assemblies-base(>=1.0), libgtk-cil (>=1.0), libglade-cil(>=1.0), libgnome-cil(>=1.0), ${shlibs:Depends}, ${misc:Depends}
 Description: Tools to work with multiple files
  (hacha, kamaleon, camouflage)
 
