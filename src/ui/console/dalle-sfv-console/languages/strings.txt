@@ -1,48 +1,48 @@
-# src/HelpCommand.cs: 276
-Usage: = Usage:
-
-# src/HelpCommand.cs: 278
-To_verify_files: = To verify files:
-
-# src/HelpCommand.cs: 279
-dalle-sfv-console_-v_<md5_and_sfv-files> = dalle-sfv-console -v <md5 and sfv-files>
-
-# src/HelpCommand.cs: 280
-dalle-sfv-console_-vv_<md5_and_sfv-files>__to_be_verbose = dalle-sfv-console -vv <md5 and sfv-files>  to be verbose
-
-# src/HelpCommand.cs: 282
-To_create_(md5/sfv)_files: = To create (md5/sfv) files:
-
-# src/HelpCommand.cs: 283
-dalle-sfv-console_-<format>_<files> = dalle-sfv-console -<format> <files>
-
-# src/HelpCommand.cs: 284
+# src/HelpCommand.cs: 43
 dalle-sfv-console_-r_-<format>_<files>_to_recurse_into_directories = dalle-sfv-console -r -<format> <files> to recurse into directories
 
-# src/HelpCommand.cs: 286
-Supported_formats:_ = Supported formats: 
-
-# src/HelpCommand.cs: 292
-Examples: = Examples:
-
-# src/HelpCommand.cs: 294
-Verifying_files_with_a_sfv_file = Verifying files with a sfv file
-
-# src/HelpCommand.cs: 297
-Creating_sfv_file_(recursing_into_directories) = Creating sfv file (recursing into directories)
-
-# src/VerifySFVCommand.cs: 388
-Ok = Ok
-
-# src/VerifySFVCommand.cs: 391
-Not_Found = Not Found
-
-# src/VerifySFVCommand.cs: 394
-Is_Directory = Is Directory
-
-# src/VerifySFVCommand.cs: 397
+# src/VerifySFVCommand.cs: 61
 Failed! = Failed!
 
-# src/VerifySFVCommand.cs: 400
+# src/HelpCommand.cs: 51
+Examples: = Examples:
+
+# src/HelpCommand.cs: 45
+Supported_formats:_ = Supported formats: 
+
+# src/HelpCommand.cs: 38
+dalle-sfv-console_-v_<md5_and_sfv-files> = dalle-sfv-console -v <md5 and sfv-files>
+
+# src/HelpCommand.cs: 39
+dalle-sfv-console_-vv_<md5_and_sfv-files>__to_be_verbose = dalle-sfv-console -vv <md5 and sfv-files>  to be verbose
+
+# src/VerifySFVCommand.cs: 64
 Unknown_error! = Unknown error!
+
+# src/HelpCommand.cs: 53
+Verifying_files_with_a_sfv_file = Verifying files with a sfv file
+
+# src/HelpCommand.cs: 35
+Usage: = Usage:
+
+# src/HelpCommand.cs: 42
+dalle-sfv-console_-<format>_<files> = dalle-sfv-console -<format> <files>
+
+# src/HelpCommand.cs: 41
+To_create_(md5/sfv)_files: = To create (md5/sfv) files:
+
+# src/VerifySFVCommand.cs: 52
+Ok = Ok
+
+# src/HelpCommand.cs: 56
+Creating_sfv_file_(recursing_into_directories) = Creating sfv file (recursing into directories)
+
+# src/HelpCommand.cs: 37
+To_verify_files: = To verify files:
+
+# src/VerifySFVCommand.cs: 55
+Not_Found = Not Found
+
+# src/VerifySFVCommand.cs: 58
+Is_Directory = Is Directory
 

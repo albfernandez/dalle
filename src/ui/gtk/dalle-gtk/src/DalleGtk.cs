@@ -127,7 +127,7 @@ namespace Dalle.UI.DalleGtk
 			vbox2 = new Gtk.VBox (false, 3);
 			texto2 = new Gtk.Label (I._("What do you want to do?"));
 			
-			SplitOption = new Gtk.RadioButton (I._("Split0 files"));
+			SplitOption = new Gtk.RadioButton (I._("Split Files"));
 			
 			PasteOption = new Gtk.RadioButton (SplitOption, I._("Merge Files"));
 

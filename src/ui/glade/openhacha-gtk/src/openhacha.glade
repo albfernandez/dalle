@@ -627,7 +627,7 @@ Eduardo García Cebollero &lt;kiwnix@yahoo.es&gt; (libhacha)
 <widget class="GtkWindow" id="MainWindow">
   <property name="border_width">12</property>
   <property name="visible">True</property>
-  <property name="title" translatable="yes">OpenHacha 0.6</property>
+  <property name="title" translatable="yes">OpenHacha 0.7</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_CENTER</property>
   <property name="modal">False</property>

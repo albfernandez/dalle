@@ -30,29 +30,27 @@ using GtkSharp;
 
 namespace OpenHachaGtkGui 
 {
-	public class OpenHachaGui
+	public class OpenHachaGui : Program
 	{
-		//[Glade.Widget] Gtk.Window MainWindow = null;
 		[Glade.Widget] Gtk.RadioButton SplitOption = null;
 		[Glade.Widget] Gtk.RadioButton PasteOption = null;
 		
 		public static void Main (string[] args) 
 		{
-			Application.Init();
-			//OpenHachaGui OpenHachaGtkMain = new OpenHachaGui();
-			new OpenHachaGui();			
-			Application.Run();
+			new OpenHachaGui();
 		}
 
-		public OpenHachaGui() 
+		public OpenHachaGui() : base ("OpenHacha", "0.7", Gnome.Modules.UI, new string[0])
 		{
+			
 			Glade.XML gxml = new Glade.XML (null, "openhacha.glade", "MainWindow", null);
 			gxml.Autoconnect (this);
+			this.Run();
 		}
 		
 		public void OnQuitButtonClicked (object o, EventArgs args) 
 		{
-                	Application.Quit ();
+                	this.Quit ();
 		}
 
 		public void OnAboutButtonClicked (object o, EventArgs args) 
@@ -90,12 +88,9 @@ namespace OpenHachaGtkGui
 		public OpenHachaSplitDialog () 
 		{
 		    Glade.XML gxml = new Glade.XML (null, "openhacha.glade", "SplitDialog", null);
-			gxml.Autoconnect (this);
-			
+			gxml.Autoconnect (this);			
 			SplitDialogSplitButton.Sensitive = false;
-
-			this.format = (hachaformat)FileFormat.History;
-			Console.WriteLine(this.format);
+			this.format = (hachaformat)FileFormat.History;			
 		}
 	
 		public void OnSplitDialogComboEntryChanged (System.Object b, EventArgs e)
@@ -199,7 +194,7 @@ namespace OpenHachaGtkGui
 			gxml.Autoconnect (this);
 			
 			AboutDialog.Name = "OpenHacha";
-			AboutDialog.Version = "0.6";
+			AboutDialog.Version = "0.7";
 		}
 	}
 }
