@@ -14,8 +14,6 @@ help()
 	echo "--build-debug"
 	echo "--build-test"
 	echo "--disable-gtk		  Disable all gtk# related targets [autodetect]"
-#	echo "--disable-qt		  Disable all qt# related targets   [autodetect]"
-#	echo "--disable-swt		  Disable all swt related targets  [autodetect]"
 	echo "--disable-swf		  Disable all swf related targets  [autodetect]"
 
 }
@@ -92,12 +90,6 @@ for a in $*; do
 		--disable-gtk)
 			disable_build_gtk=yes;
 			;;
-#		--disable-qt)
-#			disable_build_qt=yes;
-#			;;
-#		--disable-swt)
-#			disable_build_swt=yes;
-#			;;
 		--disable-swf)
 			disable_build_swf=yes;
 			;;
@@ -126,7 +118,7 @@ fi
 
 
 mono_home=`pkg-config --variable=prefix mono`
-#mono_libs=`pkg-config --variable=libdir mono`
+mono_libs=`pkg-config --variable=libdir mono`
 
 if (test $MONO_PATH); then
 	mono_libs=$mono_libs:$MONO_PATH;
