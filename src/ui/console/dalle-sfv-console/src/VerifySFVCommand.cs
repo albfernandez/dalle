@@ -41,7 +41,12 @@ namespace Dalle.UI.SFVConsole
 			FileVerificationManager.Instance.FileCheck += 
 				new FileCheckEventHandler (this.OnFileCheck);
 			foreach (string s in files){
-				FileVerificationManager.Instance.Verify(s);
+				try{
+					FileVerificationManager.Instance.Verify(s);
+				}
+				catch (Exception e){
+					Console.WriteLine ("\n" + I._("ERROR") + " " + s + " " + I._(" Format incompatible") + "\n");
+				}
 			}
 		}
 		protected void OnFileCheck (SFVElement e, FileCheckResult res)

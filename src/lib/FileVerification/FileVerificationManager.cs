@@ -103,8 +103,10 @@ namespace Dalle.FileVerification
 					break;
 				}
 			}
+			
 			if (type == null){
-				return;
+				// TODO: Custom Exception
+				throw new Exception("");
 			}
 			// TODO: I18N
 			Console.WriteLine ("Format = " + type.Name);

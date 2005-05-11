@@ -34,7 +34,7 @@ config.status: configure
 	# Add here commands to configure the package.
 	#CFLAGS="$(CFLAGS)" ./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info
 
-	CFLAGS="$(CFLAGS)" ./configure --prefix=/usr --build-release --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp
+	./configure --prefix=/usr --build-debug --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp
 
 
 #Architecture 
