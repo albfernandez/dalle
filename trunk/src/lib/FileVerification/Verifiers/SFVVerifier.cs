@@ -41,6 +41,7 @@ namespace Dalle.FileVerification.Verifiers
 		
 		public override bool IsFormatRecognized (string file)
 		{
+			// TODO - Detect by content instead by extension
 			return file.ToUpper().EndsWith (".SFV") || file.ToUpper().EndsWith (".SFV2");
 		}
 		protected override ArrayList GenerateSFVFileList (string file)

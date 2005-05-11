@@ -11,7 +11,7 @@ PROGRAMA=dalle
 MCS=MONO_PATH=$(MONO_PATH) mcs
 WARN_LEVEL=4
 WARN_OPTIONS=-warn:$(WARN_LEVEL)
-MCS_FLAGS=$(WARN_OPTIONS) -optimize+ 
+MCS_FLAGS=$(WARN_OPTIONS) -g
 
 GTK_RESOURCES=-r gtk-sharp -r glib-sharp -r gdk-sharp
 QT_RESOURCES=-r Qt.dll
@@ -19,7 +19,7 @@ SWT_RESOURCES=-r ICSharpCode.SWT.dll
 
 
 MONO=mono
-MONO_FLAGS=-O=all
+MONO_FLAGS=--debug
 RESGEN=monoresgen
 
 AUXRESGEN=$(BUILDDIR)/Files2Resource.exe
