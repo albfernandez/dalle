@@ -1,10 +1,17 @@
 Este archivo contiene información acerca de como compilar e instalar dalle.
 De momento sólo se ha probado en Linux.
 
-./configure
+./configure --mono-path={librerias de mono}
 make
 (hacerse root).
 make install
+
+{librerias de mono} - 
+Los directorios donde están las librerias a usar por el compilador
+(si no están establecidos en MONO_PATH)
+Ejemplo en Debian:
+./configure --prefix=/usr --build-release --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp
+
 
 
 En build/ quedan los exes, las dlls y los wrappers.
@@ -48,5 +55,3 @@ dalle-console <comando> [opciones] <ficheros>
 
 
 INFORMACIÓN DETALLADA DE INSTALACIÓN
-
-

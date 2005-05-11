@@ -1,6 +1,6 @@
 
 
-MONO_PATH=:/usr/share/dotnet/mono/1.0/:/usr/share/dotnet/mono/gtk-sharp/
+MONO_PATH=:/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp
 
 INTERFACES=console gtk glade swf
 MAKE = make
@@ -11,7 +11,7 @@ PROGRAMA=dalle
 MCS=MONO_PATH=$(MONO_PATH) mcs
 WARN_LEVEL=4
 WARN_OPTIONS=-warn:$(WARN_LEVEL)
-MCS_FLAGS=$(WARN_OPTIONS) -g
+MCS_FLAGS=$(WARN_OPTIONS) -optimize+ 
 
 GTK_RESOURCES=-r gtk-sharp -r glib-sharp -r gdk-sharp
 QT_RESOURCES=-r Qt.dll
@@ -19,7 +19,7 @@ SWT_RESOURCES=-r ICSharpCode.SWT.dll
 
 
 MONO=mono
-MONO_FLAGS=--debug
+MONO_FLAGS=-O=all
 RESGEN=monoresgen
 
 AUXRESGEN=$(BUILDDIR)/Files2Resource.exe

@@ -117,8 +117,9 @@ else
 fi
 
 
-mono_home=`pkg-config --variable=prefix mono`
-mono_libs=`pkg-config --variable=libdir mono`
+mono_home=/usr
+#mono_home=`pkg-config --variable=prefix mono`
+#mono_libs=`pkg-config --variable=libdir mono`
 
 if (test $MONO_PATH); then
 	mono_libs=$mono_libs:$MONO_PATH;
