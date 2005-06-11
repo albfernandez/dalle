@@ -20,7 +20,7 @@ SWT_RESOURCES=-r ICSharpCode.SWT.dll
 
 MONO=mono
 MONO_FLAGS=@MONO_FLAGS@
-RESGEN=monoresgen
+RESGEN=resgen
 
 AUXRESGEN=$(BUILDDIR)/Files2Resource.exe
 

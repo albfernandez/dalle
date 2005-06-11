@@ -3,7 +3,7 @@
     Dalle - A split/join file utility library	
     Dalle.Formatos.Axman.Axman3 - Split and Join files in Axman3 format.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2005  Alberto Fernández <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ namespace Dalle.Formatos.Axman
 			OnProgress (transferidos, c.TamanoOriginal);
 			
 			if (comprimido){
-				Zip zip = new Zip();
+				Dalle.Formatos.Zip.Zip zip = new Dalle.Formatos.Zip.Zip();
 				zip.Progress += new ProgressEventHandler (this.OnProgress);
 				zip.Unir (destino);
 			}
