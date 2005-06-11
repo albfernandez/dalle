@@ -1,0 +1,75 @@
+# src/ListJob.cs: 41
+Join_Supported_Formats = Join Supported Formats
+
+# src/JoinJob.cs: 78
+{0}._Error,_Unknown_format. = {0}. Error, Unknown format.
+
+# src/HelpJob.cs: 54
+<commands> = <commands>
+
+# src/JoinJob.cs: 49
+Bad_parameter = Bad parameter
+
+# src/LongJob.cs: 75
+Time___{0}_seconds_({1:00}:{2:00}) = Time = {0} seconds ({1:00}:{2:00})
+
+# src/HelpJob.cs: 58
+-l,_--list__List_all_supported_formats = -l, --list  List all supported formats
+
+# src/HelpJob.cs: 55
+-s,_--split_Split_files = -s, --split Split files
+
+# src/InfoJob.cs: 58
+Unknown_format = Unknown format
+
+# src/InfoJob.cs: 62
+Is_a_directory = Is a directory
+
+# src/HelpJob.cs: 63
+-f_format__Format_used_to_split_the_file = -f=format  Format used to split the file
+
+# src/HelpJob.cs: 56
+-j,_--join__Join_files = -j, --join  Join files
+
+# src/HelpJob.cs: 64
+-b_file_Name_of_dest_file,_or_prefix_for_fragments = -b=file Name of dest file, or prefix for fragments
+
+# src/JoinJob.cs: 66
+Joining_file_{0}_({1}) = Joining file {0} ({1})
+
+# src/HelpJob.cs: 49
+Bad_options = Bad options
+
+# src/VersionJob.cs: 43
+Using_libDalle_v.{0} = Using libDalle v.{0}
+
+# src/HelpJob.cs: 57
+-i,_--info__Show_info_about_files_(format) = -i, --info  Show info about files (format)
+
+# src/ListJob.cs: 50
+Split_Supported_Formats = Split Supported Formats
+
+# src/HelpJob.cs: 59
+(no_command)_Join_files = (no command) Join files
+
+# src/VersionJob.cs: 41
+dalle-console_v.{0} = dalle-console v.{0}
+
+# src/HelpJob.cs: 52
+dalle-console_<command>_[options]_<files> = dalle-console <command> [options] <files>
+
+# src/HelpJob.cs: 65
+-t_size_Size_of_pieces_(in_kb) = -t=size Size of pieces (in kb)
+
+# src/HelpJob.cs: 62
+-d_dir_ = -d=dir 
+
+# src/InfoJob.cs: 64
+File_not_found = File not found
+
+# src/LongJob.cs: 52
+Finished = Finished
+
+# src/HelpJob.cs: 61
+[options] = [options]
+

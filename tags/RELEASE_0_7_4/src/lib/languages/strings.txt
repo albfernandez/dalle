@@ -1,0 +1,100 @@
+
+# src/lib/Formatos/EasyFileSplitter/EasyFileSplitter.cs: 59
+
+File_not_found:_{0} = File not found: {0}
+
+
+# src/lib/Formatos/SF/ParteSF.cs: 83
+
+Too_much_fragments = Too much fragments
+
+
+# src/lib/Utilidades/UtilidadesFicheros.cs: 83
+
+File_{0}_already_exists = File {0} already exists
+
+
+# src/lib/Formatos/SplitFile/SplitFile_v1.cs: 75
+
+Single_verification_failed = Single verification failed
+
+
+# src/lib/Formatos/Astrotite/Astrotite.cs: 75
+
+Bad_file = Bad file
+
+
+# src/lib/Formatos/Hacha/ParteHacha_v1.cs: 131
+
+File_{0}_is_corrupt_(incorrect_size)! = File {0} is corrupt (incorrect size)!
+
+
+# src/lib/Formatos/Hacha/ParteHachaPro.cs: 102
+
+Checksum_verification_failed_on_{0}! = Checksum verification failed on {0}!
+
+
+# src/lib/Formatos/Kamaleon/ParteKamaleon.cs: 74
+
+Byte_verfication_failed_on_{0} = Byte verfication failed on {0}
+
+
+# src/lib/Formatos/MaxSplitter/MXSInfo.cs: 56
+
+Too_large_to_be_a_MXS_file = Too large to be a MXS file
+
+
+# src/lib/Formatos/Parte.cs: 196
+
+{0}_exists_and_is_a_file. = {0} exists and is a file.
+
+
+# src/lib/Formatos/Hacha/ParteHachaPro.cs: 76
+
+{0}:File_not_found = {0}:File not found
+
+
+# src/lib/Formatos/Astrotite/Astrotite.cs: 69
+
+Bad_file_ = Bad file 
+
+
+# src/lib/Formatos/SplitFile/SplitFile_v1.cs: 88
+
+Checksum_verfication_failed = Checksum verfication failed
+
+
+# src/lib/Formatos/Hacha/ParteHacha_v1.cs: 118
+
+File__{0}_is_corrupt_(incorrect_size)! = File  {0} is corrupt (incorrect size)!
+
+
+# src/lib/Formatos/Kamaleon/ParteKamaleon.cs: 67
+
+File_not_found:{0} = File not found:{0}
+
+
+# src/lib/Formatos/MaxSplitter/MaxSplitter.cs: 77
+
+MXS:_Incorrect_size_of_regenerated_file = MXS: Incorrect size of regenerated file
+
+
+# src/lib/Formatos/Axman/Axman3.cs: 80
+
+... = ...
+
+
+# src/lib/Formatos/MaxSplitter/MaxSplitter.cs: 64
+
+MXS:_File_not_found_{0} = MXS: File not found {0}
+
+
+# src/lib/Formatos/Hacha/CabeceraHacha_v1.cs: 194
+
+Warning:_Header_checksum_verification_failed = Warning: Header checksum verification failed
+
+
+# src/lib/Formatos/Hacha/ParteHacha_v2.cs: 58
+
+Checksum_verification_failed! = Checksum verification failed!
+
