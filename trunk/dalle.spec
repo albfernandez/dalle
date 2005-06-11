@@ -25,7 +25,7 @@ Requires:   	mono-core >= 1.0, mono-ziplib >= 1.0, gtk-sharp >= 1.0
 %setup
 
 %build
-./configure --prefix=%{prefix} --build-release --mono-path=/usr/lib/mono/2.0:/usr/lib/mono/gtk-sharp
+./configure --prefix=%{prefix} --build-debug --mono-path=/usr/lib/mono/2.0:/usr/lib/mono/gtk-sharp
 make
 
 %install
@@ -89,7 +89,8 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 %changelog
 
 
-
+* Sat Jun 11 2005 Alberto Fernandez <infjaf00@yahoo.es>
+- Version 0.7.4
 
 * Sun Feb 15 2004 Alberto Fernandez <infjaf00@yahoo.es>
 - Version 0.7.1

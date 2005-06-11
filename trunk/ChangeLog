@@ -1,3 +1,9 @@
+2005-06-11
+	Versión 0.7.4
+
+2005-05-11
+	Corregido parcialmente problema de mensajes en dalle-sfv (#1002644)
+	
 2005-01-21
 	Retocado el soporte de I18N (por getstrings.pl maneja claves duplicadas)
 	Revisión de OpenHacha, ahora es un Gnome.Program y no da Warnings
@@ -44,7 +50,7 @@
 	Version 0.7.2
 
 2004-03-17 
-	Corregido un bug "muy tonto" de soporte de formatos
+	Corregido un bug "muy tonto" de soporte de formatos (#917860)
 	
 2004-02-23 
 	Inicio de una nueva ventana principal de dalle-gtk (Ramón Rey Vicente)
