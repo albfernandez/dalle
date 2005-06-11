@@ -1,4 +1,11 @@
 2005-06-11
+	Versión 0.7.5
+
+2005-06-11
+	Corregido error de compilación en (Axman3) en Mono 1.1.
+	Cambiado la llamada al programa auxiliar monoresgen -> resgen.
+
+2005-06-11
 	Versión 0.7.4
 
 2005-05-11
