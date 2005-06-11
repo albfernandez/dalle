@@ -1,6 +1,7 @@
 
-A continuación se indican los cambios que se realizarán y las versiones correspondientes
-que serán liberadas, una vez un grupo de ellos se haya terminado.
+A continuación se indican los cambios que se realizarán y las versiones 
+correspondientes que serán liberadas, una vez un grupo de ellos se haya 
+terminado.
 No se indican plazos de tiempo porque se que no voy a ser capaz 
 de cumplirlos ;-)
 
@@ -62,43 +63,45 @@ Leyenda:
 	
 ===============================
 
-	Versión 0.8
+	Versión 0.8 (Estabilizar)
 
 ===============================
-
-	- [ ]  Soporte split (/usr/bin/split de coreutils).
-	- [ ]  Soporte gcutter.
-	- [ ]  Soporte HJSplit.
-	- [ ]  Documentar los formatos.
-	- [ ]  Hacer tests (NUnit) de los formatos y demás.
-	- [ ]  Todo el código comentado.
+	
 	- [ ]  Repaso de dalle-console.
 	- [ ]  Repaso de dalle-gtk.
-	- [ ]  Repaso de dalle-crcs.
-	- [-]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
-	- [ ]  Hacer los programas compatibles con pnet.
-	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
+	- [ ]  Repaso de dalle-sfv.
+	- [X]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
 	- [X]  Paquete deb.
 	- [X]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
-    - [ ]  Soporte para Splitter & Merger
     - [X]  Revisar todos los scripts para que funcione bien con mono 1.0
+	- [ ]  Nuevo sistema de configuracion / compilacion (autotools?, nant?)
 
 ===============================
 
-	Versión 0.10
+	Versión 0.10 (User friendly)
 
 ===============================
 
 	- [ ] DragNDrop.
 	- [X] Soporte para cortar en kamaleon2.
-	- [ ] Kamaleon-gtk (supone revisar formato Kamaleon.)
 	- [ ] Manual de usuario.
 	
 
+===============================
+
+	Versión 0.12 (Developer friendly)
 
 ===============================
 
-	Versión 0.12
+	- [ ]  Documentar los formatos.
+	- [ ]  Hacer tests (NUnit) de los formatos.
+	- [ ]  Hacer tests (NUnit) de los crs implementados.
+	- [ ]  Todo el código comentado.
+	
+
+===============================
+
+	Versión 0.14 (Aumentar los formatos soportados)
 
 ===============================
 	
@@ -106,30 +109,45 @@ Leyenda:
 	- [ ] Diagramas de clases.
 	- [-] Soporte "completo" para zip.
 	- [ ] Soporte "completo" para tar, gz, bz2.
+	- [ ] Mejorar el soporte de Astrotite.
+    - [ ] Soporte para Splitter & Merger.
+	- [ ] Soporte HJSplit.
+	- [ ] Soporte gcutter.
+	- [ ] Soporte split (/usr/bin/split de coreutils).	
 
 
 ===============================
 
-	Versión 1.0
+	Versión 0.16 (El mundo de windows)
 
 ===============================
 
-	
 	- [ ] Interfaz swf.
-	- [ ] Instalador NSIS para Windows
+	- [ ] Instalador NSIS para Windows.
+
+
+===============================
+
+	Versión 1.0 (Y al fín 1.0)
+
+===============================
+
+	- [ ] Nueva web.
+	- [ ] Libre de bugs (eso se intentará ;)).	
 
 
 
+===========================================================================
 
+Otras cosas por hacer (cuando haya tiempo, posiblemente despues de v 1.0)
 
-==============================================
-
-Otras cosas por hacer (cuando haya tiempo)
-
-==============================================
+===========================================================================
 
 	- [ ]  Hacer que Axman3 soporte la verificación crc que tiene.
 	- [ ]  Hacer un soporte completo para los archivos FSI de FileSplit
+	- [ ]  Kamaleon-gtk (supone revisar formato Kamaleon.)
+	- [ ]  Hacer los programas compatibles con pnet.
+	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
 	
 	Soporte para archivos de verificación:
 	- [X]  Soporte sfv
