@@ -43,6 +43,12 @@ namespace Dalle.Formatos.Astrotite
 		public int namelength;
 		public string name;
 	}
+	public struct Block 
+	{
+		public String block;
+		public int size;
+		public int crc;
+	}
 	
 	public class Astrotite : Parte 
 	{
@@ -65,8 +71,9 @@ namespace Dalle.Formatos.Astrotite
 			
 			FileStream astReader = new FileStream (fichero, FileMode.Open);
 			
-			if (astReader.Read (initbuffer, 0, initbuffer.Length) < 22)
+			if (astReader.Read (initbuffer, 0, initbuffer.Length) < 22){
 				throw new Exception (I._("Bad file ") + fichero);
+			}
 			string tmp="";
 			for (i = 0; i < "AST2www.astroteam.tk".Length; i++){
 				tmp += Convert.ToChar (initbuffer[i]);
@@ -80,6 +87,7 @@ namespace Dalle.Formatos.Astrotite
 			OnProgress (0, 1);
 			
 			// TODO: Mejorar, poner buffer.
+			// Mejorar las lecturas
 			for (i = 0; i < narchivos; i++){
 				astReader.Seek (startdata, SeekOrigin.Begin);
 				astReader.Read (initbuffer, 0, 255);
@@ -91,35 +99,58 @@ namespace Dalle.Formatos.Astrotite
 				d.name = d.name.Replace ('\\', Path.DirectorySeparatorChar);
 				startdata += 9 + d.namelength;				
 				listaFicheros.Add (d);	
-				totales += d.length;
-			
+				totales += d.length;			
 			}
 			
 			// TODO Excepción personalizada.
-			if (i != narchivos)
+			if (i != narchivos){
 				throw new Exception ("AstrotiteException");
+			}
 			
 			astReader.Seek (startdata, SeekOrigin.Begin);
 			
+			AstrotiteCRC crc = new AstrotiteCRC();
 			foreach (Descript des in listaFicheros){
 				astReader.Seek (3, SeekOrigin.Current);
 				
+				// Corregir la ruta 
 				FileStream writer = UtilidadesFicheros.CreateWriter(des.name);				
 				
 				int quedan = des.length;
 				long l = 0;
-				while (quedan > 0){
-					astReader.Seek(9, SeekOrigin.Current);
-					l = astReader.Read (initbuffer, 0, Math.Min(quedan, BUFFER_LENGTH));
+				
+				while (quedan > 0){					
+					Block block = readBlock(astReader);					
+					crc.Reset();
+					
+					l = astReader.Read(initbuffer, 0, block.size);
 					writer.Write (initbuffer, 0, (int)l);
+					
+					if (block.crc != 0xFFFFFFFF){
+						crc.Update(initbuffer, 0, (int) l);
+					}					
 					quedan -= (int) l;
 					leidos += l;
+					if ((block.crc != 0xFFFFFFFF) && ((long) block.crc != crc.Value)){
+						throw new Exception (String.Format (
+							I._("Checksum verification failed on {0}!"), des.name));
+					}					
 					OnProgress (leidos, totales);
 				}
-				writer.Close();			
+				writer.Close();
+							
 			}
 			astReader.Close();			
 			
+		}
+		private Block readBlock(FileStream astReader){	
+			byte[] info = new byte[9];		
+			astReader.Read(info, 0, 9);
+			Block block = new Block();
+			block.block = UtArrays.LeerTexto (info, 0, 3);
+			block.size  = UtArrays.LeerInt16 (info, 3);
+			block.crc   = UtArrays.LeerInt32 (info, 5);
+			return block;
 		}
 		protected override void _Partir (string fichero, string sal1, string dir, long kb)
 		{
@@ -127,10 +158,28 @@ namespace Dalle.Formatos.Astrotite
 		
 		public override bool PuedeUnir (string fichero)
 		{
-			if (!File.Exists (fichero))
+			if (!File.Exists (fichero)){
 				return false;
-			string t = fichero.ToUpper();
-			return (t.EndsWith(".AST2"));
+			}
+			if (!ficher.ToUpper().EndsWith(".AST2")){
+				return false;
+			}
+			
+			byte[] initbuffer = new byte[22];
+			FileStream astReader = new FileStream (fichero, FileMode.Open);
+			
+			if (astReader.Read (initbuffer, 0, initbuffer.Length) < 22){
+				return false;
+			}
+			string tmp="";
+			for (i = 0; i < "AST2www.astroteam.tk".Length; i++){
+				tmp += Convert.ToChar (initbuffer[i]);
+			}
+			if (tmp != "AST2www.astroteam.tk"){
+				return false;
+			}
+			return true;
+			
 		}		
 	}	
 }
