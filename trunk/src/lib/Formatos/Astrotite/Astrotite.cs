@@ -62,7 +62,7 @@ namespace Dalle.Formatos.Astrotite
 		{
 			ArrayList listaFicheros = new ArrayList();
 			int narchivos = 0;
-			int i;
+			int i = 0;
 			long startdata = 0;
 			long leidos = 0;
 			long totales = 0;
@@ -161,7 +161,7 @@ namespace Dalle.Formatos.Astrotite
 			if (!File.Exists (fichero)){
 				return false;
 			}
-			if (!ficher.ToUpper().EndsWith(".AST2")){
+			if (!fichero.ToUpper().EndsWith(".AST2")){
 				return false;
 			}
 			
@@ -172,7 +172,7 @@ namespace Dalle.Formatos.Astrotite
 				return false;
 			}
 			string tmp="";
-			for (i = 0; i < "AST2www.astroteam.tk".Length; i++){
+			for (int i = 0; i < "AST2www.astroteam.tk".Length; i++){
 				tmp += Convert.ToChar (initbuffer[i]);
 			}
 			if (tmp != "AST2www.astroteam.tk"){

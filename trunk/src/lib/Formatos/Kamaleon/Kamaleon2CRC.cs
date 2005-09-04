@@ -76,8 +76,6 @@ namespace Dalle.Formatos.Kamaleon
 				++contador;
 				contador %= 255;
 			}
-		}
-	
-	
+		}	
 	}
 }
