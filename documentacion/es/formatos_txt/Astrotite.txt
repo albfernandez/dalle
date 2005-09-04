@@ -1,0 +1,23 @@
+AST2
+
+Cabecera -
+	id - AST2
+	url - www.astroteam.tk
+	filecount - (2 bytes)
+	
+Lista de ficheros
+	filesize (4 bytes)
+	blocks (4 bytes)
+	filenamelength (1 byte)
+	filename (filenamelength bytes)
+
+Archivos 
+	mark 3 char ('SDT' o 'FDA')
+	
+	Bloques
+		block: 3 char ('BLD')
+		size:  2 bytes
+		crc :  4 bytes
+		data: (size bytes)
+
+crc - Simplemente suma el valor de todos los bytes de cada bloque.
