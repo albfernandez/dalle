@@ -11,16 +11,16 @@ PROGRAMA=dalle
 MCS=MONO_PATH=$(MONO_PATH) mcs
 WARN_LEVEL=4
 WARN_OPTIONS=-warn:$(WARN_LEVEL)
-MCS_FLAGS=$(WARN_OPTIONS) -g
+MCS_FLAGS=$(WARN_OPTIONS) -debug
 
-GTK_RESOURCES=-r gtk-sharp -r glib-sharp -r gdk-sharp
-QT_RESOURCES=-r Qt.dll
-SWT_RESOURCES=-r ICSharpCode.SWT.dll
+GTK_RESOURCES=-r:gtk-sharp -r:glib-sharp -r:gdk-sharp
+QT_RESOURCES=-r:Qt.dll
+SWT_RESOURCES=-r:ICSharpCode.SWT.dll
 
 
 MONO=mono
 MONO_FLAGS=--debug
-RESGEN=monoresgen
+RESGEN=resgen
 
 AUXRESGEN=$(BUILDDIR)/Files2Resource.exe
 
@@ -29,7 +29,7 @@ LINEA = "======================================================================"
 PREFIX=/usr
 DEST_DIR=
 
-CSDOC=csdoc
+CSDOC=Not found in your system
 APIDOCSBASE=$(BASEPATH)/api-docs
 
 INSTALL = install -m 755 

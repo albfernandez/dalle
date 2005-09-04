@@ -31,7 +31,7 @@ TRAD=$(LANGDIR)/strings.resources $(addprefix $(LANGDIR)/strings., $(addsuffix .
 RESOURCES=$(TRAD) 
 RESS= $(foreach res,$(RESOURCES), $(addprefix -resource:,$(res)),$(notdir $(res)))
 
-SWF_RESOURCES=-r System.Windows.Forms -r System.Drawing
+SWF_RESOURCES=-r:System.Windows.Forms -r:System.Drawing
 all: $(TARGET)
 
 
@@ -39,19 +39,20 @@ $(TARGET): $(LIBRARY) $(TRAD) $(SOURCEDIR)/*.cs
 	@echo "$(LINEA)"
 	@echo "Compilando $(PROGRAMA)-swf"
 	@echo "$(LINEA)"
-	$(MCS) $(MCS_FLAGS) -o $(TARGET) -r $(LIBRARY) $(SWF_RESOURCES) $(RESS)  -recurse:$(SOURCEDIR)/*.cs
+	$(MCS) $(MCS_FLAGS) -out:$(TARGET) -r:$(LIBRARY) $(SWF_RESOURCES) $(RESS)  -recurse:$(SOURCEDIR)/*.cs
 	@echo "#!/bin/sh" > $(WRAPPER)
 	@echo "" >> $(WRAPPER)
-	@echo "$(MONO) $(MONO_FLAGS) $(PREFIX)/bin/$(PROGNAME)" >>$(WRAPPER)
+	@echo "$(MONO) $(MONO_FLAGS) $(PREFIX)/lib/dalle/$(PROGNAME)" >>$(WRAPPER)
 	@echo "" >> $(WRAPPER)
 
 install: all
-	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/bin
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
+	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/lib/dalle
 	$(INSTALL) $(WRAPPER) $(DESTDIR)/$(PREFIX)/bin
 	
 uninstall:
 	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPPERNAME)
-	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(PROGNAME)
+	$(DELETE) $(DESTDIR)/$(PREFIX)/lib/dalle/$(PROGNAME)
 
 $(TRAD):$(LANGDIR)/strings%resources: $(LANGDIR)/strings%txt
 	@echo $(LINEA)

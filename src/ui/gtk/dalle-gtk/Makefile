@@ -41,19 +41,20 @@ $(TARGET): $(LIBRARY) $(TRAD) $(SOURCEDIR)/*.cs
 	@echo "$(LINEA)"
 	@echo "Compilando $(PROGRAMA)-gtk"
 	@echo "$(LINEA)"
-	$(MCS) $(MCS_FLAGS) -o $(TARGET) -r $(LIBRARY) $(RESS) $(GTK_RESOURCES) -recurse:$(SOURCEDIR)/*.cs
+	$(MCS) $(MCS_FLAGS) -out:$(TARGET) -r:$(LIBRARY) $(RESS) $(GTK_RESOURCES) -recurse:$(SOURCEDIR)/*.cs
 	@echo "#!/bin/sh" > $(WRAPPER)
 	@echo "" >> $(WRAPPER)
-	@echo "$(MONO) $(MONO_FLAGS) $(PREFIX)/bin/$(PROGNAME)" >>$(WRAPPER)
+	@echo "$(MONO) $(MONO_FLAGS) $(PREFIX)/lib/dalle/$(PROGNAME)" >>$(WRAPPER)
 	@echo "" >> $(WRAPPER)
 
 install: all
-	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/bin
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
+	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/lib/dalle
 	$(INSTALL) $(WRAPPER) $(DESTDIR)/$(PREFIX)/bin
 	
 uninstall:
 	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPPERNAME)
-	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(PROGNAME)
+	$(DELETE) $(DESTDIR)/$(PREFIX)/lib/dalle/$(PROGNAME)
 
 $(TRAD):$(LANGDIR)/strings%resources: $(LANGDIR)/strings%txt
 	@echo $(LINEA)
