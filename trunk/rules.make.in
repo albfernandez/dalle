@@ -13,9 +13,9 @@ WARN_LEVEL=4
 WARN_OPTIONS=-warn:$(WARN_LEVEL)
 MCS_FLAGS=$(WARN_OPTIONS) @MCSFLAGS@
 
-GTK_RESOURCES=-r gtk-sharp -r glib-sharp -r gdk-sharp
-QT_RESOURCES=-r Qt.dll
-SWT_RESOURCES=-r ICSharpCode.SWT.dll
+GTK_RESOURCES=-r:gtk-sharp -r:glib-sharp -r:gdk-sharp
+QT_RESOURCES=-r:Qt.dll
+SWT_RESOURCES=-r:ICSharpCode.SWT.dll
 
 
 MONO=mono

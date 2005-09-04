@@ -11,7 +11,7 @@ all : $(EXES)
 
 
 $(EXES): %.exe : %.cs 
-	$(MCS) $(MCS_FLAGS) -r $(LIBRARY) -r ICSharpCode.SharpZipLib -o $@ $<
+	$(MCS) $(MCS_FLAGS) -r:$(LIBRARY) -r:ICSharpCode.SharpZipLib -out:$@ $<
 
 clean:
 	rm -f *.exe *.dll

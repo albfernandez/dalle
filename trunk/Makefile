@@ -20,7 +20,7 @@ include rules.make
 PIXMAPS=$(BUILDDIR)/Pixmaps.resources
 RESOURCES=-resource:$(PIXMAPS),Pixmaps.resources
 
-MCS_FLAGS+= -r ICSharpCode.SharpZipLib.dll
+MCS_FLAGS+= -r:ICSharpCode.SharpZipLib.dll
 
 APIDOCS = $(APIDOCSBASE)/libDalle
 
@@ -46,7 +46,8 @@ install: all
 	@echo $(LINEA)
 	$(MKDIR) $(DESTDIR)/$(PREFIX)/bin
 	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib
-	$(INSTALL) $(LIBRARY) $(DESTDIR)/$(PREFIX)/lib
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
+	$(INSTALL) $(LIBRARY) $(DESTDIR)/$(PREFIX)/lib/dalle
 	@list='$(INTERFACES)'; for d in $$list ; do \
 	    (cd src/ui/$$d && $(MAKE) install) || exit 1 ; \
 	done
@@ -66,7 +67,7 @@ $(LIBRARY) : $(PIXMAPS) $(TRAD) $(shell find src/lib -name "*.cs")
 	@echo $(LINEA)
 	@echo "Compilando la libreria $(LIBRARY)."
 	@echo $(LINEA)
-	$(MCS) $(MCS_FLAGS) -target:library $(RESS) -resource:$(PIXMAPS),Pixmaps.resources -o $(LIBRARY) -recurse:src/lib/*.cs
+	$(MCS) $(MCS_FLAGS) -target:library $(RESS) -resource:$(PIXMAPS),Pixmaps.resources -out:$(LIBRARY) -recurse:src/lib/*.cs
 
 #Construcción de los recursos de imágenes.
 
@@ -81,7 +82,7 @@ $(AUXRESGEN): src/soporte/Files2Resource.cs
 	@echo "Compilando generador de recursos."
 	@echo $(LINEA)
 	install -d $(BUILDDIR)
-	$(MCS) $(MCS_FLAGS) -o $(AUXRESGEN) src/soporte/Files2Resource.cs
+	$(MCS) $(MCS_FLAGS) -out:$(AUXRESGEN) src/soporte/Files2Resource.cs
 
 #Construccion de las distintas interfaces de usuario.
 interfaces:

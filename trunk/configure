@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 help()
 {
@@ -20,6 +20,7 @@ help()
 
 check_for_exe_in_path()
 {
+	
 	if ($1 --help &> /dev/null); then
 		return 0;
 	else
@@ -53,7 +54,7 @@ check_for_file_in_libs (){
 ##
 
 #default : debug build
-mcs_flags="-g"
+mcs_flags="-debug"
 mono_flags="--debug"
 build_type="debug"
 
@@ -79,12 +80,12 @@ for a in $*; do
 			;;
 		--build-test)
 			build_type=testing;
-			mcs_flags="-g -r NUnit.Framework";
+			mcs_flags="-debug -r:NUnit.Framework";
 			mono_flags="--debug";
 			;;
 		--build-debug)
 			build_type=debug;
-			mcs_flags="-g"
+			mcs_flags="-debug"
 			mono_flags="--debug"
 			;;
 		--disable-gtk)

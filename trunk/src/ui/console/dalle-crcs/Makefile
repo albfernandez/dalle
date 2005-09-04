@@ -41,10 +41,10 @@ $(TARGET): $(TRAD) src/crcs.cs
 	@echo $(LINEA)
 	@echo "Compilando comprobador de crcs de prueba."
 	@echo $(LINEA)
-	$(MCS) $(MCS_FLAGS) $(RESS) -o $(TARGET) -r $(LIBRARY) -r ICSharpCode.SharpZipLib src/crcs.cs
+	$(MCS) $(MCS_FLAGS) $(RESS) -out:$(TARGET) -r:$(LIBRARY) -r:ICSharpCode.SharpZipLib src/crcs.cs
 	@echo "#!/bin/sh" > $(WRAPPER)
 	@echo "" >> $(WRAPPER)
-	@echo -n "$(MONO) $(MONO_FLAGS) $(PREFIX)/bin/$(PROGNAME) " >>$(WRAPPER)
+	@echo -n "$(MONO) $(MONO_FLAGS) $(PREFIX)/lib/dalle/$(PROGNAME) " >>$(WRAPPER)
 	@echo -n "\"$$" >> $(WRAPPER)
 	@echo -n "@\"" >> $(WRAPPER)
 	@echo "" >> $(WRAPPER)
@@ -59,12 +59,13 @@ $(LANGDIR)/strings.txt: src/*.cs
 	$(GETSTRINGS) src/*.cs > $@
 
 install: $(TARGET)
-	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/bin
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
+	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/lib/dalle
 	$(INSTALL) $(WRAPPER) $(DESTDIR)/$(PREFIX)/bin
 
 uninstall:
 	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPPERNAME)
-	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(PROGNAME)
+	$(DELETE) $(DESTDIR)/$(PREFIX)/lib/dalle/$(PROGNAME)
 
 clean:
 	rm -f $(TARGET) $(WRAPPER) $(LANGDIR)/*.resources

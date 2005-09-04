@@ -27,23 +27,24 @@ $(TARGET): $(LIBRARY) src/*.cs
 	@echo $(LINEA)
 	@echo "Compilando openhacha-text."
 	@echo $(LINEA)
-	$(MCS) $(MCS_FLAGS) $(RECURSOS_TRADUCCIONES) -o $(TARGET) -r $(LIBRARY) "-recurse:src/*.cs"
+	$(MCS) $(MCS_FLAGS) $(RECURSOS_TRADUCCIONES) -out:$(TARGET) -r:$(LIBRARY) "-recurse:src/*.cs"
 	@echo "#!/bin/sh" > $(WRAPPER)
 	@echo "" >> $(WRAPPER)
 	
-	@echo -n "$(MONO) $(MONO_FLAGS) $(PREFIX)/bin/$(PROGNAME) " >>$(WRAPPER)
+	@echo -n "$(MONO) $(MONO_FLAGS) $(PREFIX)/lib/dalle/$(PROGNAME) " >>$(WRAPPER)
 	@echo -n "\"$$" >> $(WRAPPER)
 	@echo -n "@\"" >> $(WRAPPER)
 	@echo "" >> $(WRAPPER)
 
 
 install: $(TARGET)
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
 	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/bin
 	$(INSTALL) $(WRAPPER) $(DESTDIR)/$(PREFIX)/bin
 
 uninstall:
 	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPPERNAME)
-	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(PROGNAME)
+	$(DELETE) $(DESTDIR)/$(PREFIX)/lib/dalle/$(PROGNAME)
 
 clean:
 	rm -f $(TARGET) $(WRAPPER)

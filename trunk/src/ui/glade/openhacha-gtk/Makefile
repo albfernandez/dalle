@@ -24,8 +24,8 @@ WRAPNAME=openhacha
 TARGET=$(BUILDDIR)/$(PROGNAME)
 WRAPPER=$(BUILDDIR)/$(WRAPNAME)
 SOURCEDIR=src
-GNOME_ASSEMBLY = -r gnome-sharp
-GLADE_ASSEMBLY = -r glade-sharp
+GNOME_ASSEMBLY = -r:gnome-sharp
+GLADE_ASSEMBLY = -r:glade-sharp
 RESOURCES = -resource:src/openhacha.glade,openhacha.glade
 
 
@@ -36,20 +36,21 @@ $(TARGET): $(LIBRARY) $(SOURCEDIR)/*.cs
 	@echo $(LINEA)
 	@echo "Compilando OpenHacha (gtk)"
 	@echo $(LINEA)
-	$(MCS) $(MCS_FLAGS) -o $(TARGET) -r $(LIBRARY) $(GTK_RESOURCES) \
+	$(MCS) $(MCS_FLAGS) -out:$(TARGET) -r:$(LIBRARY) $(GTK_RESOURCES) \
 	$(GNOME_ASSEMBLY) $(GLADE_ASSEMBLY) $(RESOURCES) -recurse:$(SOURCEDIR)/*.cs 
 	@echo "#!/bin/sh" > $(WRAPPER)
 	@echo "" >> $(WRAPPER)
-	@echo "$(MONO) $(MONO_FLAGS) $(PREFIX)/bin/$(PROGNAME)" >> $(WRAPPER)
+	@echo "$(MONO) $(MONO_FLAGS) $(PREFIX)/lib/dalle/$(PROGNAME)" >> $(WRAPPER)
 	@echo "" >> $(WRAPPER)
 	   
 install: all
-	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/bin
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
+	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/bin/lib
 	$(INSTALL) $(WRAPPER)  $(DESTDIR)/$(PREFIX)/bin
 
 uninstall:
 	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPNAME)
-	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(PROGNAME)
+	$(DELETE) $(DESTDIR)/$(PREFIX)/lib/dalle/$(PROGNAME)
 	
 clean:
 	rm -f $(TARGET) $(WRAPPER)

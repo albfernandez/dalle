@@ -32,11 +32,11 @@ $(TARGET): $(LIBRARY) $(TRAD) src/*.cs
 	@echo $(LINEA)
 	@echo "Compilando interfaz por linea de comandos (dalle-console)."
 	@echo $(LINEA)
-	$(MCS) $(MCS_FLAGS) $(REC_TRAD) -o $(TARGET) -r $(LIBRARY) "-recurse:src/*.cs"
+	$(MCS) $(MCS_FLAGS) $(REC_TRAD) -out:$(TARGET) -r:$(LIBRARY) "-recurse:src/*.cs"
 	@echo "#!/bin/sh" > $(WRAPPER)
 	@echo "" >> $(WRAPPER)
 	
-	@echo -n "$(MONO) $(MONO_FLAGS) $(PREFIX)/bin/$(PROGNAME) " >>$(WRAPPER)
+	@echo -n "$(MONO) $(MONO_FLAGS) $(PREFIX)/lib/dalle/$(PROGNAME) " >>$(WRAPPER)
 	@echo -n "\"$$" >> $(WRAPPER)
 	@echo -n "@\"" >> $(WRAPPER)
 	@echo "" >> $(WRAPPER)
@@ -53,12 +53,13 @@ $(LANGDIR)/strings.txt: src/*.cs
 	$(GETSTRINGS) src/*.cs > $@
 
 install: $(TARGET)
-	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/bin
+	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
+	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/lib/dalle
 	$(INSTALL) $(WRAPPER) $(DESTDIR)/$(PREFIX)/bin
 	
 uninstall:
 	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPPERNAME)
-	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(PROGNAME)
+	$(DELETE) $(DESTDIR)/$(PREFIX)/lib/dalle/$(PROGNAME)
 
 
 clean:

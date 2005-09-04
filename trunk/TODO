@@ -67,6 +67,7 @@ Leyenda:
 
 ===============================
 	
+	- [X]  Soporte para cortar en kamaleon2.
 	- [ ]  Repaso de dalle-console.
 	- [ ]  Repaso de dalle-gtk.
 	- [ ]  Repaso de dalle-sfv.
@@ -75,38 +76,29 @@ Leyenda:
 	- [X]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
     - [X]  Revisar todos los scripts para que funcione bien con mono 1.0
 	- [ ]  Nuevo sistema de configuracion / compilacion (autotools?, nant?)
+	- [ ]  Sacar las cadenas de texto I18N de la libreria.
+	- [ ]  Excepciones bien estructuradas en la libreria.
+	- [ ]  Nueva estructura de instalación.
+	
 
 ===============================
 
-	Versión 0.10 (User friendly)
+	Versión 0.10 (El mundo de windows)
 
 ===============================
-
+	
 	- [ ] DragNDrop.
-	- [X] Soporte para cortar en kamaleon2.
-	- [ ] Manual de usuario.
+	- [ ] Interfaz swf.
+	- [ ] Instalador NSIS para Windows?.
 	
 
 ===============================
 
-	Versión 0.12 (Developer friendly)
-
-===============================
-
-	- [ ]  Documentar los formatos.
-	- [ ]  Hacer tests (NUnit) de los formatos.
-	- [ ]  Hacer tests (NUnit) de los crs implementados.
-	- [ ]  Todo el código comentado.
-	
-
-===============================
-
-	Versión 0.14 (Aumentar los formatos soportados)
+	Versión 0.12 (Aumentar los formatos soportados)
 
 ===============================
 	
 	
-	- [ ] Diagramas de clases.
 	- [-] Soporte "completo" para zip.
 	- [ ] Soporte "completo" para tar, gz, bz2.
 	- [ ] Mejorar el soporte de Astrotite.
@@ -118,23 +110,18 @@ Leyenda:
 
 ===============================
 
-	Versión 0.16 (El mundo de windows)
+	Versión 1.0
 
 ===============================
 
-	- [ ] Interfaz swf.
-	- [ ] Instalador NSIS para Windows.
-
-
-===============================
-
-	Versión 1.0 (Y al fín 1.0)
-
-===============================
-
+	- [ ] Manual de usuario.
+	- [ ] Diagramas de clases.
+	- [ ] Documentar los formatos.
+	- [ ] Hacer tests (NUnit) de los formatos.
+	- [ ] Hacer tests (NUnit) de los crcs implementados.
+	- [ ] Todo el código comentado.
 	- [ ] Nueva web.
 	- [ ] Libre de bugs (eso se intentará ;)).	
-
 
 
 ===========================================================================
@@ -145,7 +132,6 @@ Otras cosas por hacer (cuando haya tiempo, posiblemente despues de v 1.0)
 
 	- [ ]  Hacer que Axman3 soporte la verificación crc que tiene.
 	- [ ]  Hacer un soporte completo para los archivos FSI de FileSplit
-	- [ ]  Kamaleon-gtk (supone revisar formato Kamaleon.)
 	- [ ]  Hacer los programas compatibles con pnet.
 	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
 	
