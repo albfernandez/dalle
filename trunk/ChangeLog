@@ -1,3 +1,9 @@
+2006-06-13
+	Versión 0.7.6
+
+2006-06-13
+	Arreglado un bug en el calculo de crcs que provocaba "Sharing violation"
+
 2005-09-04
 	Instalación de los archivos en /usr/lib/dalle
 	Soporte para el CRC de Astrotite
