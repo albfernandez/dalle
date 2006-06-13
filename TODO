@@ -101,7 +101,7 @@ Leyenda:
 	
 	- [-] Soporte "completo" para zip.
 	- [ ] Soporte "completo" para tar, gz, bz2.
-	- [ ] Mejorar el soporte de Astrotite.
+	- [-] Mejorar el soporte de Astrotite.
     - [ ] Soporte para Splitter & Merger.
 	- [ ] Soporte HJSplit.
 	- [ ] Soporte gcutter.
