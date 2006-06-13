@@ -1,0 +1,333 @@
+2006-06-13
+	Versión 0.7.6
+
+2006-06-13
+	Arreglado un bug en el calculo de crcs que provocaba "Sharing violation"
+
+2005-09-04
+	Instalación de los archivos en /usr/lib/dalle
+	Soporte para el CRC de Astrotite
+
+2005-06-11
+	Versión 0.7.5
+
+2005-06-11
+	Corregido error de compilación en (Axman3) en Mono 1.1.
+	Cambiado la llamada al programa auxiliar monoresgen -> resgen.
+
+2005-06-11
+	Versión 0.7.4
+
+2005-05-11
+	Corregido parcialmente problema de mensajes en dalle-sfv (#1002644)
+	
+2005-01-21
+	Retocado el soporte de I18N (por getstrings.pl maneja claves duplicadas)
+	Revisión de OpenHacha, ahora es un Gnome.Program y no da Warnings
+	ni mensajes de depuración en tiempo de ejecución.
+	Revisión del configure. Se han quitado las opciones de qt# y swt(no usadas).
+
+2004-12-13
+	Soporte para verificacion de archivos con hash sha1
+	Retoques en OpenHacha para quitar los warnings del compilador
+
+2004-10-12
+	Modificado getstrings.pl - Ahora no genera strings repetidos.
+	Revisión de MaxSplitter y FileSpliter (provocaban fallos del
+	compilador en determinadas circunstancias)
+
+2004-09-24
+        Version 0.7.3
+
+2004-09-05
+	Dialogo de Acerca para dalle-gtk
+	Comienzo de dalle-swf
+
+2004-09-04
+	Completado el soporte para Camouflage (solo falta soporte de fechas)
+	Corregido bug en SF. Ahora ya cierra el archivo despues de usarlo
+
+2004-08-28
+	Paquete debian para todas las arquitecturas y
+	con las dependencias incluidas
+
+2004-08-28
+	Primer paquete debian
+	Nueva ubicacion de openhacha (en src/ui/glade)
+	OpenHacha actulizado a 0.7cvs
+
+2004-06-12
+	Puede unir archivos de Camouflage.
+
+2004-06-09
+	Soporte completo para KamaleoN2 (con Checksum)
+	Arreglo: Error en UtArrays que no leia bien los Int64
+
+2004-03-17
+	Version 0.7.2
+
+2004-03-17 
+	Corregido un bug "muy tonto" de soporte de formatos (#917860)
+	
+2004-02-23 
+	Inicio de una nueva ventana principal de dalle-gtk (Ramón Rey Vicente)
+
+2004-02-16
+	Version 0.7.1
+
+2004-02-15
+	Corregidos errores en el verificador sfv (ahora no falla con lineas en blanco)
+
+2004-02-12
+	Version 0.7.0
+	
+2004-02-10
+	Eliminados (casi) todos los warnings del compilador.
+	Soporte para verificar ficheros md5 y sfv recursivos.
+
+2004-02-08
+	Soporte para unir archivos creados con Astrotite.
+	Soporte para crear md5 y sfv recursivo.
+
+2004-02-03
+	Soporte para crear Md5 (tipo linux y bsd, no recursivo).
+
+2004-02-02
+	Puede verificar archivos sfv (no recursivos).
+	Puede crear archivos sfv (no recursivos).
+
+2004-02-01
+	Soporte preliminar para archivos de verificación. (SFV)
+
+2004-01-31
+	Actualizado OpenHacha 0.5
+
+2004-01-27
+	Versión 0.6.0
+
+2004-01-27
+	Interfaz gráfica gtk# terminada.
+	Actualizado OpenHacha a su versión del cvs.
+
+2004-01-26
+	Limpieza de código en toda la librería.
+	Por fin el RPM es relocalizable real.
+
+2004-01-20
+	Por fin disponible en CVS.
+	
+2004-01-19
+	Revisión en los formatos que pueden estar comprimidos en zip
+	Retoques de estilo en todo el código.
+	Revisión ligera en Dalle.Formatos.MaxSplitter
+	Revisión de dalle-console.
+		Creación de la clase LongJob (abstracta, base para SplitJob y JoinJob).
+		Muestra mensajes en lugar del trace de las excepciones.
+
+2004-01-18
+	Retoques de estilo en
+		Dalle.Formatos, Dalle.Formatos.Generico, Dalle.Formatos.Hacha
+
+2004-01-17
+	Nuevo sistema I18N (a ver si este es el definitivo...)
+	Cambios de estilo en Dalle.Utilidades.
+	Creación del nuevo paquete Dalle.Checksum, con las clases CRC y NullCRC, que
+	antes estaban en Utilidades (no se que pintaban allí).
+
+2004-01-16
+	Actualizado OpenHacha a 0.4+ (versión del cvs)
+
+2004-01-12
+	Eliminado IMessageListener. Ahora el progreso se maneja con delegates y events.
+
+2004-01-11
+	Nuevo cambio en el sistema de Makefiles, esta vez para las traducciones.
+	
+2004-01-10
+	Nueva documentación de los formatos, basada en xml.
+	Nueva página web, con fuente en xml.
+
+2004-01-09
+	Añadido el objetivo clean a todos los makefiles.
+
+2004-01-08
+	La salida de la funcion Manager.GetFormatosUne() y Manager.GetFormatosParte()
+	ordenadas alfabéticamente.
+	Nuevo I18N en la libreria, disponible para todos los programas.
+	Un pequeño bug arreglado en ParteGenerico, que hacia que la aplicación
+	fallase si se intentaba unir un archivo sin extensión.
+	Revisión completa a dalle-crcs, pequeña utilidad para calcular crcs
+	de ficheros.
+
+2004-01-02
+	Añadido el objetivo uninstall en los makefiles
+
+2003-12-29
+	Incluido openhacha-text
+
+2003-12-25
+	Dalle-gtk es funcional (en parte)
+
+2003-12-25
+	Soporte parcial de unir el fsi.
+	Muestra el progreso en todos los formatos.
+
+2003-12-24
+	Arreglado el bug en console, ya funciona el comando -j.
+
+2003-12-23
+	Axman3 ya puede unir (no verifica CRC).
+	Terminada la internacionalización de la interfaz por consola.
+	
+2003-12-22
+	Ya funciona el wrapper para dalle-console
+	Nuevo configure (ahora en shellScript, menos variables, sin Makefile.in, 
+	solo rules.make.in).
+	Cambiado el nombre ProgressListener por IMessageListener, más correcto.
+	Cambiado en console, el nombre Job por IJob, para reflejar que se trata
+	de una interfaz.
+
+2003-12-21
+	Primera documentación sobre los formatos.
+
+2003-12-19
+	El RPM es "relocalizable".
+	
+
+
+2003-12-18
+	Versión 0.5.1
+
+2003-12-18
+	Interfaz grafica actualizada a OpenHacha 0.2.
+
+2003-12-17
+	El proyecto ya tiene página web.
+	Retoques en configure.pl: 
+		El directorio de instalación por defecto es el de mono.
+		Mejor detección de las librerías instaladas.
+
+
+2003-12-16
+	Versión 0.5.0
+
+2003-12-16
+	Creados los wrappers para llamar a mono.
+
+2003-12-15
+	Primera interfaz en gtk#/gnome#(solo funciona en linux). Basada totalmente en OpenHacha.
+	Arreglado un bug con los directorios de salida.
+
+2003-12-04
+	SPEC para la creación de RPMS.
+
+2003-11-27
+	Internacionalización completa de la interfaz por consola.
+	Creado el objetivo install en Makefiles
+	Se comprueba la existencia de ICSharpCode.SharpZipLib.dll en configure.
+	Terminado hachapro.
+
+
+
+
+2003-11-26
+	Versión 0.4 - Primera versión pública.
+
+2003-11-25
+	Nueva interfaz por línea de comandos (con I18N).
+
+2003-11-21
+	HachaPro genera el archivo de crcs al partir y lo utiliza al unir.
+
+2003-11-20
+	Checksum de Hacha completado.
+	Soporte completo para hacha2
+
+2003-11-18
+	Todos los formatos hacen uso de la informacion del directorio de salida.
+
+2003-11-17
+	HachaPro es capaz de detectar si el archivo estaba comprimido y lo
+	descomprime.
+	
+	
+	
+	
+
+2003-11-16
+	Versión 0.3 - Libreria separada de las aplicaciones.
+
+2003-11-16
+	Soporte para SplitFile completado (salvo por los permisos de los
+	ficheros, que nunca será soportado - permisos de windows).
+	Separado por fin en libreria y aplicaciones que hacen uso de esa libreria.
+	Retocado el sistema de construccion (para soportar crear la libreria y
+	las aplicaciones).
+	Creado ProgressListener bien.
+
+2003-11-15
+	Revisado el soporte para SplitFile (Cambios en el Checksum y las
+	funciones utilizadas, ahora debería comportarse mejor).
+	Soporte completo hacha1. Faltan pruebas intensivas.
+	Posibilidad de indicar el tamaño del buffer de datos en ParteZip.
+
+2003-11-14
+	Añadido soporte para descomprimir archivos zip.
+	Añadido soporte básico para comprimir archivos zip.
+	Revisión de las funciones de acceso a ficheros: Ahora soportan CRC.
+
+2003-11-13
+	Añadido soporte para unir y cortar Easy File Splitter v 1.05
+	Añadido soporte para unir cortar MaxSplitter v 1.53 Free Edition
+	Añadido soporte genérico para cortar.
+
+
+
+
+
+2003-11-13
+	Version 0.2
+
+2003-11-12
+	Incluido el formato hacha2 (sin crc)
+
+2003-11-11
+	Formato Kamaleon1. soporte completo para cortar y unir.
+	Soporte preliminar para cortar el formato Kamaleon2 (falta por determinar
+		la funcion de 5 bytes extraños)
+		Ademas, el tamaño del ultimo fragmento nunca sera superior al indicado.
+	Revisado el formato Hacha1. (cortar y unir perfectamente soportados ahora).
+	Versión preliminar de la interfaz por linea de comandos (mejorable):
+		Por fin se puede unir y juntar sin modificar codigo.
+
+2003-11-10
+	Corta en formato Kamaleon1.
+
+2003-11-08
+	Añadido soporte para SF
+		- Unir y Partir completo.
+	Mejorado el soporte para SplitFile.
+		- Soporta el checksum y los numeros de secuencia completamente.
+		- Soporta cortar archivos.
+
+2003-11-07
+	Nuevos formatos - unir (aun no muy depurados):
+		-	Kamaleon 1 y 2
+		-	FileSplit 2.3	
+
+
+
+
+
+2003-09-22
+	Versión 0.1
+
+2003-09-21
+	
+	Une (aún no muy depurado):
+		- Hacha 1
+		- Hacha Pro (el formato comprimido solo lo une, no lo descomprime)
+		- SplitFile 1
+	Corta (no unido con la linea de comandos):
+		- Hacha 1
+		- Hacha Pro sin comprimir

@@ -1,0 +1,9 @@
+FileChooper 1.0.0
+
+
+El formato son los archivos cortados tal cual.
+El formato del nombre de los fragmentos es:
+<nombre original sin extension>.<numero de fragmento, 1 dig, comenzando en 0>
+
+Genera un bat para unir los ficheros (<nombreoriginalsinext>.bat).
+copy /b "g.0"+"g.1"+"g.2"+"g.3" "g.txt"

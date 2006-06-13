@@ -1,0 +1,43 @@
+El formato es:
+
+Bytes Contenido
+
+  nnn El archivo usado como piel.
+    2 Permisos (de la piel, 0x20 por lo general o 0x21 read-only)
+   24 Time stamps (3: Creation, Access, Modification)
+   
+   
+
+    4 Largo del chunk
+* XXX chunk de datos ... Repite hasta agotar el largo. Los chunks son de hasta 1.000.000 de bytes.
+    4 0xFFFFFFFF esto marca el fin, aunque sospecho que en realidad es simplemente un largo de chunk "mágico".
+    2 Permisos
+   24 Las 3 time stamps
+      Este grupo se repite por cada archivo en contenido.
+
+----- Hasta acá la lectura de los datos es desde avanzando. Desde este punto
+      los datos hay que ir leyéndolos de atrás hacia adelante.
+	  
+	  
+	  
+	  
+
+* 255 Nombre     ... Repite por cada archivo contenido
+  
+  
+  
+* 255 Nombre de la imagen
+
+
+
+    4 Largo del archivo  ... Repite por cada archivo contenido    
+  
+    4 Tamaño de la piel	
+	
+	
+	
+	
+    2 Cantidad de archivos contenidos, 1 es la piel por lo que esto es 2 o
+      más.
+* 255 Password
+*  20 ID, es la versión de Camouflage usada, cualquier texto es válido.

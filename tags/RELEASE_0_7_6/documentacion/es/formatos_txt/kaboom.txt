@@ -1,0 +1,15 @@
+corta los datos tal cual.
+El formato del nombre de los archivos es:
+<nombre original>.<numero de secuencia, 3 digitos, comenzando en 000>
+
+genera un archivo bat <nombre original>.bat con el siguiente formato:
+
+@echo off
+echo.
+echo Re-Assembling Split Pieces..
+copy/b "aes.txt.000" "aes.txt"
+copy/b "aes.txt" + "aes.txt.001"
+copy/b "aes.txt" + "aes.txt.002"
+echo.
+echo All Done..
+
