@@ -183,9 +183,8 @@ namespace Dalle.Utilidades
 			long leidos = 0;
 			FileStream writer = new FileStream (hacia, FileMode.Append, FileAccess.Write);
 			writer.Seek (writer.Length, SeekOrigin.Begin);
-			FileStream reader = new FileStream (desde, FileMode.Open);
-			reader.Seek (from, SeekOrigin.Begin);
-			
+			FileStream reader = new FileStream (desde, FileMode.Open, FileAccess.Read);
+			reader.Seek (from, SeekOrigin.Begin);			
 			
 			byte[] buffer = new byte[_bufferSize];
 			
@@ -278,7 +277,7 @@ namespace Dalle.Utilidades
 		
 		public static byte LeerByte (String fichero, long pos)
 		{		
-			FileStream reader = new FileStream (fichero, FileMode.Open);
+			FileStream reader = new FileStream (fichero, FileMode.Open, FileAccess.Read);
 			reader.Seek (pos, SeekOrigin.Begin);
 			byte ret = (byte)reader.ReadByte();
 			reader.Close();
@@ -292,6 +291,7 @@ namespace Dalle.Utilidades
 			for (int i=0; i < count; i++){
 				crc.Update (reader.ReadByte());
 			}
+			reader.Close();
 		}
 		
 		/// <summary>Obtiene el stream para escribir en un fichero.
