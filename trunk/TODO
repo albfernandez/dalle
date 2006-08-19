@@ -89,6 +89,7 @@ Leyenda:
 	
 	- [ ] DragNDrop.
 	- [ ] Repasar dalle-gtk para que siga las Gnome HIG
+	- [ ] Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
 	- [ ] Interfaz swf.
 	- [ ] Instalador NSIS para Windows?.
 	

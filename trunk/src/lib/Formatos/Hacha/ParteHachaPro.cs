@@ -71,7 +71,7 @@ namespace Dalle.Formatos.Hacha
 				for (int i=0; i < lst.Count; i++){
 					String f = String.Format(nombre + ".{0:000}", i);
 					if (!File.Exists (f)){
-						// TODO: Lanzar una excepci�n personalizada.
+						// TODO: Lanzar una excepción personalizada.
 						throw new Exception (String.Format(
 							I._("{0}:File not found"),f));
 					}
@@ -88,7 +88,6 @@ namespace Dalle.Formatos.Hacha
 			}
 			OnProgress (0, totales);
 			while (File.Exists (frag)){
-				
 				if (lst != null)
 					crc = new HachaCRC(new FileInfo (frag).Length);
 				
@@ -183,6 +182,7 @@ namespace Dalle.Formatos.Hacha
 		}
 		public override bool PuedeUnir (string fichero)
 		{
+			Console.WriteLine ("probamos si puede unir " + fichero);
 			if (! File.Exists (fichero) )
 				return false;
 			//TODO: Depurar un poco.
