@@ -22,7 +22,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-[assembly: AssemblyVersion("0.7.5")]
+[assembly: AssemblyVersion("0.7.8.0")]
 [assembly: AssemblyTitle ("Project OpenHacha")]
 [assembly: AssemblyDescription ("A free as in freedom implementation of Hacha")]
 [assembly: AssemblyCopyright ("Copyright (c) 2003, 2004 Ramón Rey Vicente")]
