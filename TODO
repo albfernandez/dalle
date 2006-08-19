@@ -83,11 +83,12 @@ Leyenda:
 
 ===============================
 
-	Versión 0.10 (El mundo de windows)
+	Versión 0.10 (El mundo de windows y mejoras gráficas)
 
 ===============================
 	
 	- [ ] DragNDrop.
+	- [ ] Repasar dalle-gtk para que siga las Gnome HIG
 	- [ ] Interfaz swf.
 	- [ ] Instalador NSIS para Windows?.
 	
@@ -120,6 +121,7 @@ Leyenda:
 	- [ ] Hacer tests (NUnit) de los formatos.
 	- [ ] Hacer tests (NUnit) de los crcs implementados.
 	- [ ] Todo el código comentado.
+	- [ ] Limpieza de código.
 	- [ ] Nueva web.
 	- [ ] Libre de bugs (eso se intentará ;)).	
 
