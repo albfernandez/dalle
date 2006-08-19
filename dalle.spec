@@ -1,5 +1,5 @@
 %define name dalle
-%define version 0.7.5
+%define version 0.7.6
 %define release 1
 %define prefix /usr
 
@@ -25,7 +25,7 @@ Requires:   	mono-core >= 1.0, mono-ziplib >= 1.0, gtk-sharp >= 1.0
 %setup
 
 %build
-./configure --prefix=%{prefix} --build-debug --mono-path=/usr/lib/mono/2.0:/usr/lib/mono/gtk-sharp
+./configure --prefix=%{prefix} --build-debug --mono-path=/usr/lib/mono/2.0:/usr/lib/mono/gtk-sharp-2.0
 make
 
 %install
