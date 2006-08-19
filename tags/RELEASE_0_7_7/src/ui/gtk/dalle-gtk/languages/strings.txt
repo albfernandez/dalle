@@ -1,0 +1,112 @@
+
+# src/DalleGtk.cs: 132
+
+Merge_Files = Merge Files
+
+
+# src/SplitDialog.cs: 115
+
+Number_of_fragments = Number of fragments
+
+
+# src/SplitDialog.cs: 126
+
+Size_of_fragments = Size of fragments
+
+
+# src/SplitDialog.cs: 136
+
+KiB = KiB
+
+
+# src/JoinDialog.cs: 92
+
+Fragment_to_join = Fragment to join
+
+
+# src/DalleGtk.cs: 147
+
+About = About
+
+
+# src/JoinDialog.cs: 83
+
+Re-create_a_file_from_its_fragments = Re-create a file from its fragments
+
+
+# src/SplitDialog.cs: 90
+
+Split_a_file_in_small_pieces = Split a file in small pieces
+
+
+# src/JoinDialog.cs: 123
+
+Unknown_file_format = Unknown file format
+
+
+# src/SplitDialog.cs: 139
+
+File_Format = File Format
+
+
+# src/BaseDialog.cs: 190
+
+Do_you_want_to_stop_file_operation? = Do you want to stop file operation?
+
+
+# src/SplitDialog.cs: 102
+
+Select_a_file_to_split = Select a file to split
+
+
+# src/JoinDialog.cs: 82
+
+Join_the_fragments_of_a_file = Join the fragments of a file
+
+
+# src/SplitDialog.cs: 89
+
+Split_a_File = Split a File
+
+
+# src/DalleGtk.cs: 130
+
+# src/SplitDialog.cs: 61
+
+Split_Files = Split Files
+
+
+# src/DalleGtk.cs: 128
+
+What_do_you_want_to_do? = What do you want to do?
+
+
+# src/BaseDialog.cs: 143
+
+Selected_file_does_not_exist = Selected file does not exist
+
+
+# src/JoinDialog.cs: 53
+
+Join_File_Fragments = Join File Fragments
+
+
+# src/BaseDialog.cs: 97
+
+Select_a_file = Select a file
+
+
+# src/DalleGtk.cs: 119
+
+Welcome_to_Dalle. = Welcome to Dalle.
+
+
+# src/DalleGtk.cs: 71
+
+DalleGtk = DalleGtk
+
+
+# src/BaseDialog.cs: 85
+
+Browse... = Browse...
+

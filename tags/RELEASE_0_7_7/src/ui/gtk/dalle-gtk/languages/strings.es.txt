@@ -1,0 +1,68 @@
+# src/DalleGtk.cs: 132
+Merge_Files = Unir Archivos
+
+# src/SplitDialog.cs: 115
+Number_of_fragments = Número de piezas
+
+# src/SplitDialog.cs: 126
+Size_of_fragments = Tamaño de las piezas
+
+# src/SplitDialog.cs: 136
+KiB = KiB
+
+# src/JoinDialog.cs: 92
+Fragment_to_join = Pieza a unir
+
+# src/DalleGtk.cs: 147
+About = Acerca de ...
+
+# src/JoinDialog.cs: 83
+Re-create_a_file_from_its_fragments = Recrear un archivo desde sus piezas
+
+# src/SplitDialog.cs: 90
+Split_a_file_in_small_pieces = Partir un archivo en piezas menores
+
+# src/JoinDialog.cs: 123
+Unknown_file_format = Formato desconocido
+
+# src/SplitDialog.cs: 139
+File_Format = Formato del fichero
+
+# src/BaseDialog.cs: 190
+Do_you_want_to_stop_file_operation? = ¿Desea detener la operación?
+
+# src/SplitDialog.cs: 102
+Select_a_file_to_split = Seleccione el archivo a unir
+
+# src/JoinDialog.cs: 82
+Join_the_fragments_of_a_file = Unir las piezas de un archivo
+
+# src/SplitDialog.cs: 89
+Split_a_File = Partir un archivo
+
+# src/DalleGtk.cs: 128
+What_do_you_want_to_do? = ¿Qué desea hacer?
+
+# src/BaseDialog.cs: 143
+Selected_file_does_not_exist = El archivo seleccionado no existe
+
+# src/JoinDialog.cs: 53
+Join_File_Fragments = Unir las piezas de un archivo
+
+# src/DalleGtk.cs: 130
+# src/SplitDialog.cs: 61
+Split_Files = Partir ficheros
+
+# src/BaseDialog.cs: 97
+Select_a_file = Seleccione un archivo
+
+# src/DalleGtk.cs: 119
+Welcome_to_Dalle. = Bienvenido a Dalle
+
+# src/DalleGtk.cs: 71
+DalleGtk = DalleGtk
+
+# src/BaseDialog.cs: 85
+Browse... = Buscar...
+
+
