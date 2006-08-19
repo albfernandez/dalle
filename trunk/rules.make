@@ -1,6 +1,6 @@
 
 
-MONO_PATH=:/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp
+MONO_PATH=:/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp-2.0/
 
 INTERFACES=console gtk glade swf
 MAKE = make

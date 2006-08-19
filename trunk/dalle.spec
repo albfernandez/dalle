@@ -1,5 +1,5 @@
 %define name dalle
-%define version 0.7.6
+%define version 0.7.8
 %define release 1
 %define prefix /usr
 
