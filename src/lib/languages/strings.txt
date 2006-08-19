@@ -1,12 +1,12 @@
 
-# src/lib/Formatos/SF/ParteSF.cs: 83
-
-Too_much_fragments = Too much fragments
-
-
 # src/lib/Formatos/EasyFileSplitter/EasyFileSplitter.cs: 59
 
 File_not_found:_{0} = File not found: {0}
+
+
+# src/lib/Formatos/SF/ParteSF.cs: 83
+
+Too_much_fragments = Too much fragments
 
 
 # src/lib/Utilidades/UtilidadesFicheros.cs: 83
@@ -19,19 +19,19 @@ File_{0}_already_exists = File {0} already exists
 Single_verification_failed = Single verification failed
 
 
-# src/lib/Formatos/Hacha/ParteHacha_v1.cs: 131
-
-File_{0}_is_corrupt_(incorrect_size)! = File {0} is corrupt (incorrect size)!
-
-
 # src/lib/Formatos/Astrotite/Astrotite.cs: 82
 
 Bad_file = Bad file
 
 
-# src/lib/Formatos/Astrotite/Astrotite.cs: 136
+# src/lib/Formatos/Hacha/ParteHacha_v1.cs: 131
 
-# src/lib/Formatos/Hacha/ParteHachaPro.cs: 102
+File_{0}_is_corrupt_(incorrect_size)! = File {0} is corrupt (incorrect size)!
+
+
+# src/lib/Formatos/Hacha/ParteHachaPro.cs: 101
+
+# src/lib/Formatos/Astrotite/Astrotite.cs: 136
 
 Checksum_verification_failed_on_{0}! = Checksum verification failed on {0}!
 
@@ -41,14 +41,14 @@ Checksum_verification_failed_on_{0}! = Checksum verification failed on {0}!
 Byte_verfication_failed_on_{0} = Byte verfication failed on {0}
 
 
-# src/lib/Formatos/Parte.cs: 196
-
-{0}_exists_and_is_a_file. = {0} exists and is a file.
-
-
 # src/lib/Formatos/MaxSplitter/MXSInfo.cs: 56
 
 Too_large_to_be_a_MXS_file = Too large to be a MXS file
+
+
+# src/lib/Formatos/Parte.cs: 196
+
+{0}_exists_and_is_a_file. = {0} exists and is a file.
 
 
 # src/lib/Formatos/Hacha/ParteHachaPro.cs: 76
@@ -56,14 +56,14 @@ Too_large_to_be_a_MXS_file = Too large to be a MXS file
 {0}:File_not_found = {0}:File not found
 
 
-# src/lib/Formatos/SplitFile/SplitFile_v1.cs: 88
-
-Checksum_verfication_failed = Checksum verfication failed
-
-
 # src/lib/Formatos/Astrotite/Astrotite.cs: 75
 
 Bad_file_ = Bad file 
+
+
+# src/lib/Formatos/SplitFile/SplitFile_v1.cs: 88
+
+Checksum_verfication_failed = Checksum verfication failed
 
 
 # src/lib/Formatos/Hacha/ParteHacha_v1.cs: 118
