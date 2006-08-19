@@ -72,7 +72,8 @@ namespace Dalle.Formatos
 			formatos.Add (new Dalle.Formatos.Kamaleon.ParteKamaleon());
 			formatos.Add (new Dalle.Formatos.Camouflage.Camouflage());
 			formatos.Add (new Dalle.Formatos.FileSplit.FileSplit());
-			formatos.Add (new Dalle.Formatos.SplitFile.SplitFile_v1());
+			// De momento anulado (tampoco es que sea muy usado)
+			//formatos.Add (new Dalle.Formatos.SplitFile.SplitFile_v1());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v2());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v1());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHachaPro());
@@ -167,7 +168,9 @@ namespace Dalle.Formatos
 		
 		public IParte GetFormatoFichero (String fichero)
 		{
+			Console.WriteLine("Formatos soportados " + formatos.Count);
 			foreach (IParte p in formatos){
+				Console.WriteLine("testeando parte " + p.Nombre + " " + p);
 				if (p.PuedeUnir(fichero)){
 					return p;
 				}
