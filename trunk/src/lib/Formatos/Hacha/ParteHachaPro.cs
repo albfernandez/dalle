@@ -4,7 +4,7 @@
 	Dalle.Formatos.Hacha.ParteHachaPro - 
 		Split and Join files in HachaPro format.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto Fernï¿½ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ namespace Dalle.Formatos.Hacha
 		{
 			nombre = "hachapro";
 			descripcion = "Hacha Pro 3";
-			web = "http://www.hachaweb.com";
+			web = "http://www.hacha.org";
 			compatible = true;
 			parteFicheros = true;
 			
@@ -71,7 +71,7 @@ namespace Dalle.Formatos.Hacha
 				for (int i=0; i < lst.Count; i++){
 					String f = String.Format(nombre + ".{0:000}", i);
 					if (!File.Exists (f)){
-						// TODO: Lanzar una excepción personalizada.
+						// TODO: Lanzar una excepciï¿½n personalizada.
 						throw new Exception (String.Format(
 							I._("{0}:File not found"),f));
 					}

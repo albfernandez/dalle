@@ -4,7 +4,7 @@
 	Dalle.Formatos.Hacha.ParteHacha_v1 - 
 		Split and Join files in Hacha (<2.79) format.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto Fernï¿½ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ namespace Dalle.Formatos.Hacha
 		{
 			nombre = "hacha1";
 			descripcion = "Hacha v1.0";
-			web = "http://www.hachaweb.com";
+			web = "http://www.hacha.org";
 			parteFicheros = true;
 			compatible = false;			
 		}
@@ -56,7 +56,7 @@ namespace Dalle.Formatos.Hacha
 
 			cab.Tamano = new FileInfo(fichero).Length;
 			
-			// TODO: Conflicto cuando se especifica el nº de fragmentos?
+			// TODO: Conflicto cuando se especifica el nï¿½ de fragmentos?
 			// cab.TamanoFragmento = kb*1024 - 512;
 			cab.TamanoFragmento = kb * 1024;
 			
