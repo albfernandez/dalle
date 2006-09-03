@@ -678,7 +678,7 @@ Eduardo García Cebollero &lt;kiwnix@yahoo.es&gt; (libhacha)
 		<widget class="GtkLabel" id="label15">
 		  <property name="visible">True</property>
 		  <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;Welcome to OpenHacha&lt;/b&gt;&lt;/big&gt;
-You can paste the fragments of a file splited with the propietary application Hacha. Or split files into small ones full compatible with Hacha.</property>
+You can paste the fragments of a file splitted with the propietary application Hacha. You can also split files into small ones which are fully compatible with Hacha.</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
