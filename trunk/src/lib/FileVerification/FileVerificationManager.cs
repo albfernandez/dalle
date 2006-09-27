@@ -47,9 +47,8 @@ namespace Dalle.FileVerification
 			this.Add (new SHA1Verifier());
 			this.Add (new MD5Verifier());
 			this.Add (new SFVVerifier());
-			this.Add (new MD5BsdVerifier());
-			
-			//this.Add (new HachaVerifier());
+			this.Add (new MD5BsdVerifier());			
+			this.Add (new HachaVerifier());
 		}
 		public void Add (FVerification f)
 		{
