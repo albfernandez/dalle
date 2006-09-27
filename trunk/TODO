@@ -79,6 +79,7 @@ Leyenda:
 	- [ ]  Sacar las cadenas de texto I18N de la libreria.
 	- [ ]  Excepciones bien estructuradas en la libreria.
 	- [ ]  Nueva estructura de instalación.
+	- [ ]  Soporte checksum hacha 3.5
 	
 
 ===============================
