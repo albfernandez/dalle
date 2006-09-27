@@ -25,12 +25,17 @@
 
 
 using System.Collections;
+using System.IO;
+using System;
+
+using Dalle.FileVerification;
+using Dalle.FileVerification.FileHashers;
 
 namespace Dalle.FileVerification.Verifiers
 {
 	public class HachaVerifier : FVerification
 	{
-		public HachaVerifier (): base ("hacha", false)
+		public HachaVerifier (): base ("hacha", true)
 		{
 		}
 		protected override ArrayList GenerateSFVFileList (string file)
@@ -38,6 +43,28 @@ namespace Dalle.FileVerification.Verifiers
 			ArrayList ret = new ArrayList ();
 			
 			return ret;
+		}
+		public override void CreateSFV (string[] files, bool recursive, TextWriter writer)
+		{
+			CreateRecursive (files, recursive, writer);			
+		}
+		protected void CreateRecursive (string[] files, bool recursive, TextWriter writer)
+		{
+			foreach (string f in files){
+				if (Directory.Exists (f)){
+					if (recursive)
+						CreateRecursive (Directory.GetFileSystemEntries (f), recursive, writer);					
+				}
+				else {
+					SFVElement e = new SFVElement (f, "", new FileHasherHacha());
+					e.GenerateHash();
+					PutHash (e, writer);										
+				}
+			}
+		}
+		protected void PutHash (SFVElement e, TextWriter writer)
+		{
+			writer.WriteLine (e.RealHash + "  " + e.FileName);		
 		}		
 	}
 }
