@@ -11,6 +11,7 @@
 
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
+export MONO_SHARED_DIR=$(CURDIR)
 
 # These are used for cross-compiling and for saving the configure script
 # from having to guess our platform (since we know it already)
@@ -48,6 +49,10 @@ build-arch-stamp:  config.status
 	
 
 build-indep: build-indep-stamp
+	dh_makeclilibs -i -V
+	dh_installcligac -i
+	dh_clideps -i
+     	
 build-indep-stamp:  config.status
 
 	# Add here commands to compile the indep part of the package.
@@ -59,6 +64,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-arch-stamp build-indep-stamp #CONFIGURE-STAMP#
+	rm -rf $(MONO_SHARED_DIR)/.wapi
 
 	# Add here commands to clean up after the build process.
 	
@@ -88,7 +94,8 @@ install-indep:
 
 	dh_install -i
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/dalle
-	
+	install -d debian/dalle/usr/share/dalle/pixmaps/
+	cp debian/dalle.xpm debian/dalle/usr/share/dalle/pixmaps/
 
 # Must not depend on anything. This is to be called by
 # binary-arch/binary-indep
@@ -99,7 +106,7 @@ binary-common:
 	dh_installchangelogs ChangeLog
 	dh_installdocs
 	dh_installexamples
-#	dh_installmenu
+	dh_installmenu
 #	dh_installdebconf	
 #	dh_installlogrotate	
 #	dh_installemacsen
@@ -108,7 +115,7 @@ binary-common:
 #	dh_installinit
 #	dh_installcron
 #	dh_installinfo
-	dh_installman
+	dh_installman debian/dalle-gtk.1 debian/dalle-console.1 debian/openhacha.1 debian/dalle-sfv-console.1 
 	dh_link
 	dh_strip
 	dh_compress 

@@ -2,7 +2,7 @@ Source: dalle
 Section: utils
 Priority: optional
 Maintainer: Alberto Fernández <infjaf00@yahoo.es>
-Build-Depends: debhelper (>= 4.0.0), mono-runtime (>=1.0), libgtk-cil (>=1.0), libglade-cil(>=1.0), libgnome-cil(>=1.0), mono-mcs(>=1.0), perl, make
+Build-Depends: debhelper (>= 4.0.0), mono-runtime (>=1.0), libgtk-cil (>=1.0), libglade-cil(>=1.0), libgnome-cil(>=1.0), mono-mcs(>=1.0), perl, make,cli-common-dev (>= 0.4.0)  
 Standards-Version: 3.6.1.1
 
 Package: dalle
