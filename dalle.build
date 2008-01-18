@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<project name="Hello World" default="build" basedir=".">
+	<description>The Hello World of build files.</description>
+	<property name="debug" value="false" overwrite="false" />
+	<property name="codepage" value="utf8" overwrite="false" />
+	<target name="clean" description="remove all generated files">
+		<delete>
+			<fileset>
+				<include name="build/*.exe" />
+				<include name="build/*.pdb" />
+				<include name="build/*.dll" />
+				<include name="build/*.mdb" />
+			</fileset>
+		</delete>
+    </target>
+    <target name="build" depends="build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
+    <target name="build-library" description="compiles the source code">
+		<csc target="library" output="build/libDalle.dll" debug="${debug}">
+			<sources>
+				<include name="src/lib/**.cs" />
+			</sources>
+			<references>
+				<include name="ICSharpCode.SharpZipLib.dll" />      
+			</references>
+		</csc>
+	</target>
+	<target name="build-dalle-console">
+		<csc target="exe" output="build/dalle-console.exe" debug="${debug}">
+			<sources>
+				<include name="src/ui/console/dalle-console/src/**.cs" />
+			</sources>
+			<references>
+				<include name="build/libDalle.dll"/>
+				<include name="Mono.Posix.dll"/>
+			</references>
+		</csc>
+	</target>
+	<target name="build-dalle-sfv-console">
+		<csc target="exe" output="build/dalle-sfv-console.exe" debug="${debug}">
+			<sources>
+				<include name="src/ui/console/dalle-sfv-console/src/**.cs" />
+			</sources>
+			<references>
+				<include name="build/libDalle.dll"/>
+				<include name="Mono.Posix.dll"/>
+			</references>
+		</csc>
+	</target>
+	<target name="build-dalle-gtk">
+		<csc target="exe" output="build/dalle-gtk.exe" debug="${debug}" codepage="${codepage}">
+			<sources>
+				<include name="src/ui/gtk/dalle-gtk/src/**.cs" />
+			</sources>
+			<resources>
+				<include name="src/ui/gtk/dalle-gtk/pixmaps/*.*" />
+			</resources>
+			<references>
+				<include name="build/libDalle.dll"/>
+				<include name="Mono.Posix.dll"/>
+				<include name="/usr/lib/mono/gtk-sharp-2.0/gtk-sharp.dll"/>
+				<include name="/usr/lib/mono/gtk-sharp-2.0/gdk-sharp.dll"/>
+			</references>
+		</csc>
+	</target>
+	<target name="build-openhacha-glade">
+		<csc target="exe" output="build/openhacha-gtk.exe" debug="${debug}" codepage="${codepage}">
+			<sources>
+				<include name="src/ui/glade/openhacha-gtk/src/**.cs" />
+			</sources>
+			<resources>
+				<include name="src/ui/glade/openhacha-gtk/src/openhacha.glade" />
+			</resources>
+			<references>
+				<include name="build/libDalle.dll"/>
+				<include name="Mono.Posix.dll"/>
+				<include name="/usr/lib/mono/gtk-sharp-2.0/gtk-sharp.dll"/>
+				<include name="/usr/lib/mono/gtk-sharp-2.0/gdk-sharp.dll"/>
+				<include name="/usr/lib/mono/gtk-sharp-2.0/gnome-sharp.dll"/>
+				<include name="/usr/lib/mono/gtk-sharp-2.0/glade-sharp.dll"/>				
+			</references>
+		</csc>
+	</target>
+</project>
