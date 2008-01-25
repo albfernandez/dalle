@@ -1,3 +1,7 @@
+2008-01-18
+	Primer intento de construccion con nant.
+	Primer intento de usar gettext.
+
 2006-08-19
 	Versión 0.7.7
 	
@@ -96,7 +100,7 @@
 	Soporte para crear md5 y sfv recursivo.
 
 2004-02-03
-	Soporte para crear Md5 (tipo linux y bsd, no recursivo).
+	Soporte para crear md5 (tipo linux y bsd, no recursivo).
 
 2004-02-02
 	Puede verificar archivos sfv (no recursivos).

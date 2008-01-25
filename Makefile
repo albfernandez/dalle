@@ -20,7 +20,7 @@ include rules.make
 PIXMAPS=$(BUILDDIR)/Pixmaps.resources
 RESOURCES=-resource:$(PIXMAPS),Pixmaps.resources
 
-MCS_FLAGS+= -r:ICSharpCode.SharpZipLib.dll
+MCS_FLAGS+= -r:ICSharpCode.SharpZipLib.dll -r:Mono.Posix.dll
 
 APIDOCS = $(APIDOCSBASE)/libDalle
 
@@ -47,7 +47,8 @@ install: all
 	$(MKDIR) $(DESTDIR)/$(PREFIX)/bin
 	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib
 	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
-	$(INSTALL) $(LIBRARY) $(DESTDIR)/$(PREFIX)/lib/dalle
+	$(INSTALL) $(LIBRARY) $(DESTDIR)/$(PREFIX)/lib/dalle/
+	$(INSTALL) 
 	@list='$(INTERFACES)'; for d in $$list ; do \
 	    (cd src/ui/$$d && $(MAKE) install) || exit 1 ; \
 	done

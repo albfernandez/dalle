@@ -21,19 +21,8 @@ DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
 CFLAGS = -Wall -g
 
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-	CFLAGS += -O0
-else
-	CFLAGS += -O2
-endif
-ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-	INSTALL_PROGRAM += -s
-endif
-
 config.status: configure
 	dh_testdir
-	# Add here commands to configure the package.
-
 	./configure --prefix=/usr --build-debug --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp-2.0/
 
 
@@ -42,9 +31,6 @@ build: build-arch build-indep
 
 build-arch: build-arch-stamp
 build-arch-stamp:  config.status
-
-	# Add here commands to compile the arch part of the package.
-	#$(MAKE) 
 	touch build-arch-stamp
 	
 
@@ -54,9 +40,6 @@ build-indep: build-indep-stamp
 	dh_clideps -i
      	
 build-indep-stamp:  config.status
-
-	# Add here commands to compile the indep part of the package.
-	#$(MAKE) doc
 	$(MAKE)
 	touch build-indep-stamp
 
@@ -65,10 +48,7 @@ clean:
 	dh_testroot
 	rm -f build-arch-stamp build-indep-stamp #CONFIGURE-STAMP#
 	rm -rf $(MONO_SHARED_DIR)/.wapi
-
-	# Add here commands to clean up after the build process.
-	
-	#$(MAKE) clean
+	$(MAKE) clean
 	
 	
 ifneq "$(wildcard /usr/share/misc/config.sub)" ""
@@ -82,16 +62,12 @@ endif
 	dh_clean 
 
 install: install-indep
+
 install-indep:
 	dh_testdir
 	dh_testroot
 	dh_clean -k -i 
 	dh_installdirs -i
-
-	# Add here commands to install the indep part of the package into
-	# debian/<package>-doc.
-	#INSTALLDOC#
-
 	dh_install -i
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/dalle
 	install -d debian/dalle/usr/share/dalle/pixmaps/

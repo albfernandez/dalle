@@ -8,7 +8,7 @@ LIBNAME= libDalle.dll
 BUILDDIR=$(BASEPATH)/build
 LIBRARY=$(BUILDDIR)/$(LIBNAME)
 PROGRAMA=dalle
-MCS=MONO_PATH=$(MONO_PATH) mcs
+MCS=MONO_PATH=$(MONO_PATH) mcs -r:Mono.Posix.dll
 WARN_LEVEL=4
 WARN_OPTIONS=-warn:$(WARN_LEVEL)
 MCS_FLAGS=$(WARN_OPTIONS) -debug
@@ -18,9 +18,10 @@ QT_RESOURCES=-r:Qt.dll
 SWT_RESOURCES=-r:ICSharpCode.SWT.dll
 
 
-MONO=mono
-MONO_FLAGS=--debug
-RESGEN=resgen
+MONO=/usr/bin/cli
+MONO_FLAGS=--debug 
+MONO_FLAGS=
+RESGEN=resgen2
 
 AUXRESGEN=$(BUILDDIR)/Files2Resource.exe
 
