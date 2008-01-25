@@ -24,7 +24,6 @@
 using System;
 
 using Dalle.Formatos;
-//using I = Dalle.I18N.GetText;
 
 namespace Dalle.UI.Consola
 {

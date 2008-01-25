@@ -26,7 +26,7 @@ using System.Collections;
 using System.IO;
 	
 using Dalle.Formatos;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.Consola
 {	
@@ -55,13 +55,13 @@ namespace Dalle.UI.Consola
 						Console.WriteLine (p.Descripcion);
 					}
 					else
-						Console.WriteLine (I._("Unknown format"));
+						Console.WriteLine (Catalog.GetString("Unknown format"));
 				}
 				else {
 					if (Directory.Exists (fic))
-						Console.WriteLine(I._("Is a directory"));
+						Console.WriteLine(Catalog.GetString("Is a directory"));
 					else
-						Console.WriteLine (I._("File not found"));
+						Console.WriteLine (Catalog.GetString("File not found"));
 				}
 				
 			}

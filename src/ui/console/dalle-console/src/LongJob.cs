@@ -25,7 +25,7 @@ using System;
 using System.Collections;
 	
 using Dalle.Formatos;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.Consola
 {
@@ -49,7 +49,7 @@ namespace Dalle.UI.Consola
 				asteriscos++;
 			}
 			Console.WriteLine ("]");
-			Console.WriteLine (I._("Finished") + ".\n");
+			Console.WriteLine (Catalog.GetString("Finished") + ".\n");
 		}
 		public void OnProgress (long done, long total)
 		{
@@ -72,7 +72,7 @@ namespace Dalle.UI.Consola
 		}
 		protected void ShowTotalTime (long seconds)
 		{
-			Console.WriteLine ( I._("Time = {0} seconds ({1:00}:{2:00})"), 
+			Console.WriteLine ( Catalog.GetString("Time = {0} seconds ({1:00}:{2:00})"), 
 				seconds, seconds / 60, seconds % 60);
 		}
 		

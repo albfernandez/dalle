@@ -32,7 +32,7 @@ using Dalle.Formatos.Hacha;
 using Dalle.Formatos.SplitFile;
 using Dalle.Formatos.Kamaleon;
 
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle
 {
@@ -46,7 +46,7 @@ namespace Dalle
 		{
 		
 			long inicio, fin;
-			
+			Catalog.Init("i18n","./locale");
 			Hashtable table = new Hashtable();
 			table.Add ("Adler32", new Adler32());
 			table.Add ("CRC32", new Crc32());
@@ -55,13 +55,13 @@ namespace Dalle
 			table.Add ("SplitFileCRC", new SplitFileCRC ());
 			table.Add ("Kamaleon2CRC", new Kamaleon2CRC ());
 			
-			Console.WriteLine (I._("Calculating crcs. This may take a while..."));
+			Console.WriteLine (Catalog.GetString("Calculating crcs. This may take a while..."));
 			
 			foreach (string s in table.Keys){
 				inicio = Environment.TickCount;
 				CalcularCrc (table[s] as IChecksum);
 				fin = Environment.TickCount;
-				Console.WriteLine (I._("{0, -25} time {1}"), s, fin - inicio);
+				Console.WriteLine (Catalog.GetString("{0, -25} time {1}"), s, fin - inicio);
 			}
 			
 		}

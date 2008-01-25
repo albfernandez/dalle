@@ -34,7 +34,7 @@ using Dalle.Formatos.Hacha;
 using Dalle.Formatos.SplitFile;
 using Dalle.Formatos.Kamaleon;
 
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle {
 
@@ -45,7 +45,7 @@ namespace Dalle {
 	
 		public static void Main(String[] args)
 		{
-		
+			Dalle.I18N.GettextCatalog.Init();
 			if (args.Length == 0){
 				MostrarAyuda();
 				Environment.Exit (1);
@@ -70,9 +70,9 @@ namespace Dalle {
 			Console.WriteLine ("\n");
 			if (!File.Exists (s)){
 				if (!Directory.Exists(s))
-					Console.WriteLine (I._("{0}, File not found"), s);
+					Console.WriteLine (Catalog.GetString("{0}, File not found"), s);
 				else
-					Console.WriteLine (I._("{0} is a directory"), s);
+					Console.WriteLine (Catalog.GetString("{0} is a directory"), s);
 				return;
 			}
 		
@@ -98,8 +98,7 @@ namespace Dalle {
 			reader.Close();
 			
 			
-			// TODO: I18N
-			Console.WriteLine (I._("crcs of file {0}:"), s);
+			Console.WriteLine (Catalog.GetString("crcs of file {0}:"), s);
 			foreach (string key in table.Keys){
 				Console.Write ("{0,-25} ", key); 
 				Console.WriteLine ("{0}", (table[key] as IChecksum).Value.ToString("X"));

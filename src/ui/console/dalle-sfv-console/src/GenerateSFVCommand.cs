@@ -24,7 +24,6 @@
 using System;
 
 using Dalle.FileVerification;
-using I = Dalle.I18N.GetText;
 
 namespace Dalle.UI.SFVConsole
 {

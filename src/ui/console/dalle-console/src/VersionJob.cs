@@ -25,7 +25,7 @@
 using System;
 using System.Reflection;
 
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.Consola
 {
@@ -38,9 +38,9 @@ namespace Dalle.UI.Consola
 		
 		public void Ejecutar ()
 		{
-			Console.WriteLine (I._("dalle-console v.{0}"), 
+			Console.WriteLine (Catalog.GetString("dalle-console v.{0}"), 
 				Assembly.GetExecutingAssembly ().GetName ().Version);
-			Console.WriteLine (I._("Using libDalle v.{0}"), 
+			Console.WriteLine (Catalog.GetString("Using libDalle v.{0}"), 
 				Dalle.Formatos.Manager.Version);
 		}
 	}

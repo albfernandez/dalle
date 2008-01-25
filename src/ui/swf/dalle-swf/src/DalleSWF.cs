@@ -20,7 +20,7 @@
 
 
 
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
@@ -76,46 +76,46 @@ namespace Dalle.UI.DalleSWF
 			this.btnExecute.Name = "btnExecute";		
 			this.btnExecute.Size = new Size (100, 30);
 			this.btnExecute.TabIndex = 5;
-			this.btnExecute.Text = I._("Execute");
+			this.btnExecute.Text = Catalog.GetString("Execute");
 			
 			
 			this.btnExit.Location = new Point (200,265);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new Size (100, 30);
 			this.btnExit.TabIndex = 4;
-			this.btnExit.Text = I._("Exit");
+			this.btnExit.Text = Catalog.GetString("Exit");
 			
 			
 			this.btnAbout.Location = new Point (100, 265);
 			this.btnAbout.Name = "btnAbout";
 			this.btnAbout.Size = new Size(100, 30);
 			this.btnAbout.TabIndex = 3;
-			this.btnAbout.Text = I._("About");
+			this.btnAbout.Text = Catalog.GetString("About");
 			
 			
 			this.rbSplit.Location = new Point(25,100);
 			this.rbSplit.Name = "rbSplit";
 			this.rbSplit.Size = new Size (100, 30);
 			this.rbSplit.TabIndex = 1;
-			this.rbSplit.Text = I._("Split");
+			this.rbSplit.Text = Catalog.GetString("Split");
 			this.rbSplit.Checked = true;
 			
 			this.rbMerge.Location = new Point (25, 125);
 			this.rbMerge.Name = "rbJoin";
 			this.rbMerge.Size = new Size(100,30);
 			this.rbMerge.TabIndex = 2;
-			this.rbMerge.Text = I._("Merge");
+			this.rbMerge.Text = Catalog.GetString("Merge");
 			
 			this.lblWhat.Location = new Point (25,50);
 			this.lblWhat.Name = "lblWhat";
 			this.lblWhat.Size = new Size (200, 40);
-			this.lblWhat.Text = I._("What do you want to do?");
+			this.lblWhat.Text = Catalog.GetString("What do you want to do?");
 			
 			
 			this.lblWelcome.Location = new Point (25, 25);
 			this.lblWelcome.Name = "lblWelcome";
 			this.lblWelcome.Size = new Size (200,40);
-			this.lblWelcome.Text = I._("Welcome to dalle");
+			this.lblWelcome.Text = Catalog.GetString("Welcome to dalle");
 			
 			
 
@@ -137,7 +137,7 @@ namespace Dalle.UI.DalleSWF
 					this.rbMerge});
 			
 			// Titulo y resumir layout
-			this.Text = I._("Dalle-swf");
+			this.Text = Catalog.GetString("Dalle-swf");
 			this.ResumeLayout(false);
 			this.ShowInTaskbar = false;
 			
@@ -175,6 +175,7 @@ namespace Dalle.UI.DalleSWF
 		}
 		[STAThread]
 		public static void Main (String[] args){
+			Dalle.I18N.GettextCatalog.Init();
 			Application.Run(DalleSWF.Instance);			
 		
 		}

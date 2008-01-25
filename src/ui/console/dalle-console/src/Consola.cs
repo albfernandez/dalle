@@ -25,7 +25,7 @@
 using System;
 	
 using Dalle.Formatos;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.Consola
 {		
@@ -33,6 +33,7 @@ namespace Dalle.UI.Consola
 	{		
 		public static void Main (String[] args)
 		{
+			Dalle.I18N.GettextCatalog.Init();
 			IJob j = null;
 			try{
 				j = ProcesarParametros (args);
@@ -49,7 +50,7 @@ namespace Dalle.UI.Consola
 			}
 			catch (Exception e){
 				Console.WriteLine ("\n\n");
-				Console.WriteLine ("Error: " + e.Message);
+				Console.WriteLine (Catalog.GetString("Error:") + " "  + e.Message);
 				Console.WriteLine (e.StackTrace);
 			}
 		}

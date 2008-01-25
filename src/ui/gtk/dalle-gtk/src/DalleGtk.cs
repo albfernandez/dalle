@@ -27,7 +27,7 @@ using Gtk;
 using Gdk;
 using GtkSharp;
 
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.DalleGtk
 {	
@@ -67,8 +67,8 @@ namespace Dalle.UI.DalleGtk
 		}
 
 		private DalleGtk () : base (Gtk.WindowType.Toplevel)
-		{
-			this.Title = I._("DalleGtk");
+		{			
+			this.Title = Catalog.GetString("DalleGtk");
 			this.SetDefaultSize(350,250);
 			this.DeleteEvent += new DeleteEventHandler (WindowExit);
 			
@@ -116,7 +116,7 @@ namespace Dalle.UI.DalleGtk
 			texto = new Gtk.Label (
 				String.Format (
 				"<big><b>{0}</b></big>",
-				I._("Welcome to Dalle.")));
+				Catalog.GetString("Welcome to Dalle.")));
 			texto.UseMarkup = true;
 
 			hbox1.PackStart(texto, false , false, 7);
@@ -125,11 +125,11 @@ namespace Dalle.UI.DalleGtk
 			 * Segunda caja horizontal
 			 */
 			vbox2 = new Gtk.VBox (false, 3);
-			texto2 = new Gtk.Label (I._("What do you want to do?"));
+			texto2 = new Gtk.Label (Catalog.GetString("What do you want to do?"));
 			
-			SplitOption = new Gtk.RadioButton (I._("Split Files"));
+			SplitOption = new Gtk.RadioButton (Catalog.GetString("Split Files"));
 			
-			PasteOption = new Gtk.RadioButton (SplitOption, I._("Merge Files"));
+			PasteOption = new Gtk.RadioButton (SplitOption, Catalog.GetString("Merge Files"));
 
 			vbox2.PackStart(texto2, false, false, 7);
 			vbox2.PackStart(SplitOption, false , false, 7);
@@ -144,7 +144,7 @@ namespace Dalle.UI.DalleGtk
 			
 			run = new Gtk.Button(Gtk.Stock.Execute);			
 			exit = new Gtk.Button(Gtk.Stock.Quit);
-			about = new Gtk.Button(I._("About"));
+			about = new Gtk.Button(Catalog.GetString("About"));
 			
 
 			hbbox.PackStart(about, false, false, 7);
@@ -207,6 +207,7 @@ namespace Dalle.UI.DalleGtk
 		
 		public static void Main (String[] args)
 		{
+			Dalle.I18N.GettextCatalog.Init();
 			Application.Init();
 			DalleGtk v = DalleGtk.Instance;
 			v.ShowAll();
