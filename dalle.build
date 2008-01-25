@@ -3,6 +3,9 @@
 	<description>The Hello World of build files.</description>
 	<property name="debug" value="false" overwrite="false" />
 	<property name="codepage" value="utf8" overwrite="false" />
+	<property name="version" value="0.7.8.2" overwrite="false" />
+	<property name="copyright" value="Copyright (c) 2005-2008, Alberto Fernández" overwrite="false"/>
+	
 	<target name="clean" description="remove all generated files">
 		<delete>
 			<fileset>
@@ -15,10 +18,14 @@
     </target>
     <target name="build" depends="build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade,build-dalle-swf" />
     <target name="build-library" description="compiles the source code">
+    	<mkdir dir="build" />    	
 		<csc target="library" output="build/libDalle.dll" debug="${debug}">
 			<sources>
 				<include name="src/lib/**.cs" />
 			</sources>
+			<resources>
+				<include name="pixmaps/*.*" />
+			</resources>
 			<references>
 				<include name="ICSharpCode.SharpZipLib.dll" />
 				<include name="Mono.Posix.dll"/>      
@@ -93,5 +100,120 @@
 				<include name="System.Drawing.dll"/>
 			</references>		
 		</csc>
-	</target>	
+	</target>
+		
+	<target name="generate-assembly-infos">
+		<asminfo output="src/lib/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="libDalle" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="libDalle" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/console/dalle-console/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="Dalle-console" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="dalle-console" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/console/dalle-sfv-console/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="Dalle-sfv-console" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="dalle-sfv-console" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/glade/openhacha-gtk/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="OpenHacha" />
+		        <attribute type="AssemblyDescriptionAttribute" value="A free as in freedom implementation of Hacha"/>
+		        <attribute type="AssemblyCopyrightAttribute" value="Copyright (c) 2003-2004, Ramón Rey Vicente" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />	        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/gtk/dalle-gtk/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="Dalle-gtk" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="dalle-gtk" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/swf/dalle-swf/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="Dalle-swf" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="dalle-swf" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+	</target>
 </project>
