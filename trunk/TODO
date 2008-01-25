@@ -11,56 +11,6 @@ Leyenda:
 	[-] A medias/sin probar
 	[X] Completo (o casi).
 	
-
-===============================
-
-	Versión 0.6
-
-===============================
-
-	- [X]  Terminar wrapper para dalle-console
-	- [-]  Página web del proyecto.
-	- [-]  Terminar el formato Axman3
-	- [-]  Terminar el soporte FileSplit
-	- [X]  Mostrar el progreso en:
-			- [X]  Axman3
-			- [-]  FileSplit
-			- [X]  Zip (en descomprimir)
-	- [X]  Depurar configure./(¿pasarlo a shell-script?)
-	- [-]  Mejorar la verificación de sobreescribirFicheros.	
-	- [X]  Cambiar el nombre de ProgresListener por otro que indique más claramente
-	- [X]  La salida de listar los formatos ordenada por orden alfabetico.
-	- [X]  Mejorar dalle-crcs.
-	- [X]  I18N de dalle-crcs.
-	- [X]  Limpieza de código en Manager.cs
-	- [X]  Hacer soporte para I18N completo en libDalle.
-	- [X]  Añadir el objetivo clean en todos los makefiles.
-	- [X]  Cambiar el sistema en el que se compilan los recursos de idiomas en el Makefile (a tipo nunit-gtk)
-	- [X]  Quitar IMessageListener y controlarlo ahora con events y delegados.
-	- [X]  Soporte del objetivo uninstall en los makefiles.
-	- [X]  Quitar OnBegin OnFinish en Dalle.Formatos.
-	- [-]  Comentar Dalle.Formatos
-	- [X]  Interfaz gtk#.	
-	- [-]  Hacer que se compruebe antes de empezar si se puede partir (si no se 
-		   generarán más ficheros de los que se pueden "direccionar").
-	- [X]  Hacer que se compruebe que no se sobreescribe ningún fichero.
-	
-	- [-]  Soporte completo de las situaciones de error, con nuevas excepciones personalizadas.
-	- [-]  Revisión completa del código en los formatos.
-	- [X]  Mejorar lo de detener.
-	- [X]  Repasar todas la AssemblyInfo.cs.
-	- [-]  Soporte I18N completo (en la libreria y en la interfaz).
-	- [X]  Revisar el estilo de codificación / cabeceras.
-		-	[X] Dalle-gtk
-		-	[X] Dalle-console
-		-	[X] Librería
-		-	[X] Otras aplicaciones auxiliares (dalle-crcs, testcrcs, web ...)
-	- [-]  Revisión completa de MaxSplitter.
-	- [X]  Hacer por fin bien el RPM (relocalizable real y +).
-	- [X]  Que todos los formatos, a la hora de devolver si pueden unir un fichero,
-			comprueben primero su existencia.
-	- [X]  Añadir SplitFileCRC a dalle-crs y a crcsBenchmark
-	
 ===============================
 
 	Versión 0.8 (Estabilizar)
@@ -70,37 +20,36 @@ Leyenda:
 	- [X]  Soporte para cortar en kamaleon2.
 	- [ ]  Repaso de dalle-console.
 	- [ ]  Repaso de dalle-gtk.
+	- [ ]  Dialogo Gtk.AboutDialog
+	- [ ]  Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
+	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
 	- [ ]  Repaso de dalle-sfv.
 	- [X]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
 	- [X]  Paquete deb.
 	- [X]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
     - [X]  Revisar todos los scripts para que funcione bien con mono 1.0
+    - [ ]  Soporte Gettext
 	- [ ]  Nuevo sistema de configuracion / compilacion (autotools?, nant?)
-	- [ ]  Sacar las cadenas de texto I18N de la libreria.
-	- [ ]  Excepciones bien estructuradas en la libreria.
+	- [X]  Sacar las cadenas de texto I18N de la libreria.
+	- [X]  Excepciones bien estructuradas en la libreria.
 	- [ ]  Nueva estructura de instalación.
 	- [ ]  Soporte checksum hacha 3.5
+	- [ ]  Iconos en el menu de debian
+	- [ ]  Recuperar formato splitfile
+	- [ ]  Quitar los warnings de compilación
+	- [ ]  Repasar y usar un tamaño de buffer constante
 	
 
 ===============================
 
-	Versión 0.10 (El mundo de windows y mejoras gráficas)
+	Versión 1.0
 
 ===============================
-	
-	- [ ] DragNDrop.
-	- [ ] Repasar dalle-gtk para que siga las Gnome HIG
-	- [ ] Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
+
 	- [ ] Interfaz swf.
-	- [ ] Instalador NSIS para Windows?.
+	- [ ] ¿Instalador NSIS para Windows?.
 	
-
-===============================
-
-	Versión 0.12 (Aumentar los formatos soportados)
-
-===============================
-	
+	- [ ]  DragNDrop.
 	
 	- [-] Soporte "completo" para zip.
 	- [ ] Soporte "completo" para tar, gz, bz2.
@@ -109,13 +58,6 @@ Leyenda:
 	- [ ] Soporte HJSplit.
 	- [ ] Soporte gcutter.
 	- [ ] Soporte split (/usr/bin/split de coreutils).	
-
-
-===============================
-
-	Versión 1.0
-
-===============================
 
 	- [ ] Manual de usuario.
 	- [ ] Diagramas de clases.

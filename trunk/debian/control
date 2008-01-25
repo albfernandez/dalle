@@ -7,11 +7,8 @@ Standards-Version: 3.6.1.1
 
 Package: dalle
 Architecture: all
-Depends: mono(>=1.0), libgtk-cil (>=1.0), libglade-cil(>=1.0), libgnome-cil(>=1.0)
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${cli:Depends}, libmono-sharpzip0.84-cil gtk-sharp2
 Description: Tools to work with multiple files
  (hacha, kamaleon, camouflage)
 
-Package: dalle-doc
-Architecture: all
-Description: Documentation for dalle
- Specific documentacion for all file-formats supported by dalle.
+

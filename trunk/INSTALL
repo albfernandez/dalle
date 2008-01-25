@@ -1,3 +1,19 @@
+########
+IMPORTANTE:
+
+En estos momentos se está migrando para usar nant.
+El proyecto ahora mismo está configurado para compilar en Debian Sid, otras distros
+quizás necesiten trabajo/configuracion adicional
+
+Para compilar
+- Instalar nant
+- ejecutar nant
+
+Los ejecutables quedan en la carpeta build.
+
+########
+
+
 Este archivo contiene información acerca de como compilar e instalar dalle.
 De momento sólo se ha probado en Linux.
 

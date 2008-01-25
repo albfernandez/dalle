@@ -45,7 +45,7 @@ $(TARGET): $(LIBRARY) $(SOURCEDIR)/*.cs
 	   
 install: all
 	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
-	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/bin/lib
+	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/lib/dalle
 	$(INSTALL) $(WRAPPER)  $(DESTDIR)/$(PREFIX)/bin
 
 uninstall:
