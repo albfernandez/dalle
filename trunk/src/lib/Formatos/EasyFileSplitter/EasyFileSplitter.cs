@@ -27,7 +27,6 @@ using System.IO;
 
 using Dalle.Formatos;
 using Dalle.Utilidades;
-using I = Dalle.I18N.GetText;
 
 namespace Dalle.Formatos.EasyFileSplitter
 {
@@ -56,13 +55,12 @@ namespace Dalle.Formatos.EasyFileSplitter
 				info.Fragmento = i;
 				string source = dirDest + Path.DirectorySeparatorChar + info.ToString();
 				if (!File.Exists (source)){
-					string msg = String.Format (I._("File not found: {0}"), info);
-					throw new Exception (msg);
+					throw new System.IO.FileNotFoundException("", source); 
 				}
 				UtilidadesFicheros.CopiarTodo (source, original);
 				OnProgress (i, info.TotalFragmentos);
 			}
-		}
+		} 
 		protected override void _Partir (string fichero,string sal1, string dir, long kb)
 		{
 			

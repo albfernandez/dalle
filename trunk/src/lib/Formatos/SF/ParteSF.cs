@@ -26,7 +26,6 @@ using System.IO;
 using System.Collections;
 
 using Dalle.Utilidades;
-using I = Dalle.I18N.GetText;
 
 namespace Dalle.Formatos.SF
 {
@@ -79,8 +78,9 @@ namespace Dalle.Formatos.SF
 			tamano -= cab.Tamano;
 			int contador = 1;
 			long total_a_leer = new FileInfo(fichero).Length;
-			if ((total_a_leer / tamano) > 255)
-				throw new Exception (I._("Too much fragments"));
+			if ((total_a_leer / tamano) > 255){
+				throw new Dalle.Formatos.FileFormatException();
+			}
 			long transferidos  = 0;
 			OnProgress (0, 1);
 			do{

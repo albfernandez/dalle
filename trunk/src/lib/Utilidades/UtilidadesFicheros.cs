@@ -26,8 +26,6 @@ using System;
 using ICSharpCode.SharpZipLib.Checksums;
 using Dalle.Checksums;
 
-using I = Dalle.I18N.GetText;
-
 namespace Dalle.Utilidades
 {	
 
@@ -79,11 +77,7 @@ namespace Dalle.Utilidades
 		public static void ComprobarSobreescribir (string fich)
 		{
 			if (File.Exists (fich)){
-				string error = String.Format (
-					I._("File {0} already exists"),
-					fich);
-				//TODO:Poner una excepción personalizada.
-				throw new Exception (error);
+				throw new Dalle.Formatos.FileAlreadyExistsException("", fich);
 			}
 		}
 

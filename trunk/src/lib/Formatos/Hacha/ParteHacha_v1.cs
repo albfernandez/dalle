@@ -29,7 +29,6 @@ using System.IO;
 using Dalle.Formatos;
 using Dalle.Utilidades;
 using Dalle.Checksums;
-using I = Dalle.I18N.GetText;
 
 namespace Dalle.Formatos.Hacha
 {
@@ -114,9 +113,7 @@ namespace Dalle.Formatos.Hacha
 			string fich = b + fragmento;
 			transferidos = UtilidadesFicheros.CopiarIntervalo (fich, salida, cab.Size, crc);
 			if ((transferidos != cab.TamanoFragmento) && (transferidos != cab.Tamano)){
-				string msg = string.Format (
-					I._("File  {0} is corrupt (incorrect size)!"), fich);
-				throw new Exception (msg);
+				throw new Dalle.Formatos.FileFormatException();
 			}
 			fragmento++;
 			while (transferidos < cab.Tamano){
@@ -127,9 +124,7 @@ namespace Dalle.Formatos.Hacha
 				long leidos = UtilidadesFicheros.CopiarTodo (fich, salida, crc);
 				transferidos += leidos;
 				if ( (leidos != cab.TamanoFragmento) && (transferidos != cab.Tamano) ){
-					string msg = String.Format (
-						I._("File {0} is corrupt (incorrect size)!"), fich);
-					throw new Exception (msg);
+					throw new Dalle.Formatos.FileFormatException();
 				}
 				fragmento++;
 			}
@@ -147,7 +142,7 @@ namespace Dalle.Formatos.Hacha
 				CabeceraHacha_v1.LeerCabecera (fichero);
 				return true;
 			}
-			catch (Exception e){
+			catch (Exception){
 				return false;
 			}
 		}

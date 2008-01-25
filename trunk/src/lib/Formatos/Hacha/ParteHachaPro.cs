@@ -182,7 +182,7 @@ namespace Dalle.Formatos.Hacha
 		}
 		public override bool PuedeUnir (string fichero)
 		{
-			Console.WriteLine ("probamos si puede unir " + fichero);
+			//Console.WriteLine ("probamos si puede unir " + fichero);
 			if (! File.Exists (fichero) )
 				return false;
 			//TODO: Depurar un poco.

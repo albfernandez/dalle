@@ -4,7 +4,7 @@
 	Dalle.Formatos.Hacha.CabeceraHacha_v1 - 
 		Header of files created by Hacha < 2.79
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003  Alberto Fernï¿½ndez <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,8 +24,6 @@
 
 using System;
 using System.IO;
-
-using I = Dalle.I18N.GetText;
 
 namespace Dalle.Formatos.Hacha
 {	
@@ -178,8 +176,8 @@ namespace Dalle.Formatos.Hacha
 			
 			CabeceraHacha_v1 ret;		
 			
-			// Determinamos si hemos leido una cabecera v1 o v2. (según
-			// el campo de verificación).
+			// Determinamos si hemos leido una cabecera v1 o v2. (segï¿½n
+			// el campo de verificaciï¿½n).
 			int c = b0 + (b1 << 8) + (b2 << 16) + (b3 << 24);
 			
 			
@@ -191,7 +189,7 @@ namespace Dalle.Formatos.Hacha
 				ret.TamanoFragmento = Convert.ToInt64(stTamanoFrag);
 				ret.NombreOriginal = nOriginal;
 				if (check != ret.CheckSum)
-					Console.WriteLine (I._("Warning: Header checksum verification failed"));
+					throw new Dalle.Formatos.ChecksumVerificationException();
 			}
 			else{
 				// Hacha v.2

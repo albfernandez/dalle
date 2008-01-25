@@ -28,9 +28,6 @@ using Dalle.Utilidades;
 using Dalle.Checksums;
 using Dalle.Formatos.Zip;
 
-using I = Dalle.I18N.GetText;
-
-
 namespace Dalle.Formatos.Axman
 {
 
@@ -76,9 +73,7 @@ namespace Dalle.Formatos.Axman
 				f = String.Format (formato, i);
 				CabeceraAxman cabAxman = CabeceraAxman.LoadFromFile (f);
 				if (cabAxman.Fragmento != i){
-					// TODO. Poner um buen mensaje de excepción.
-					string msg = string.Format (I._("..."));
-					throw new Exception (msg);
+					throw new Dalle.Formatos.FileFormatException();
 				}
 				crc.Reset();
 				transferidos += UtilidadesFicheros.CopiarIntervalo (f, destino, 23, crc);

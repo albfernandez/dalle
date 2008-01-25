@@ -25,8 +25,6 @@ using System;
 using System.Collections;	
 using System.IO;
 
-using I = Dalle.I18N.GetText;
-
 
 namespace Dalle.Formatos
 {
@@ -193,7 +191,7 @@ namespace Dalle.Formatos
 			if (! Directory.Exists (dirDest)){
 				//TODO: Poner una excepción personalizada.
 				if (File.Exists(dirDest))
-					throw new Exception(I._("{0} exists and is a file."));
+					throw new Dalle.Formatos.FileAlreadyExistsException("", dirDest);
 				new DirectoryInfo(dirDest).Create();
 			}
 			_Unir (fichero, dirDest);

@@ -146,7 +146,7 @@ namespace Dalle.Formatos.SplitFile
 				return false;
 			}
 			return true;*/
-			return true;
+			return false;
 		}
 	}
 }

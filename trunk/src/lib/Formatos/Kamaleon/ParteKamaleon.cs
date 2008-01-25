@@ -29,8 +29,6 @@ using Dalle.Formatos;
 using Dalle.Utilidades;
 using Dalle.Checksums;
 
-using I = Dalle.I18N.GetText;
-
 namespace Dalle.Formatos.Kamaleon
 {
 	public class ParteKamaleon : Parte
@@ -64,21 +62,15 @@ namespace Dalle.Formatos.Kamaleon
 				
 				
 				if (! File.Exists (fich) ){
-					string msg = string.Format (I._("File not found:{0}"), i.NombreFragmento);
-					throw new Exception (msg);
+					throw new System.IO.FileNotFoundException("", fich);
 				}
 								
 				byte primer = UtilidadesFicheros.LeerByte (fich, 0);
 				byte ultimo = UtilidadesFicheros.LeerByte (fich, i.TamanoFragmento - 1);
 				if ((primer != i.PrimerByte) || (ultimo != i.UltimoByte)){
-					string msg = string.Format (I._("Byte verfication failed on {0}"), i.NombreFragmento);
-					throw new Exception (msg);
-				}
-				
-				
-				
-			}
-			
+					throw new Dalle.Formatos.FileFormatException();
+				}				
+			}			
 			string f = metaInfo.PrimerInfo.NombreOriginal;
 			UtilidadesFicheros.ComprobarSobreescribir (f);
 			
@@ -94,8 +86,7 @@ namespace Dalle.Formatos.Kamaleon
 				transferidos += UtilidadesFicheros.CopiarIntervalo
 					(fich, f, i.TamanoPiel, i.TamanoDatos, crc);
 				if (crc.Value != i.Checksum){
-					String msg = String.Format ("Checksum failed on {0}", i.NombreFragmento);
-					throw new Exception (msg);
+					throw new Dalle.Formatos.ChecksumVerificationException();
 				}					
 				OnProgress (transferidos, i.TamanoOriginal); 
 			}
