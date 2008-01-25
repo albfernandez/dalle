@@ -22,6 +22,7 @@
 using System;
 using System.IO;
 using System.Text;
+using System.Reflection;
 
 using Gtk;
 using Glade;
@@ -186,15 +187,29 @@ namespace OpenHachaGtkGui
 
 	public class OpenHachaAboutDialog
 	{
-		[Glade.Widget] Gnome.About AboutDialog = null;
+		[Glade.Widget] Gtk.AboutDialog AboutDialog = null;
 		
 		public OpenHachaAboutDialog()
 		{
 			Glade.XML gxml = new Glade.XML (null, "openhacha.glade", "AboutDialog", null);
 			gxml.Autoconnect (this);
 			
-			AboutDialog.Name = "OpenHacha";
+			Assembly asm = Assembly.GetExecutingAssembly ();
+			
+			AboutDialog.Name = (asm.GetCustomAttributes (
+               typeof (AssemblyTitleAttribute), false) [0]
+               as AssemblyTitleAttribute).Title;
+			AboutDialog.Version = asm.GetName ().Version.ToString ();
+			
 			AboutDialog.Version = "0.7";
+			
+			AboutDialog.Response += new ResponseHandler (close_click);
+			AboutDialog.WindowPosition = WindowPosition.CenterOnParent;
+		}
+		private void close_click (object sender, EventArgs args)
+		{
+			if (AboutDialog != null)
+				AboutDialog.Destroy();
 		}
 	}
 }
