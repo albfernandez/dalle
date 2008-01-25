@@ -21,8 +21,10 @@
 
 */
 
+using System.Reflection;
 using System.Resources;
 using System;
+
 
 namespace Dalle.Utilidades
 {
@@ -48,7 +50,7 @@ namespace Dalle.Utilidades
 		/// <returns>La imagen, una por defecto si no existe una
 		/// para <c>nombre</c>.</returns>
 		
-		public static byte[] GetImagen (String nombre)
+		public static byte[] GetImagen2 (String nombre)
 		{
 			if (resPixmaps == null){
 				resPixmaps = new ResourceManager 
@@ -56,6 +58,24 @@ namespace Dalle.Utilidades
 			}       		
 			byte[]img = (byte[])resPixmaps.GetObject (nombre);
 			return img;
+		}
+		
+		public static byte[] GetImagen (String resource, Assembly assembly) 
+		{
+			System.IO.Stream s = assembly.GetManifestResourceStream (resource);
+			if (s == null)
+			{
+				throw new ArgumentException ("'" + resource + "' is not a valid resource name of assembly '" + assembly + "'.");
+			}
+			byte[] ret = new byte[s.Length];			
+			s.Read(ret, 0, ret.Length);
+			s.Close();
+			return ret;		
+		}
+		
+		public static byte[] GetImagen (String resource) 
+		{
+			return GetImagen(resource, typeof (UtilidadesRecursos).Assembly);				
 		}
 	}
 }

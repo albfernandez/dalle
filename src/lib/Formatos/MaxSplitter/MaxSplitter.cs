@@ -29,7 +29,6 @@ using System.IO;
 using Dalle.Formatos;
 using Dalle.Formatos.Generico;
 using Dalle.Utilidades;
-using I = Dalle.I18N.GetText;
 
 
 namespace Dalle.Formatos.MaxSplitter
@@ -60,9 +59,7 @@ namespace Dalle.Formatos.MaxSplitter
 			for (int i=1; i<= info.Fragmentos; i++){
 				string f = String.Format (bas + ".{0:000}" , i);
 				if (!File.Exists(f)){
-					//TODO Mensaje bien puesto.
-					string msg = string.Format (I._("MXS: File not found {0}"), f);
-					throw new Exception (msg);
+					throw new System.IO.FileNotFoundException("", f);
 				}
 			}
 			OnProgress (0,1);
@@ -72,10 +69,7 @@ namespace Dalle.Formatos.MaxSplitter
 				OnProgress (i, info.Fragmentos);
 			}
 			if ( (new FileInfo (destino).Length) != info.TamanoOriginal){
-				// TODO: Poner una excepción bien.
-				//Console.WriteLine ("Size of generated file is incorrect");
-				string msg = I._("MXS: Incorrect size of regenerated file");
-				throw new Exception (msg);
+				throw new Dalle.Formatos.FileFormatException();
 			}
 			if (info.Zipped){
 				Dalle.Formatos.Zip.Zip zip = new Dalle.Formatos.Zip.Zip ();

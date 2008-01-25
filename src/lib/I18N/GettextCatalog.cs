@@ -1,9 +1,9 @@
 /*
 
-	Dalle - A split/join file utility library
-	Dalle.Formatos.FormatNotSupportedException
+    Dalle - A split/join file utility library	
+    Dalle.I18N.GetText - Internationalization related stuff.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2008  Alberto Fernández <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,15 +20,19 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
+using Mono.Unix;
 
-using System;
+namespace Dalle.I18N {
+	public class GettextCatalog {
 
-namespace Dalle.Formatos
-{
-	public class FormatNotSupportedException : System.Exception
-	{
-		public FormatNotSupportedException(string s): base (s)
+		public static void Init ()
 		{
+			// TODO Encontrar donde se encuentran los ficheros de i18n
+			Catalog.Init("dalle", "./locale");
+		}
+		private GettextCatalog () 
+		{
+
 		}
 	}
 }

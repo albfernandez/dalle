@@ -28,7 +28,6 @@ using System.IO;
 using System.Reflection;
 	
 using Dalle.Utilidades;
-using I = Dalle.I18N.GetText;
 
 namespace Dalle.Formatos.MaxSplitter
 {	
@@ -51,9 +50,8 @@ namespace Dalle.Formatos.MaxSplitter
 		}
 		public MXSInfo (string fichero) : this ()
 		{
-			// TODO: Poner excepciones personalizada.
 			if ((new FileInfo(fichero).Length) > 512){
-				throw new Exception (I._("Too large to be a MXS file"));
+				throw new Dalle.Formatos.FileFormatException();
 			}
 			
 			byte[] datos = UtilidadesFicheros.LeerTodo(fichero);

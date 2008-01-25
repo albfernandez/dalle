@@ -29,8 +29,6 @@ using System.IO;
 using System.Threading;
 
 
-using I = Dalle.I18N.GetText;
-
 namespace Dalle.Formatos
 {
 

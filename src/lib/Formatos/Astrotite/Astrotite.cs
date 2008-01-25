@@ -31,8 +31,6 @@ using System.Collections;
 using Dalle.Formatos;
 using Dalle.Utilidades;
 
-using I = Dalle.I18N.GetText;
-
 namespace Dalle.Formatos.Astrotite
 {
 
@@ -72,14 +70,14 @@ namespace Dalle.Formatos.Astrotite
 			FileStream astReader = new FileStream (fichero, FileMode.Open);
 			
 			if (astReader.Read (initbuffer, 0, initbuffer.Length) < 22){
-				throw new Exception (I._("Bad file ") + fichero);
+				throw new Dalle.Formatos.FileFormatException();
 			}
 			string tmp="";
 			for (i = 0; i < "AST2www.astroteam.tk".Length; i++){
 				tmp += Convert.ToChar (initbuffer[i]);
 			}
 			if (tmp != "AST2www.astroteam.tk")
-				throw new Exception (I._("Bad file") +  " " + fichero);
+				throw new Dalle.Formatos.FileFormatException();
 			
 			narchivos = UtArrays.LeerInt16(initbuffer, 20);
 			
@@ -132,8 +130,7 @@ namespace Dalle.Formatos.Astrotite
 					quedan -= (int) l;
 					leidos += l;
 					if ((block.crc != 0xFFFFFFFF) && ((long) block.crc != crc.Value)){
-						throw new Exception (String.Format (
-							I._("Checksum verification failed on {0}!"), des.name));
+						throw new Dalle.Formatos.ChecksumVerificationException();
 					}					
 					OnProgress (leidos, totales);
 				}

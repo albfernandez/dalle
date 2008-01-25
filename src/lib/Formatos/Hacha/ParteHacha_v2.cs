@@ -28,7 +28,6 @@ using System.IO;
 using Dalle.Formatos;
 using Dalle.Utilidades;
 using Dalle.Checksums;
-using I = Dalle.I18N.GetText;
 
 namespace Dalle.Formatos.Hacha
 {
@@ -52,13 +51,14 @@ namespace Dalle.Formatos.Hacha
 			CRC crc = new HachaCRC (new FileInfo (fichero).Length);
 			base.UnirHacha (fichero, dirDest,crc);
 			
+			// TODO Recuperar comprobacion del 'crc'
 			// Comprobamos el CRC.
-			CabeceraHacha_v1 cab = CabeceraHacha_v1.LeerCabecera (fichero);
+			//CabeceraHacha_v1 cab = CabeceraHacha_v1.LeerCabecera (fichero);
 			/*
 			if ( (cab.CRC != 7) && (crc.Value != cab.CRC) ){
 				Console.WriteLine("calculado:" + crc.Value);
 				Console.WriteLine("leido:" + cab.CRC);
-				throw new Exception (I._("Checksum verification failed!"));				
+				throw new Dalle.Formatos.FileFormatException();			
 			}
 			*/
 		}

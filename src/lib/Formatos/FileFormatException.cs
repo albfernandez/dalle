@@ -1,9 +1,8 @@
 /*
 
-	Dalle - A split/join file utility library
-	Dalle.Formatos.FormatNotSupportedException
-	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Dalle - A split/join file utility library	
+ 	
+    Copyright (C) 2003-2008  Alberto Fernández <infjaf00@yahoo.es>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,12 +22,18 @@
 
 using System;
 
-namespace Dalle.Formatos
-{
-	public class FormatNotSupportedException : System.Exception
-	{
-		public FormatNotSupportedException(string s): base (s)
+namespace Dalle.Formatos {
+
+	public class FileFormatException : System.Exception {
+		
+		public FileFormatException () 
 		{
 		}
+		public FileFormatException (string mensaje) : base(mensaje)
+		{
+		}
+		public FileFormatException (string mensaje, Exception e): base (mensaje, e)
+		{
+		}	
 	}
 }
