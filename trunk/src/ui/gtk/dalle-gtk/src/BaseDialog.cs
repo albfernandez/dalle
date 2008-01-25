@@ -31,7 +31,7 @@ using Gtk;
 using GtkSharp;
 
 using Dalle.Formatos;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
  
 
@@ -82,7 +82,7 @@ namespace Dalle.UI.DalleGtk
 		{
 			CloseButton = new Gtk.Button (Gtk.Stock.Close);
 			FileEntry = new Gtk.Entry ();
-			BrowseButton = new Gtk.Button (I._("Browse..."));
+			BrowseButton = new Gtk.Button (Catalog.GetString("Browse..."));
 			ActionButton = CreateActionButton();
 			Progress = new CustomProgressBar ();
 			
@@ -94,7 +94,7 @@ namespace Dalle.UI.DalleGtk
 				
 		protected virtual Gtk.FileSelection CreateFileSelection ()
 		{
-			Gtk.FileSelection f = new Gtk.FileSelection(I._("Select a file"));
+			Gtk.FileSelection f = new Gtk.FileSelection(Catalog.GetString("Select a file"));
 			
 			f.TransientFor = this;
 			f.Modal = true;
@@ -140,7 +140,7 @@ namespace Dalle.UI.DalleGtk
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Error,
 					Gtk.ButtonsType.Ok,
-					I._("Selected file does not exist"));
+					Catalog.GetString("Selected file does not exist"));
 				d.Run();
 				d.Destroy();
 				return;
@@ -151,17 +151,32 @@ namespace Dalle.UI.DalleGtk
 				
 			running = true;
 			OnBegin();
+			String mensajeError = null;
 			try {
 				ExecuteAction();
 			}
+			catch (System.IO.FileNotFoundException e) {
+				mensajeError = String.Format(Catalog.GetString("File not found: {0}"), e.FileName);
+			}
+			catch (Dalle.Formatos.FileFormatException e){
+				mensajeError = Catalog.GetString("Couldn't determine file type or the file is corrupted");
+			}
+			catch (Dalle.Formatos.FileAlreadyExistsException e){
+				mensajeError = String.Format(Catalog.GetString("The file {0} already exists"), e.FileName);
+			}
+			catch (Dalle.Formatos.ChecksumVerificationException e) {
+				mensajeError = Catalog.GetString("The checksum is invalid");
+			}
 			catch (Exception e){
-				
+				mensajeError = e.Message;
+			}
+			if (mensajeError != null) {
 				Gtk.MessageDialog d = new Gtk.MessageDialog (
 					this, 
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Error,
 					Gtk.ButtonsType.Ok,
-					e.Message);
+					mensajeError);
 				d.Run();
 				d.Destroy();
 			}
@@ -187,7 +202,7 @@ namespace Dalle.UI.DalleGtk
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Question,
 					Gtk.ButtonsType.YesNo,
-					I._("Do you want to stop file operation?"));
+					Catalog.GetString("Do you want to stop file operation?"));
 				int ret = d.Run();
 				d.Destroy();
 				

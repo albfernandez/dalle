@@ -24,7 +24,7 @@
 using System;
 
 using Dalle.FileVerification;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.SFVConsole
 {
@@ -32,28 +32,28 @@ namespace Dalle.UI.SFVConsole
 	{
 		public void Execute ()
 		{
-			Console.WriteLine (I._("Usage:"));
+			Console.WriteLine (Catalog.GetString("Usage:"));
 			Console.WriteLine ("");
-			Console.WriteLine (I._("To verify files:"));
-			Console.WriteLine (I._("dalle-sfv-console -v <md5 and sfv-files>"));
-			Console.WriteLine (I._("dalle-sfv-console -vv <md5 and sfv-files>  to be verbose"));
+			Console.WriteLine (Catalog.GetString("To verify files:"));
+			Console.WriteLine (Catalog.GetString("dalle-sfv-console -v <md5 and sfv-files>"));
+			Console.WriteLine (Catalog.GetString("dalle-sfv-console -vv <md5 and sfv-files>  to be verbose"));
 			Console.WriteLine ("");
-			Console.WriteLine (I._("To create (md5/sfv) files:"));
-			Console.WriteLine (I._("dalle-sfv-console -<format> <files>"));
-			Console.WriteLine (I._("dalle-sfv-console -r -<format> <files> to recurse into directories"));
+			Console.WriteLine (Catalog.GetString("To create (md5/sfv) files:"));
+			Console.WriteLine (Catalog.GetString("dalle-sfv-console -<format> <files>"));
+			Console.WriteLine (Catalog.GetString("dalle-sfv-console -r -<format> <files> to recurse into directories"));
 			Console.WriteLine ("");			
-			Console.WriteLine (I._("Supported formats: "));
+			Console.WriteLine (Catalog.GetString("Supported formats: "));
 			foreach (IFVerification f in FileVerificationManager.Instance.GetSupportedFormats()){
 				Console.WriteLine ("" + f.Name);
 			}
 			
 			Console.WriteLine ("");
-			Console.WriteLine (I._("Examples:"));
+			Console.WriteLine (Catalog.GetString("Examples:"));
 			Console.WriteLine ("");
-			Console.WriteLine (I._("Verifying files with a sfv file"));
+			Console.WriteLine (Catalog.GetString("Verifying files with a sfv file"));
 			Console.WriteLine ("dalle-sfv-console -vv file.sfv");
 			Console.WriteLine ("");
-			Console.WriteLine (I._("Creating sfv file (recursing into directories)"));
+			Console.WriteLine (Catalog.GetString("Creating sfv file (recursing into directories)"));
 			Console.WriteLine ("dalle-sfv-console -r -sfv * > file.sfv");
 			Console.WriteLine ("");
 			

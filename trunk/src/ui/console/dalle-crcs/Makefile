@@ -59,9 +59,10 @@ $(LANGDIR)/strings.txt: src/*.cs
 	$(GETSTRINGS) src/*.cs > $@
 
 install: $(TARGET)
-	$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
-	$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/lib/dalle
-	$(INSTALL) $(WRAPPER) $(DESTDIR)/$(PREFIX)/bin
+	#$(MKDIR) $(DESTDIR)/$(PREFIX)/lib/dalle
+	#$(INSTALL) $(TARGET) $(DESTDIR)/$(PREFIX)/lib/dalle
+	#$(INSTALL) $(WRAPPER) $(DESTDIR)/$(PREFIX)/bin
+	@echo No se instala dalle-crcs
 
 uninstall:
 	$(DELETE) $(DESTDIR)/$(PREFIX)/bin/$(WRAPPERNAME)

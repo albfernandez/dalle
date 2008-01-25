@@ -18,7 +18,7 @@
 
 */
 
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
@@ -51,7 +51,7 @@ namespace Dalle.UI.DalleSWF
 		private void InitComponent()
 		{
 			this.Size = new Size (400, 300);
-			this.Text = I._("Merge__");
+			this.Text = Catalog.GetString("Merge");
 		}
 		private void closing (object sender, CancelEventArgs args)
 		{

@@ -24,7 +24,7 @@
 using System;
 
 using Dalle.FileVerification;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.SFVConsole
 {
@@ -44,8 +44,8 @@ namespace Dalle.UI.SFVConsole
 				try{
 					FileVerificationManager.Instance.Verify(s);
 				}
-				catch (Exception e){
-					Console.WriteLine ("\n" + I._("ERROR") + " " + s + " " + I._(" Format incompatible") + "\n");
+				catch (Exception){
+					Console.WriteLine ("\n" + Catalog.GetString("ERROR") + " " + s + " " + Catalog.GetString(" Format incompatible") + "\n");
 				}
 			}
 		}
@@ -54,19 +54,19 @@ namespace Dalle.UI.SFVConsole
 			string msg;
 			switch (res){
 				case FileCheckResult.Ok: 
-					msg = I._("Ok");
+					msg = Catalog.GetString("Ok");
 					break;
 				case FileCheckResult.NotFound:
-					msg = I._("Not Found");
+					msg = Catalog.GetString("Not Found");
 					break;
 				case FileCheckResult.IsDirectory:
-					msg = I._("Is Directory");
+					msg = Catalog.GetString("Is Directory");
 					break;
 				case FileCheckResult.Failed:
-					msg = I._("Failed!");
+					msg = Catalog.GetString("Failed!");
 					break;
 				default:
-					msg = I._("Unknown error!");
+					msg = Catalog.GetString("Unknown error!");
 					break;
 			}
 			if ((verbose) || (res != FileCheckResult.Ok) )

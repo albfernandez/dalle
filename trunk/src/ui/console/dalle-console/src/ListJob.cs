@@ -25,7 +25,7 @@ using System;
 using System.Collections;
 	
 using Dalle.Formatos;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.Consola
 {
@@ -38,7 +38,7 @@ namespace Dalle.UI.Consola
 		public void Ejecutar()
 		{
 
-			Console.WriteLine(I._("Join Supported Formats"));
+			Console.WriteLine(Catalog.GetString("Join Supported Formats"));
 			
 			ArrayList l = Manager.GetInstance().GetFormatosUne();
 			// TODO: Hacerlo con un String.Format.
@@ -47,7 +47,7 @@ namespace Dalle.UI.Consola
 			}
 			
 			
-			Console.WriteLine (I._("Split Supported Formats"));
+			Console.WriteLine (Catalog.GetString("Split Supported Formats"));
 			l = Manager.GetInstance().GetFormatosParte();
 			// TODO: Hacerlo con un String.Format.
 			foreach (IParte p in l){

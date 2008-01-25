@@ -25,7 +25,7 @@ using System;
 using System.Collections;
 	
 using Dalle.Formatos;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.Consola
 {
@@ -46,7 +46,7 @@ namespace Dalle.UI.Consola
 						dirDest = args[i].Substring (3);
 					}
 					else{
-						throw new Exception (I._("Bad parameter"));
+						throw new Exception (Catalog.GetString("Bad parameter"));
 					}
 				}
 				lista.Add (args[i]);
@@ -63,7 +63,7 @@ namespace Dalle.UI.Consola
 				p = Manager.Instance.GetFormatoFichero (fichero);
 				
 				if (p != null){
-					Console.WriteLine (I._("Joining file {0} ({1})"), fichero, p.Nombre);					
+					Console.WriteLine (Catalog.GetString("Joining file {0} ({1})"), fichero, p.Nombre);					
 					OnBegin();
 					//Console.WriteLine("OnBegin " + fichero);
 					//System.Threading.Thread.Sleep(5000);
@@ -75,7 +75,7 @@ namespace Dalle.UI.Consola
 					//System.Threading.Thread.Sleep(5000);
 				}
 				else {
-					Console.WriteLine (I._("{0}. Error, Unknown format."), fichero);
+					Console.WriteLine (Catalog.GetString("{0}. Error, Unknown format."), fichero);
 				}
 			}
 			int final = Environment.TickCount;

@@ -31,7 +31,7 @@ using Gdk;
 using GtkSharp;
 
 using Dalle.Formatos;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 
 namespace Dalle.UI.DalleGtk
@@ -58,7 +58,7 @@ namespace Dalle.UI.DalleGtk
 		
 		private SplitDialog (Gtk.Window parent) : base (parent)
 		{
-			this.Title = I._("Split Files");
+			this.Title = Catalog.GetString("Split Files");
 			this.SetSizeRequest (550,300);
 			this.FileEntry.Changed += new EventHandler (OnEntryChanged);
 			Formats = CreateFormatsOptionMenu();
@@ -86,8 +86,8 @@ namespace Dalle.UI.DalleGtk
 			Gtk.Label lbl = new Gtk.Label (String.Empty);
 			lbl.Markup = String.Format (
 				"<big><b>{0}</b></big>\n{1}",
-				I._("Split a File"),
-				I._("Split a file in small pieces"));
+				Catalog.GetString("Split a File"),
+				Catalog.GetString("Split a file in small pieces"));
 			
 			lbl.Xalign = 0.0f;
 			lbl.Yalign = 0.0f;
@@ -99,7 +99,7 @@ namespace Dalle.UI.DalleGtk
 			table.ColumnSpacing = 6;
 			table.RowSpacing = 6;
 			
-			Gtk.Label lbl1 = new Gtk.Label (I._("Select a file to split"));
+			Gtk.Label lbl1 = new Gtk.Label (Catalog.GetString("Select a file to split"));
 			lbl1.Xalign = 0.0f;
 			lbl1.Yalign = 0.5f;
 			
@@ -112,7 +112,7 @@ namespace Dalle.UI.DalleGtk
 			table.Attach (hbox2, 1,2, 0,1);
 			
 			
-			Gtk.Label lbl2 = new Gtk.Label (I._("Number of fragments"));
+			Gtk.Label lbl2 = new Gtk.Label (Catalog.GetString("Number of fragments"));
 			lbl2.Xalign = 0.0f;
 			lbl2.Yalign = 0.5f;
 			table.Attach (lbl2, 0,1, 1,2);
@@ -123,7 +123,7 @@ namespace Dalle.UI.DalleGtk
 			numberSpin.ValueChanged += new EventHandler (this.OnNumberSpinChanged);
 			table.Attach (numberSpin, 1,2, 1,2);
 			
-			Gtk.Label lbl3 = new Gtk.Label (I._("Size of fragments"));
+			Gtk.Label lbl3 = new Gtk.Label (Catalog.GetString("Size of fragments"));
 			lbl3.Xalign = 0.0f;
 			lbl3.Yalign = 0.5f;
 			table.Attach (lbl3, 0, 1, 2, 3);
@@ -133,10 +133,10 @@ namespace Dalle.UI.DalleGtk
 			sizeSpin.ValueChanged += new EventHandler (this.OnSizeSpinChanged);
 			Gtk.HBox hbox3 = new Gtk.HBox (false, 6);
 			hbox3.PackStart (sizeSpin, true, true, 0);
-			hbox3.PackStart (new Gtk.Label (I._("KiB")), false, false, 0);
+			hbox3.PackStart (new Gtk.Label (Catalog.GetString("KiB")), false, false, 0);
 			table.Attach (hbox3, 1,2, 2, 3);
 			
-			Gtk.Label lbl4 = new Gtk.Label (I._("File Format"));
+			Gtk.Label lbl4 = new Gtk.Label (Catalog.GetString("File Format"));
 			lbl4.Xalign = 0.0f;
 			lbl3.Yalign = 0.5f;
 			table.Attach (lbl4, 0, 1, 3, 4);

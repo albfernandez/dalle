@@ -24,7 +24,7 @@
 using System;
 using System.Reflection;
 
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 namespace Dalle.UI.Consola 
 {	
@@ -46,23 +46,23 @@ namespace Dalle.UI.Consola
 			new VersionJob().Ejecutar();
 			if (error){
 				Console.WriteLine ("");
-				Console.WriteLine (I._("Bad options"));
+				Console.WriteLine (Catalog.GetString("Bad options"));
 			}
 			Console.WriteLine ("");
-			Console.WriteLine (I._("dalle-console <command> [options] <files>"));
+			Console.WriteLine (Catalog.GetString("dalle-console <command> [options] <files>"));
 			Console.WriteLine ("");
-			Console.WriteLine (I._("<commands>"));
-			Console.WriteLine (I._("-s, --split Split files"));
-			Console.WriteLine (I._("-j, --join  Join files"));
-			Console.WriteLine (I._("-i, --info  Show info about files (format)"));
-			Console.WriteLine (I._("-l, --list  List all supported formats"));
-			Console.WriteLine (I._("(no command) Join files"));
+			Console.WriteLine (Catalog.GetString("<commands>"));
+			Console.WriteLine (Catalog.GetString("-s, --split Split files"));
+			Console.WriteLine (Catalog.GetString("-j, --join  Join files"));
+			Console.WriteLine (Catalog.GetString("-i, --info  Show info about files (format)"));
+			Console.WriteLine (Catalog.GetString("-l, --list  List all supported formats"));
+			Console.WriteLine (Catalog.GetString("(no command) Join files"));
 			Console.WriteLine ("");
-			Console.WriteLine (I._("[options]"));
-			Console.WriteLine (I._("-d=dir "));
-			Console.WriteLine (I._("-f=format  Format used to split the file"));
-			Console.WriteLine (I._("-b=file Name of dest file, or prefix for fragments"));
-			Console.WriteLine (I._("-t=size Size of pieces (in kb)"));
+			Console.WriteLine (Catalog.GetString("[options]"));
+			Console.WriteLine (Catalog.GetString("-d=dir "));
+			Console.WriteLine (Catalog.GetString("-f=format  Format used to split the file"));
+			Console.WriteLine (Catalog.GetString("-b=file Name of dest file, or prefix for fragments"));
+			Console.WriteLine (Catalog.GetString("-t=size Size of pieces (in kb)"));
 
 		}
 	}

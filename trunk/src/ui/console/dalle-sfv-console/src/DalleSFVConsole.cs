@@ -27,7 +27,7 @@ using System.IO;
 
 using Dalle.FileVerification;
 
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 
 
@@ -37,6 +37,7 @@ namespace Dalle.UI.SFVConsole
 	{		
 		public static void Main (string[] args)
 		{
+			Dalle.I18N.GettextCatalog.Init();
 			Command c;
 			try{
 				c = CommandFactory.CreateCommand (args);

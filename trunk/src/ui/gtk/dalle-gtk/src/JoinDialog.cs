@@ -29,7 +29,7 @@ using System;
 
 using Dalle.Formatos;
 using System.Reflection;
-using I = Dalle.I18N.GetText;
+using Mono.Unix;
 
 
 namespace Dalle.UI.DalleGtk
@@ -50,7 +50,7 @@ namespace Dalle.UI.DalleGtk
 		private JoinDialog (Gtk.Window parent) : base (parent)
 		{
 			this.SetSizeRequest (500, 230);
-			this.Title = I._("Join File Fragments");
+			this.Title = Catalog.GetString("Join File Fragments");
 
 			this.LayoutComponents();
 
@@ -79,8 +79,8 @@ namespace Dalle.UI.DalleGtk
 			Gtk.Label lbl = new Gtk.Label (String.Empty);
 			lbl.Markup = String.Format (
 				"<big><b>{0}</b></big>\n{1}",
-				I._("Join the fragments of a file"),
-				I._("Re-create a file from its fragments"));
+				Catalog.GetString("Join the fragments of a file"),
+				Catalog.GetString("Re-create a file from its fragments"));
 			lbl.Xalign = 0.0f;
 			lbl.Yalign = 0.0f;
 			
@@ -89,7 +89,7 @@ namespace Dalle.UI.DalleGtk
 			Gtk.HBox hbox2 = new Gtk.HBox (false, 6);
 			hbox2.BorderWidth = 0;
 			
-			Gtk.Label lbl2 = new Gtk.Label (I._("Fragment to join"));
+			Gtk.Label lbl2 = new Gtk.Label (Catalog.GetString("Fragment to join"));
 			
 			hbox2.PackStart (lbl2, false, false, 2);
 			
@@ -120,7 +120,7 @@ namespace Dalle.UI.DalleGtk
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Error,
 					Gtk.ButtonsType.Ok,
-					I._("Unknown file format"));
+					Catalog.GetString("Unknown file format"));
 				d.Run();
 				d.Destroy();
 				return;
