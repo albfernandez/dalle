@@ -1,11 +1,23 @@
 <?xml version="1.0"?>
-<project name="Hello World" default="build" basedir=".">
-	<description>The Hello World of build files.</description>
+<project name="dalle" default="build" basedir=".">
+	<description>Build file for dalle.</description>
 	<property name="debug" value="false" overwrite="false" />
 	<property name="codepage" value="utf8" overwrite="false" />
 	<property name="version" value="0.7.8.2" overwrite="false" />
 	<property name="copyright" value="Copyright (c) 2005-2008, Alberto Fernández" overwrite="false"/>
+	<property name="prefix" value="/" overwrite="false" />
 	
+	<target name="install">
+		<mkdir dir="${prefix}/bin" />
+		<mkdir dir="${prefix}/lib/dalle" />
+		<copy file="build/libDalle.dll" toFile="${prefix}/lib/dalle" />
+		<copy todir="${prefix}/bin">
+			<fileset basedir="build">
+				<include name="*.exe" />
+			</fileset>
+		</copy>	
+	</target>
+
 	<target name="clean" description="remove all generated files">
 		<delete>
 			<fileset>
