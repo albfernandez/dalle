@@ -2,12 +2,12 @@ Source: dalle
 Section: utils
 Priority: optional
 Maintainer: Alberto Fernández <infjaf00@yahoo.es>
-Build-Depends: debhelper (>= 4.0.0), mono-runtime (>=1.0), libgtk-cil (>=1.0), libglade-cil(>=1.0), libgnome-cil(>=1.0), mono-mcs(>=1.0), perl, make,cli-common-dev (>= 0.4.0)  
+Build-Depends: debhelper (>= 4.0.0), nant (>=0.85), mono-runtime (>= 1.1.8.1), libgtk2.0-cil (>= 2.10.2), libglade2.0-cil(>=1.0), libgnome2.0-cil (>= 2.16.0), mono-mcs(>=1.0), perl, make,cli-common-dev (>= 0.4.0),libmono-sharpzip0.84-cil (>= 1.0)
 Standards-Version: 3.6.1.1
 
 Package: dalle
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${cli:Depends}, libmono-sharpzip0.84-cil gtk-sharp2
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${cli:Depends},mono-runtime (>= 1.1.8.1),libmono-sharpzip0.84-cil (>= 1.0),libgnome2.0-cil (>= 2.16.0),libgtk2.0-cil (>= 2.10.2)
 Description: Tools to work with multiple files
  (hacha, kamaleon, camouflage)
 

@@ -24,31 +24,21 @@ CFLAGS = -Wall -g
 config.status: configure
 	dh_testdir
 	./configure --prefix=/usr --build-debug --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp-2.0/
+	touch config.status
 
 
-#Architecture 
-build: build-arch build-indep
-
-build-arch: build-arch-stamp
-build-arch-stamp:  config.status
-	touch build-arch-stamp
-	
-
-build-indep: build-indep-stamp
-	dh_makeclilibs -i -V
-	dh_installcligac -i
-	dh_clideps -i
+build: config.status
+	nant -nologo build
+#	dh_makeclilibs -i -V
+#	dh_installcligac -i
+#	dh_clideps -i
      	
-build-indep-stamp:  config.status
-	$(MAKE)
-	touch build-indep-stamp
-
 clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-arch-stamp build-indep-stamp #CONFIGURE-STAMP#
 	rm -rf $(MONO_SHARED_DIR)/.wapi
-	$(MAKE) clean
+	nant -nologo clean
 	
 	
 ifneq "$(wildcard /usr/share/misc/config.sub)" ""
@@ -61,18 +51,20 @@ endif
 
 	dh_clean 
 
-install: install-indep
-
-install-indep:
+install: 
 	dh_testdir
 	dh_testroot
 	dh_clean -k -i 
 	dh_installdirs -i
 	dh_install -i
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/dalle
+	nant -nologo -D:DESTDIR=$(CURDIR)/debian/dalle  install
 	install -d debian/dalle/usr/share/dalle/pixmaps/
 	cp debian/dalle.xpm debian/dalle/usr/share/dalle/pixmaps/
-
+	dh_makeclilibs -i -V
+	dh_installcligac -i
+	dh_clideps -i
+	find debian/dalle/ -type f -name "*.dll" -or -name "*.mdb" -or -name "*.cs" -or -name "*.config" | xargs chmod -x
+	find debian/dalle/ -type f -name "*.exe" | xargs chmod +x
 # Must not depend on anything. This is to be called by
 # binary-arch/binary-indep
 # in another 'make' thread.
@@ -83,21 +75,11 @@ binary-common:
 	dh_installdocs
 	dh_installexamples
 	dh_installmenu
-#	dh_installdebconf	
-#	dh_installlogrotate	
-#	dh_installemacsen
-#	dh_installpam
-#	dh_installmime
-#	dh_installinit
-#	dh_installcron
-#	dh_installinfo
 	dh_installman debian/dalle-gtk.1 debian/dalle-console.1 debian/openhacha.1 debian/dalle-sfv-console.1 
 	dh_link
 	dh_strip
 	dh_compress 
 	dh_fixperms
-#	dh_perl
-#	dh_python
 	dh_makeshlibs
 	dh_installdeb
 	dh_shlibdeps
@@ -105,7 +87,7 @@ binary-common:
 	dh_md5sums
 	dh_builddeb
 # Build architecture independant packages using the common target.
-binary-indep: build-indep install-indep
+binary-indep: install
 	$(MAKE) -f debian/rules DH_OPTIONS=-i binary-common
 
 

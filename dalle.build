@@ -5,17 +5,47 @@
 	<property name="codepage" value="utf8" overwrite="false" />
 	<property name="version" value="0.7.8.2" overwrite="false" />
 	<property name="copyright" value="Copyright (c) 2005-2008, Alberto Fernández" overwrite="false"/>
-	<property name="prefix" value="/" overwrite="false" />
+	<property name="prefix" value="/usr/" overwrite="false" />
+	<property name="DESTDIR" value="/" overwrite="false" />
 	
 	<target name="install">
-		<mkdir dir="${prefix}/bin" />
-		<mkdir dir="${prefix}/lib/dalle" />
-		<copy file="build/libDalle.dll" toFile="${prefix}/lib/dalle" />
-		<copy todir="${prefix}/bin">
+		<mkdir dir="${DESTDIR}/${prefix}/lib/dalle" />
+		<copy todir="${DESTDIR}/${prefix}/lib/dalle/">
 			<fileset basedir="build">
 				<include name="*.exe" />
+				<include name="*.dll" />
 			</fileset>
 		</copy>	
+		<mkdir dir="${DESTDIR}/${prefix}/bin" />
+		<foreach item="File" property="filename">
+		    <in>
+			<items>
+			    <include name="build/*.exe" />
+			</items>
+		    </in>
+		    <do>
+			<copy file="scripts/base.sh" inputencoding="utf-8" outputencoding="utf-8" tofile="${DESTDIR}/${prefix}/bin/${path::get-file-name-without-extension(filename)}">
+				<filterchain>
+				<replacetokens>
+				    <token key="PROGRAM" value="${path::get-file-name(filename)}" />
+				</replacetokens>
+			    </filterchain>
+			</copy>
+		    </do>
+		</foreach>
+	</target>
+	<!-- TODO Esto sobra -->
+	<target name="list">
+		<foreach item="File" property="filename">
+		    <in>
+			<items>
+			    <include name="build/*.exe" />
+			</items>
+		    </in>
+		    <do>
+			<copy file="scripts/base.sh" inputencoding="utf-8" outputencoding="utf-8" tofile="build/${path::get-file-name-without-extension(filename)}"><filterchain><replacestring from="PROGRAM" to="${path::get-file-name(filename)}" /></filterchain></copy>
+		    </do>
+		</foreach>
 	</target>
 
 	<target name="clean" description="remove all generated files">
