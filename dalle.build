@@ -24,7 +24,7 @@
 			</items>
 		    </in>
 		    <do>
-			<copy file="scripts/base.sh" inputencoding="utf-8" outputencoding="utf-8" tofile="${DESTDIR}/${prefix}/bin/${path::get-file-name-without-extension(filename)}">
+			<copy file="scripts/base.sh" inputencoding="utf-8"  outputencoding="iso-8859-15" tofile="${DESTDIR}/${prefix}/bin/${path::get-file-name-without-extension(filename)}">
 				<filterchain>
 				<replacetokens>
 				    <token key="PROGRAM" value="${path::get-file-name(filename)}" />
@@ -34,7 +34,8 @@
 		    </do>
 		</foreach>
 	</target>
-	<!-- TODO Esto sobra -->
+	
+	<!-- TODO Esto es de pruebas -->
 	<target name="list">
 		<foreach item="File" property="filename">
 		    <in>
@@ -43,10 +44,17 @@
 			</items>
 		    </in>
 		    <do>
-			<copy file="scripts/base.sh" inputencoding="utf-8" outputencoding="utf-8" tofile="build/${path::get-file-name-without-extension(filename)}"><filterchain><replacestring from="PROGRAM" to="${path::get-file-name(filename)}" /></filterchain></copy>
+			<copy file="scripts/base.sh" inputencoding="utf-8" outputencoding="iso-8859-15" tofile="build/${path::get-file-name-without-extension(filename)}">
+				<filterchain>
+				<replacetokens>
+				    <token key="PROGRAM" value="${path::get-file-name(filename)}" />
+				</replacetokens>
+				</filterchain>
+			</copy>
 		    </do>
 		</foreach>
 	</target>
+	<!-- fin del to-do -->
 
 	<target name="clean" description="remove all generated files">
 		<delete>
