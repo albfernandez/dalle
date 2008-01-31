@@ -35,6 +35,14 @@
 		</foreach>
 	</target>
 	
+	
+	<target name="generate-pot">
+		<exec program="xgettext">
+			<arg value="--files-from=po/POTFILES.in" />
+			<arg value="--from-code=UTF-8" />
+			<arg value="--output=po/index.pot" />
+		</exec>
+	</target>
 	<!-- TODO Esto es de pruebas -->
 	<target name="list">
 		<foreach item="File" property="filename">
@@ -44,13 +52,13 @@
 			</items>
 		    </in>
 		    <do>
-			<copy file="scripts/base.sh" inputencoding="utf-8" outputencoding="iso-8859-15" tofile="build/${path::get-file-name-without-extension(filename)}">
-				<filterchain>
-				<replacetokens>
-				    <token key="PROGRAM" value="${path::get-file-name(filename)}" />
-				</replacetokens>
-				</filterchain>
-			</copy>
+				<copy file="scripts/base.sh" inputencoding="utf-8" outputencoding="iso-8859-15" tofile="build/${path::get-file-name-without-extension(filename)}">
+					<filterchain>
+					<replacetokens>
+					    <token key="PROGRAM" value="${path::get-file-name(filename)}" />
+					</replacetokens>
+					</filterchain>
+				</copy>
 		    </do>
 		</foreach>
 	</target>
