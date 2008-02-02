@@ -86,7 +86,8 @@ namespace Dalle.I18N
 			
 			try {
 				resMan = new ResourceManager (resourceName, assembly);
-				resMan.GetString ("_");
+				string prueba = "_";
+				resMan.GetString (prueba);
 			}
 			catch (MissingManifestResourceException){
 				resMan = new ResourceManager (baseName, assembly);

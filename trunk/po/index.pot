@@ -1,0 +1,357 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dalle 0.7.8.2\n"
+"Report-Msgid-Bugs-To: infjaf00@yahoo.es\n"
+"POT-Creation-Date: 2008-02-01 23:15+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/ui/swf/dalle-swf/src/AboutDialog.cs:55
+#: src/ui/swf/dalle-swf/src/AboutDialog.cs:69
+msgid "Dalle-Swf"
+msgstr ""
+
+#: src/ui/swf/dalle-swf/src/AboutDialog.cs:86
+msgid "Close"
+msgstr ""
+
+#: src/ui/swf/dalle-swf/src/SplitDialog.cs:53
+#: src/ui/swf/dalle-swf/src/DalleSWF.cs:100
+msgid "Split"
+msgstr ""
+
+#: src/ui/swf/dalle-swf/src/DalleSWF.cs:79
+msgid "Execute"
+msgstr ""
+
+#: src/ui/swf/dalle-swf/src/DalleSWF.cs:86
+msgid "Exit"
+msgstr ""
+
+#: src/ui/swf/dalle-swf/src/DalleSWF.cs:93
+#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:147
+msgid "About"
+msgstr ""
+
+#: src/ui/swf/dalle-swf/src/DalleSWF.cs:107
+#: src/ui/swf/dalle-swf/src/JoinDialog.cs:54
+msgid "Merge"
+msgstr ""
+
+#: src/ui/swf/dalle-swf/src/DalleSWF.cs:112
+#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:128
+msgid "What do you want to do?"
+msgstr ""
+
+#: src/ui/swf/dalle-swf/src/DalleSWF.cs:118
+msgid "Welcome to dalle"
+msgstr ""
+
+#: src/ui/swf/dalle-swf/src/DalleSWF.cs:140
+msgid "Dalle-swf"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:49
+msgid "Bad options"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:52
+msgid "dalle-console <command> [options] <files>"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:54
+msgid "<commands>"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:55
+msgid "-s, --split Split files"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:56
+msgid "-j, --join  Join files"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:57
+msgid "-i, --info  Show info about files (format)"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:58
+msgid "-l, --list  List all supported formats"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:59
+msgid "(no command) Join files"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:61
+msgid "[options]"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:62
+msgid "-d=dir "
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:63
+msgid "-f=format  Format used to split the file"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:64
+msgid "-b=file Name of dest file, or prefix for fragments"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/HelpJob.cs:65
+msgid "-t=size Size of pieces (in kb)"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/Consola.cs:53
+msgid "Error:"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/ListJob.cs:41
+msgid "Join Supported Formats"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/ListJob.cs:50
+msgid "Split Supported Formats"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/JoinJob.cs:49
+msgid "Bad parameter"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/JoinJob.cs:66
+#, csharp-format
+msgid "Joining file {0} ({1})"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/JoinJob.cs:78
+#, csharp-format
+msgid "{0}. Error, Unknown format."
+msgstr ""
+
+#: src/ui/console/dalle-console/src/LongJob.cs:52
+msgid "Finished"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/LongJob.cs:75
+#, csharp-format
+msgid "Time = {0} seconds ({1:00}:{2:00})"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/InfoJob.cs:58
+msgid "Unknown format"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/InfoJob.cs:62
+msgid "Is a directory"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/InfoJob.cs:64
+msgid "File not found"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/VersionJob.cs:41
+#, csharp-format
+msgid "dalle-console v.{0}"
+msgstr ""
+
+#: src/ui/console/dalle-console/src/VersionJob.cs:43
+#, csharp-format
+msgid "Using libDalle v.{0}"
+msgstr ""
+
+#: src/ui/console/dalle-crcs/src/crcs.cs:73
+#, csharp-format
+msgid "{0}, File not found"
+msgstr ""
+
+#: src/ui/console/dalle-crcs/src/crcs.cs:75
+#, csharp-format
+msgid "{0} is a directory"
+msgstr ""
+
+#: src/ui/console/dalle-crcs/src/crcs.cs:101
+#, csharp-format
+msgid "crcs of file {0}:"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/VerifySFVCommand.cs:48
+msgid "ERROR"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/VerifySFVCommand.cs:48
+msgid " Format incompatible"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/VerifySFVCommand.cs:57
+msgid "Ok"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/VerifySFVCommand.cs:60
+msgid "Not Found"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/VerifySFVCommand.cs:63
+msgid "Is Directory"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/VerifySFVCommand.cs:66
+msgid "Failed!"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/VerifySFVCommand.cs:69
+msgid "Unknown error!"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:35
+msgid "Usage:"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:37
+msgid "To verify files:"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:38
+msgid "dalle-sfv-console -v <md5 and sfv-files>"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:39
+msgid "dalle-sfv-console -vv <md5 and sfv-files>  to be verbose"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:41
+msgid "To create (md5/sfv) files:"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:42
+msgid "dalle-sfv-console -<format> <files>"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:43
+msgid "dalle-sfv-console -r -<format> <files> to recurse into directories"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:45
+msgid "Supported formats: "
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:51
+msgid "Examples:"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:53
+msgid "Verifying files with a sfv file"
+msgstr ""
+
+#: src/ui/console/dalle-sfv-console/src/HelpCommand.cs:56
+msgid "Creating sfv file (recursing into directories)"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:85
+msgid "Browse..."
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:97
+msgid "Select a file"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:143
+msgid "Selected file does not exist"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:159
+#, csharp-format
+msgid "File not found: {0}"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:162
+msgid "Couldn't determine file type or the file is corrupted"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:165
+#, csharp-format
+msgid "The file {0} already exists"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:168
+msgid "The checksum is invalid"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:205
+msgid "Do you want to stop file operation?"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:61
+#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:130
+msgid "Split Files"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:89
+msgid "Split a File"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:90
+msgid "Split a file in small pieces"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:102
+msgid "Select a file to split"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:115
+msgid "Number of fragments"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:126
+msgid "Size of fragments"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:136
+msgid "KiB"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:139
+msgid "File Format"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:71
+msgid "DalleGtk"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:119
+msgid "Welcome to Dalle."
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:132
+msgid "Merge Files"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:53
+msgid "Join File Fragments"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:82
+msgid "Join the fragments of a file"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:83
+msgid "Re-create a file from its fragments"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:92
+msgid "Fragment to join"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:123
+msgid "Unknown file format"
+msgstr ""

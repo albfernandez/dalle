@@ -8,6 +8,9 @@
 	<property name="prefix" value="/usr/" overwrite="false" />
 	<property name="DESTDIR" value="/" overwrite="false" />
 	
+
+
+
 	<target name="install">
 		<mkdir dir="${DESTDIR}/${prefix}/lib/dalle" />
 		<copy todir="${DESTDIR}/${prefix}/lib/dalle/">
@@ -41,7 +44,22 @@
 			<arg value="--files-from=po/POTFILES.in" />
 			<arg value="--from-code=UTF-8" />
 			<arg value="--output=po/index.pot" />
+			<arg value="--package-name=dalle" />
+			<arg value="--package-version=${version}"/>
+			<arg value="--msgid-bugs-address=infjaf00@yahoo.es"/>
 		</exec>
+	</target>
+	<target name="generate-mo">
+		<mkdir dir="build/locale/" />
+		<foreach item="File" property="filename">
+			<in><items><include name="po/*.po"/></items></in>
+			<do>
+				<exec program="msgfmt">
+					<arg value="${filename}"/>
+					<arg value="--output-file=build/locale/${path::get-file-name-without-extension(filename)}.mo"/>			
+				</exec>
+			</do>
+		</foreach>
 	</target>
 	<!-- TODO Esto es de pruebas -->
 	<target name="list">
