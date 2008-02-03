@@ -21,14 +21,25 @@
 
 */
 using Mono.Unix;
+using System.IO;
 
 namespace Dalle.I18N {
 	public class GettextCatalog {
 
 		public static void Init ()
 		{
-			// TODO Encontrar donde se encuentran los ficheros de i18n
-			Catalog.Init("dalle", "./locale");
+			if (Directory.Exists("/usr/share/locale/"))
+			{
+				Catalog.Init("dalle", "/usr/share/locale/");
+			}
+			else if (Directory.Exists("./locale"))
+			{
+				Catalog.Init("dalle", "./locale");
+			}
+			else 
+			{
+				Catalog.Init("dalle", "/usr/share/locale/");
+			}
 		}
 		private GettextCatalog () 
 		{

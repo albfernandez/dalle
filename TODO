@@ -20,7 +20,7 @@ Leyenda:
 	- [X]  Soporte para cortar en kamaleon2.
 	- [ ]  Repaso de dalle-console.
 	- [ ]  Repaso de dalle-gtk.
-	- [X]  Dialogo Gtk.AboutDialog
+	- [ ]  Dialogo Gtk.AboutDialog
 	- [ ]  Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
 	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
 	- [ ]  Repaso de dalle-sfv.
@@ -28,16 +28,15 @@ Leyenda:
 	- [X]  Paquete deb.
 	- [X]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
 	- [X]  Revisar todos los scripts para que funcione bien con mono 1.0
-	- [ ]  Soporte Gettext
-	- [ ]  Nuevo sistema de configuracion / compilacion (autotools?, nant?)
+	- [X]  Soporte Gettext
+	- [X]  Nuevo sistema de configuracion / compilacion (autotools?, nant?)
 	- [X]  Sacar las cadenas de texto I18N de la libreria.
 	- [X]  Excepciones bien estructuradas en la libreria.
 	- [X]  Nueva estructura de instalación.
-	- [ ]  Soporte checksum hacha 3.5
-	- [ ]  Iconos en el menu de debian
-	- [ ]  Recuperar formato splitfile
+	- [ ]  Iconos en el menu de debian	
 	- [ ]  Quitar los warnings de compilación
 	- [ ]  Repasar y usar un tamaño de buffer constante
+	- [ ]  Soporte para indicar el directorio de salida en dalle-gtk
 	
 
 ===============================
@@ -51,6 +50,8 @@ Leyenda:
 	
 	- [ ]  DragNDrop.
 	
+	- [ ]  Recuperar formato splitfile
+	- [ ]  Soporte checksum hacha 3.5
 	- [-] Soporte "completo" para zip.
 	- [ ] Soporte "completo" para tar, gz, bz2.
 	- [-] Mejorar el soporte de Astrotite.

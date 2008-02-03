@@ -12,6 +12,7 @@
 
 
 	<target name="install">
+		<!-- Copia lo que hay en lib -->
 		<mkdir dir="${DESTDIR}/${prefix}/lib/dalle" />
 		<copy todir="${DESTDIR}/${prefix}/lib/dalle/">
 			<fileset basedir="build">
@@ -19,6 +20,7 @@
 				<include name="*.dll" />
 			</fileset>
 		</copy>	
+		<!-- genera los wrappers para lanzar el programa -->
 		<mkdir dir="${DESTDIR}/${prefix}/bin" />
 		<foreach item="File" property="filename">
 		    <in>
@@ -36,6 +38,14 @@
 			</copy>
 		    </do>
 		</foreach>
+		<!-- copia los archivos de i18n -->
+		<!-- /usr/share/locale/es/LC_MESSAGES/dalle.mo -->
+		<mkdir dir="${DESTDIR}/${prefix}/share/locale/" />
+		<copy todir="${DESTDIR}/${prefix}/share/locale/">
+			<fileset basedir="build/locale">
+				<include name="**/*.mo" />
+			</fileset>
+		</copy>
 	</target>
 	
 	
@@ -54,9 +64,10 @@
 		<foreach item="File" property="filename">
 			<in><items><include name="po/*.po"/></items></in>
 			<do>
+				<mkdir dir="build/locale/${path::get-file-name-without-extension(filename)}/LC_MESSAGES/" />
 				<exec program="msgfmt">
 					<arg value="${filename}"/>
-					<arg value="--output-file=build/locale/${path::get-file-name-without-extension(filename)}.mo"/>			
+					<arg value="--output-file=build/locale/${path::get-file-name-without-extension(filename)}/LC_MESSAGES/dalle.mo"/>			
 				</exec>
 			</do>
 		</foreach>
@@ -83,16 +94,9 @@
 	<!-- fin del to-do -->
 
 	<target name="clean" description="remove all generated files">
-		<delete>
-			<fileset>
-				<include name="build/*.exe" />
-				<include name="build/*.pdb" />
-				<include name="build/*.dll" />
-				<include name="build/*.mdb" />
-			</fileset>
-		</delete>
+		<delete dir="build" />
     </target>
-    <target name="build" depends="build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade,build-dalle-swf" />
+    <target name="build" depends="generate-mo,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade,build-dalle-swf" />
     <target name="build-library" description="compiles the source code">
     	<mkdir dir="build" />    	
 		<csc target="library" output="build/libDalle.dll" debug="${debug}">
