@@ -74,24 +74,16 @@ namespace OpenHachaGtkGui
 		[Glade.Widget] Gtk.SpinButton SplitDialogSpinButton = null;
 		[Glade.Widget] Gtk.Entry SplitDialogComboEntry = null;
 		[Glade.Widget] Gtk.SpinButton SplitDialogNumberSpinButton = null; 
-		[Glade.Widget] Gtk.OptionMenu FileFormat = null;
+		[Glade.Widget] Gtk.ComboBox FileFormat = null;
 		[Glade.Widget] Gtk.Button SplitDialogSplitButton = null;
 		
-		private enum hachaformat
-		{
-			hacha1,
-			hacha2,
-			hachapro
-		}
-
-		private hachaformat format;
 
 		public OpenHachaSplitDialog () 
 		{
 		    Glade.XML gxml = new Glade.XML (null, "openhacha.glade", "SplitDialog", null);
 			gxml.Autoconnect (this);			
 			SplitDialogSplitButton.Sensitive = false;
-			this.format = (hachaformat)FileFormat.History;			
+			FileFormat.Active = 0;
 		}
 	
 		public void OnSplitDialogComboEntryChanged (System.Object b, EventArgs e)
@@ -102,10 +94,10 @@ namespace OpenHachaGtkGui
 		public void OnSplitDialogSplitButtonClicked (System.Object b, EventArgs e) 
 		{
 			string file = SplitDialogComboEntry.Text;
-			
+			Console.WriteLine(FileFormat.ActiveText);
 			if (File.Exists(file)) {
 				Dalle.Formatos.Manager.GetInstance().Partir (
-					Convert.ToString(this.format), 
+					FileFormat.ActiveText, 
 					file,
 					file.Substring(0, file.LastIndexOf('.')),
 					(int)SplitDialogSpinButton.Value);
@@ -129,21 +121,6 @@ namespace OpenHachaGtkGui
 		public void OnSplitDialogCloseButtonClicked (System.Object b, EventArgs e)
 		{
 			SplitDialog.Destroy ();
-		}
-
-		public void OnHachaV1Activate (System.Object b, EventArgs e)
-		{
-			this.format = hachaformat.hacha1;	
-		}
-		
-		public void OnHachaV2Activate (System.Object b, EventArgs e)
-		{
-			this.format = hachaformat.hacha2;	
-		}
-		
-		public void OnHachaProActivate (System.Object b, EventArgs e)
-		{
-			this.format = hachaformat.hachapro;
 		}
 	}
 
