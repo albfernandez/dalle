@@ -158,13 +158,13 @@ namespace Dalle.UI.DalleGtk
 			catch (System.IO.FileNotFoundException e) {
 				mensajeError = String.Format(Catalog.GetString("File not found: {0}"), e.FileName);
 			}
-			catch (Dalle.Formatos.FileFormatException e){
+			catch (Dalle.Formatos.FileFormatException){
 				mensajeError = Catalog.GetString("Couldn't determine file type or the file is corrupted");
 			}
 			catch (Dalle.Formatos.FileAlreadyExistsException e){
 				mensajeError = String.Format(Catalog.GetString("The file {0} already exists"), e.FileName);
 			}
-			catch (Dalle.Formatos.ChecksumVerificationException e) {
+			catch (Dalle.Formatos.ChecksumVerificationException) {
 				mensajeError = Catalog.GetString("The checksum is invalid");
 			}
 			catch (Exception e){
@@ -223,10 +223,6 @@ namespace Dalle.UI.DalleGtk
 		{
 			Progress.Fraction = 0.0;
 			base.ShowAll();
-		}
-		private void BuscarClicked (object o, System.EventArgs args)
-		{
-			this.FileSelection.ShowAll();
 		}
 		protected virtual void OnProgress (long done, long total)
 		{

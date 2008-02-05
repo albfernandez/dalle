@@ -41,7 +41,7 @@ namespace Dalle.UI.DalleGtk
 	
 		private const string FORMATO_DEFECTO = "generico";
 		
-		private Gtk.OptionMenu Formats;
+		private Gtk.ComboBox Formats;
 		private Gtk.SpinButton numberSpin;
 		private Gtk.SpinButton sizeSpin;
 		private ArrayList listaFormatos;
@@ -61,7 +61,7 @@ namespace Dalle.UI.DalleGtk
 			this.Title = Catalog.GetString("Split Files");
 			this.SetSizeRequest (550,300);
 			this.FileEntry.Changed += new EventHandler (OnEntryChanged);
-			Formats = CreateFormatsOptionMenu();
+			Formats = CreateFormatsComboBox();
 			LayoutComponents();
 		}
 		private void LayoutComponents()
@@ -162,7 +162,18 @@ namespace Dalle.UI.DalleGtk
 		}
 		protected override void ExecuteAction()
 		{
-			string format = (listaFormatos [Formats.History] as IParte).Nombre;
+			string format = Formats.ActiveText;
+			if (format == null || format.Trim().Equals("")){
+				Gtk.MessageDialog d = new Gtk.MessageDialog (
+					this, 
+					Gtk.DialogFlags.DestroyWithParent,
+					Gtk.MessageType.Error,
+					Gtk.ButtonsType.Ok,
+					Catalog.GetString("You must select a destination format"));
+				d.Run();
+				d.Destroy();
+				return;
+			}
 			
 			Manager.Instance.Partir (format, FileEntry.Text, "", sizeSpin.ValueAsInt);
 		}
@@ -187,26 +198,15 @@ namespace Dalle.UI.DalleGtk
 			numberSpin.Value = Math.Ceiling ((double) (tamano) / (sizeSpin.ValueAsInt * 1024));
 			
 		}
-		private Gtk.OptionMenu CreateFormatsOptionMenu()
+		private Gtk.ComboBox CreateFormatsComboBox () 
 		{
-			int defecto = 0;
-			Gtk.OptionMenu m = new Gtk.OptionMenu();
-			
-			Gtk.Menu menu = new Gtk.Menu();
-			
+			ComboBox combo = ComboBox.NewText ();
 			listaFormatos = Dalle.Formatos.Manager.Instance.GetFormatosParte();
-			int c = 0;
 			foreach (IParte p in listaFormatos){
-				MenuItem it = new MenuItem (p.Nombre);
-				menu.Append (it);
-				if (p.Nombre == FORMATO_DEFECTO)
-					defecto = c;
-				c++;
+				combo.AppendText (p.Nombre);
 			}
-			m.Menu = menu;
 			
-			m.SetHistory ((uint) defecto);
-			return m;			
+			return combo;		
 		}
 	}
 }
