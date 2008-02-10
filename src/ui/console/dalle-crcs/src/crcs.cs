@@ -70,7 +70,7 @@ namespace Dalle {
 			Console.WriteLine ("\n");
 			if (!File.Exists (s)){
 				if (!Directory.Exists(s))
-					Console.WriteLine (Catalog.GetString("{0}, File not found"), s);
+					Console.WriteLine (Catalog.GetString("File not found: {0}"), s);
 				else
 					Console.WriteLine (Catalog.GetString("{0} is a directory"), s);
 				return;
