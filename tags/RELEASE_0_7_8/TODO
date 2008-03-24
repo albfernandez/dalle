@@ -1,0 +1,90 @@
+
+A continuación se indican los cambios que se realizarán y las versiones 
+correspondientes que serán liberadas, una vez un grupo de ellos se haya 
+terminado.
+No se indican plazos de tiempo porque se que no voy a ser capaz 
+de cumplirlos ;-)
+
+
+Leyenda:
+	[ ] Tarea por hacer
+	[-] A medias/sin probar
+	[X] Completo (o casi).
+	
+===============================
+
+	Versión 0.8 (Estabilizar)
+
+===============================
+	
+	- [X]  Soporte para cortar en kamaleon2.
+	- [ ]  Repaso de dalle-console.
+	- [ ]  Repaso de dalle-gtk.
+	- [ ]  Dialogo Gtk.AboutDialog
+	- [ ]  Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
+	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
+	- [ ]  Repaso de dalle-sfv.
+	- [X]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
+	- [X]  Paquete deb.
+	- [X]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
+	- [X]  Revisar todos los scripts para que funcione bien con mono 1.0
+	- [X]  Soporte Gettext
+	- [X]  Nuevo sistema de configuracion / compilacion (autotools?, nant?)
+	- [X]  Sacar las cadenas de texto I18N de la libreria.
+	- [X]  Excepciones bien estructuradas en la libreria.
+	- [X]  Nueva estructura de instalación.
+	- [ ]  Iconos en el menu de debian	
+	- [ ]  Quitar los warnings de compilación
+	- [ ]  Repasar y usar un tamaño de buffer constante
+	- [ ]  Soporte para indicar el directorio de salida en dalle-gtk
+	
+
+===============================
+
+	Versión 1.0
+
+===============================
+
+	- [ ] Interfaz swf.
+	- [ ] ¿Instalador NSIS para Windows?.
+	
+	- [ ]  DragNDrop.
+	
+	- [ ]  Recuperar formato splitfile
+	- [ ]  Soporte checksum hacha 3.5
+	- [-] Soporte "completo" para zip.
+	- [ ] Soporte "completo" para tar, gz, bz2.
+	- [-] Mejorar el soporte de Astrotite.
+	- [ ] Soporte para Splitter & Merger.
+	- [ ] Soporte HJSplit.
+	- [ ] Soporte gcutter.
+	- [ ] Soporte split (/usr/bin/split de coreutils).	
+
+	- [ ] Manual de usuario.
+	- [ ] Diagramas de clases.
+	- [ ] Documentar los formatos.
+	- [ ] Hacer tests (NUnit) de los formatos.
+	- [ ] Hacer tests (NUnit) de los crcs implementados.
+	- [ ] Todo el código comentado.
+	- [ ] Limpieza de código.
+	- [ ] Nueva web.
+	- [ ] Libre de bugs (eso se intentará ;)).	
+
+
+===========================================================================
+
+Otras cosas por hacer (cuando haya tiempo, posiblemente despues de v 1.0)
+
+===========================================================================
+
+	- [ ]  Hacer que Axman3 soporte la verificación crc que tiene.
+	- [ ]  Hacer un soporte completo para los archivos FSI de FileSplit
+	- [ ]  Hacer los programas compatibles con pnet.
+	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
+	
+	Soporte para archivos de verificación:
+	- [X]  Soporte sfv
+	- [X]  Soporte md5
+	- [X]  Soporte sha1
+	- [ ]  Soporte PAR1
+	- [ ]  Soporte PAR2

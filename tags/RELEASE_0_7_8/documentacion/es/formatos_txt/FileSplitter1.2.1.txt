@@ -1,0 +1,11 @@
+El formato son los datos cortados tal cual.
+El formato del nombre de los fragmentos es:
+<nombre original>.split.<numero de fragmento, 3 digitos, comenzando en 000>
+
+genera un archivo <nombre original>.split, de texto, como el siguiente:
+[FileSplitter]
+Version=1
+OriginalFileName=aes.txt
+OriginalFileSize=936624
+NumberOfParts=10
+CRC=EAAB7AED
