@@ -69,7 +69,8 @@ Leyenda:
 	- [ ] Todo el código comentado.
 	- [ ] Limpieza de código.
 	- [ ] Nueva web.
-	- [ ] Libre de bugs (eso se intentará ;)).	
+	- [ ] Libre de bugs (eso se intentará ;)).
+	- [ ] Mejor sistema de threads que permita mejor respuesta de la interfaz.
 
 
 ===========================================================================
