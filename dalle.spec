@@ -7,7 +7,7 @@ Summary: 		Corta y une archivos en varios formatos.
 Name: 			%{name}
 Version: 		%{version}
 Release: 		%{release}
-Copyright: 		GPL
+License: 		GPL
 Group: 			Utilities/File
 Url: 			http://dalle.sourceforge.net
 Vendor:     	Alberto Fernandez  <infjaf00@yahoo.es>
@@ -17,7 +17,7 @@ BuildArch:		noarch
 Prefix:			%{prefix}
 Distribution:   Any
 Packager:       Alberto Fernandez  <infjaf00@yahoo.es>
-Requires:   	mono-core >= 1.0, mono-ziplib >= 1.0, gtk-sharp >= 1.0
+Requires:   	mono-core >= 1.0, gtk-sharp >= 1.0
 
 %description
 
@@ -26,10 +26,13 @@ Requires:   	mono-core >= 1.0, mono-ziplib >= 1.0, gtk-sharp >= 1.0
 
 %build
 ./configure --prefix=%{prefix} --build-debug --mono-path=/usr/lib/mono/2.0:/usr/lib/mono/gtk-sharp-2.0
-make
+#make
+nant -nologo build
 
 %install
-make install DESTDIR=%{buildroot}
+#make install DESTDIR=%{buildroot}
+nant -nologo -D:DESTDIR=%{buildroot}  install
+chmod 755 %{buildroot}/usr/bin/*
 
 %clean
 rm -rf %{buildroot}
@@ -39,55 +42,49 @@ rm -rf %{buildroot}
 # Reconstruimos todos los wrappers para poder tenerlo relocalizable.
 
 echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/dalle-console
-echo "mono $RPM_INSTALL_PREFIX/bin/dalle-console.exe \"\$@\"" >> "$RPM_INSTALL_PREFIX"/bin/dalle-console
+echo "mono $RPM_INSTALL_PREFIX/lib/dalle/dalle-console.exe \"\$@\"" >> "$RPM_INSTALL_PREFIX"/bin/dalle-console
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-console
 
 echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/dalle-gtk
-echo "mono $RPM_INSTALL_PREFIX"/bin/dalle-gtk.exe >> "$RPM_INSTALL_PREFIX"/bin/dalle-gtk
+echo "mono $RPM_INSTALL_PREFIX"/lib/dalle/dalle-gtk.exe >> "$RPM_INSTALL_PREFIX"/bin/dalle-gtk
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-gtk
 
-echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/openhacha
-echo "$RPM_INSTALL_PREFIX"/bin/openhacha-gtk >> "$RPM_INSTALL_PREFIX"/bin/openhacha
-echo "" >> "$RPM_INSTALL_PREFIX"/bin/openhacha
 
 echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/openhacha-gtk
-echo "mono $RPM_INSTALL_PREFIX/bin/openhacha-gtk.exe" >> "$RPM_INSTALL_PREFIX"/bin/openhacha-gtk
+echo "mono $RPM_INSTALL_PREFIX/lib/dalle/openhacha-gtk.exe" >> "$RPM_INSTALL_PREFIX"/bin/openhacha-gtk
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/openhacha-gtk
 
-echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/openhacha-text
-echo "mono $RPM_INSTALL_PREFIX/bin/openhacha-text.exe" >> "$RPM_INSTALL_PREFIX"/bin/openhacha-text
-echo "" >> "$RPM_INSTALL_PREFIX"/bin/openhacha-text
-
-echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/dalle-crcs
-echo "mono $RPM_INSTALL_PREFIX/bin/dalle-crcs.exe " >> "$RPM_INSTALL_PREFIX"/bin/dalle-crcs
-echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-crcs
 
 echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/dalle-sfv-console
-echo "mono $RPM_INSTALL_PREFIX/bin/dalle-sfv-console.exe " >> "$RPM_INSTALL_PREFIX"/bin/dalle-sfv-console
+echo "mono $RPM_INSTALL_PREFIX/lib/dalle/dalle-sfv-console.exe " >> "$RPM_INSTALL_PREFIX"/bin/dalle-sfv-console
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 
 
 
 %files
 %doc README COPYING ChangeLog NEWS
-/usr/bin/dalle-console.exe
-/usr/bin/dalle-gtk.exe
-/usr/bin/openhacha-text.exe
-/usr/bin/openhacha-gtk.exe
-/usr/bin/dalle-crcs.exe
-/usr/bin/dalle-crcs
-/usr/bin/openhacha
-/usr/bin/openhacha-text
+
+
+/usr/bin/dalle-swf
 /usr/bin/openhacha-gtk
 /usr/bin/dalle-console
 /usr/bin/dalle-gtk
-/usr/bin/dalle-sfv-console.exe
 /usr/bin/dalle-sfv-console
 
-/usr/lib/libDalle.dll
+/usr/lib/dalle/dalle-sfv-console.exe
+/usr/lib/dalle/dalle-swf.exe
+/usr/lib/dalle/dalle-console.exe
+/usr/lib/dalle/dalle-gtk.exe
+/usr/lib/dalle/openhacha-gtk.exe
+/usr/lib/dalle/libDalle.dll
+
+/usr/share/locale/es/LC_MESSAGES/dalle.mo
+/usr/share/locale/gl/LC_MESSAGES/dalle.mo
 
 %changelog
 
+* Fri Jan 30 2009 Alberto Fernandez <infjaf00@yahoo.es>
+- Version 0.7.8
 
 * Sat Jun 11 2005 Alberto Fernandez <infjaf00@yahoo.es>
 - Version 0.7.4

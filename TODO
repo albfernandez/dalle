@@ -37,6 +37,7 @@ Leyenda:
 	- [ ]  Quitar los warnings de compilación
 	- [ ]  Repasar y usar un tamaño de buffer constante
 	- [ ]  Soporte para indicar el directorio de salida en dalle-gtk
+	- [ ]  Paquete RPM.
 	
 
 ===============================
@@ -50,8 +51,8 @@ Leyenda:
 	
 	- [ ]  DragNDrop.
 	
-	- [ ]  Recuperar formato splitfile
-	- [ ]  Soporte checksum hacha 3.5
+	- [ ] Recuperar formato splitfile
+	- [ ] Soporte checksum hacha 3.5
 	- [-] Soporte "completo" para zip.
 	- [ ] Soporte "completo" para tar, gz, bz2.
 	- [-] Mejorar el soporte de Astrotite.
