@@ -112,7 +112,7 @@ else
 	echo "Not found";
 	echo "";
 	echo "Mono Runtime was not found in your system.";
-	echo "Please visit http://www.go-mono.com";
+	echo "Please visit http://www.mono-project.com";
 	echo "";
 	exit 1;
 fi

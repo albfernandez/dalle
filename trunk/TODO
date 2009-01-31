@@ -35,9 +35,12 @@ Leyenda:
 	- [X]  Nueva estructura de instalación.
 	- [ ]  Iconos en el menu de debian	
 	- [ ]  Quitar los warnings de compilación
+	- [ ]  Quitar los warnings en tiempo de ejecución (gtk nuevo)
 	- [ ]  Repasar y usar un tamaño de buffer constante
 	- [ ]  Soporte para indicar el directorio de salida en dalle-gtk
 	- [ ]  Paquete RPM.
+	- [ ]  Paquete deb cumple con las políticas de debian.
+	- [ ]  Compilación fácil en varios entornos.
 	
 
 ===============================

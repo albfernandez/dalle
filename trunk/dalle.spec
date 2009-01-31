@@ -1,6 +1,6 @@
 %define name dalle
 %define version 0.7.8
-%define release 1
+%define release 2
 %define prefix /usr
 
 Summary: 		Corta y une archivos en varios formatos.
