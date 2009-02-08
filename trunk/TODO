@@ -20,7 +20,7 @@ Leyenda:
 	- [X]  Soporte para cortar en kamaleon2.
 	- [ ]  Repaso de dalle-console.
 	- [ ]  Repaso de dalle-gtk.
-	- [ ]  Dialogo Gtk.AboutDialog
+	- [X]  Dialogo Gtk.AboutDialog
 	- [ ]  Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
 	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
 	- [ ]  Repaso de dalle-sfv.
@@ -50,8 +50,7 @@ Leyenda:
 ===============================
 
 	- [ ] Interfaz swf.
-	- [ ] ¿Instalador NSIS para Windows?.
-	
+
 	- [ ]  DragNDrop.
 	
 	- [ ] Recuperar formato splitfile
@@ -86,6 +85,7 @@ Otras cosas por hacer (cuando haya tiempo, posiblemente despues de v 1.0)
 	- [ ]  Hacer un soporte completo para los archivos FSI de FileSplit
 	- [ ]  Hacer los programas compatibles con pnet.
 	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
+	- [ ]  Instalador NSIS para Windows.
 	
 	Soporte para archivos de verificación:
 	- [X]  Soporte sfv
