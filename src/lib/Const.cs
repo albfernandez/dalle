@@ -1,7 +1,5 @@
 /*
-
-	Dalle - A split/join file utility library
-	Dalle.Formatos.FormatNotSupportedException
+    Dalle - A split/join file utility library	
 	
     Copyright (C) 2003-2009  Alberto Fernández <infjaf00@yahoo.es>
 
@@ -19,15 +17,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-
-using System;
-
-namespace Dalle.Formatos
+namespace Dalle 
 {
-	public class FormatNotSupportedException : System.Exception
+	public class Consts 
 	{
-		public FormatNotSupportedException(string s): base (s)
-		{
-		}
+		public const int BUFFER_LENGTH = 1024;
 	}
+
 }

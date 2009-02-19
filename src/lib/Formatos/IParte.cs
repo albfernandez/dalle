@@ -3,11 +3,11 @@
 	Dalle - A split/join file utility library
 	Dalle.Formatos.IParte - Common interface for all formats.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2009  Alberto FernÃ¡ndez <infjaf00@yahoo.es>
 
-    This program is free software; you can redistribute it and/or modify
+    This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
+    the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -16,8 +16,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -26,26 +25,26 @@ namespace Dalle.Formatos
 {
 
 	/// <summary>Interface IParte:
-	/// Define los métodos que deben implementar todas las clases que parten
+	/// Define los mï¿½todos que deben implementar todas las clases que parten
 	/// y unen ficheros.</summary>
 	
 	public interface IParte
 	{
 		
-		/// <summary>Nombre del formato. Debe ser único. Ej: "hacha1"</summary>
+		/// <summary>Nombre del formato. Debe ser ï¿½nico. Ej: "hacha1"</summary>
 		
 		string Nombre{
 			get;
 		}
 		
-		/// <summary>Breve descripción sobre el formato. Ej. "Hacha Pro v 3"
+		/// <summary>Breve descripciï¿½n sobre el formato. Ej. "Hacha Pro v 3"
 		/// </summary>
 		
 		string Descripcion{
 			get;
 		}
 		
-		/// <summary>Dirección web donde se puede encontrar el 
+		/// <summary>Direcciï¿½n web donde se puede encontrar el 
 		/// programa original.</summary>
 		
 		string Web{
@@ -69,27 +68,27 @@ namespace Dalle.Formatos
 		/// <summary>Corta el fichero en fragmentos.</summary>
 		/// <param name="fichero">El fichero original a cortar.</param>
 		/// <param name="sal1">Nombre del primer fragmento, o base de ese nombre. 
-		/// No todos los módulos hacen uso de este parámetro.</param>
-		/// <param name="dir">Directorio en el que se guardarán los fragmentos
+		/// No todos los mï¿½dulos hacen uso de este parï¿½metro.</param>
+		/// <param name="dir">Directorio en el que se guardarï¿½n los fragmentos
 		/// </param>
 		/// <param name="kb">TamaÃ±o mÃ¡ximo de los fragmentos, en kb.</param>
 		
 		void Partir (string fichero, string sal1, string dir, long kb);
 		
 		/// <summary>Corta el fichero en fragmentos.
-		/// Los fragmentos se crean en el directorio que está el original.
+		/// Los fragmentos se crean en el directorio que estï¿½ el original.
 		/// </summary>
 		/// <param name="fichero">El fichero original a cortar.</param>
 		/// <param name="sal1">Nombre del primer fragmento, o base de ese nombre. 
-		/// No todos los módulos hacen uso de este parámetro.</param>
-		/// <param name="kb">Tamaño máximo de los fragmentos, en kb.</param>
+		/// No todos los mï¿½dulos hacen uso de este parï¿½metro.</param>
+		/// <param name="kb">Tamaï¿½o mï¿½ximo de los fragmentos, en kb.</param>
 		
 		void Partir (string fichero, string salida1, long kb);
 		
 		/// <summary>Une el fichero y deja el resultado en un directorio 
 		/// determinado.</summary>
 		/// <param name="fichero">El fichero a unir.</param>
-		/// <param name="dirDest">Directorio donde se guardará el archivo
+		/// <param name="dirDest">Directorio donde se guardarï¿½ el archivo
 		/// resultante.</param>
 		
 		void Unir (string fichero, string dirDest);
@@ -103,7 +102,7 @@ namespace Dalle.Formatos
 		/// <summary>Indica si puede unir el archivo que se le pasa como
 		/// parÃ¡metro.</summary>
 		/// <param name="fichero">El fichero que queremos unir</param>
-		/// <returns>true si el módulo puede unirlo, false en otro caso.
+		/// <returns>true si el mï¿½dulo puede unirlo, false en otro caso.
 		/// </returns>
 		
 		bool PuedeUnir (string fichero);

@@ -3,11 +3,11 @@
 	Dalle - A split/join file utility library
 	Dalle.Formatos.SplitFile.Cabecera_sf1 - Header of SplitFile files.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2009  Alberto FernÃ¡ndez <infjaf00@yahoo.es>
 
-    This program is free software; you can redistribute it and/or modify
+    This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
+    the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -16,8 +16,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -36,7 +35,7 @@ namespace Dalle.Formatos.SplitFile
 		private String fileName = null;
 		private long fileSize = 0;
 		
-		/// <summary>La fecha de modificación del archivo original (UTC).</summary>
+		/// <summary>La fecha de modificaciï¿½n del archivo original (UTC).</summary>
 		
 		private DateTime fileTime = DateTime.Now.ToUniversalTime();
 		private int fileAttr = 32;
@@ -122,7 +121,7 @@ namespace Dalle.Formatos.SplitFile
 		}
 		
 
-		/// <summary>La fecha de modificación del fichero original (UTC).</summary>
+		/// <summary>La fecha de modificaciï¿½n del fichero original (UTC).</summary>
 		public DateTime FileTime{
 			get{ return fileTime; }
 			set{ fileTime = value; }
@@ -219,7 +218,7 @@ namespace Dalle.Formatos.SplitFile
 			
 			if (leidos != CAB_SIZE)
 			{
-				throw new Exception ("Tamaño cabecera " + leidos);
+				throw new Exception ("Tamaï¿½o cabecera " + leidos);
 			}
 			
 			for (int i=0; i < CAB_SIZE; i++)

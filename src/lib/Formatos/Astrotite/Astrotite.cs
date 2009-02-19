@@ -4,13 +4,13 @@
     Dalle.Formatos.Astrotite.Astrotite
           Join files in astrotite format.
 	
-    Copyright (C) 2004
+    Copyright (C) 2004-2009
     Original author (C - code) - Daniel Martínez Contador <dmcontador@terra.es>
     C# translation by - Alberto Fernández  <infjaf00@yahoo.es>
 
-    This program is free software; you can redistribute it and/or modify
+    This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
+    the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -19,8 +19,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -50,7 +49,6 @@ namespace Dalle.Formatos.Astrotite
 	
 	public class Astrotite : Parte 
 	{
-		public const int BUFFER_LENGTH = 32*1024;
 		
 		public Astrotite (): base ("astrotite", "Astrotite", "www.fantiusen.com/astrotite.html", false, false)
 		{
@@ -65,7 +63,7 @@ namespace Dalle.Formatos.Astrotite
 			long leidos = 0;
 			long totales = 0;
 			
-			byte[] initbuffer = new byte[BUFFER_LENGTH];
+			byte[] initbuffer = new byte[Dalle.Consts.BUFFER_LENGTH];
 			
 			FileStream astReader = new FileStream (fichero, FileMode.Open);
 			
@@ -121,18 +119,26 @@ namespace Dalle.Formatos.Astrotite
 					Block block = readBlock(astReader);					
 					crc.Reset();
 					
-					l = astReader.Read(initbuffer, 0, block.size);
-					writer.Write (initbuffer, 0, (int)l);
-					
-					if (block.crc != 0xFFFFFFFF){
-						crc.Update(initbuffer, 0, (int) l);
+					int quedan1 = block.size;
+					while (quedan1 > 0) {
+						l = astReader.Read(initbuffer, 0, Dalle.Consts.BUFFER_LENGTH < quedan1 ? Dalle.Consts.BUFFER_LENGTH: quedan1 );
+						writer.Write (initbuffer, 0, (int)l);
+						
+						
+						// FIXME warning
+						if (block.crc != 0xFFFFFFFF){
+							crc.Update(initbuffer, 0, (int) l);
+						}
+						quedan1 -= (int) l;				
+						quedan -= (int) l;
+						leidos += l;
+						OnProgress (leidos, totales);
 					}					
-					quedan -= (int) l;
-					leidos += l;
+					// FIXME warning
 					if ((block.crc != 0xFFFFFFFF) && ((long) block.crc != crc.Value)){
 						throw new Dalle.Formatos.ChecksumVerificationException();
 					}					
-					OnProgress (leidos, totales);
+					
 				}
 				writer.Close();
 							

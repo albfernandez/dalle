@@ -3,11 +3,11 @@
     Dalle - A split/join file utility library	
     Dalle.I18N.GetText - Internationalization related stuff.
 	
-    Copyright (C) 2003  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2009  Alberto FernÃ¡ndez <infjaf00@yahoo.es>
 
-    This program is free software; you can redistribute it and/or modify
+    This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
+    the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -16,8 +16,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -30,12 +29,12 @@ using System.Globalization;
 namespace Dalle.I18N
 {	
 	/// <remarks>Clase que se encarga de gestionar los recursos 
-	/// de internacionalización de texto de la aplicación.</remarks>
+	/// de internacionalizaciï¿½n de texto de la aplicaciï¿½n.</remarks>
 	
 	public class GetText 
 	{
 		/// <summary> 
-		/// Lista de los carácteres inválidos como clave de búsqueda. 
+		/// Lista de los carï¿½cteres invï¿½lidos como clave de bï¿½squeda. 
 		/// </summary>
 		
 		private static char [] invalidChars = new Char [] {'=', ' '};		
@@ -61,20 +60,20 @@ namespace Dalle.I18N
 		private static Hashtable table = new Hashtable();
 		
 		/// <summary>Constructor privado. No se permite crear instancis 
-		/// de esta clase exteriormetne. Patrón singleton.</summary>
+		/// de esta clase exteriormetne. Patrï¿½n singleton.</summary>
 		/// <param name="assembly">El assembly donde se encuentran los recursos
-		/// de traducciones que se leerán.</param>
+		/// de traducciones que se leerï¿½n.</param>
 		
 		private GetText (Assembly assembly): this (assembly, defaultResourceName)
 		{
 		}
 		
 		/// <summary>Constructor privado. No se permite crear instancias
-		/// de esta clase exteriormente. Patrón singleton.</summary>
+		/// de esta clase exteriormente. Patrï¿½n singleton.</summary>
 		/// <remarks>Intenta cargar los recursos del idioma actual, si no 
 		/// carga los que vienen por defecto (strings.resources).</remarks>
 		/// <param name="assembly">El assembly donde se encuentran los recursos
-		/// de traducciones que se leerán.</param>
+		/// de traducciones que se leerï¿½n.</param>
 		/// <param name="baseName">El prefijo del nombre de los recursos de
 		/// traducciones.</param>
 				
@@ -108,7 +107,7 @@ namespace Dalle.I18N
 		/// <summary>Obtiene la instancia de la clase correspondiente al 
 		/// Assembly que llama</summary>		
 		/// <param name="resourceName">El prefijo del nombre de los recursos de
-		/// localización.</param>
+		/// localizaciï¿½n.</param>
 		/// <returns>La instancia de la clase correspondiente</returns>
 		
 		public static GetText GetInstance (string resourceName)
@@ -129,7 +128,7 @@ namespace Dalle.I18N
 		/// <summary>Obtiene la instancia de la clase correspondiente al 
 		/// Assembly dado</summary>		
 		/// <param name="resource">El prefijo del nombre de los recursos de
-		/// localización.</param>
+		/// localizaciï¿½n.</param>
 		/// <param name="assembly">El Assembly que contiene los recursos</param>
 		/// <returns>La instancia de la clase correspondiente</returns>
 		
@@ -147,7 +146,7 @@ namespace Dalle.I18N
 		public static String GetLanguage ()
 		{
 		
-			// Debería ser algo así como
+			// Deberï¿½a ser algo asï¿½ como
 			// return System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName
 			// Pero en Mono CultureInfo.CurrentCulture siempre devuelve InvariantCulture,
 			// (a no ser que se instale ICU).
@@ -172,11 +171,11 @@ namespace Dalle.I18N
 		}	
 				
 		/// <summary>
-		/// Obtiene una clave de búsqueda válida a partir de una dada.
+		/// Obtiene una clave de bï¿½squeda vï¿½lida a partir de una dada.
 		/// </summary>
 		/// <remarks>Sustituye los espacios y los '=' por '_'.</remarks>
-		/// <param name="key">La clave de búsqueda</param>
-		/// <returns>Una clave de búsqueda válida.</returns>
+		/// <param name="key">La clave de bï¿½squeda</param>
+		/// <returns>Una clave de bï¿½squeda vï¿½lida.</returns>
 		
 		private static string GetMangled (string key)
 		{
@@ -187,8 +186,8 @@ namespace Dalle.I18N
 				
 		/// <summary>Obtiene el texto para la clave indicada en el idioma
 		/// activo. Primero intenta con el idioma del sistema. Si
-		/// no está disponible, devuelve la clave de búsqueda.</summary>
-		/// <param name="clave">Cadena de texto con la clave de búsqueda
+		/// no estï¿½ disponible, devuelve la clave de bï¿½squeda.</summary>
+		/// <param name="clave">Cadena de texto con la clave de bï¿½squeda
 		/// </param>
 		/// <returns>El texto correspondiente localizado.
 		/// </returns>
@@ -214,8 +213,8 @@ namespace Dalle.I18N
 		
 		/// <summary>Obtiene el texto para la clave indicada en el idioma
 		/// activo. Primero intenta con el idioma del sistema. Si
-		/// no está disponible, devuelve la clave de búsqueda.</summary>
-		/// <param name="clave">Cadena de texto con la clave de búsqueda
+		/// no estï¿½ disponible, devuelve la clave de bï¿½squeda.</summary>
+		/// <param name="clave">Cadena de texto con la clave de bï¿½squeda
 		/// </param>
 		/// <returns>El texto correspondiente localizado.
 		/// </returns>		
