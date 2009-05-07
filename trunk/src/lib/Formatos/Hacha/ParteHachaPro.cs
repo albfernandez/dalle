@@ -92,14 +92,15 @@ namespace Dalle.Formatos.Hacha
 				
 				transferidos += UtilidadesFicheros.CopiarTodo(frag, destino, crc);
 				OnProgress (transferidos, totales);
-				if (lst != null){
+				// Anulada la validacion hasta que se compruebe que el crc es correcto
+				/*if (lst != null){
 					int esperado = (int) lst[fr];
 					int obtenido = (int) crc.Value;
 					if (esperado != obtenido){
 						throw new Exception (String.Format (
 							I._("Checksum verification failed on {0}!"), frag));
 					}
-				}
+				}*/
 								
 				fr++;
 				frag = String.Format (nombre +".{0:000}", fr);
