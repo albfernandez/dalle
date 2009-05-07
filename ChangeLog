@@ -1,3 +1,6 @@
+2009-05-08
+	Anulada la validacion de crc en HachaPro hasta que se compruebe el algoritmo
+
 2009-02-19
 	Actualizada la licencia a GPLv3
 
