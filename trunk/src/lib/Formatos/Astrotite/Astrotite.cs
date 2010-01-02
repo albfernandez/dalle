@@ -4,7 +4,7 @@
     Dalle.Formatos.Astrotite.Astrotite
           Join files in astrotite format.
 	
-    Copyright (C) 2004-2009
+    Copyright (C) 2004-2010
     Original author (C - code) - Daniel Martínez Contador <dmcontador@terra.es>
     C# translation by - Alberto Fernández  <infjaf00@yahoo.es>
 
