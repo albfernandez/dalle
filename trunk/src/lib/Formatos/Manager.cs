@@ -74,6 +74,9 @@ namespace Dalle.Formatos
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v2());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v1());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHachaPro());
+			//formatos.Add (new Dalle.Formatos.Cutter.Cutter());	
+			//formatos.Add (new Dalle.Formatos.HJSplit.HJSplit());
+			//formatos.Add (new Dalle.Formatos.UnixSplit.UnixSplit());			
 			formatos.Add (new Dalle.Formatos.Generico.ParteGenerico());
 
 			foreach (Parte p in formatos){
