@@ -22,6 +22,7 @@ Leyenda:
 	- [ ]  Repaso de dalle-gtk.
 	- [X]  Dialogo Gtk.AboutDialog
 	- [ ]  Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
+	- [ ]  Repasar y usar un tamaño de buffer constante
 	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
 	- [ ]  Repaso de dalle-sfv.
 	- [X]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
@@ -33,14 +34,13 @@ Leyenda:
 	- [X]  Sacar las cadenas de texto I18N de la libreria.
 	- [X]  Excepciones bien estructuradas en la libreria.
 	- [X]  Nueva estructura de instalación.
-	- [ ]  Iconos en el menu de debian	
+	- [ ]  Iconos en el menu de debian/ubuntu (deb)	
+	- [ ]  Iconos en el menu de fedora	(rpm)
 	- [ ]  Quitar los warnings de compilación
 	- [ ]  Quitar los warnings en tiempo de ejecución (gtk nuevo)
-	- [ ]  Repasar y usar un tamaño de buffer constante
-	- [ ]  Soporte para indicar el directorio de salida en dalle-gtk
 	- [ ]  Paquete RPM.
 	- [ ]  Paquete deb cumple con las políticas de debian.
-	- [ ]  Compilación fácil en varios entornos.
+
 	
 
 ===============================
@@ -73,6 +73,7 @@ Leyenda:
 	- [ ] Nueva web.
 	- [ ] Libre de bugs (eso se intentará ;)).
 	- [ ] Mejor sistema de threads que permita mejor respuesta de la interfaz.
+	- [ ] Soporte para indicar el directorio de salida en dalle-gtk
 
 
 ===========================================================================
