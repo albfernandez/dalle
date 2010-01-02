@@ -126,7 +126,7 @@ namespace Dalle.Formatos.Astrotite
 						
 						
 						// FIXME warning
-						if (block.crc != 0xFFFFFFFF){
+						if ((long)block.crc != 0xFFFFFFFF){
 							crc.Update(initbuffer, 0, (int) l);
 						}
 						quedan1 -= (int) l;				
@@ -135,7 +135,7 @@ namespace Dalle.Formatos.Astrotite
 						OnProgress (leidos, totales);
 					}					
 					// FIXME warning
-					if ((block.crc != 0xFFFFFFFF) && ((long) block.crc != crc.Value)){
+					if (((long)block.crc != 0xFFFFFFFF) && ((long) block.crc != crc.Value)){
 						throw new Dalle.Formatos.ChecksumVerificationException();
 					}					
 					
