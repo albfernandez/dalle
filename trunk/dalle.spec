@@ -1,6 +1,6 @@
 %define name dalle
-%define version 0.7.8
-%define release 2
+%define version 0.7.9
+%define release 1
 %define prefix /usr
 
 Summary: 		Corta y une archivos en varios formatos.
@@ -17,7 +17,7 @@ BuildArch:		noarch
 Prefix:			%{prefix}
 Distribution:   Any
 Packager:       Alberto Fernandez  <infjaf00@yahoo.es>
-Requires:   	mono-core >= 1.0, gtk-sharp >= 1.0
+Requires:   	mono-core >= 2.0, gtk-sharp2 >= 2.0
 
 %description
 
@@ -82,6 +82,9 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 /usr/share/locale/gl/LC_MESSAGES/dalle.mo
 
 %changelog
+
+* Mon Jan 4 2010 Alberto Fernandez <infjaf00@yahoo.es>
+- Version 0.7.9
 
 * Fri Jan 30 2009 Alberto Fernandez <infjaf00@yahoo.es>
 - Version 0.7.8
