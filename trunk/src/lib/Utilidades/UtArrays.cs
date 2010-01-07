@@ -21,6 +21,7 @@
 */
 
 using System;
+using System.Text;
 
 namespace Dalle.Utilidades
 {
@@ -76,10 +77,10 @@ namespace Dalle.Utilidades
 		
 		public static string LeerTexto (byte[] bytes, int pos_ini, int length)
 		{
-			string ret = "";
+			StringBuilder sb = new StringBuilder ();
 			for (int i = pos_ini; (i < bytes.Length) && (bytes[i] != 0) && ((i - pos_ini) < length); i++)
-					ret += Convert.ToChar (bytes[i]);
-			return ret;
+					sb.Append(Convert.ToChar (bytes[i]));
+			return sb.ToString();
 		}
 		
 		/// <summary>Lee un entero de 16 bits a partir de una posición.
@@ -142,7 +143,6 @@ namespace Dalle.Utilidades
 		
 		public static void EscribirInt (byte[] bytes, int value, int pos)
 		{
-			//Console.WriteLine ("EscribirInt32 = " + value);
 			int i0, i1, i2, i3;
 			
 			i0 = value & 0x000000FF;
@@ -209,7 +209,6 @@ namespace Dalle.Utilidades
 			i0 = LeerInt32(bytes, pos_ini);
 			i1 = LeerInt32(bytes, pos_ini + 4);
 			v1 = (i1 & 0xFFFFFFFF) | (i0 << 32);
-			Console.WriteLine ("" + v1 + " " + v1.ToString("X"));
 
 			return new DateTime(v1);
 		}
