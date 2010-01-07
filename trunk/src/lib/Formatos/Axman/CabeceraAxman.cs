@@ -3,7 +3,7 @@
     Dalle - A split/join file utility library	
     Dalle.Formatos.Axman.CabeceraAxman- Header of axman files.
 	
-    Copyright (C) 2003-2009  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 
 
 using System;
+using System.Text;
 using Dalle.Utilidades;
 
 namespace Dalle.Formatos.Axman
@@ -51,11 +52,11 @@ namespace Dalle.Formatos.Axman
 			get{ return 23; }
 		}
 		public String Version {
-			get{
-				String ret = version;
+			get {
+				StringBuilder ret = new StringBuilder (version);
 				while (ret.Length < 15)
-					ret += " ";
-				return ret;
+					ret.Append(" ");
+				return ret.ToString();
 			}
 			set{
 				if (value.Length > 15)
@@ -77,13 +78,13 @@ namespace Dalle.Formatos.Axman
 			return ret;
 		}	
 		
-		public static CabeceraAxman LoadFromFile(String file){
-			CabeceraAxman cab = new CabeceraAxman();
+		public static CabeceraAxman LoadFromFile (String file)
+		{
+			CabeceraAxman cab = new CabeceraAxman ();
 			
-			byte[] bytes = UtilidadesFicheros.LeerSeek(file, 0, 23);
-			cab.version = "";
-			for (int i=0; i < 15; i++)
-				cab.version += Convert.ToChar (bytes[i]);
+
+			byte[] bytes = UtilidadesFicheros.LeerSeek (file, 0, 23);	
+			cab.version = Utilidades.UtArrays.LeerTexto (bytes, 0, 15);
 			cab.fragmento = UtArrays.LeerInt32 (bytes, 15);
 			cab.checksum = UtArrays.LeerInt32 (bytes, 19);
 			
