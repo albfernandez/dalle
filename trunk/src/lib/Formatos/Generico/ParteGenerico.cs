@@ -53,19 +53,27 @@ namespace Dalle.Formatos.Generico
 			inf.Fragmento = ini;
 			inf.Formato = formato;
 			inf.Digitos = digitos;
-			OnProgress (0, tamano);
-			do{
-
-				string nombre = inf.ToString();
-				UtilidadesFicheros.ComprobarSobreescribir (nombre);
-				transferidos += UtilidadesFicheros.CopiarIntervalo 
-						(fichero, nombre, transferidos, tFragmento);
-				inf.Fragmento++;
-				OnProgress(transferidos, tamano);
-			} while (transferidos < tamano);
 			
-			return (inf.Fragmento - ini);
-		
+			OnProgress (0, tamano);
+			
+			FileStream fis = File.OpenRead (fichero);
+			int leidos = 0;
+			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
+			do {
+				FileStream fos = UtilidadesFicheros.CreateWriter (inf.ToString ());
+				int parcial = 0;
+				while ((leidos = fis.Read (buffer, 0, Math.Min ((int)tFragmento - parcial, buffer.Length))) > 0)
+				{
+					parcial += leidos;
+					transferidos += leidos;
+					OnProgress (transferidos, tamano);
+				}
+				fos.Close ();
+				inf.Fragmento++;
+			
+			} while (transferidos < tamano);
+			fis.Close ();
+			return inf.Fragmento;
 		}
 		
 		protected override void _Partir (string fichero,string sal1, string dir, long kb)
@@ -96,26 +104,38 @@ namespace Dalle.Formatos.Generico
 		public void Unir (string formato, string destino, int ini, int digitos)
 		{
 			UtilidadesFicheros.ComprobarSobreescribir (destino);
-			InfoGenerico info = new InfoGenerico();
+			InfoGenerico info = new InfoGenerico ();
 			
 			info.Formato = formato;
 			info.Digitos = digitos;
 			info.Fragmento = ini;
 			
 			long total = 0;
-			while (File.Exists (info.ToString())){
-				total += new FileInfo (info.ToString()).Length;
+			while (File.Exists (info.ToString ())) {
+				total += new FileInfo (info.ToString ()).Length;
 				info.Fragmento++;
 			}
 			
 			long transferidos = 0;
 			info.Fragmento = ini;
 			OnProgress (0, total);
-			while (File.Exists (info.ToString())){
-				transferidos += UtilidadesFicheros.CopiarTodo (info.ToString(), destino);				
+			
+			FileStream fos = UtilidadesFicheros.CreateWriter (destino);
+			int leidas = 0;
+			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
+			while (File.Exists (info.ToString ())) {
+				// TODO Tamaño de buffer
+				FileStream fin = File.OpenRead (info.ToString ());
+				while ((leidas = fin.Read (buffer, 0, buffer.Length)) > 0) {
+					fos.Write (buffer, 0, leidas);
+					transferidos += leidas;
+					OnProgress (transferidos, total);
+				}
+				fin.Close ();
 				info.Fragmento++;
-				OnProgress (transferidos, total);
+				
 			}
+			fos.Close ();
 		}
 
 		public override bool PuedeUnir (String fichero)
