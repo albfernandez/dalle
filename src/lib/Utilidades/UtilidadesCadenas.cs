@@ -42,11 +42,13 @@ namespace Dalle.Utilidades
 		
 		public static string Format (int numero, int digitos)
 		{
-			String ret = "" + numero;			
-			while (ret.Length < digitos)
-				ret = "0" + ret;
-				
-			return ret;
+			StringBuilder sb = new StringBuilder ();
+			sb.Append (numero);
+			while (sb.Length < digitos)
+			{
+				sb.Insert (0, "0");
+			}
+			return sb.ToString ();
 		}
 	}
 }

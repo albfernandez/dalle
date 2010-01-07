@@ -296,15 +296,17 @@ namespace Dalle.Utilidades
 		public static FileStream CreateWriter (string file)
 		{
 			UtilidadesFicheros.ComprobarSobreescribir (file);
-			
-			int last = file.LastIndexOf('/');
+
+			int last = file.LastIndexOf (Path.DirectorySeparatorChar);
 			if (last < 0)
+			{
 				return File.Open (file, FileMode.CreateNew);
+			}
 			
 			
 			string dir = file.Substring (0, file.LastIndexOf(Path.DirectorySeparatorChar));
-			DirectoryInfo nfo = new DirectoryInfo(dir);
-			nfo.Create();			
+			DirectoryInfo directorio = new DirectoryInfo(dir);
+			directorio.Create();			
 			return File.Open(file, FileMode.CreateNew);
 		}
 		
