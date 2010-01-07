@@ -125,7 +125,7 @@ namespace Dalle.Formatos.Astrotite
 						writer.Write (initbuffer, 0, (int)l);
 						
 						
-						// FIXME warning
+						
 						if ((long)block.crc != 0xFFFFFFFF){
 							crc.Update(initbuffer, 0, (int) l);
 						}
@@ -134,7 +134,7 @@ namespace Dalle.Formatos.Astrotite
 						leidos += l;
 						OnProgress (leidos, totales);
 					}					
-					// FIXME warning
+					
 					if (((long)block.crc != 0xFFFFFFFF) && ((long) block.crc != crc.Value)){
 						throw new Dalle.Formatos.ChecksumVerificationException();
 					}					
