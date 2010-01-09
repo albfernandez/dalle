@@ -173,6 +173,10 @@ namespace Dalle.Utilidades
 			v1 = (i0 & 0xFFFFFFFF) | (i1 << 32);
 			return v1;
 		}
+		public static void EscribirInt64 (byte[] bytes, long value, int pos)
+		{
+			// TODO Implement
+		}
 		
 		/// <summary>Escribe un entero de 64 bits en la posición dada.</summary>
 		/// <param name="bytes">El array en el que se escribirá</param>
@@ -192,25 +196,30 @@ namespace Dalle.Utilidades
 		public static void EscribirDateTime (byte[] bytes, DateTime value, int pos)
 		{
 		
+			// FIXME
 			long i0, i1;
 			i0 = value.Ticks & 0x00000000FFFFFFFF;
 			i1 = (value.Ticks >> 32) & 0x00000000FFFFFFFF;
 			EscribirInt (bytes, (int) i1, pos);
 			EscribirInt (bytes, (int) i0, pos+4);
 		
+			
 		}
+		
 		
 		
 		public static DateTime LeerDateTime (byte[] bytes, int pos_ini)
 		{
-			long v1;
+			/*long v1;
 			long i0, i1;
 			
 			i0 = LeerInt32(bytes, pos_ini);
 			i1 = LeerInt32(bytes, pos_ini + 4);
 			v1 = (i1 & 0xFFFFFFFF) | (i0 << 32);
+			*/
+			
 
-			return new DateTime(v1);
+			return new DateTime(LeerInt64(bytes, pos_ini));
 		}
 	}
 }
