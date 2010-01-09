@@ -4,7 +4,7 @@
 	Dalle.Formatos.Manager - 	
 		Provides a single access point for all supported formats.
 	
-    Copyright (C) 2003-2009  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2010  Alberto Fernández <infjaf00@yahoo.es>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -59,6 +59,7 @@ namespace Dalle.Formatos
 				
 		private Manager ()
 		{
+			formatos.Add (new Dalle.Formatos.SplitterMerger.SplitterMerger ());
 			formatos.Add (new Dalle.Formatos.Astrotite.Astrotite());
 			formatos.Add (new Dalle.Formatos.Axman.Axman3());
 			formatos.Add (new Dalle.Formatos.Zip.Zip());
@@ -74,9 +75,9 @@ namespace Dalle.Formatos
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v2());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v1());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHachaPro());
-			//formatos.Add (new Dalle.Formatos.Cutter.Cutter());	
+			formatos.Add (new Dalle.Formatos.Cutter.Cutter());	
 			//formatos.Add (new Dalle.Formatos.HJSplit.HJSplit());
-			//formatos.Add (new Dalle.Formatos.UnixSplit.UnixSplit());			
+			formatos.Add (new Dalle.Formatos.UnixSplit.UnixSplit());			
 			formatos.Add (new Dalle.Formatos.Generico.ParteGenerico());
 
 			foreach (Parte p in formatos){
@@ -168,9 +169,9 @@ namespace Dalle.Formatos
 		
 		public IParte GetFormatoFichero (String fichero)
 		{
-			Console.WriteLine("Formatos soportados " + formatos.Count);
+			//Console.WriteLine("Formatos soportados " + formatos.Count);
 			foreach (IParte p in formatos){
-				Console.WriteLine("testeando parte " + p.Nombre + " " + p);
+				//Console.WriteLine("testeando parte " + p.Nombre + " " + p);
 				if (p.PuedeUnir(fichero)){
 					return p;
 				}
