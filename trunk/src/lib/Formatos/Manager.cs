@@ -60,23 +60,25 @@ namespace Dalle.Formatos
 		private Manager ()
 		{
 			formatos.Add (new Dalle.Formatos.SplitterMerger.SplitterMerger ());
-			formatos.Add (new Dalle.Formatos.Astrotite.Astrotite());
-			formatos.Add (new Dalle.Formatos.Axman.Axman3());
-			formatos.Add (new Dalle.Formatos.Zip.Zip());
-			formatos.Add (new Dalle.Formatos.MaxSplitter.MaxSplitter());
-			formatos.Add (new Dalle.Formatos.EasyFileSplitter.EasyFileSplitter());
-			formatos.Add (new Dalle.Formatos.SF.ParteSF());
-			formatos.Add (new Dalle.Formatos.Kamaleon.ParteKamaleon2());
-			formatos.Add (new Dalle.Formatos.Kamaleon.ParteKamaleon());
-			formatos.Add (new Dalle.Formatos.Camouflage.Camouflage());
-			formatos.Add (new Dalle.Formatos.FileSplit.FileSplit());
+			formatos.Add (new Dalle.Formatos.Astrotite.Astrotite ());
+			formatos.Add (new Dalle.Formatos.Axman.Axman3 ());
+			formatos.Add (new Dalle.Formatos.Zip.Zip ());
+			formatos.Add (new Dalle.Formatos.MaxSplitter.MaxSplitter ());
+			formatos.Add (new Dalle.Formatos.EasyFileSplitter.EasyFileSplitter ());
+			formatos.Add (new Dalle.Formatos.SF.ParteSF ());
+			formatos.Add (new Dalle.Formatos.Kamaleon.ParteKamaleon2 ());
+			formatos.Add (new Dalle.Formatos.Kamaleon.ParteKamaleon ());
+			formatos.Add (new Dalle.Formatos.Camouflage.Camouflage ());
+			formatos.Add (new Dalle.Formatos.FileSplit.FileSplit ());
 			// De momento anulado (tampoco es que sea muy usado)
 			//formatos.Add (new Dalle.Formatos.SplitFile.SplitFile_v1());
-			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v2());
-			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v1());
-			formatos.Add (new Dalle.Formatos.Hacha.ParteHachaPro());
-			formatos.Add (new Dalle.Formatos.Cutter.Cutter());	
-			//formatos.Add (new Dalle.Formatos.HJSplit.HJSplit());
+			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v2 ());
+			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v1 ());
+			formatos.Add (new Dalle.Formatos.Hacha.ParteHachaPro ());
+			formatos.Add (new Dalle.Formatos.Cutter.Cutter ());
+			formatos.Add (new Dalle.Formatos.Tar.Tar ());
+			formatos.Add (new Dalle.Formatos.GZip.GZip ());
+			formatos.Add (new Dalle.Formatos.BZip2.BZip2 ());
 			formatos.Add (new Dalle.Formatos.UnixSplit.UnixSplit());			
 			formatos.Add (new Dalle.Formatos.Generico.ParteGenerico());
 
