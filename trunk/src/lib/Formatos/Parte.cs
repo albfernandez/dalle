@@ -232,7 +232,7 @@ namespace Dalle.Formatos
 		/// <param name="done">La tarea realizada</param>
 		/// <param name="total">El total a realizar</param>
 		
-		protected void OnProgress (long done, long total)
+		public void OnProgress (long done, long total)
 		{
 			if (Progress != null)
 				Progress (done, total);
