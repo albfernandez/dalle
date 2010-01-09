@@ -68,6 +68,7 @@ namespace Dalle.Formatos.Tar
 			TarInputStream tarInput = new TarInputStream (input2);		
 			TarEntry tarEntry = null;
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
+			OnProgress(0, datosTotales);
 			while ((tarEntry = tarInput.GetNextEntry()) != null)
 			{
 				if (tarEntry.IsDirectory) continue;
@@ -78,22 +79,11 @@ namespace Dalle.Formatos.Tar
 				while ((leidos = entrada.Read(buffer,0,buffer.Length))> 0)
 				{
 					salida.Write(buffer,0,leidos);
+					OnProgress(input.Position, datosTotales);
 				}
 				salida.Close();
 			}
 			tarInput.Close();
-			/*
-			FileStream fos = UtilidadesFicheros.CreateWriter (destino);
-			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
-			int leidos = 0;
-			OnProgress (0, datosTotales);
-			while ((leidos = bzipInput.Read (buffer, 0, buffer.Length)) > 0) {
-				fos.Write (buffer, 0, leidos);
-				OnProgress (input.Position, datosTotales);
-			}
-			bzipInput.Close ();
-			fos.Close ();
-			*/
 		}
 		public override bool PuedeUnir (string fichero)
 		{
