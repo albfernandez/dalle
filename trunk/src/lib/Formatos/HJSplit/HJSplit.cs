@@ -40,7 +40,7 @@ namespace Dalle.Formatos.HJSplit
 		
 	
 		protected override void _Unir (string fichero, string dirDest) {
-			bool zipped = false;
+			//bool zipped = false;
 			// Calcular zipped
 			
 			
