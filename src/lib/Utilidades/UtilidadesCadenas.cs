@@ -51,5 +51,14 @@ namespace Dalle.Utilidades
 			}
 			return sb.ToString ();
 		}
+		public static string FormatHexHash (byte[] hash)
+		{
+			StringBuilder sb = new StringBuilder ();
+			foreach (byte b in hash)
+			{
+				sb.Append (b.ToString ("x2"));
+			}
+			return sb.ToString ().ToLower ();
+		}
 	}
 }
