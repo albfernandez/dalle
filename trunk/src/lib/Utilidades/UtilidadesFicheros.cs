@@ -76,7 +76,7 @@ namespace Dalle.Utilidades
 		public static void ComprobarSobreescribir (string fich)
 		{
 			if (File.Exists (fich)){
-				throw new Dalle.Formatos.FileAlreadyExistsException("", fich);
+				throw new Dalle.Formatos.FileAlreadyExistsException(fich, fich);
 			}
 		}
 
