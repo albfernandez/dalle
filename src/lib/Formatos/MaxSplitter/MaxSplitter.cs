@@ -76,22 +76,28 @@ namespace Dalle.Formatos.MaxSplitter
 				zip.Unir (destino);
 			}
 		}
-		protected override void _Partir (string fichero,string sal1, string dir, long kb){
-
-			int fragmentos = new ParteGenerico().Partir(fichero, kb, 
-				dir + Path.DirectorySeparatorChar + fichero + ".{0}", 1, 3);
-			long tamano = new FileInfo(fichero).Length;
+		protected override void _Partir (string fichero, string sal1, string dir, long kb)
+		{
 			
-			MXSInfo info = new MXSInfo ();
-			info.NombreOriginal = new FileInfo(fichero).Name;
-			info.TamanoOriginal = tamano;
-			info.Fragmentos = fragmentos;
+			InfoGenerico info = new InfoGenerico ();
+			
+			info.InitialFragment = 1;
+			info.Digits = 3;
+			info.OriginalFile = new FileInfo (fichero).Name;
+			info.BaseName = info.OriginalFile;
+			info.Directory = new DirectoryInfo (dir);
+			int fragmentos = new ParteGenerico().Partir (fichero, sal1, dir, kb, info);
+			
+			MXSInfo mxsinfo = new MXSInfo ();
+			mxsinfo.NombreOriginal = info.OriginalFile;
+			mxsinfo.TamanoOriginal = new FileInfo (fichero).Length;
+			mxsinfo.Fragmentos = fragmentos;
+			
+			Stream fos = UtilidadesFicheros.CreateWriter(dir+Path.DirectorySeparatorChar+fichero+".mxs");
+			byte[] mxs = mxsinfo.ToByteArray();
+			fos.Write(mxs, 0, mxs.Length);
+			fos.Close();
 
-			UtilidadesFicheros.ComprobarSobreescribir (
-				dir + Path.DirectorySeparatorChar + fichero + ".MXS");
-			UtilidadesFicheros.Append (
-				dir + Path.DirectorySeparatorChar + fichero + ".MXS", 
-				info.ToByteArray());
 		}
 
 		public override bool PuedeUnir (string fichero)

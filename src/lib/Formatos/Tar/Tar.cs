@@ -53,7 +53,6 @@ namespace Dalle.Formatos.Tar
 				return;
 			}
 			FileInfo fi = new FileInfo (fichero);
-			string destino = dirDest + Path.DirectorySeparatorChar + fi.Name.Substring (0, fi.Name.LastIndexOf ('.'));
 			long datosTotales = fi.Length;
 			FileStream input = File.OpenRead (fichero);
 			Stream input2 = input;
