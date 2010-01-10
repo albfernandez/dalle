@@ -34,17 +34,9 @@ namespace Dalle.FileVerification.FileHashers
 		}
 		public string GenerateHash (string fileName)
 		{
-			HashAlgorithm h = MD5.Create();
+			HashAlgorithm h = MD5.Create ();
 			byte[] res = h.ComputeHash (File.OpenRead (fileName));
-			string ret = "";
-			foreach (byte b in res){
-				string tmp = b.ToString ("x");
-				while (tmp.Length < 2)
-					tmp = "0" + tmp;
-				ret += tmp;
-			}
-			 
-			return ret.ToLower();
+			return Dalle.Utilidades.UtilidadesCadenas.FormatHexHash (res).ToLower();
 		}
 	}
 }
