@@ -110,7 +110,7 @@ namespace Dalle.Formatos.Astrotite
 				astReader.Seek (3, SeekOrigin.Current);
 				
 				// Corregir la ruta 
-				FileStream writer = UtilidadesFicheros.CreateWriter(des.name);				
+				Stream writer = UtilidadesFicheros.CreateWriter(des.name);				
 				
 				int quedan = des.length;
 				long l = 0;

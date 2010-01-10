@@ -43,24 +43,39 @@ namespace Dalle.Formatos.Generico
 		/// <returns>El numero de fragmentos que se han creado.</returns>
 		// TODO: Cambiar el orden de los parametros (String, st, long, int, int).
 		
-		public int Partir (string fichero, long kb, string formato, int ini, int digitos)
-		{
+		
 
+		
+		protected override void _Partir (string fichero, string sal1, string dir, long kb)
+		{
+			
+			if ((sal1 == null) || (sal1 == string.Empty))
+			{
+				sal1 = new FileInfo (fichero).Name;
+			}
+			InfoGenerico info = new InfoGenerico ();
+			
+			info.InitialFragment = 1;
+			info.Digits = 3;
+			info.OriginalFile = new FileInfo(fichero).Name;
+			info.BaseName = info.OriginalFile;
+			info.Directory = new DirectoryInfo (dir);
+			
+			
+			Partir (fichero, sal1, dir, kb, info);
+		}
+		public  int Partir (string fichero, string sal1, string dir, long kb, InfoGenerico info)
+		{
 			long tamano = new FileInfo (fichero).Length;
 			long tFragmento = 1024 * kb;
 			long transferidos = 0;
-			InfoGenerico inf = new InfoGenerico ();
-			inf.Fragmento = ini;
-			inf.Formato = formato;
-			inf.Digitos = digitos;
 			
-			OnProgress (0, tamano);
-			
-			FileStream fis = File.OpenRead (fichero);
+			Stream fis = File.OpenRead(fichero);
 			int leidos = 0;
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
+			int contador = 0;
 			do {
-				FileStream fos = UtilidadesFicheros.CreateWriter (inf.ToString ());
+				Stream fos = UtilidadesFicheros.CreateWriter (info.GetFragmentName(contador+1));
 				int parcial = 0;
 				while ((leidos = fis.Read (buffer, 0, Math.Min ((int)tFragmento - parcial, buffer.Length))) > 0)
 				{
@@ -68,34 +83,40 @@ namespace Dalle.Formatos.Generico
 					transferidos += leidos;
 					OnProgress (transferidos, tamano);
 				}
-				fos.Close ();
-				inf.Fragmento++;
-			
+				fos.Close();
+				contador++;
 			} while (transferidos < tamano);
-			fis.Close ();
-			return inf.Fragmento;
-		}
-		
-		protected override void _Partir (string fichero,string sal1, string dir, long kb)
-		{
-			if ((sal1 == null) || (sal1 == string.Empty))
-				sal1 = new FileInfo (fichero).Name;
-			Partir (fichero, kb, dir + Path.DirectorySeparatorChar + sal1 + ".{0}", 0, 3);	
+			fis.Close();
+			info.FragmentsNumber = contador;
+			return contador;
 		}
 		
 		protected override void _Unir (string fichero, string dirDest)
 		{
-			string bas = fichero.Substring(0, fichero.LastIndexOf("."));
-			//--
-			string destino = new FileInfo(fichero).Name;
-			destino = destino.Substring (0, destino.LastIndexOf("."));
-			destino = dirDest + Path.DirectorySeparatorChar + destino;
-			//--
+			InfoGenerico info = InfoGenerico.GetFromFile (fichero);
 			
-			string num = fichero.Substring(fichero.LastIndexOf(".") + 1);
-			int ini = Convert.ToInt32 (num);
-			Unir (bas + ".{0}", destino, ini, num.Length);
-		}		
+			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
+			int leidos = 0;
+			long transferidos = 0;
+			OnProgress (0, info.Length);
+			Stream fos = UtilidadesFicheros.CreateWriter (dirDest + Path.DirectorySeparatorChar + info.OriginalFile);
+			for (int i = 1; i <= info.FragmentsNumber; i++) 
+			{
+				Stream fis = File.OpenRead (info.GetFragmentName (i));
+				fis.Seek (info.GetOffset (i), SeekOrigin.Begin);
+				while ((leidos = fis.Read (buffer, 0, buffer.Length)) > 0) 
+				{
+					transferidos += leidos;
+					fos.Write (buffer, 0, leidos);
+					OnProgress (transferidos, info.Length);
+				}
+				fis.Close ();
+			}
+			fos.Close ();
+
+		}
+
+		/*
 		public void Unir (string formato, int ini, int digitos)
 		{
 			Unir (formato, formato.Substring (0, formato.LastIndexOf('.')), 
@@ -103,7 +124,6 @@ namespace Dalle.Formatos.Generico
 		}
 		public void Unir (string formato, string destino, int ini, int digitos)
 		{
-			UtilidadesFicheros.ComprobarSobreescribir (destino);
 			InfoGenerico info = new InfoGenerico ();
 			
 			info.Formato = formato;
@@ -137,25 +157,30 @@ namespace Dalle.Formatos.Generico
 			}
 			fos.Close ();
 		}
+		*/
 
 		public override bool PuedeUnir (String fichero)
 		{
-			if (! File.Exists (fichero))
+			if (!File.Exists (fichero))
+			{
 				return false;
-				
-			if (fichero.LastIndexOf(".") < 0)
+			}
+			
+			if (fichero.LastIndexOf (".") < 0) {
 				return false;
+			}
+			string bas = fichero.Substring (0, fichero.LastIndexOf ("."));
 			
-			string bas = fichero.Substring (0, fichero.LastIndexOf("."));
-			
-			if (fichero.EndsWith(".0")||fichero.EndsWith(".000") || fichero.EndsWith(".00"))
-				return true;
-			else if (fichero.EndsWith(".1"))
-				return (! File.Exists (bas + ".0"));
-			else if (fichero.EndsWith(".01"))
-				return (! File.Exists (bas+".00"));
-			else if (fichero.EndsWith(".001")){
-				return (! File.Exists (bas + ".000"));
+			for (int longitud = 1; longitud <= 5; longitud++) 
+			{
+				if (File.Exists (bas + "." + UtilidadesCadenas.Format (0, longitud))) 
+				{
+					return true;
+				}
+				if (File.Exists (bas + "." + UtilidadesCadenas.Format (1, longitud))) 
+				{
+					return true;
+				}
 			}
 			return false;
 		}		

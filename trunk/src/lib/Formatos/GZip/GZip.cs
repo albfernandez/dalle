@@ -54,7 +54,7 @@ namespace Dalle.Formatos.GZip
 			long datosTotales = fi.Length;
 			FileStream input = File.OpenRead (fichero);
 			GZipStream gzipInput = new GZipStream (input, CompressionMode.Decompress);
-			FileStream fos = UtilidadesFicheros.CreateWriter (destino);
+			Stream fos = UtilidadesFicheros.CreateWriter (destino);
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			int leidos = 0;
 			OnProgress (0, datosTotales);

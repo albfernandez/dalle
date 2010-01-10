@@ -293,7 +293,7 @@ namespace Dalle.Utilidades
 		/// <param name="file">El nombre del fichero a crear.</param>
 		/// <returns>Un stream en el que escribir.</returns>
 		
-		public static FileStream CreateWriter (string file)
+		public static Stream CreateWriter (string file)
 		{
 			UtilidadesFicheros.ComprobarSobreescribir (file);
 

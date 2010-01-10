@@ -55,7 +55,7 @@ namespace Dalle.Formatos.BZip2
 			long datosTotales = fi.Length;
 			FileStream input = File.OpenRead (fichero);
 			BZip2InputStream bzipInput = new BZip2InputStream (input);
-			FileStream fos = UtilidadesFicheros.CreateWriter (destino);
+			Stream fos = UtilidadesFicheros.CreateWriter (destino);
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			int leidos = 0;
 			OnProgress (0, datosTotales);

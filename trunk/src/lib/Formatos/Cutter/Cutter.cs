@@ -53,7 +53,7 @@ namespace Dalle.Formatos.Cutter
 				string destino = dirDest + Path.DirectorySeparatorChar + tailInicial.Original;
 				long total = tailInicial.FileSize;
 				long transferidos = 0;
-				FileStream fos = UtilidadesFicheros.CreateWriter (destino);
+				Stream fos = UtilidadesFicheros.CreateWriter (destino);
 				string ficheroBase = fichero.Substring (0, fichero.Length - 1);
 				int contador = 1;
 				CutterTail tail = null;

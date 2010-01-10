@@ -63,7 +63,7 @@ namespace Dalle.Formatos.UnixSplit
 			do 
 			{
 				string destino = sal1 + "." + GetSuffix (contador, suffixLength);
-				FileStream fos = UtilidadesFicheros.CreateWriter (destino);
+				Stream fos = UtilidadesFicheros.CreateWriter (destino);
 				leidos = 0;
 				int parcial = 0;
 				while ((leidos = fis.Read (buffer, 0, Math.Min ((int)tFragmento - parcial, buffer.Length))) > 0)
@@ -116,7 +116,7 @@ namespace Dalle.Formatos.UnixSplit
 			long transferidos = 0;
 			contador = 0;
 			OnProgress (0, datosTotales);
-			FileStream fos = UtilidadesFicheros.CreateWriter (destino);
+			Stream fos = UtilidadesFicheros.CreateWriter (destino);
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			while (File.Exists (ficheroBase + GetSuffix (contador, suffixLength))) {
 				
