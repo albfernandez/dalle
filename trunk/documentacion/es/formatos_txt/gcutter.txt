@@ -1,0 +1,38 @@
+Genera el nombre de los fragmentos
+
+ORGINAL_CON_EXTENSION.cut%d  <- 1 digito comienza en 1
+
+
+Guarda al final de cada fragmento esta estructura (4360 bytes):
+
+
+struct cutterautoexe	{
+						char version[10]; // '1' en ASCII
+						char crc[50]; //del fragmento
+						char originalfile[4097]; 
+						char pad[3]; // 0
+						long long numberofparts;
+						long long exesize; /* size of the exe file,in bytes */ // Siempre 0
+						long long filesize; /* size of the packed file,in bytes */
+						char ostype[100]; /* Operating system typ ; for auto-exe files*/
+						char cputype[50]; /* processor ; for auto-exe files*/
+						char what[23]; /* used to control if it's a valid cutter stuff:-) */ ->
+						char pad[3]; // 0
+						/*record the char* "ohmygodiamacutterstuff" in stuffdata.what , else it will be invalid! */
+						};
+						
+
+						
+Definicion original
+struct cutterautoexe	{
+						char version[10];
+						char crc[50];
+						char originalfile[4097];
+						long long numberofparts;
+						long long exesize; /* size of the exe file,in bytes */
+						long long filesize; /* size of the packed file,in bytes */
+						char ostype[100]; /* Operating system typ ; for auto-exe files*/
+						char cputype[50]; /* processor ; for auto-exe files*/
+						char what[23]; /* used to control if it's a valid cutter stuff:-) */
+						/*record the char* "ohmygodiamacutterstuff" in stuffdata.what , else it will be invalid! */
+						};
