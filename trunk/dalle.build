@@ -147,8 +147,8 @@
 			<references>
 				<include name="build/libDalle.dll"/>
 				<include name="Mono.Posix.dll"/>
-				<include name="/usr/lib/mono/gtk-sharp-2.0/gtk-sharp.dll"/>
-				<include name="/usr/lib/mono/gtk-sharp-2.0/gdk-sharp.dll"/>
+				<include name="/usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll"/>
+				<include name="/usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll"/>
 			</references>
 		</csc>
 	</target>
@@ -163,10 +163,10 @@
 			<references>
 				<include name="build/libDalle.dll"/>
 				<include name="Mono.Posix.dll"/>
-				<include name="/usr/lib/mono/gtk-sharp-2.0/gtk-sharp.dll"/>
-				<include name="/usr/lib/mono/gtk-sharp-2.0/gdk-sharp.dll"/>
-				<include name="/usr/lib/mono/gtk-sharp-2.0/gnome-sharp.dll"/>
-				<include name="/usr/lib/mono/gtk-sharp-2.0/glade-sharp.dll"/>				
+				<include name="/usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll"/>
+				<include name="/usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll"/>
+				<include name="/usr/lib/cli/gnome-sharp-2.24/gnome-sharp.dll"/>
+				<include name="/usr/lib/cli/glade-sharp-2.0/glade-sharp.dll"/>				
 			</references>
 		</csc>
 	</target>
