@@ -95,6 +95,10 @@ namespace Dalle.Formatos.Generico
 		}
 		public string GetFragmentName (int fragment)
 		{
+			if (this.format != null && !String.Empty.Equals (this.format))
+			{
+				return String.Format (this.format, (fragment - (1 - this.initialFragment)));
+			}
 			return this.baseName + "." + UtilidadesCadenas.Format (fragment - (1-this.initialFragment), this.Digits);
 		}
 		public static InfoGenerico GetFromFile (string fichero)
@@ -156,6 +160,19 @@ namespace Dalle.Formatos.Generico
 			return info;
 		}
 
+		public void CalculateLength ()
+		{
+
+			this.length = 0;
+			for (int i = 1; i <= this.FragmentsNumber; i++) 
+			{
+				string n = this.GetFragmentName (i);
+				if (File.Exists (this.Directory.FullName + Path.DirectorySeparatorChar + n)) 
+				{
+					this.length += new FileInfo (this.Directory.FullName + Path.DirectorySeparatorChar + n).Length;
+				}
+			}
+		}
 		
 		
 	}

@@ -80,7 +80,8 @@ namespace Dalle.Formatos
 			formatos.Add (new Dalle.Formatos.Tar.Tar ());
 			formatos.Add (new Dalle.Formatos.GZip.GZip ());
 			formatos.Add (new Dalle.Formatos.BZip2.BZip2 ());
-			formatos.Add (new Dalle.Formatos.UnixSplit.UnixSplit());			
+			formatos.Add (new Dalle.Formatos.UnixSplit.UnixSplit ());
+			formatos.Add (new Dalle.Formatos.Divij.Divij ());
 			formatos.Add (new Dalle.Formatos.Generico.ParteGenerico());
 
 			foreach (Parte p in formatos){

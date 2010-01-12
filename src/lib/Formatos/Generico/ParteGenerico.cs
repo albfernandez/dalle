@@ -91,21 +91,17 @@ namespace Dalle.Formatos.Generico
 			return contador;
 		}
 		
-		protected override void _Unir (string fichero, string dirDest)
+		public void Unir (string fichero, string dirDest, InfoGenerico info)
 		{
-			InfoGenerico info = InfoGenerico.GetFromFile (fichero);
-			
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			int leidos = 0;
 			long transferidos = 0;
 			OnProgress (0, info.Length);
 			Stream fos = UtilidadesFicheros.CreateWriter (dirDest + Path.DirectorySeparatorChar + info.OriginalFile);
-			for (int i = 1; i <= info.FragmentsNumber; i++) 
-			{
-				Stream fis = File.OpenRead (info.GetFragmentName (i));
+			for (int i = 1; i <= info.FragmentsNumber; i++) {
+				Stream fis = File.OpenRead (info.Directory.FullName + Path.DirectorySeparatorChar + info.GetFragmentName (i));
 				fis.Seek (info.GetOffset (i), SeekOrigin.Begin);
-				while ((leidos = fis.Read (buffer, 0, buffer.Length)) > 0) 
-				{
+				while ((leidos = fis.Read (buffer, 0, buffer.Length)) > 0) {
 					transferidos += leidos;
 					fos.Write (buffer, 0, leidos);
 					OnProgress (transferidos, info.Length);
@@ -113,7 +109,11 @@ namespace Dalle.Formatos.Generico
 				fis.Close ();
 			}
 			fos.Close ();
-
+		}
+		protected override void _Unir (string fichero, string dirDest)
+		{
+			InfoGenerico info = InfoGenerico.GetFromFile (fichero);
+			Unir (fichero, dirDest, info);
 		}
 
 		/*
