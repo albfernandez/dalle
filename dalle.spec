@@ -65,14 +65,14 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 %doc README COPYING ChangeLog NEWS
 
 
-/usr/bin/dalle-swf
+#/usr/bin/dalle-swf
 /usr/bin/openhacha-gtk
 /usr/bin/dalle-console
 /usr/bin/dalle-gtk
 /usr/bin/dalle-sfv-console
 
 /usr/lib/dalle/dalle-sfv-console.exe
-/usr/lib/dalle/dalle-swf.exe
+#/usr/lib/dalle/dalle-swf.exe
 /usr/lib/dalle/dalle-console.exe
 /usr/lib/dalle/dalle-gtk.exe
 /usr/lib/dalle/openhacha-gtk.exe
