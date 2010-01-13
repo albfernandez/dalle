@@ -39,15 +39,13 @@ namespace Dalle.UI.DalleGtk
 {
 	public abstract class BaseDialog : Gtk.Dialog
 	{
-	
-		private Gtk.FileSelection fileSelect;
 		protected Gtk.Button ActionButton;
 		protected Gtk.Button CloseButton;
 		protected Gtk.Button BrowseButton;
 		protected Gtk.Entry  FileEntry;
 		protected CustomProgressBar Progress;
 		protected bool running = false;
-		
+		protected string currentFolder = null;
 		public BaseDialog (Gtk.Window parent) : 
 			base ("", parent, Gtk.DialogFlags.DestroyWithParent)
 		{
@@ -68,14 +66,7 @@ namespace Dalle.UI.DalleGtk
 			
 		}
 		
-		protected Gtk.FileSelection FileSelection{
-			get{
-				if (fileSelect == null){
-					fileSelect = CreateFileSelection();
-				}	
-				return fileSelect;				
-			}
-		}
+
 		
 
 		private void InitComponents()
@@ -91,28 +82,8 @@ namespace Dalle.UI.DalleGtk
 			ActionButton.Clicked += new EventHandler (this.ActionButtonClicked);
 			BrowseButton.Clicked += new EventHandler (this.BrowseButtonClicked);
 		}
-				
-		protected virtual Gtk.FileSelection CreateFileSelection ()
-		{
-			Gtk.FileSelection f = new Gtk.FileSelection(Catalog.GetString("Select a file"));
-			
-			f.TransientFor = this;
-			f.Modal = true;
-			f.DeleteEvent += new DeleteEventHandler (DalleGtk.HideWindow);
-			f.OkButton.Clicked += new EventHandler (FileSelOkClicked);
-			f.CancelButton.Clicked += new EventHandler (FileSelCancelClicked);	
-			return f;
-		}
-		private void FileSelCancelClicked (object o, System.EventArgs args)
-		{			
-			this.FileSelection.Hide();
-		}
-		private void FileSelOkClicked (object o, System.EventArgs args)
-		{
-			this.FileEntry.Text = this.FileSelection.Filename;
-			this.FileSelection.Hide();
-		}
 		
+	
 		protected abstract Gtk.Button CreateActionButton ();
 		
 		protected abstract void ExecuteAction();
@@ -128,7 +99,23 @@ namespace Dalle.UI.DalleGtk
 		
 		protected void BrowseButtonClicked (object sender, EventArgs args)
 		{
-			this.FileSelection.ShowAll();
+			Gtk.FileChooserDialog fc = new Gtk.FileChooserDialog (
+				"Choose the file to open", 
+				this, 
+				FileChooserAction.Open, 
+				"Cancel", ResponseType.Cancel, 
+				"Open", ResponseType.Accept
+			);
+			if (currentFolder != null && !String.Empty.Equals (currentFolder))
+			{
+				fc.SetCurrentFolder (currentFolder);
+			}
+			
+			if (fc.Run () == (int)ResponseType.Accept) {
+				this.currentFolder = fc.CurrentFolder;
+				this.FileEntry.Text = fc.Filename;
+			}
+			fc.Destroy ();
 		}
 		
 		protected void ActionButtonClicked (object sender, EventArgs args)
