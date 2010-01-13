@@ -118,7 +118,7 @@ namespace Dalle.UI.DalleGtk
 			table.Attach (lbl2, 0,1, 1,2);
 			
 			
-			Gtk.Adjustment adj = new Gtk.Adjustment (1.0,1.0,999.0, 1.0, 10.0, 10.0);
+			Gtk.Adjustment adj = new Gtk.Adjustment (1.0,1.0,999.0, 1.0, 10.0, 0.0);
 			numberSpin = new Gtk.SpinButton (adj, 1.0, 0);
 			numberSpin.ValueChanged += new EventHandler (this.OnNumberSpinChanged);
 			table.Attach (numberSpin, 1,2, 1,2);
@@ -128,7 +128,7 @@ namespace Dalle.UI.DalleGtk
 			lbl3.Yalign = 0.5f;
 			table.Attach (lbl3, 0, 1, 2, 3);
 			
-			Gtk.Adjustment adj2 = new Gtk.Adjustment (1420.0, 1.0, 1.024e6, 10.0,100.0,100.0); 
+			Gtk.Adjustment adj2 = new Gtk.Adjustment (1420.0, 1.0, 1.024e6, 10.0,100.0,0.0); 
 			sizeSpin = new Gtk.SpinButton (adj2, 10.0, 0);
 			sizeSpin.ValueChanged += new EventHandler (this.OnSizeSpinChanged);
 			Gtk.HBox hbox3 = new Gtk.HBox (false, 6);
