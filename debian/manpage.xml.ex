@@ -34,8 +34,8 @@ and docbook-xsl in your Build-Depends control field.
   <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
        allowed: see man(7), man(1). -->
   <!ENTITY dhsection   "<manvolnum>SECTION</manvolnum>">
-  <!ENTITY dhemail     "<email>infjaf00@yahoo.es</email>">
-  <!ENTITY dhusername  "Alberto Fernández">
+  <!ENTITY dhemail     "<email>infjaf@gmail.com</email>">
+  <!ENTITY dhusername  "Alberto Fernandez">
   <!ENTITY dhucpackage "<refentrytitle>DALLE</refentrytitle>">
   <!ENTITY dhpackage   "dalle">
 
