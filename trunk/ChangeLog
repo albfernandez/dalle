@@ -1,4 +1,25 @@
-20010-01-02
+2010-01-13
+	Soporte Drag&Drop en dalle-gtk
+
+2010-01-10
+	Soporte para cutkiller
+	Soporte "generico" reescrito
+	Soporte Xtremsplit
+2010-01-12
+	Soporte Divij
+	
+2010-01-10
+	Soporte Xtremsplit
+
+2010-01-09
+	Soporte Splitter&Merger (1,2,3*,4 y 5)
+	Soporte para gzip, bzip2, tar
+	
+2010-01-07
+	Soporte gcutter
+	Soporte unixsplit
+
+2010-01-02
 	Cambio del repositorio cvs -> svn
 
 2009-05-08

@@ -13,7 +13,7 @@ Leyenda:
 	
 ===============================
 
-	Versión 0.8 (Estabilizar)
+	Versión 1.0
 
 ===============================
 	
@@ -36,33 +36,39 @@ Leyenda:
 	- [X]  Nueva estructura de instalación.
 	- [ ]  Iconos en el menu de debian/ubuntu (deb)	
 	- [ ]  Iconos en el menu de fedora	(rpm)
-	- [ ]  Quitar los warnings de compilación
-	- [ ]  Quitar los warnings en tiempo de ejecución (gtk nuevo)
-	- [ ]  Paquete RPM.
+	- [X]  Quitar los warnings de compilación
+	- [X]  Quitar los warnings en tiempo de ejecución (gtk nuevo)
+	- [-]  Paquete RPM.
 	- [ ]  Paquete deb cumple con las políticas de debian.
-
-	
-
-===============================
-
-	Versión 1.0
-
-===============================
+	- [X]  Nuevo selector de fichero Gtk.FileChooserDialog
+	- [ ]  Traduccion de los elementos del nuevo Gtk.FileChooserDialog
+	- [ ]  Licencia en el about de dalle-gtk
 
 	- [ ] Interfaz swf.
-
-	- [ ]  DragNDrop.
-	
+	- [X]  DragNDrop.	
 	- [ ] Recuperar formato splitfile
 	- [ ] Soporte checksum hacha 3.5
 	- [-] Soporte "completo" para zip.
-	- [ ] Soporte "completo" para tar, gz, bz2.
+	- [X] Soporte "completo" para tar, gz, bz2.
 	- [-] Mejorar el soporte de Astrotite.
-	- [ ] Soporte para Splitter & Merger.
-	- [ ] Soporte HJSplit.
-	- [ ] Soporte gcutter.
-	- [ ] Soporte split (/usr/bin/split de coreutils).	
+	- [-] Soporte para Splitter & Merger.
+	
+	- [X] Soporte HJSplit.
+	- [X] Soporte gcutter.
+	- [X] Soporte split (/usr/bin/split de coreutils).
+	- [X] Soporte cutkiller
+	- [X] Soporte XTREMSPLIT
+	- [X] Soporte divij
+	- [ ] Soporte GNOME Split
+	- [ ] Nueva web.
 
+===========================================================================
+
+Otras cosas por hacer (cuando haya tiempo, posiblemente despues de v 1.0)
+
+===========================================================================
+	
+	- [ ] Soporte "File Splitter and Joiner" __a?
 	- [ ] Manual de usuario.
 	- [ ] Diagramas de clases.
 	- [ ] Documentar los formatos.
@@ -70,18 +76,8 @@ Leyenda:
 	- [ ] Hacer tests (NUnit) de los crcs implementados.
 	- [ ] Todo el código comentado.
 	- [ ] Limpieza de código.
-	- [ ] Nueva web.
-	- [ ] Libre de bugs (eso se intentará ;)).
 	- [ ] Mejor sistema de threads que permita mejor respuesta de la interfaz.
 	- [ ] Soporte para indicar el directorio de salida en dalle-gtk
-
-
-===========================================================================
-
-Otras cosas por hacer (cuando haya tiempo, posiblemente despues de v 1.0)
-
-===========================================================================
-
 	- [ ]  Hacer que Axman3 soporte la verificación crc que tiene.
 	- [ ]  Hacer un soporte completo para los archivos FSI de FileSplit
 	- [ ]  Hacer los programas compatibles con pnet.
