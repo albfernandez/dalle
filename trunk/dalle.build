@@ -56,7 +56,7 @@
 			<arg value="--output=po/index.pot" />
 			<arg value="--package-name=dalle" />
 			<arg value="--package-version=${version}"/>
-			<arg value="--msgid-bugs-address=infjaf00@yahoo.es"/>
+			<arg value="--msgid-bugs-address=infjaf@gmail.com"/>
 		</exec>
 	</target>
 	<target name="generate-mo">
@@ -137,7 +137,7 @@
 		</csc>
 	</target>
 	<target name="build-dalle-gtk">
-		<csc target="exe" output="build/dalle-gtk.exe" debug="${debug}" codepage="${codepage}">
+		<csc target="exe" output="build/dalle-gtk.exe" codepage="${codepage}">
 			<sources>
 				<include name="src/ui/gtk/dalle-gtk/src/**.cs" />
 			</sources>
@@ -147,27 +147,31 @@
 			<references>
 				<include name="build/libDalle.dll"/>
 				<include name="Mono.Posix.dll"/>
-				<include name="/usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll"/>
-				<include name="/usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll"/>
 			</references>
+			<pkg-references>
+				<package name="gtk-sharp-2.0"/>
+			</pkg-references>
+
 		</csc>
 	</target>
 	<target name="build-openhacha-glade">
-		<csc target="exe" output="build/openhacha-gtk.exe" debug="${debug}" codepage="${codepage}">
+		<csc target="exe" output="build/openhacha-gtk.exe" noconfig="true" debug="${debug}" codepage="${codepage}">
 			<sources>
 				<include name="src/ui/glade/openhacha-gtk/src/**.cs" />
 			</sources>
 			<resources>
 				<include name="src/ui/glade/openhacha-gtk/src/openhacha.glade" />
 			</resources>
+			
 			<references>
 				<include name="build/libDalle.dll"/>
 				<include name="Mono.Posix.dll"/>
-				<include name="/usr/lib/cli/gtk-sharp-2.0/gtk-sharp.dll"/>
-				<include name="/usr/lib/cli/gdk-sharp-2.0/gdk-sharp.dll"/>
-				<include name="/usr/lib/cli/gnome-sharp-2.24/gnome-sharp.dll"/>
-				<include name="/usr/lib/cli/glade-sharp-2.0/glade-sharp.dll"/>				
 			</references>
+			<pkg-references>
+				<package name="gtk-sharp-2.0"/>
+				<package name="gnome-sharp-2.0"/>
+				<package name="glade-sharp-2.0"/>
+			</pkg-references>
 		</csc>
 	</target>
 	<target name="build-dalle-swf">
