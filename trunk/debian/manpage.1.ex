@@ -56,5 +56,5 @@ The programs are documented fully by
 .IR "The Rise and Fall of a Fooish Bar" ,
 available via the Info system.
 .SH AUTHOR
-This manual page was written by Alberto Fernández <infjaf00@yahoo.es>,
+This manual page was written by Alberto Fernandez <infjaf@gmail.com>,
 for the Debian project (but may be used by others).
