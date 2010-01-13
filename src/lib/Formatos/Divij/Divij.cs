@@ -18,7 +18,7 @@ namespace Dalle.Formatos.Divij
 			descripcion = "Divij";
 			web = "http://www.zzmultimedia.com/software.htm";
 			compatible = true;
-			parteFicheros = true;
+			parteFicheros = false;
 		}
 		protected override void _Partir (string fichero, string sal1, string dir, long kb)
 		{

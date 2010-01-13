@@ -38,7 +38,7 @@ namespace Dalle.Formatos.EasyFileSplitter
 			nombre = "efsplitter";
 			descripcion = "Easy File Splitter v 1.05";
 			web = "http://www.filesplitter.net";
-			parteFicheros = true;
+			parteFicheros = false;
 			compatible = true;			
 		}
 		
