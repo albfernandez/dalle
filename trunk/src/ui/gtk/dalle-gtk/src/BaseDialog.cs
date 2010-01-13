@@ -69,18 +69,53 @@ namespace Dalle.UI.DalleGtk
 
 		
 
-		private void InitComponents()
+		private void InitComponents ()
 		{
 			CloseButton = new Gtk.Button (Gtk.Stock.Close);
 			FileEntry = new Gtk.Entry ();
-			BrowseButton = new Gtk.Button (Catalog.GetString("Browse..."));
-			ActionButton = CreateActionButton();
+			BrowseButton = new Gtk.Button (Catalog.GetString ("Browse..."));
+			ActionButton = CreateActionButton ();
 			Progress = new CustomProgressBar ();
 			
 			
 			CloseButton.Clicked += new EventHandler (this.CloseButtonClicked);
 			ActionButton.Clicked += new EventHandler (this.ActionButtonClicked);
 			BrowseButton.Clicked += new EventHandler (this.BrowseButtonClicked);
+			// Targets
+			TargetEntry [] te = new TargetEntry [] {
+				new TargetEntry ("STRING", 0, 1),
+			};
+			Gtk.Drag.DestSet (this, DestDefaults.All, te, Gdk.DragAction.Copy | Gdk.DragAction.Move );
+
+			this.DragDataReceived += new DragDataReceivedHandler (DropHandler);
+
+		}
+		
+		protected void DropHandler (object o, DragDataReceivedArgs args)
+		{
+			try 
+			{
+				string fichero = args.SelectionData.Text;
+				if (fichero.StartsWith ("file:///"))
+				{
+					fichero = fichero.Substring ("file://".Length);
+				}
+				if (fichero.EndsWith ("\r\n"))
+				{
+					fichero = fichero.Substring (0, fichero.Length - 2);
+				}
+				
+				if (fichero.EndsWith ("\n")) 
+				{
+					fichero = fichero.Substring (0, fichero.Length - 1);
+				}
+				this.FileEntry.Text = fichero;
+			
+			}
+			catch (Exception)
+			{
+				
+			}
 		}
 		
 	
@@ -100,11 +135,11 @@ namespace Dalle.UI.DalleGtk
 		protected void BrowseButtonClicked (object sender, EventArgs args)
 		{
 			Gtk.FileChooserDialog fc = new Gtk.FileChooserDialog (
-				"Choose the file to open", 
+				Catalog.GetString("Choose the file to open"), 
 				this, 
 				FileChooserAction.Open, 
-				"Cancel", ResponseType.Cancel, 
-				"Open", ResponseType.Accept
+				Catalog.GetString("Cancel"), ResponseType.Cancel, 
+				Catalog.GetString("Open"), ResponseType.Accept
 			);
 			if (currentFolder != null && !String.Empty.Equals (currentFolder))
 			{
