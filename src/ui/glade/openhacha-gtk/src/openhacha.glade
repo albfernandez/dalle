@@ -91,7 +91,7 @@ hachapro</property>
                       <widget class="GtkSpinButton" id="SplitDialogNumberSpinButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="adjustment">1 1 100 1 10 10</property>
+                        <property name="adjustment">1 1 100 1 10 0</property>
                         <property name="climb_rate">1</property>
                         <signal name="changed" handler="OnSplitDialogNumberSpinButtonChanged"/>
                       </widget>
@@ -111,7 +111,7 @@ hachapro</property>
                           <widget class="GtkSpinButton" id="SplitDialogSpinButton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="adjustment">1440 100 1024000 100 10 10</property>
+                            <property name="adjustment">1440 100 1024000 100 10 0</property>
                             <property name="climb_rate">1</property>
                           </widget>
                         </child>
@@ -398,7 +398,7 @@ Create a file from his fragments</property>
     <property name="website">http://dalle.sourceforge.net</property>
     <property name="authors">Ramón Rey Vicente &lt;ramon.rey@hispalinux.es&gt; (Gtk# frontend, text mode client)
 Álvaro Peña &lt;apg@esware.com&gt; (HIG'ed the Gtk# interface)
-Alberto Fernández &lt;infjaf00@yahoo.es&gt; (libhacha2)
+Alberto Fernández &lt;infjaf@gmail.com&gt; (libhacha2)
 Eduardo García Cebollero &lt;kiwnix@yahoo.es&gt; (libhacha)
 </property>
     <property name="translator_credits" translatable="yes">translator_credits</property>
