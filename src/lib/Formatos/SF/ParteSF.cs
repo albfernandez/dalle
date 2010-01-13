@@ -37,7 +37,7 @@ namespace Dalle.Formatos.SF
 			descripcion = "sf v0.06";
 			web = "http://www.terra.es/personal2/el.maquinas";
 			compatible = false;
-			parteFicheros = true;
+			parteFicheros = false;
 		}
 		protected override void _Unir (string fichero, string dirDest)
 		{
