@@ -39,8 +39,8 @@ namespace Dalle.Formatos.MaxSplitter
 				"mxs", 
 				"MaxSplitter v 1.x Free Edition", 
 				"http://www.acc.umu.se/~max/", 
-				false, 
-				true)
+				true, 
+				false)
 		{
 	
 		}

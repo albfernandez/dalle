@@ -37,7 +37,7 @@ namespace Dalle.Formatos.Kamaleon
 			nombre = "kamaleon1";
 			descripcion = "KamaleoN v 1.0";
 			web = "http://www.kamaleonsoft.com";
-			parteFicheros = true;
+			parteFicheros = false;
 			compatible = false;
 			crc = new NullCRC();
 		}
