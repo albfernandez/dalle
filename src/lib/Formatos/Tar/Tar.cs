@@ -56,11 +56,12 @@ namespace Dalle.Formatos.Tar
 			long datosTotales = fi.Length;
 			FileStream input = File.OpenRead (fichero);
 			Stream input2 = input;
-			if (fichero.ToLower ().EndsWith (".bz2")) 
+			
+			if (fichero.ToLower ().EndsWith (".bz2") || fichero.ToLower().EndsWith(".tbz2")) 
 			{
 				input2 = new BZip2InputStream (input);
 			} 
-			else if (fichero.ToLower ().EndsWith (".gz")) 
+			else if (fichero.ToLower ().EndsWith (".gz") || fichero.ToLower().EndsWith(".tgz")) 
 			{
 				input2 = new GZipStream (input, CompressionMode.Decompress);
 			}
@@ -91,7 +92,12 @@ namespace Dalle.Formatos.Tar
 				return false;
 			}
 			string l = fichero.ToLower ();
-			return l.EndsWith (".tar.bz2") || l.EndsWith (".tar.gz") || l.EndsWith (".tar");
+			return 
+					l.EndsWith (".tar.bz2") || 
+					l.EndsWith (".tar.gz") || 
+					l.EndsWith (".tgz") ||
+					l.EndsWith (".tbz2") ||
+					l.EndsWith (".tar");
 
 		}
 		
