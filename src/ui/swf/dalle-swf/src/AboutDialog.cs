@@ -19,7 +19,6 @@
 */
 
 
-using Mono.Unix;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
@@ -50,6 +49,7 @@ namespace Dalle.UI.DalleSWF
 		}	
 		private void InitComponent ()
 		{
+			
 			this.SuspendLayout();
 			this.Size = new Size (450, 350);
 			//this.Text = Catalog.GetString("Dalle-Swf") + " "  + Assembly.GetExecutingAssembly().GetName().Version;
