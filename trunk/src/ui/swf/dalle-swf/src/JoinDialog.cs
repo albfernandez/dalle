@@ -51,7 +51,8 @@ namespace Dalle.UI.DalleSWF
 		private void InitComponent()
 		{
 			this.Size = new Size (400, 300);
-			this.Text = Catalog.GetString("Merge");
+			//this.Text = Catalog.GetString("Merge");
+			this.Text = "Merge";
 		}
 		private void closing (object sender, CancelEventArgs args)
 		{

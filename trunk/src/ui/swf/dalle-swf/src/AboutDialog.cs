@@ -52,13 +52,14 @@ namespace Dalle.UI.DalleSWF
 		{
 			this.SuspendLayout();
 			this.Size = new Size (450, 350);
-			this.Text = Catalog.GetString("Dalle-Swf") + " "  + Assembly.GetExecutingAssembly().GetName().Version;
+			//this.Text = Catalog.GetString("Dalle-Swf") + " "  + Assembly.GetExecutingAssembly().GetName().Version;
+			this.Text = "Dalle-Swf " + Assembly.GetExecutingAssembly().GetName().Version;
 			
 			String[] authors = new String[] {
-				"Alberto Fernndez <infjaf00@yahoo.es>",
-				"Ramn Rey Vicente <ramon.rey@hispalinux.es>",
-				"lvaro Pea <apg@esware.com>",
-				"Eduardo Garca Cebollero <kiwnix@yahoo.es>", 
+				"Alberto Fernandez <infjaf@gmail.com>",
+				"Ramon Rey Vicente <ramon.rey@hispalinux.es>",
+				"Alvaro Pena <apg@esware.com>",
+				"Eduardo Garcia Cebollero <kiwnix@yahoo.es>", 
 				"Daniel Martinez Contador <dmcontador@terra.es>",
 				"Dai SET <dai_set@yahoo.com>"};
 			
@@ -66,7 +67,8 @@ namespace Dalle.UI.DalleSWF
 			
 			Label lbl0 = new Label();
 			lbl0.Size = new Size (300, 25);
-			lbl0.Text = Catalog.GetString("Dalle-Swf") + " "  + Assembly.GetExecutingAssembly().GetName().Version;
+			//lbl0.Text = Catalog.GetString("Dalle-Swf") + " "  + Assembly.GetExecutingAssembly().GetName().Version;
+			lbl0.Text = "Dalle-Swf " + Assembly.GetExecutingAssembly().GetName().Version;
 			lbl0.Location = new Point (25, 25);
 			this.Controls.Add(lbl0);
 			
@@ -83,7 +85,8 @@ namespace Dalle.UI.DalleSWF
 			Button btnClose = new Button();
 			btnClose.Size = new Size (60, 30);
 			btnClose.Location = new Point (375, ypos + 20);
-			btnClose.Text = Catalog.GetString("Close");
+			//btnClose.Text = Catalog.GetString("Close");
+			btnClose.Text = "Close";
 			btnClose.Click += new EventHandler (btnCloseClicked);
 			this.Controls.Add(btnClose); 
 			this.ResumeLayout(false);
