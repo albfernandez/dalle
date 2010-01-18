@@ -34,6 +34,25 @@ nant -nologo build
 nant -nologo -D:DESTDIR=%{buildroot}  install
 chmod 755 %{buildroot}/usr/bin/*
 
+
+
+# menu-entry
+%__install -dm 755 %{buildroot}%{_datadir}/applications
+
+%__cat > %{buildroot}%{_datadir}/applications/%{name}-gtk.desktop << EOF
+[Desktop Entry]
+Encoding=UTF-8
+Name=%{name}-gtk
+Comment=Corta y une archivos en varios formatos.
+Exec=/usr/bin/dalle-gtk
+Icon=dalle.xpm
+Terminal=false
+Type=Application
+Categories=Utility;
+EOF
+
+%__install -m 644 pixmaps/dalle.xpm %{buildroot}%{_datadir}/icons/dalle.xpm
+
 %clean
 rm -rf %{buildroot}
 
@@ -81,45 +100,48 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 /usr/share/locale/es/LC_MESSAGES/dalle.mo
 /usr/share/locale/gl/LC_MESSAGES/dalle.mo
 
+/usr/share/applications/dalle-gtk.desktop
+/usr/share/icons/dalle.xpm
+
 %changelog
 
-* Mon Jan 4 2010 Alberto Fernandez <infjaf00@yahoo.es>
+* Mon Jan 4 2010 Alberto Fernandez <infjaf@gmail.com>
 - Version 0.7.9
 
-* Fri Jan 30 2009 Alberto Fernandez <infjaf00@yahoo.es>
+* Fri Jan 30 2009 Alberto Fernandez <infjaf@gmail.com>
 - Version 0.7.8
 
-* Sat Jun 11 2005 Alberto Fernandez <infjaf00@yahoo.es>
+* Sat Jun 11 2005 Alberto Fernandez <infjaf@gmail.com>
 - Version 0.7.4
 
-* Sun Feb 15 2004 Alberto Fernandez <infjaf00@yahoo.es>
+* Sun Feb 15 2004 Alberto Fernandez <infjaf@gmail.com>
 - Version 0.7.1
 
-* Sun Feb 8 2004 Alberto Fernandez <infjaf00@yahoo.es>
+* Sun Feb 8 2004 Alberto Fernandez <infjaf@gmail.com>
 - Incluido el nuevo dalle-sfv-console
 - Version 0.7.0
 
-* Tue Jan 27 2004 Alberto Fernandez <infjaf00@yahoo.es>
+* Tue Jan 27 2004 Alberto Fernandez <infjaf@gmail.com>
 - Version 0.6.0
 
-* Mon Jan 26 2004 Alberto Fernandez <infjaf00@yahoo.es>
+* Mon Jan 26 2004 Alberto Fernandez <infjaf@gmail.com>
 - Por fin es relocalizable real.
 
-* Mon Dec 29 2003 Alberto Fernandez <infjaf00@yahoo.es>
+* Mon Dec 29 2003 Alberto Fernandez <infjaf@gmail.com>
 - Incluido openhacha-text.
 - Construye sin opciones de depuracion.
 
-* Mon Dec 22 2003 Alberto Fernandez <infjaf00@yahoo.es>
+* Mon Dec 22 2003 Alberto Fernandez <infjaf@gmail.com>
 - Paquete adaptado al nuevo sistema de construccion.
 
-* Thu Dec 18 2003 Alberto Fernandez <infjaf00@yahoo.es>
+* Thu Dec 18 2003 Alberto Fernandez <infjaf@gmail.com>
 - Interfaz grafica actualizada a OpenHacha 0.2.
 
-* Mon Dec 15 2003 Alberto Fernandez <infjaf00@yahoo.es>
+* Mon Dec 15 2003 Alberto Fernandez <infjaf@gmail.com>
 - Interfaz grafica basada en OpenHacha 0.1.
 
-* Fri Dec 12 2003 Alberto Fernandez <infjaf00@yahoo.es>
+* Fri Dec 12 2003 Alberto Fernandez <infjaf@gmail.com>
 - El paquete RPM es relocalizable.
 
-* Thu Dec 04 2003 Alberto Fernandez <infjaf00@yahoo.es>
+* Thu Dec 04 2003 Alberto Fernandez <infjaf@gmail.com>
 - Primer paquete RPM
