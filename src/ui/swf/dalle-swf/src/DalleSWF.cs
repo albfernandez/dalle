@@ -53,8 +53,13 @@ namespace Dalle.UI.DalleSWF
 		private DalleSWF (){
 			InitializeComponent();
 		}
-		private void InitializeComponent(){
+		private void InitializeComponent ()
+		{
 		
+			this.MinimizeBox = false;
+			this.MaximizeBox = false;
+			//this.ControlBox = false;
+			
 			// Crear los objetos
 			
 			// ...
@@ -127,7 +132,7 @@ namespace Dalle.UI.DalleSWF
 			
 			
 			// Tamaño
-			this.ClientSize  = new System.Drawing.Size(400,300);
+			this.ClientSize  = new System.Drawing.Size(450,350);
 			//this.MaximumSize = new System.Drawing.Size(400,350);
 			//this.MinimumSize = new System.Drawing.Size(400,350);
 			
@@ -145,7 +150,7 @@ namespace Dalle.UI.DalleSWF
 			//this.Text = Catalog.GetString("Dalle-swf");
 			this.Text = "Dalle-swf";
 			this.ResumeLayout(false);
-			this.ShowInTaskbar = false;
+			//this.ShowInTaskbar = false;
 			
 			// Conectar los eventos.
 			
@@ -153,23 +158,24 @@ namespace Dalle.UI.DalleSWF
 			this.btnAbout.Click += new EventHandler (about_clicked);
 			this.btnExit.Click += new EventHandler (exit_clicked);
 			
-			this.ShowInTaskbar = false;
+			//this.ShowInTaskbar = false;
 		
 		}
 		
 		private void execute_clicked (object sender, EventArgs args)
 		{
-			if (this.rbSplit.Checked){
-				SplitDialog.Instance.Visible = true;
+			if (this.rbSplit.Checked) {
+				SplitDialog.Instance.ShowDialog ();
 			}
-			else if (this.rbMerge.Checked){
-				JoinDialog.Instance.Visible = true;
+			else if (this.rbMerge.Checked) {
+				JoinDialog.Instance.ShowDialog ();
 			}
 
 		}
 		private void about_clicked (object sender, EventArgs args)
 		{
-			AboutDialog.Instance.Visible = true;
+			//AboutDialog.Instance.Visible = true;
+			AboutDialog.Instance.ShowDialog ();
 		}
 		private void exit_clicked (object sender, EventArgs args)
 		{
