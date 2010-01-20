@@ -97,8 +97,8 @@
 		<delete dir="build" />
     </target>
     <!-- desactivado temporalmente la compilacion del interfaz swf -->
-    <!--target name="build" depends="generate-mo,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade,build-dalle-swf" /-->
-    <target name="build" depends="generate-mo,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
+    <target name="build" depends="generate-mo,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade,build-dalle-swf" />
+    <!--target name="build" depends="generate-mo,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" /-->
     <target name="build-library" description="compiles the source code">
     	<mkdir dir="build" />    	
 		<csc target="library" output="build/libDalle.dll" debug="${debug}">
