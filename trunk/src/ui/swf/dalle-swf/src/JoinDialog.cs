@@ -1,6 +1,6 @@
 /*
 
-    Copyright (C) 2003-2009  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -141,6 +141,7 @@ namespace Dalle.UI.DalleSWF
 			if (requestStop)
 			{
 				Manager.Instance.Stop();
+				this.EnableElements();
 			}
 		}
 		
@@ -190,7 +191,9 @@ namespace Dalle.UI.DalleSWF
 		protected void joinFile ()
 		{
 			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
+			this.DisableElements ();
 			Manager.Instance.Unir (txtFilename.Text);
+			this.EnableElements ();
 			this.requestStop = false;
 			t = null;
 		}
@@ -213,10 +216,18 @@ namespace Dalle.UI.DalleSWF
 
 			txtFilename.Text = openFileDialog1.FileName;
 		}	
-		private void txtFilename_TextChanged(object sender, System.EventArgs e)
+		private void txtFilename_TextChanged (object sender, System.EventArgs e)
 		{
 			//p_UpdateStatus();
 		}	
+		private void DisableElements ()
+		{
+		
+		}
+		private void EnableElements() 
+		{
+			
+		}
 	
 	}
 }
