@@ -10,13 +10,13 @@ Release: 		%{release}
 License: 		GPL
 Group: 			Utilities/File
 Url: 			http://dalle.sourceforge.net
-Vendor:     	Alberto Fernandez  <infjaf00@yahoo.es>
+Vendor:     	Alberto Fernandez  <infjaf@gmail.com>
 Source: 		%{name}-%{version}.tar.bz2
 BuildRoot:  	/var/tmp/%{name}-%{version}
 BuildArch:		noarch
 Prefix:			%{prefix}
 Distribution:   Any
-Packager:       Alberto Fernandez  <infjaf00@yahoo.es>
+Packager:       Alberto Fernandez  <infjaf@gmail.com>
 Requires:   	mono-core >= 2.0, gtk-sharp2 >= 2.0
 
 %description
