@@ -1,0 +1,5 @@
+?package(dalle):needs="X11"\
+	section="Applications/File Management"\
+    title="dalle"\
+    command="/usr/bin/dalle-gtk"\
+	icon="/usr/share/dalle/pixmaps/dalle.xpm"

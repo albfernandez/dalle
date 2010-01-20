@@ -1,0 +1,72 @@
+
+KAMALEON 1
+
+Los primeros archivos contienen la piel + los datos
+
+El archivo final contiene:
+
+Piel +
+
+datos +
+
+una lista con los archivos partidos, de 560 bytes cada unidad, repartidos:
+	
+	1 byte     longitud del nombre del archivo original
+	255 bytes  nombre original, (completa con nulos)
+	4 bytes    con el tamaño del archivo original
+	1 byte     para indicar la longitud del password.
+	30 bytes   de password.
+	1  byte    indicando la longitud del nombre del fragmento.
+	256 bytes  nombre del fragmento (255 direccionables por el byte anterior + 1 desperdiciado)
+	4 bytes    tamaño del fragmento (piel + datos)
+	1 byte     primer byte del fragmento (primer byte de la piel, si hay)
+	1 byte     ultimo byte de datos (en caso de que este archivo sea
+               el que contiene la tabla este valor es el de los datos, la tabla no
+               cuenta).
+	2 bytes    a null
+	4 bytes    tamaño de la piel.
+
++
+
+numero en ascii (10 digitos) con el tamaño de la ultima particion (piel + datos, el resto es de control)
+ASCII con el texto "<-LISTA->"
+
+
+KAMALEON 2
+
+basicamente igual.  Los cambios son en el ultimo archivo:
+   (básicamente se reduce en reducir el tamaño del campo nombre de fragmento
+   para dejar sitio a un campo nombre de piel y otro de verificación. 
+	el password no se guarda en texto plano, sino que se "cifra"  antes caracter
+	a caracter con 255 - valor.)
+	
+	1 byte     longitud del nombre del archivo original
+	255 bytes  nombre original, (completa con nulos)
+	4 bytes    con el tamaño del archivo original
+	1 byte     para indicar la longitud del password.
+	30 bytes   de password "cifrado".
+	1  byte    indicando la longitud del nombre del fragmento.
+	156 bytes  nombre del fragmento 
+	8 bytes    Verificador. Es un valor en coma flotante (double) en el formato de
+               Intel y que contiene un checksum muy simple.
+	1 bytes    Largo del nombre de la piel
+    91 bytes   Nombre de la piel, los bytes no usados son 0
+	4 bytes    tamaño del fragmento (piel + datos)
+	1 byte     primer byte del fragmento (primer byte de la piel, si hay)
+	1 byte     ultimo byte de datos (en caso de que este archivo sea
+               el que contiene la tabla este valor es el de los datos, la tabla no
+               cuenta).
+	2 bytes    a null
+	4 bytes    tamaño de la piel.
+	
+numero en ascii (10 digitos) con el tamaño de la ultima particion (piel + datos, el resto es de control)
+ASCII con el texto "<-LIST2->"
+
+Checksum:
+  Se computa acumulando el valor absoluto de la diferencia entre un contador
+interno y el byte de datos. El contador interno va ciclando de 0 a 254 (si,
+no a 255 ... programadores de Visual Basic ;-). El acumulador es un double.
+
+
+Limitaciones:
+A trabajar con archivos de un maximo de 4 Gb.

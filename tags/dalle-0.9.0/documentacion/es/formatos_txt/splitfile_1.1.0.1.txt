@@ -1,0 +1,34 @@
+El formato de los nombres de los ficheros es:
+
+{base}_{nº de fragmento comenzando en 1}.sf
+
+El formato del fichero es el siguiente:
+
+Tiene una cabecera de texto con la siguiente información:(Saltos de línea tipo DOS 0x0d 0x0a).(tamaño 512 bytes, se rellena con 0s)
+
+;Split file created by SplitFile 1.1.0.1 (http://www.methods.conz)
+[Split]
+FileName="nombre del archivo original"
+FileSize="tamaño en bytes del archivo original"
+FileTime="fecha de creación del archivo original"
+FileAttr="Atributos del archivo (nº)"
+Number="Numero de fragmento (empezando en 1)"
+DataSize="Tamaño de los datos(tamaño del fragmento - 512)"
+IsLast="1 si es el último fragmento, 0 en otro caso"
+CheckSum="Checksum"
+
+
+
+Estado de implementación:
+
+- Para unir.
+	Une perfectamente.
+	No utiliza la información FileTime ni FileAttr.
+
+- Para partir:
+	Aún no implementado
+
+
+
+
+Luego van los datos tal cual... (a partir de la posición 512).
