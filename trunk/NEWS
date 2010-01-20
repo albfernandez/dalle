@@ -1,4 +1,4 @@
-??-??-2010  - Version 0.9.0
+21-01-2010  - Version 0.9.0
 	Cambio del repositorio de código a subversion
 	Soporte gcutter
 	Soporte split de unix
@@ -8,6 +8,7 @@
 	Soporte Xtremsplit
 	Soporte Divij
 	Soporte Drag&Drop en dalle-gtk
+	Interfaz SWF
 
 24-mar-2008 - Version 0.7.8
 	Soporte para gettext
