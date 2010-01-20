@@ -4,7 +4,7 @@
 	Dalle.Formatos.Hacha.CabeceraHacha_v2 - 
 		Header of files created by Hacha >= 2.79
 	
-    Copyright (C) 2003-2009  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

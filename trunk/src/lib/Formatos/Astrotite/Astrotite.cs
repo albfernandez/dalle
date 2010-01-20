@@ -6,7 +6,7 @@
 	
     Copyright (C) 2004-2010
     Original author (C - code) - Daniel Martínez Contador <dmcontador@terra.es>
-    C# translation by - Alberto Fernández  <infjaf00@yahoo.es>
+    C# translation by - Alberto Fernández  <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
