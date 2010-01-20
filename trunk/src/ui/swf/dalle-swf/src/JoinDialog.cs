@@ -222,11 +222,15 @@ namespace Dalle.UI.DalleSWF
 		}	
 		private void DisableElements ()
 		{
-		
+			this.txtFilename.Enabled = false;
+			this.btnBrowse.Enabled = false;
+			this.btnJoin.Enabled = false;
 		}
-		private void EnableElements() 
+		private void EnableElements ()
 		{
-			
+			this.txtFilename.Enabled = true;
+			this.btnBrowse.Enabled = true;
+			this.btnJoin.Enabled = true;
 		}
 	
 	}

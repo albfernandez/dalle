@@ -265,7 +265,7 @@ namespace Dalle.UI.DalleSWF
 			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
 			Manager.Instance.Partir (format, filename, "", kbs);
 			
-			this.enableElements ();
+			this.EnableElements ();
 			this.requestStop = false;
 			t = null;
 
