@@ -35,7 +35,6 @@
 ./src/ui/gtk/dalle-gtk/src/JoinDialog.cs
 ./src/ui/gtk/dalle-gtk/src/CustomProgressBar.cs
 ./src/tests/CrcsBenchmark/CrcsBenchmark.cs
-./src/soporte/Files2Resource.cs
 ./src/lib/I18N/GettextCatalog.cs
 ./src/lib/I18N/GetText.cs
 ./src/lib/Utilidades/UtilidadesRecursos.cs
