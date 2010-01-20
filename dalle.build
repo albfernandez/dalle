@@ -3,7 +3,7 @@
 	<description>Build file for dalle.</description>
 	<property name="debug" value="false" overwrite="false" />
 	<property name="codepage" value="utf8" overwrite="false" />
-	<property name="version" value="0.7.9.1" overwrite="false" />
+	<property name="version" value="0.9.0.1" overwrite="false" />
 	<property name="copyright" value="Copyright (c) 2005-2010, Alberto Fernández" overwrite="false"/>
 	<property name="prefix" value="/usr/" overwrite="false" />
 	<property name="DESTDIR" value="/" overwrite="false" />
@@ -39,7 +39,6 @@
 		    </do>
 		</foreach>
 		<!-- copia los archivos de i18n -->
-		<!-- /usr/share/locale/es/LC_MESSAGES/dalle.mo -->
 		<mkdir dir="${DESTDIR}/${prefix}/share/locale/" />
 		<copy todir="${DESTDIR}/${prefix}/share/locale/">
 			<fileset basedir="build/locale">
@@ -96,9 +95,8 @@
 	<target name="clean" description="remove all generated files">
 		<delete dir="build" />
     </target>
-    <!-- desactivado temporalmente la compilacion del interfaz swf -->
-    <target name="build" depends="generate-mo,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade,build-dalle-swf" />
-    <!--target name="build" depends="generate-mo,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" /-->
+
+    <target name="build" depends="generate-mo,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
     <target name="build-library" description="compiles the source code">
     	<mkdir dir="build" />    	
 		<csc target="library" output="build/libDalle.dll" debug="${debug}">

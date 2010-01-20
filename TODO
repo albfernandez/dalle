@@ -28,16 +28,16 @@ Leyenda:
 	- [X]  Sacar las cadenas de texto I18N de la libreria.
 	- [X]  Excepciones bien estructuradas en la libreria.
 	- [X]  Nueva estructura de instalación.
-	- [ ]  Iconos en el menu de debian/ubuntu (deb)	
+	- [X]  Iconos en el menu de debian/ubuntu (deb)	
 	- [X]  Iconos en el menu de fedora	(rpm)
 	- [X]  Quitar los warnings de compilación
 	- [X]  Quitar los warnings en tiempo de ejecución (gtk nuevo)
 	- [X]  Paquete RPM.
-	- [X]  Nuevo selector de fichero Gtk.FileChooserDialog
-	- [ ]  Traduccion de los elementos del nuevo Gtk.FileChooserDialog
+	- [X]  Nuevo selector de fichero Gtk.FileChooserDialog	
+	- [X]  Traduccion de los elementos del nuevo Gtk.FileChooserDialog
 	- [-]  Licencia en el about de dalle-gtk
-
-	- [X] Interfaz swf.
+	
+	- [X]  Interfaz swf.
 	- [X]  DragNDrop.
 	- [ ]  Repaso de dalle-console.
 	- [ ]  Repaso de dalle-gtk.
@@ -46,12 +46,12 @@ Leyenda:
 	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
 	- [ ]  Repaso de dalle-sfv.
 	- [ ]  Paquete deb cumple con las políticas de debian.
-	- [ ] Recuperar formato splitfile
-	- [ ] Soporte checksum hacha 3.5
-	- [-] Soporte "completo" para zip.
-	- [X] Soporte "completo" para tar, gz, bz2.
-	- [-] Mejorar el soporte de Astrotite.
-	- [-] Soporte para Splitter & Merger.
+	- [ ]  Recuperar formato splitfile
+	- [ ]  Soporte checksum hacha 3.5
+	- [-]  Soporte "completo" para zip.
+	- [X]  Soporte "completo" para tar, gz, bz2.
+	- [-]  Mejorar el soporte de Astrotite.
+	- [-]  Soporte para Splitter & Merger.
 	
 	- [X] Soporte HJSplit.
 	- [X] Soporte gcutter.
