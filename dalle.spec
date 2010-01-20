@@ -25,12 +25,11 @@ Requires:   	mono-core >= 2.0, gtk-sharp2 >= 2.0
 %setup
 
 %build
-./configure --prefix=%{prefix} --build-debug --mono-path=/usr/lib/mono/2.0:/usr/lib/mono/gtk-sharp-2.0
-#make
+
 nant -nologo build
 
 %install
-#make install DESTDIR=%{buildroot}
+
 nant -nologo -D:DESTDIR=%{buildroot}  install
 chmod 755 %{buildroot}/usr/bin/*
 
@@ -51,6 +50,7 @@ Type=Application
 Categories=Utility;
 EOF
 
+%__install -dm 755 %{buildroot}%{_datadir}/icons/
 %__install -m 644 pixmaps/dalle.xpm %{buildroot}%{_datadir}/icons/dalle.xpm
 
 %clean
@@ -84,14 +84,12 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 %doc README COPYING ChangeLog NEWS
 
 
-#/usr/bin/dalle-swf
 /usr/bin/openhacha-gtk
 /usr/bin/dalle-console
 /usr/bin/dalle-gtk
 /usr/bin/dalle-sfv-console
 
 /usr/lib/dalle/dalle-sfv-console.exe
-#/usr/lib/dalle/dalle-swf.exe
 /usr/lib/dalle/dalle-console.exe
 /usr/lib/dalle/dalle-gtk.exe
 /usr/lib/dalle/openhacha-gtk.exe
