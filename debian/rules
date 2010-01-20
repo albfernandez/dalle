@@ -21,13 +21,13 @@ DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
 CFLAGS = -Wall -g
 
-config.status: configure
-	dh_testdir
-	./configure --prefix=/usr --build-debug --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp-2.0/
-	touch config.status
+#config.status: configure
+#	dh_testdir
+#	./configure --prefix=/usr --build-debug --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp-2.0/
+#	touch config.status
 
 
-build: config.status
+build: 
 	nant -nologo build
 #	dh_makeclilibs -i -V
 #	dh_installcligac -i
@@ -40,15 +40,6 @@ clean:
 	rm -rf $(MONO_SHARED_DIR)/.wapi
 	nant -nologo clean
 	
-	
-ifneq "$(wildcard /usr/share/misc/config.sub)" ""
-	cp -f /usr/share/misc/config.sub config.sub
-endif
-ifneq "$(wildcard /usr/share/misc/config.guess)" ""
-	cp -f /usr/share/misc/config.guess config.guess
-endif
-
-
 	dh_clean 
 
 install: 
@@ -59,7 +50,12 @@ install:
 	dh_install -i
 	nant -nologo -D:DESTDIR=$(CURDIR)/debian/dalle  install
 	install -d debian/dalle/usr/share/dalle/pixmaps/
-	cp debian/dalle.xpm debian/dalle/usr/share/dalle/pixmaps/
+	install -d debian/dalle/usr/share/applications
+	install -d debian/dalle/usr/share/icons
+#	cp debian/dalle.xpm debian/dalle/usr/share/dalle/pixmaps/
+	cp pixmaps/dalle.xpm debian/dalle/usr/share/dalle/pixmaps/
+	cp pixmaps/dalle.xpm debian/dalle/usr/share/icons/
+	cp debian/dalle-gtk.desktop debian/dalle/usr/share/applications/
 	dh_makeclilibs -i -V
 	dh_installcligac -i
 	dh_clideps -i
