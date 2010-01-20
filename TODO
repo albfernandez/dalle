@@ -18,13 +18,7 @@ Leyenda:
 ===============================
 	
 	- [X]  Soporte para cortar en kamaleon2.
-	- [ ]  Repaso de dalle-console.
-	- [ ]  Repaso de dalle-gtk.
 	- [X]  Dialogo Gtk.AboutDialog
-	- [ ]  Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
-	- [ ]  Repasar y usar un tamaño de buffer constante
-	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
-	- [ ]  Repaso de dalle-sfv.
 	- [X]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
 	- [X]  Paquete deb.
 	- [X]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
@@ -35,17 +29,23 @@ Leyenda:
 	- [X]  Excepciones bien estructuradas en la libreria.
 	- [X]  Nueva estructura de instalación.
 	- [ ]  Iconos en el menu de debian/ubuntu (deb)	
-	- [ ]  Iconos en el menu de fedora	(rpm)
+	- [X]  Iconos en el menu de fedora	(rpm)
 	- [X]  Quitar los warnings de compilación
 	- [X]  Quitar los warnings en tiempo de ejecución (gtk nuevo)
-	- [-]  Paquete RPM.
-	- [ ]  Paquete deb cumple con las políticas de debian.
+	- [X]  Paquete RPM.
 	- [X]  Nuevo selector de fichero Gtk.FileChooserDialog
 	- [ ]  Traduccion de los elementos del nuevo Gtk.FileChooserDialog
-	- [ ]  Licencia en el about de dalle-gtk
+	- [-]  Licencia en el about de dalle-gtk
 
-	- [ ] Interfaz swf.
-	- [X]  DragNDrop.	
+	- [X] Interfaz swf.
+	- [X]  DragNDrop.
+	- [ ]  Repaso de dalle-console.
+	- [ ]  Repaso de dalle-gtk.
+	- [ ]  Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
+	- [ ]  Repasar y usar un tamaño de buffer constante
+	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
+	- [ ]  Repaso de dalle-sfv.
+	- [ ]  Paquete deb cumple con las políticas de debian.
 	- [ ] Recuperar formato splitfile
 	- [ ] Soporte checksum hacha 3.5
 	- [-] Soporte "completo" para zip.
@@ -60,7 +60,9 @@ Leyenda:
 	- [X] Soporte XTREMSPLIT
 	- [X] Soporte divij
 	- [ ] Soporte GNOME Split
+	- [ ] Formatos soportados por yoyocut
 	- [ ] Nueva web.
+	- [ ] Dalle.Formatos.FileAlreadyExistsException (y se cierra el programa)
 
 ===========================================================================
 
