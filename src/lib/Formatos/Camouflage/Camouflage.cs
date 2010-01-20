@@ -3,9 +3,9 @@
     Dalle - A split/join file utility library	
     
 	
-    Copyright (C) 2004-2009
+    Copyright (C) 2004-2010
     Original author (C - code) - Dai SET <dai_set@yahoo.com>
-    C# translation by - Alberto Fernández  <infjaf00@yahoo.es>
+    C# translation by - Alberto Fernández  <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

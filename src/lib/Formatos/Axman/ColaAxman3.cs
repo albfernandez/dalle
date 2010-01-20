@@ -3,7 +3,7 @@
     Dalle - A split/join file utility library	
     Dalle.Formatos.Axman.ColaAxman3 - Tail of axman3 files.
 	
-    Copyright (C) 2003-2009  Alberto Fernández <infjaf00@yahoo.es>
+    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
