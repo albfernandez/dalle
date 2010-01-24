@@ -28,6 +28,7 @@ using ICSharpCode.SharpZipLib.GZip;
 using ICSharpCode.SharpZipLib.Tar;
 
 using Dalle.Utilidades;
+using Dalle.Compression.LZMA;
 namespace Dalle.Formatos.Tar
 {
 
@@ -57,13 +58,17 @@ namespace Dalle.Formatos.Tar
 			FileStream input = File.OpenRead (fichero);
 			Stream input2 = input;
 			
-			if (fichero.ToLower ().EndsWith (".bz2") || fichero.ToLower().EndsWith(".tbz2")) 
+			if (fichero.ToLower ().EndsWith (".bz2") || fichero.ToLower ().EndsWith (".tbz2")) 
 			{
 				input2 = new BZip2InputStream (input);
 			} 
-			else if (fichero.ToLower ().EndsWith (".gz") || fichero.ToLower().EndsWith(".tgz")) 
+			else if (fichero.ToLower ().EndsWith (".gz") || fichero.ToLower ().EndsWith (".tgz")) 
 			{
 				input2 = new GZipStream (input, CompressionMode.Decompress);
+			}
+			else if (fichero.ToLower ().EndsWith (".tar.lzma") || fichero.ToLower ().EndsWith ("tlz"))
+			{
+				input2 = new LZMAInputStream (input);
 			}
 			TarInputStream tarInput = new TarInputStream (input2);		
 			TarEntry tarEntry = null;
@@ -93,6 +98,8 @@ namespace Dalle.Formatos.Tar
 			}
 			string l = fichero.ToLower ();
 			return 
+					l.EndsWith (".tar.lzma") || 
+					l.EndsWith ("tlz") ||
 					l.EndsWith (".tar.bz2") || 
 					l.EndsWith (".tar.gz") || 
 					l.EndsWith (".tgz") ||
