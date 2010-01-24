@@ -1027,7 +1027,7 @@ namespace SevenZip.Compression.LZMA
 			}
 		}
 
-		bool ChangePair(UInt32 smallDist, UInt32 bigDist)
+		public bool ChangePair(UInt32 smallDist, UInt32 bigDist)
 		{
 			const int kDif = 7;
 			return (smallDist < ((UInt32)(1) << (32 - kDif)) && bigDist >= (smallDist << kDif));
