@@ -7,6 +7,9 @@
 	<property name="copyright" value="Copyright (c) 2005-2010, Alberto Fernández" overwrite="false"/>
 	<property name="prefix" value="/usr/" overwrite="false" />
 	<property name="DESTDIR" value="/" overwrite="false" />
+	<property name="lib7zip" value="lib7zip.dll" />
+	<property name="libDalle" value="libDalle.dll"/>
+	<property name="buildDir" value="build"/>
 	
 
 
@@ -96,10 +99,19 @@
 		<delete dir="build" />
     </target>
 
-    <target name="build" depends="generate-mo,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
-    <target name="build-library" description="compiles the source code">
-    	<mkdir dir="build" />    	
-		<csc target="library" output="build/libDalle.dll" debug="${debug}">
+    <target name="build" depends="generate-mo,build-lib-7zip,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
+    
+    <target name="build-lib-7zip" description="compiles 7zip library">
+    	<mkdir dir="${buildDir}" />    	
+		<csc target="library" output="${buildDir}/${lib7zip}" debug="${debug}">
+			<sources>
+				<include name="src/external/7zip/**.cs" />
+			</sources>
+		</csc>
+	</target>
+    <target name="build-library" description="compiles dalle library">
+    	<mkdir dir="${buildDir}" />   	
+		<csc target="library" output="${buildDir}/${libDalle}" debug="${debug}">
 			<sources>
 				<include name="src/lib/**.cs" />
 			</sources>
@@ -108,7 +120,8 @@
 			</resources>
 			<references>
 				<include name="ICSharpCode.SharpZipLib.dll" />
-				<include name="Mono.Posix.dll"/>      
+				<include name="Mono.Posix.dll"/>
+				<include name="${buildDir}/${lib7zip}"/>
 			</references>
 		</csc>
 	</target>
@@ -118,7 +131,7 @@
 				<include name="src/ui/console/dalle-console/src/**.cs" />
 			</sources>
 			<references>
-				<include name="build/libDalle.dll"/>
+				<include name="${buildDir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 			</references>
 		</csc>
@@ -129,7 +142,7 @@
 				<include name="src/ui/console/dalle-sfv-console/src/**.cs" />
 			</sources>
 			<references>
-				<include name="build/libDalle.dll"/>
+				<include name="${buildDir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 			</references>
 		</csc>
@@ -143,7 +156,7 @@
 				<include name="src/ui/gtk/dalle-gtk/pixmaps/*.*" />
 			</resources>
 			<references>
-				<include name="build/libDalle.dll"/>
+				<include name="${buildDir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 			</references>
 			<pkg-references>
@@ -162,7 +175,7 @@
 			</resources>
 			
 			<references>
-				<include name="build/libDalle.dll"/>
+				<include name="${buildDir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 			</references>
 			<pkg-references>
@@ -178,7 +191,7 @@
 				<include name="src/ui/swf/dalle-swf/src/**.cs"/>
 			</sources>
 			<references>
-				<include name="build/libDalle.dll"/>
+				<include name="${buildDir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 				<include name="System.Windows.Forms.dll"/>
 				<include name="System.Drawing.dll"/>
