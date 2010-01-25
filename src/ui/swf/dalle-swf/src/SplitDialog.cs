@@ -69,7 +69,9 @@ namespace Dalle.UI.DalleSWF
 		{
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
-			this.Size = new Size (400, 300);
+			this.Size = new Size (340, 270);
+			this.MinimumSize = this.Size;
+			this.MaximumSize = this.Size;
 			//this.Text = Catalog.GetString("Merge");
 			this.Text = "Split";
 			
@@ -223,7 +225,11 @@ namespace Dalle.UI.DalleSWF
 		private void btnSplitClick (object sender, EventArgs args)
 		{
 
-			// TODO Comprobar si existe el fichero y avisar
+			if (!File.Exists (this.txtFilename.Text))
+			{
+				MessageBox.Show ("The file '" + this.txtFilename.Text + "' does not exists");
+				return;
+			}
 			if (this.cbFormatos.SelectedIndex < 0)
 			{
 				MessageBox.Show ("You must select a format");
@@ -298,9 +304,9 @@ namespace Dalle.UI.DalleSWF
 			double fraction = ((double) done) / ((double)total);
 			Console.WriteLine("progreso=" + done + "/" + total +"=" + fraction);
 			this.pb.Value = (int) Math.Floor(100*fraction);
-			Console.WriteLine("barra=" + this.pb.Value);
+			//Console.WriteLine("barra=" + this.pb.Value);
 			//this.Refresh();
-			System.Threading.Thread.Sleep (500);
+			//System.Threading.Thread.Sleep (500);
 			if (requestStop)
 			{
 				Manager.Instance.Stop();
