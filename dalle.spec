@@ -104,7 +104,7 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 
 %changelog
 
-* Thu Mon 25 2010 Alberto Fernandez <infjaf@gmail.com>
+* Mon Jan 25 2010 Alberto Fernandez <infjaf@gmail.com>
 - Version 0.9.1
 - LZMA support
 
