@@ -206,7 +206,7 @@
 				<include name="*.zip"/>
 			</fileset>
 		</delete>
-		<zip zipfile="${buildDir}/dalle-${shortVersion}.zip" ziplevel="9">
+		<zip zipfile="${buildDir}/dalle-bin-${shortVersion}.zip" ziplevel="9">
 			<fileset basedir="${buildDir}" prefix="dalle-${shortVersion}">
 				<include name="*.exe"/>
 				<include name="*.dll"/>
