@@ -1,0 +1,67 @@
+dalle (0.9.1-1) unstable; urgency=low
+  * Updated build. LZMA support.
+
+ -- Alberto Fernández <infjaf@gmail.com>  Mon, 25 Jan 2010 02:18:46 +0100 
+
+dalle (0.9.0-1) unstable; urgency=low
+  * Updated build
+
+ -- Alberto Fernández <infjaf@gmail.com>  Thu, 21 Jan 2010 00:18:46 +0100 
+
+dalle (0.7.9-2) unstable; urgency=low
+  * Updated build
+
+ -- Alberto Fernández <infjaf@gmail.com>  Thu, 14 Jan 2010 20:18:46 +0100 
+
+dalle (0.7.9-1) unstable; urgency=low
+  * Updated build
+
+ -- Alberto Fernández <infjaf@gmail.com>  Tue, 2 Dec 2009 20:18:46 +0100 
+
+dalle (0.7.8-2) unstable; urgency=low
+  * Updated build
+
+ -- Alberto Fernández <infjaf@gmail.com>  Tue, 26 Apr 2009 20:18:46 +0100 
+
+dalle (0.7.8-1) unstable; urgency=low
+  * New upstream version
+
+ -- Alberto Fernández <infjaf@gmail.com>  Tue, 18 Sep 2007 20:18:46 +0100 
+ 
+dalle (0.7.7-1) unstable; urgency=low
+  * New upstream version
+
+ -- Alberto Fernández <infjaf@gmail.com>  Sat, 19 Aug 2006 20:18:46 +0100 
+
+dalle (0.7.6-1) unstable; urgency=low
+  * New upstream version
+
+ -- Alberto Fernández <infjaf@gmail.com>  Thu, 13 Jun 2006 20:18:46 +0100 
+
+dalle (0.7.5-1) unstable; urgency=low
+  * New upstream version
+
+ -- Alberto Fernández <infjaf@gmail.com>  Sat, 11 Jun 2005 23:18:46 +0100 
+
+dalle (0.7.4-1) unstable; urgency=low
+  * New upstream version
+
+ -- Alberto Fernández <infjaf@gmail.com>  Sat, 11 Jun 2005 18:18:46 +0100 
+
+dalle (0.7.3-3) unstable; urgency=low
+
+  * Includes Depends and Build-Depends
+  
+ -- Alberto Fernández <infjaf@gmail.com>  Sat, 28 Aug 2004 18:18:46 +0100
+
+dalle (0.7.3-2) unstable; urgency=low
+
+  * Included gtk-based apps.
+  
+ -- Alberto Fernández <infjaf@gmail.com>  Sat, 28 Aug 2004 18:18:46 +0100
+
+dalle (0.7.3-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Alberto Fernández <infjaf@gmail.com>  Sat, 28 Aug 2004 18:18:46 +0100

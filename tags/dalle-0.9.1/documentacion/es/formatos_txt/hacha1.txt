@@ -1,0 +1,34 @@
+HACHA v1.0
+
+
+
+Formato del nombre de los archivos
+{base}.{nº de secuencia, empezando en 0}
+
+
+
+
+
+Formato del primer fragmento:
+
+cabecera + {tamano_fragmento} datos
+
+
+Formato de los siguientes fragmentos
+
+{tamano_fragmento} datos
+
+Notese que el primer archivo es mayor que el resto.
+
+
+Formato de la cabecera del primer fragmento:
+
+Es una cabecera de texto con el siguiente formato:
+
+?????{CheckSum}{nulos}?????{nombreOriginal}?????{tamano_original}??????{tamanoDeLosFragmentos}??????
+
+nulos =  son tres bytes a 0
+
+CheckSum = (No estoy seguro) - Se obtiene con Convert.ToChar (nombreOriginal.Length + 
+						tamanoFrag.ToString().Length + 
+						tamano.ToString().Length + 20)

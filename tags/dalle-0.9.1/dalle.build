@@ -1,0 +1,335 @@
+<?xml version="1.0"?>
+<project name="dalle" default="build" basedir=".">
+	<description>Build file for dalle.</description>
+	<property name="debug" value="false" overwrite="false" />
+	<property name="codepage" value="utf8" overwrite="false" />
+	<property name="version" value="0.9.1.1" overwrite="false" />
+	<property name="shortVersion" value="0.9.1" overwrite="false"/>
+	<property name="copyright" value="Copyright (c) 2005-2010, Alberto Fernández" overwrite="false"/>
+	<property name="prefix" value="/usr/" overwrite="false" />
+	<property name="DESTDIR" value="/" overwrite="false" />
+	<property name="lib7zip" value="lib7zip.dll" />
+	<property name="libDalle" value="libDalle.dll"/>
+	<property name="buildDir" value="build"/>
+	
+
+
+
+	<target name="install">
+		<!-- Copia lo que hay en lib -->
+		<mkdir dir="${DESTDIR}/${prefix}/lib/dalle" />
+		<copy todir="${DESTDIR}/${prefix}/lib/dalle/">
+			<fileset basedir="build">
+				<include name="*.exe" />
+				<include name="*.dll" />
+			</fileset>
+		</copy>	
+		<!-- genera los wrappers para lanzar el programa -->
+		<mkdir dir="${DESTDIR}/${prefix}/bin" />
+		<foreach item="File" property="filename">
+		    <in>
+			<items>
+			    <include name="build/*.exe" />
+			</items>
+		    </in>
+		    <do>
+			<copy file="scripts/base.sh" inputencoding="utf-8"  outputencoding="iso-8859-15" tofile="${DESTDIR}/${prefix}/bin/${path::get-file-name-without-extension(filename)}">
+				<filterchain>
+				<replacetokens>
+				    <token key="PROGRAM" value="${path::get-file-name(filename)}" />
+				</replacetokens>
+			    </filterchain>
+			</copy>
+		    </do>
+		</foreach>
+		<!-- copia los archivos de i18n -->
+		<mkdir dir="${DESTDIR}/${prefix}/share/locale/" />
+		<copy todir="${DESTDIR}/${prefix}/share/locale/">
+			<fileset basedir="build/locale">
+				<include name="**/*.mo" />
+			</fileset>
+		</copy>
+	</target>
+	
+	
+	<target name="generate-pot">
+		<exec program="xgettext">
+			<arg value="--files-from=po/POTFILES.in" />
+			<arg value="--from-code=UTF-8" />
+			<arg value="--output=po/index.pot" />
+			<arg value="--package-name=dalle" />
+			<arg value="--package-version=${version}"/>
+			<arg value="--msgid-bugs-address=infjaf@gmail.com"/>
+		</exec>
+	</target>
+	<target name="generate-mo">
+		<mkdir dir="build/locale/" />
+		<foreach item="File" property="filename">
+			<in><items><include name="po/*.po"/></items></in>
+			<do>
+				<mkdir dir="build/locale/${path::get-file-name-without-extension(filename)}/LC_MESSAGES/" />
+				<exec program="msgfmt">
+					<arg value="${filename}"/>
+					<arg value="--output-file=build/locale/${path::get-file-name-without-extension(filename)}/LC_MESSAGES/dalle.mo"/>			
+				</exec>
+			</do>
+		</foreach>
+	</target>
+	<!-- TODO Esto es de pruebas -->
+	<target name="list">
+		<foreach item="File" property="filename">
+		    <in>
+			<items>
+			    <include name="build/*.exe" />
+			</items>
+		    </in>
+		    <do>
+				<copy file="scripts/base.sh" inputencoding="utf-8" outputencoding="iso-8859-15" tofile="build/${path::get-file-name-without-extension(filename)}">
+					<filterchain>
+					<replacetokens>
+					    <token key="PROGRAM" value="${path::get-file-name(filename)}" />
+					</replacetokens>
+					</filterchain>
+				</copy>
+		    </do>
+		</foreach>
+	</target>
+	<!-- fin del to-do -->
+
+	<target name="clean" description="remove all generated files">
+		<delete dir="build" />
+    </target>
+
+    <target name="build" depends="generate-mo,build-lib-7zip,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
+    
+    <target name="build-lib-7zip" description="compiles 7zip library">
+    	<mkdir dir="${buildDir}" />    	
+		<csc target="library" output="${buildDir}/${lib7zip}" debug="${debug}">
+			<sources>
+				<include name="src/external/7zip/**.cs" />
+			</sources>
+		</csc>
+	</target>
+    <target name="build-library" description="compiles dalle library">
+    	<mkdir dir="${buildDir}" />   	
+		<csc target="library" output="${buildDir}/${libDalle}" debug="${debug}">
+			<sources>
+				<include name="src/lib/**.cs" />
+			</sources>
+			<resources>
+				<include name="pixmaps/*.*" />
+			</resources>
+			<references>
+				<include name="ICSharpCode.SharpZipLib.dll" />
+				<include name="Mono.Posix.dll"/>
+				<include name="${buildDir}/${lib7zip}"/>
+			</references>
+		</csc>
+	</target>
+	<target name="build-dalle-console">
+		<csc target="exe" output="build/dalle-console.exe" debug="${debug}">
+			<sources>
+				<include name="src/ui/console/dalle-console/src/**.cs" />
+			</sources>
+			<references>
+				<include name="${buildDir}/${libDalle}"/>
+				<include name="Mono.Posix.dll"/>
+			</references>
+		</csc>
+	</target>
+	<target name="build-dalle-sfv-console">
+		<csc target="exe" output="build/dalle-sfv-console.exe" debug="${debug}">
+			<sources>
+				<include name="src/ui/console/dalle-sfv-console/src/**.cs" />
+			</sources>
+			<references>
+				<include name="${buildDir}/${libDalle}"/>
+				<include name="Mono.Posix.dll"/>
+			</references>
+		</csc>
+	</target>
+	<target name="build-dalle-gtk">
+		<csc target="exe" output="build/dalle-gtk.exe" codepage="${codepage}">
+			<sources>
+				<include name="src/ui/gtk/dalle-gtk/src/**.cs" />
+			</sources>
+			<resources>
+				<include name="src/ui/gtk/dalle-gtk/pixmaps/*.*" />
+			</resources>
+			<references>
+				<include name="${buildDir}/${libDalle}"/>
+				<include name="Mono.Posix.dll"/>
+			</references>
+			<pkg-references>
+				<package name="gtk-sharp-2.0"/>
+			</pkg-references>
+
+		</csc>
+	</target>
+	<target name="build-openhacha-glade">
+		<csc target="exe" output="build/openhacha-gtk.exe" noconfig="true" debug="${debug}" codepage="${codepage}">
+			<sources>
+				<include name="src/ui/glade/openhacha-gtk/src/**.cs" />
+			</sources>
+			<resources>
+				<include name="src/ui/glade/openhacha-gtk/src/openhacha.glade" />
+			</resources>
+			
+			<references>
+				<include name="${buildDir}/${libDalle}"/>
+				<include name="Mono.Posix.dll"/>
+			</references>
+			<pkg-references>
+				<package name="gtk-sharp-2.0"/>
+				<package name="gnome-sharp-2.0"/>
+				<package name="glade-sharp-2.0"/>
+			</pkg-references>
+		</csc>
+	</target>
+	<target name="build-dalle-swf">
+		<csc target="exe" output="build/dalle-swf.exe" debug="${debug}" codepage="${codepage}">
+			<sources>
+				<include name="src/ui/swf/dalle-swf/src/**.cs"/>
+			</sources>
+			<references>
+				<include name="${buildDir}/${libDalle}"/>
+				<include name="Mono.Posix.dll"/>
+				<include name="System.Windows.Forms.dll"/>
+				<include name="System.Drawing.dll"/>
+			</references>		
+		</csc>
+	</target>
+	<target name="make-zip" depends="build, build-dalle-swf">
+		<copy file="${buildDir}/dalle-swf.exe" tofile="${buildDir}/dalle.exe"/>
+		<delete>
+			<fileset basedir="${buildDir}">
+				<include name="*.zip"/>
+			</fileset>
+		</delete>
+		<zip zipfile="${buildDir}/dalle-bin-${shortVersion}.zip" ziplevel="9">
+			<fileset basedir="${buildDir}" prefix="dalle-${shortVersion}">
+				<include name="*.exe"/>
+				<include name="*.dll"/>
+				<include name="locale/**"/>
+			</fileset>
+			<fileset basedir="/usr/lib/mono/2.0/" prefix="dalle-${shortVersion}">
+				<include name="ICSharpCode.SharpZipLib.dll"/>
+			</fileset>
+		</zip>
+	</target>
+		
+	<target name="generate-assembly-infos">
+		<asminfo output="src/lib/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="libDalle" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="libDalle" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/console/dalle-console/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="Dalle-console" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="dalle-console" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/console/dalle-sfv-console/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="Dalle-sfv-console" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="dalle-sfv-console" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/glade/openhacha-gtk/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="OpenHacha" />
+		        <attribute type="AssemblyDescriptionAttribute" value="A free as in freedom implementation of Hacha"/>
+		        <attribute type="AssemblyCopyrightAttribute" value="Copyright (c) 2003-2004, Ramón Rey Vicente" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />	        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/gtk/dalle-gtk/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="Dalle-gtk" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="dalle-gtk" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+		<asminfo output="src/ui/swf/dalle-swf/src/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		        <import namespace="System.Runtime.CompilerServices" />
+		    </imports>
+		    <attributes>	        
+		        <attribute type="AssemblyTitleAttribute" value="Dalle-swf" />
+		        <attribute type="AssemblyDescriptionAttribute" value="" />
+		        <attribute type="AssemblyConfigurationAttribute" value="" />
+		        <attribute type="AssemblyCompanyAttribute" value="Dalle" />
+		        <attribute type="AssemblyProductAttribute" value="dalle-swf" />
+		        <attribute type="AssemblyCopyrightAttribute" value="${copyright}" />
+		        <attribute type="AssemblyTrademarkAttribute" value="" />
+		        <attribute type="AssemblyCultureAttribute" value="" />
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyDelaySignAttribute" value="false" />
+		        <attribute type="AssemblyKeyFileAttribute" value="" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		    </attributes>
+		</asminfo>
+	</target>
+</project>

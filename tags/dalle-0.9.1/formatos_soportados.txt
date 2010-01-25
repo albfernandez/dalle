@@ -1,0 +1,80 @@
+Los formatos que soporta la aplicacion son:
+
+UNIR
+	Axman3
+	Camouflage
+	Generico
+	SF
+	SplitFile
+	FileSplit
+	Kamaleon 1 y 2
+	Hacha1
+	Hacha2
+	HachaPro
+	Easy File Splitter v 1.05
+	MaxSplitter v 1.53 Free Edition
+	zip
+
+PARTIR
+	Axman3
+	Camouflage
+	Generico
+	SF
+	Kamaleon 1 y 2
+	SplitFile
+	Hacha1
+	Hacha2	
+	HachaPro
+	Easy File Splitter v 1.05
+	MaxSplitter v 1.53 Free Edition
+	zip
+
+
+ESTADO DE IMPLEMENTACION
+
+	Axman 3
+		Une y corta sin utilizar el CRC.
+	
+	Camouflage
+		Une (no actualiza la fecha de los ficheros)
+		Corta con una unica piel y sin password, un unico archivo,
+		atributos y fechas de fichero por defecto.
+
+	Zip
+		Comprime y descomprime.
+		Solo comprime un unico fichero.
+
+	MaxSplitter v 1.53 Free Edition
+		Soporte completo cortar y unir (no restaura ni genera 
+		atributos de los ficheros).
+		No soporta (no he probado) version Professional (con zip).
+
+	Easy File Splitter v 1.05
+		Soporte completo de cortar y unir.
+
+	Kamaleon
+		Une formatos 1 y 2 (no pregunta el password).
+		Parte en formato 1 y 2, con una unica piel y sin password.
+	
+	
+	FileSplit
+		Une los archivos.
+		Hace uso de solo parte de la informacin contenida en los archivos FSI.
+		No parte en este formato.
+	
+	
+	SplitFile
+		Une y corta.
+			Ignora la informacion FileAttr.
+	
+	SF
+		Une y corta, soporte completo.
+		
+	Hacha1
+		Soporte completo de unir y cortar.
+		
+	Hacha2
+		Soporte unir y cortar completo.
+	
+	HachaPro
+		Soporte completo. No comprime en zip.

@@ -1,0 +1,98 @@
+.TH LIFEREA "1" "June 19, 2007"
+.SH NAME
+Liferea \- RSS/RDF and Atom news aggregator
+
+.SH SYNOPSIS
+.B liferea
+.RI [\fIOPTIONS\fR]
+
+.SH DESCRIPTION
+\fBLiferea\fP (Linux Feed Reader) is an RSS/RDF and Atom news aggregator which also supports CDF channels, OCS, and OPML directories.
+It's intended to be a clone of the Windows-only FeedReader.
+It can be used to maintain a list of subscribed feeds, browse and search through their items, and displays their contents using GtkHTML or Mozilla.
+.SH OPTIONS
+Liferea options:
+.TP
+.B \-\-version
+output version information and exit
+.TP
+.B \-\-help
+display a option overview and exit
+.TP
+.B \-\-mainwindow\-state=\fISTATE\fR
+Start Liferea with its mainwindow in STATE: shown, iconified, hidden
+.TP
+.B \-\-debug\-all
+Print debugging messages of all types
+.TP
+.B \-\-debug\-cache
+Print debugging messages for the cache handling
+.TP
+.B \-\-debug\-conf
+Print debugging messages of the configuration handling
+.TP
+.B \-\-debug\-db
+Print debugging messages of the database handling
+.TP
+.B \-\-debug\-gui
+Print debugging messages of all GUI functions
+.TP
+.B \-\-debug\-html
+Enables HTML rendering debugging. Each time Liferea
+renders HTML output it will also dump the generated
+HTML into ~/.liferea_1.1/output.xhtml.
+.TP
+.B \-\-debug\-net
+Print debugging messages of all network activity
+.TP
+.B \-\-debug\-parsing
+Print debugging messages of all parsing functions
+.TP
+.B \-\-debug\-plugins
+Print debugging messages for the plugin loading
+.TP
+.B \-\-debug\-trace
+Print debugging messages when entering/leaving functions
+.TP
+.B \-\-debug\-update
+Print debugging messages of the feed update processing
+.TP
+.B \-\-debug\-verbose
+Print verbose debugging messages
+
+.SH DBUS INTERFACE
+To allow integration with other programs \fBLiferea\fP provides a DBUS
+interface for automatic creation of new subscriptions. The script
+\fBliferea-add-feed\fP is a convenient way to use this interface. Just
+pass a valid feed URL as parameter and the feed will be added to the
+feed list. You can also pass non-feed URLs to use feed auto discovery.
+Example:
+
+liferea-add-feed "http://www.newsforge.com/newsforge.rss"
+
+Please note that Liferea needs to be running for \fBliferea-add-feed\fP
+to work.
+
+.SH ENVIRONMENT
+.TP
+.B http_proxy
+If a proxy is not specified in the Liferea preferences (which uses the proxy
+settings in gconf), then Liferea will use the proxy specified in $http_proxy.
+$http_proxy should be set to a URI specifying the desired proxy, for example
+.RB \(oqhttp://proxy.example.com:3128/\(cq.
+
+.SH FILES
+.TP
+/usr/lib/liferea/
+Contains Liferea plugins
+.TP
+/usr/share/liferea/css/
+Contains stylesheets for feed display
+.TP
+/usr/share/liferea/opml/
+Contains default feedlists
+.TP
+~/.liferea_1.4/
+Contains user feedlist and feed cache
+.SH AUTHOR
+This manual page was written by Lars Lindner <lars.lindner@gmail.com>.

@@ -1,0 +1,38 @@
+El formato de los archivos cortados es casi igual al del hacha pro
+La numeracion empieza en .001
+LLeva un archivo de soporte original.ext.FSI.
+Habilidad de crear zip
+Habilidad de crear autoextraibles.
+
+web:
+	http://www.partridgesoft.com/filesplit
+	
+	
+Formato del archivo de soporte (FSI) (no muy estudiado):
+
+Almacena, al menos:
+	Fecha y hora del archivo original.
+	Crc
+	tamaño del archivo original
+	nombre del archivo orginal.
+	comentario.
+
+
+0x00	4 bytes -> 0x46530304
+		4 bytes -> 0x50010000 ?
+		4 bytes -> 0x20000000
+		4 bytes -> ¿?
+		
+...... ¿¿¿¿¿¿??????????????
+
+
+0x24	4 bytes -> ¿tamaño?(¿long?...)(siempre 0 en mis pruebas).
+0x28	4 bytes -> tamaño del archivo original.
+0x2C	4 bytes -> CRC ¿Qué crc?
+0x30	4 bytes -> longitud del comentario (c)
+0x34	4 bytes -> longitud del nombre del fichero original (n)
+0x38	n bytes -> nombre original
+	c bytes -> comentario
+	x bytes hasta completar pad 4 (al menos 1).
+	
+	0x46530605300200000000000000000000000000000000000000000000 ¿Significado?

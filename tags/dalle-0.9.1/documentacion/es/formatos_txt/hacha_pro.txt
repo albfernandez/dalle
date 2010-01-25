@@ -1,0 +1,28 @@
+HACHA PRO 3
+http://www.hachaweb.com
+
+Para cortar un sólo archivo (normal):
+	Corte simple del archivo. Formato del nombre de los fragmentos.
+	<nombre original completo>.<numero de fragmento, 3 digitos, comienza en 000>
+	aes.txt.000
+
+
+Para cortar varios archivos / un directorio / Comprimir:
+	Los comprime en zip.
+	Luego corta el zip tal cual.
+	El formato del nombre de los fragmentos es:
+	-Para un fichero:
+		<nombre original completo>_axe.<numero de fragmento, 3 digitos, comienza en 000>
+		ej. WINWORD.EXE_axe.000
+	-Para un directorio / conjunto de ficheros.
+		<un nombre>_axe.<numero de fragmento, 3 digitos, comienza en 000>
+		ej. nombre_axe.000
+	
+
+Lleva un archivo de soporte nombre_archivo.crc con un crc del archivo original
+Formato:
+4 bytes para almacenar el número del último fragmento (num frags -1)
+		( El programa checksum lo identifica como el numer de fragmentos, y hachapro como el numero del ultimo fragmento...)
+Contiene un crc de 4 bytes para cada fragmento (¿método para calcular el crc?).
+
+NOTA: Hacha2 y HachaPro utilizan el mismo crc
