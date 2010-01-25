@@ -19,7 +19,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyrightAttribute("Copyright (c) 2005-2010, Alberto Fernández")]
 [assembly: AssemblyTrademarkAttribute("")]
 [assembly: AssemblyCultureAttribute("")]
-[assembly: AssemblyVersionAttribute("0.9.0.1")]
+[assembly: AssemblyVersionAttribute("0.9.1.1")]
 [assembly: AssemblyDelaySignAttribute(false)]
 [assembly: AssemblyKeyFileAttribute("")]
 [assembly: AssemblyKeyNameAttribute("")]
