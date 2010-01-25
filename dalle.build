@@ -4,6 +4,7 @@
 	<property name="debug" value="false" overwrite="false" />
 	<property name="codepage" value="utf8" overwrite="false" />
 	<property name="version" value="0.9.0.1" overwrite="false" />
+	<property name="shortVersion" value="0.9.0" overwrite="false"/>
 	<property name="copyright" value="Copyright (c) 2005-2010, Alberto Fernández" overwrite="false"/>
 	<property name="prefix" value="/usr/" overwrite="false" />
 	<property name="DESTDIR" value="/" overwrite="false" />
@@ -197,6 +198,24 @@
 				<include name="System.Drawing.dll"/>
 			</references>		
 		</csc>
+	</target>
+	<target name="make-zip" depends="build, build-dalle-swf">
+		<copy file="${buildDir}/dalle-swf.exe" tofile="${buildDir}/dalle.exe"/>
+		<delete>
+			<fileset basedir="${buildDir}">
+				<include name="*.zip"/>
+			</fileset>
+		</delete>
+		<zip zipfile="${buildDir}/dalle-${shortVersion}.zip" ziplevel="9">
+			<fileset basedir="${buildDir}" prefix="dalle-${shortVersion}">
+				<include name="*.exe"/>
+				<include name="*.dll"/>
+				<include name="locale/**"/>
+			</fileset>
+			<fileset basedir="/usr/lib/mono/2.0/" prefix="dalle-${shortVersion}">
+				<include name="ICSharpCode.SharpZipLib.dll"/>
+			</fileset>
+		</zip>
 	</target>
 		
 	<target name="generate-assembly-infos">
