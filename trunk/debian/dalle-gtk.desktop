@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Dalle-gtk
+Name=Dalle
 Comment=Corta y une archivos en varios formatos.
 Exec=/usr/bin/dalle-gtk
 Icon=dalle.xpm
