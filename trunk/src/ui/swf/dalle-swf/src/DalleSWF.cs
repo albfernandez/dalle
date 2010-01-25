@@ -22,6 +22,7 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Reflection;
 
 namespace Dalle.UI.DalleSWF
 {
@@ -63,27 +64,27 @@ namespace Dalle.UI.DalleSWF
 			// Crear los objetos
 			
 			// ...
-			this.btnExecute = new Button();
-			this.btnAbout = new Button();
-			this.btnExit = new Button();
-			this.lblWelcome = new Label();
-			this.lblWhat = new Label();
-			this.rbSplit = new RadioButton();
-			this.rbMerge = new RadioButton();
+			this.btnExecute = new Button ();
+			this.btnAbout = new Button ();
+			this.btnExit = new Button ();
+			this.lblWelcome = new Label ();
+			this.lblWhat = new Label ();
+			this.rbSplit = new RadioButton ();
+			this.rbMerge = new RadioButton ();
 			
 			
-			this.SuspendLayout();
+			this.SuspendLayout ();
 			
 			
-			this.btnExecute.Location = new Point(300,265);
-			this.btnExecute.Name = "btnExecute";		
+			this.btnExecute.Location = new Point (300, 165);
+			this.btnExecute.Name = "btnExecute";
 			this.btnExecute.Size = new Size (100, 30);
 			this.btnExecute.TabIndex = 5;
 			//this.btnExecute.Text = Catalog.GetString("Execute");
 			this.btnExecute.Text = "Execute";
 			
 			
-			this.btnExit.Location = new Point (200,265);
+			this.btnExit.Location = new Point (200, 165);
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new Size (100, 30);
 			this.btnExit.TabIndex = 4;
@@ -91,74 +92,74 @@ namespace Dalle.UI.DalleSWF
 			this.btnExit.Text = "Exit";
 			
 			
-			this.btnAbout.Location = new Point (100, 265);
+			this.btnAbout.Location = new Point (100, 165);
 			this.btnAbout.Name = "btnAbout";
-			this.btnAbout.Size = new Size(100, 30);
+			this.btnAbout.Size = new Size (100, 30);
 			this.btnAbout.TabIndex = 3;
 			//this.btnAbout.Text = Catalog.GetString("About");
 			this.btnAbout.Text = "About";
 			
 			
-			this.rbSplit.Location = new Point(25,100);
+			this.rbSplit.Location = new Point (25, 75);
 			this.rbSplit.Name = "rbSplit";
 			this.rbSplit.Size = new Size (100, 30);
 			this.rbSplit.TabIndex = 1;
 			//this.rbSplit.Text = Catalog.GetString("Split");
-			this.rbSplit.Text  = "Split";
+			this.rbSplit.Text = "Split";
 			this.rbSplit.Checked = true;
 			
-			this.rbMerge.Location = new Point (25, 125);
+			this.rbMerge.Location = new Point (25, 100);
 			this.rbMerge.Name = "rbJoin";
-			this.rbMerge.Size = new Size(100,30);
+			this.rbMerge.Size = new Size (100, 30);
 			this.rbMerge.TabIndex = 2;
 			//this.rbMerge.Text = Catalog.GetString("Merge");
 			this.rbMerge.Text = "Join";
 			
-			this.lblWhat.Location = new Point (25,50);
+			this.lblWhat.Location = new Point (25, 50);
 			this.lblWhat.Name = "lblWhat";
-			this.lblWhat.Size = new Size (200, 40);
+			this.lblWhat.Size = new Size (250, 20);
 			//this.lblWhat.Text = Catalog.GetString("What do you want to do?");
 			this.lblWhat.Text = "What do you want to do?";
 			
 			
 			this.lblWelcome.Location = new Point (25, 25);
 			this.lblWelcome.Name = "lblWelcome";
-			this.lblWelcome.Size = new Size (200,40);
+			this.lblWelcome.Size = new Size (200, 20);
 			//this.lblWelcome.Text = Catalog.GetString("Welcome to dalle");
 			this.lblWelcome.Text = "Welcome to dalle";
 			
 			
-
+			
 			
 			
 			// Tamaño
-			this.ClientSize  = new System.Drawing.Size(450,350);
+			this.Size = new System.Drawing.Size (410, 230);
+			this.MinimumSize = this.Size;
+			this.MaximumSize = this.Size;
 			//this.MaximumSize = new System.Drawing.Size(400,350);
 			//this.MinimumSize = new System.Drawing.Size(400,350);
 			
 			
-			this.Controls.AddRange( new Control[] {
-					this.btnExecute, 
-					this.btnAbout,
-					this.btnExit,
-					this.lblWelcome,
-					this.lblWhat,
-					this.rbSplit,
-					this.rbMerge});
+			this.Controls.AddRange (new Control[] {
+				this.btnExecute,
+				this.btnAbout,
+				this.btnExit,
+				this.lblWelcome,
+				this.lblWhat,
+				this.rbSplit,
+				this.rbMerge
+			});
 			
 			// Titulo y resumir layout
 			//this.Text = Catalog.GetString("Dalle-swf");
-			this.Text = "Dalle-swf";
-			this.ResumeLayout(false);
-			//this.ShowInTaskbar = false;
+			this.Text = "Dalle " + Assembly.GetExecutingAssembly ().GetName ().Version;
 			
 			// Conectar los eventos.
 			
 			this.btnExecute.Click += new EventHandler (execute_clicked);
 			this.btnAbout.Click += new EventHandler (about_clicked);
 			this.btnExit.Click += new EventHandler (exit_clicked);
-			
-			//this.ShowInTaskbar = false;
+			this.ResumeLayout(false);
 		
 		}
 		

@@ -50,9 +50,11 @@ namespace Dalle.UI.DalleSWF
 		private void InitComponent ()
 		{
 			this.MinimizeBox = false;
-			this.ControlBox = false;
-			this.SuspendLayout();
+			this.MaximizeBox = false;
+			this.SuspendLayout ();
 			this.Size = new Size (450, 350);
+			this.MaximumSize = this.Size;
+			this.MinimumSize = this.Size;
 			//this.Text = Catalog.GetString("Dalle-Swf") + " "  + Assembly.GetExecutingAssembly().GetName().Version;
 			this.Text = "Dalle-Swf " + Assembly.GetExecutingAssembly().GetName().Version;
 			

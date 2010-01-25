@@ -65,7 +65,9 @@ namespace Dalle.UI.DalleSWF
 		{
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
-			this.Size = new Size (400, 300);
+			this.Size = new Size (350, 165);
+			this.MaximumSize = this.Size;
+			this.MinimumSize = this.Size;
 			//this.Text = Catalog.GetString("Merge");
 			this.Text = "Merge";
 			
@@ -106,13 +108,13 @@ namespace Dalle.UI.DalleSWF
 			//this.pb.Visible = false;
 			
 			this.btnClose = new Button ();
-			this.btnClose.Location = new Point (250, 100);
+			this.btnClose.Location = new Point (225, 100);
 			this.btnClose.Size = new System.Drawing.Size (50, 24);
 			this.btnClose.Text = "Close";
 			this.btnClose.Click += new EventHandler (btnCloseClick);
 			
 			this.btnJoin = new Button ();
-			this.btnJoin.Location = new Point (300, 100);
+			this.btnJoin.Location = new Point (275, 100);
 			this.btnJoin.Size = new System.Drawing.Size (50, 24);
 			this.btnJoin.Text = "Join";
 			this.btnJoin.Click += new EventHandler (btnJoinClick);
@@ -135,9 +137,9 @@ namespace Dalle.UI.DalleSWF
 			double fraction = ((double) done) / ((double)total);
 			Console.WriteLine("progreso=" + done + "/" + total +"=" + fraction);
 			this.pb.Value = (int) Math.Floor(100*fraction);
-			Console.WriteLine("barra=" + this.pb.Value);
+			//Console.WriteLine("barra=" + this.pb.Value);
 			//this.Refresh();
-			System.Threading.Thread.Sleep (500);
+			//System.Threading.Thread.Sleep (500);
 			if (requestStop)
 			{
 				Manager.Instance.Stop();
