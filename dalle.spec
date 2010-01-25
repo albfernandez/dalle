@@ -41,7 +41,7 @@ chmod 755 %{buildroot}/usr/bin/*
 %__cat > %{buildroot}%{_datadir}/applications/%{name}-gtk.desktop << EOF
 [Desktop Entry]
 Encoding=UTF-8
-Name=%{name}-gtk
+Name=%{name}
 Comment=Corta y une archivos en varios formatos.
 Exec=/usr/bin/dalle-gtk
 Icon=dalle.xpm
