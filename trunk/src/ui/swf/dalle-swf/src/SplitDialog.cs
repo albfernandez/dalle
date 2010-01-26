@@ -302,11 +302,7 @@ namespace Dalle.UI.DalleSWF
 		protected virtual void OnProgress (long done, long total)
 		{
 			double fraction = ((double) done) / ((double)total);
-			Console.WriteLine("progreso=" + done + "/" + total +"=" + fraction);
 			this.pb.Value = (int) Math.Floor(100*fraction);
-			//Console.WriteLine("barra=" + this.pb.Value);
-			//this.Refresh();
-			//System.Threading.Thread.Sleep (500);
 			if (requestStop)
 			{
 				Manager.Instance.Stop();
