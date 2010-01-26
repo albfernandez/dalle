@@ -269,7 +269,28 @@ namespace Dalle.UI.DalleSWF
 			int kbs = (int)this.nudSize.Value;
 			this.DisableElements ();
 			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
-			Manager.Instance.Partir (format, filename, "", kbs);
+			
+			
+			
+			String mensajeError = null;
+			try {
+				Manager.Instance.Partir (format, filename, "", kbs);
+			} catch (System.IO.FileNotFoundException e) {
+				mensajeError = String.Format ("File not found: {0}", e.FileName);
+			} catch (Dalle.Formatos.FileFormatException) {
+				mensajeError = "Couldn't determine file type or the file is corrupted";
+			} catch (Dalle.Formatos.FileAlreadyExistsException e) {
+				mensajeError = String.Format ("The file {0} already exists", e.FileName);
+			} catch (Dalle.Formatos.ChecksumVerificationException) {
+				mensajeError = "The checksum is invalid";
+			} catch (Exception e) {
+				mensajeError = e.Message;
+			}
+			if (mensajeError != null) {
+				MessageBox.Show (mensajeError);
+			}
+			
+			
 			
 			this.EnableElements ();
 			this.requestStop = false;

@@ -181,16 +181,37 @@ namespace Dalle.UI.DalleSWF
 			if (t == null)
 			{
 				this.requestStop = false;
-				this.t = new Thread(new ThreadStart(joinFile));
-				this.t.Start();
+				this.t = new Thread (new ThreadStart (joinFile));
+				this.t.Start ();
 			}
-			
+		
+		}
+		protected void OnBegin ()
+		{
+			this.DisableElements ();
 		}
 		protected void joinFile ()
 		{
 			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
-			this.DisableElements ();
-			Manager.Instance.Unir (txtFilename.Text);
+			this.OnBegin ();
+			String mensajeError = null;
+			try {
+				Manager.Instance.Unir (txtFilename.Text);
+			} catch (System.IO.FileNotFoundException e) {
+				mensajeError = String.Format ("File not found: {0}", e.FileName);
+			} catch (Dalle.Formatos.FileFormatException) {
+				mensajeError = "Couldn't determine file type or the file is corrupted";
+			} catch (Dalle.Formatos.FileAlreadyExistsException e) {
+				mensajeError = String.Format ("The file {0} already exists", e.FileName);
+			} catch (Dalle.Formatos.ChecksumVerificationException) {
+				mensajeError = "The checksum is invalid";
+			} catch (Exception e) {
+				mensajeError = e.Message;
+			}
+			if (mensajeError != null)
+			{
+				MessageBox.Show (mensajeError);
+			}		
 			this.EnableElements ();
 			this.requestStop = false;
 			t = null;
