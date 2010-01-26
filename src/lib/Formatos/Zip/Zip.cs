@@ -36,7 +36,6 @@ namespace Dalle.Formatos.Zip
 	
 	public class Zip : Parte 
 	{
-		private static int buffSize = 262144;
 
 		
 		public Zip()
@@ -49,13 +48,7 @@ namespace Dalle.Formatos.Zip
 			parteFicheros = true;
 			
 		}
-		public static int BufferSize{
-			get{return buffSize;}
-			set{
-				if (value > 0)
-					buffSize = value;
-			}
-		}
+
 		protected override void _Unir (string fichero, string dirDest)
 		{
 			Descomprimir(fichero, dirDest);
@@ -93,7 +86,8 @@ namespace Dalle.Formatos.Zip
 			long ret = 0;
 			ZipInputStream s = new ZipInputStream (File.OpenRead (fichero));
 			ZipEntry entrada;
-			while ((entrada = s.GetNextEntry()) != null){
+			while ((entrada = s.GetNextEntry ()) != null)
+			{
 				ret += entrada.Size;
 			}
 			s.Close();
@@ -101,30 +95,28 @@ namespace Dalle.Formatos.Zip
 		}
 		
 		public void Descomprimir (string fichero, string dirDest)
-		{	
-			
-			ZipInputStream s = new ZipInputStream (File.OpenRead(fichero));
-			long total = s.Length;
+		{
+			long total = ObtenerTamanoDatos (fichero);
+			long transferidos = 0;
+			ZipInputStream s = new ZipInputStream (File.OpenRead (fichero));
 			ZipEntry entrada;
-			OnProgress (0,1);
-			while ((entrada = s.GetNextEntry()) != null){
+			OnProgress (0, 1);
+			while ((entrada = s.GetNextEntry ()) != null)
+			{
 				String dirName = Path.GetDirectoryName (entrada.Name);
 				String ficName = Path.GetFileName (entrada.Name);
 				
-				DirectoryInfo currDir = Directory.CreateDirectory (Path.Combine(dirDest, dirName));
-				if (ficName != null && ficName.Length != 0){
+				DirectoryInfo currDir = Directory.CreateDirectory (Path.Combine (dirDest, dirName));
+				if (ficName != null && ficName.Length != 0)
+				{
 					FileInfo fi = new FileInfo (Path.Combine (currDir.FullName, ficName));
-					FileStream writer = fi.Create();
-					byte[] data = new byte[BufferSize];
-					while (true){
-						int size = s.Read(data, 0, data.Length);
-						if (size > 0){
-							writer.Write(data, 0, size);
-							OnProgress (s.Position, total);
-						}
-						else{
-							break;
-						}
+					Stream writer = UtilidadesFicheros.CreateWriter (fi);
+					byte[] data = new byte[Consts.BUFFER_LENGTH];
+					int leidos = 0;
+					while ((leidos = s.Read (data, 0, data.Length)) > 0) {
+						writer.Write (data, 0, leidos);
+						transferidos += leidos;
+						OnProgress (transferidos, total);
 					}
 					writer.Close();
 					fi.LastWriteTime = entrada.DateTime;
@@ -156,7 +148,7 @@ namespace Dalle.Formatos.Zip
 			if (File.Exists (fichero)){
 				FileStream fStream = File.OpenRead (fichero);
 				long transferidos = 0;
-                		byte[] buffer = new byte[BufferSize];				
+                byte[] buffer = new byte[Consts.BUFFER_LENGTH];				
 				
 				ZipEntry entry = new ZipEntry (fichero);
 				entry.DateTime = File.GetLastWriteTime(fichero);
