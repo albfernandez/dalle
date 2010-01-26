@@ -72,6 +72,13 @@ namespace Dalle.Utilidades
 		{
 		}
 	
+		public static void ComprobarSobreescribir (FileInfo fich)
+		{
+			if (!fich.Exists) 
+			{
+				throw new Dalle.Formatos.FileAlreadyExistsException(fich.FullName, fich.FullName);
+			}
+		}
 
 		public static void ComprobarSobreescribir (string fich)
 		{
@@ -308,6 +315,10 @@ namespace Dalle.Utilidades
 			DirectoryInfo directorio = new DirectoryInfo(dir);
 			directorio.Create();			
 			return File.Open(file, FileMode.CreateNew);
+		}
+		public static Stream CreateWriter (FileInfo fi)
+		{
+			return CreateWriter (fi.FullName);
 		}
 		
 		public static long GenerateHash (string file, IChecksum crc)
