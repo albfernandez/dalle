@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Threading;
 using PipeStream;
+using SevenZip.Compression.LZMA;
 
 namespace Dalle.Compression.LZMA
 {
@@ -13,35 +14,50 @@ namespace Dalle.Compression.LZMA
 		private Stream inStream; 
 		private Thread writeThread;
 		PipeStream.PipeStream pipe;
+		private Decoder decoder = null;
+		private long uncompressedSize = 0;
+		private long compressedSize = 0;
+		
 		public LZMAInputStream (Stream inStream)
 		{
 			this.inStream = inStream;
 			pipe = new PipeStream.PipeStream ();
-			pipe.MaxBufferLength = PipeStream.PipeStream.KB * 500;
+			pipe.MaxBufferLength = PipeStream.PipeStream.MB * 4;
 			pipe.BlockLastReadBuffer = true;
+			
+			this.InitDecoder ();
+			
 			writeThread = new Thread (new ThreadStart (Writer));
 			writeThread.Start ();
 		
 		}
-		private void Writer ()
+		private void InitDecoder ()
 		{
+			decoder = new SevenZip.Compression.LZMA.Decoder ();
 			byte[] properties = new byte[5];
 			inStream.Read (properties, 0, 5);
-			SevenZip.Compression.LZMA.Decoder decoder = new SevenZip.Compression.LZMA.Decoder ();
 			decoder.SetDecoderProperties (properties);
-			long outSize = 0;
 			for (int i = 0; i < 8; i++)
 			{
 				int v = inStream.ReadByte ();
-				outSize |= ((long)(byte)v) << (8 * i);
+				uncompressedSize |= ((long)(byte)v) << (8 * i);
 			}
-			long compressedSize = inStream.Length - inStream.Position;
-			decoder.Code (inStream, pipe, compressedSize, outSize, null);			
+			compressedSize = inStream.Length - inStream.Position;
+		}
+		private void Writer ()
+		{
+			
+			decoder.Code (inStream, pipe, compressedSize, uncompressedSize, null);			
 			pipe.BlockLastReadBuffer = false;
 			pipe.Flush ();
 		}
 		
 		
+		public long UncompressedSize {
+			get {
+				return uncompressedSize;
+			}
+		}
 
 		public override bool CanRead {
 			get {

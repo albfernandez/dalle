@@ -53,15 +53,18 @@ namespace Dalle.Formatos.GZip
 			string destino = dirDest + Path.DirectorySeparatorChar + fi.Name.Substring (0, fi.Name.LastIndexOf ('.'));
 			long datosTotales = fi.Length;
 			FileStream input = File.OpenRead (fichero);
+			datosTotales = GetUncompressedSize (input);
 			GZipStream gzipInput = new GZipStream (input, CompressionMode.Decompress);
 			Stream fos = UtilidadesFicheros.CreateWriter (destino);
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			int leidos = 0;
+			long transferidos=0;
 			OnProgress (0, datosTotales);
 			while ((leidos = gzipInput.Read (buffer, 0, buffer.Length)) > 0)
 			{
 				fos.Write (buffer, 0, leidos);
-				OnProgress (input.Position, datosTotales);
+				transferidos += leidos;
+				OnProgress (transferidos, datosTotales);
 			}
 			gzipInput.Close ();
 			fos.Close ();
@@ -75,7 +78,14 @@ namespace Dalle.Formatos.GZip
 			}
 			return fichero.ToLower ().EndsWith (".gz");
 		}
-
-		
+		public static long GetUncompressedSize (FileStream stream)
+		{
+			long prev = stream.Position;
+			stream.Seek (-4, SeekOrigin.End);
+			byte[] a = new byte[4];
+			stream.Read (a, 0, 4);
+			stream.Seek (prev, SeekOrigin.Begin);
+			return UtArrays.LeerInt32 (a, 0);
+		}
 	}
 }

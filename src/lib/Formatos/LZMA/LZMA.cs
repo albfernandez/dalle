@@ -55,14 +55,18 @@ namespace Dalle.Formatos.LZMA
 			long datosTotales = fi.Length;
 			FileStream input = File.OpenRead (fichero);
 			LZMAInputStream lzmaInput = new LZMAInputStream (input);
+			datosTotales = lzmaInput.UncompressedSize;
 			Stream fos = UtilidadesFicheros.CreateWriter (destino);
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			int leidos = 0;
+			long transferidos = 0;
 			OnProgress (0, datosTotales);
 			while ((leidos = lzmaInput.Read (buffer, 0, buffer.Length)) > 0)
 			{
 				fos.Write (buffer, 0, leidos);
-				OnProgress (input.Position, datosTotales);
+				transferidos += leidos;
+				//OnProgress (input.Position, datosTotales);
+				OnProgress (transferidos, datosTotales);
 			}
 			lzmaInput.Close ();
 			fos.Close ();

@@ -55,40 +55,63 @@ namespace Dalle.Formatos.Tar
 			}
 			FileInfo fi = new FileInfo (fichero);
 			long datosTotales = fi.Length;
+			long uncompressedSize = 0;
 			FileStream input = File.OpenRead (fichero);
 			Stream input2 = input;
 			
 			if (fichero.ToLower ().EndsWith (".bz2") || fichero.ToLower ().EndsWith (".tbz2")) 
 			{
+				// No hay forma de saber el tamaño descomprimido de un bz2 de forma inmediata
 				input2 = new BZip2InputStream (input);
 			} 
 			else if (fichero.ToLower ().EndsWith (".gz") || fichero.ToLower ().EndsWith (".tgz")) 
 			{
+				uncompressedSize = Dalle.Formatos.GZip.GZip.GetUncompressedSize (input);
 				input2 = new GZipStream (input, CompressionMode.Decompress);
 			}
 			else if (fichero.ToLower ().EndsWith (".tar.lzma") || fichero.ToLower ().EndsWith ("tlz"))
 			{
 				input2 = new LZMAInputStream (input);
+				uncompressedSize = ((LZMAInputStream)input2).UncompressedSize;
 			}
-			TarInputStream tarInput = new TarInputStream (input2);		
+			TarInputStream tarInput = new TarInputStream (input2);
+			
 			TarEntry tarEntry = null;
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
-			OnProgress(0, datosTotales);
-			while ((tarEntry = tarInput.GetNextEntry()) != null)
+			OnProgress (0, 1);
+			long transferidos = 0;
+			while ((tarEntry = tarInput.GetNextEntry ()) != null)
 			{
-				if (tarEntry.IsDirectory) continue;
-				Stream entrada = new SizeLimiterStream(tarInput, tarEntry.Size);
-				Stream salida = UtilidadesFicheros.CreateWriter(dirDest + Path.DirectorySeparatorChar + tarEntry.Name);
+				// Tamaño de la cabecera de la entrada.
+				// Nota: TarInputStream ignora sileciosamente algunas entradas,
+				// por lo que el progreso no será totalmente preciso.
+				transferidos += 512;
+				if (tarEntry.IsDirectory) 
+				{
+					continue;
+				}
+				Stream entrada = new SizeLimiterStream (tarInput, tarEntry.Size);
+				Stream salida = UtilidadesFicheros.CreateWriter (dirDest + Path.DirectorySeparatorChar + tarEntry.Name);
 				
 				int leidos = 0;
-				while ((leidos = entrada.Read(buffer,0,buffer.Length))> 0)
+
+				while ((leidos = entrada.Read (buffer, 0, buffer.Length)) > 0)
 				{
-					salida.Write(buffer,0,leidos);
-					OnProgress(input.Position, datosTotales);
+					salida.Write (buffer, 0, leidos);
+					transferidos += leidos;
+					if (uncompressedSize > 0) 
+					{
+						OnProgress (transferidos, uncompressedSize);
+					}
+					else {
+						OnProgress (input.Position, datosTotales);
+					}
 				}
-				salida.Close();
+				salida.Close ();
+				transferidos += 512 - (tarEntry.Size % 512);				
 			}
-			tarInput.Close();
+			tarInput.Close ();
+			OnProgress (1, 1);
 		}
 		public override bool PuedeUnir (string fichero)
 		{
