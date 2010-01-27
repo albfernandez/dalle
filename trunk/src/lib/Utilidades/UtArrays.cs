@@ -93,10 +93,19 @@ namespace Dalle.Utilidades
 		public static short LeerInt16 (byte[] bytes, int pos_ini)
 		{
 			byte b0, b1;
-			b0 = bytes [pos_ini];
-			b1 = bytes [pos_ini + 1];
+			b0 = bytes[pos_ini];
+			b1 = bytes[pos_ini + 1];
 			
-			return ((short) (b0 | (b1 << 8)));
+			return ((short)(b0 | (b1 << 8)));
+		}
+		
+		public static ushort LeerUInt16 (byte[] bytes, int pos_ini)
+		{
+			byte b0, b1;
+			b0 = bytes[pos_ini];
+			b1 = bytes[pos_ini + 1];
+			
+			return ((ushort)(b0 | (b1 << 8)));
 		}
 		
 		
