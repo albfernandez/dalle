@@ -8,7 +8,7 @@
 	<property name="copyright" value="Copyright (c) 2005-2010, Alberto Fernández" overwrite="false"/>
 	<property name="prefix" value="/usr/" overwrite="false" />
 	<property name="DESTDIR" value="/" overwrite="false" />
-	<property name="lib7zip" value="lib7zip.dll" />
+	<property name="lib7zip" value="liblzma.dll" />
 	<property name="libDalle" value="libDalle.dll"/>
 	<property name="buildDir" value="build"/>
 	
