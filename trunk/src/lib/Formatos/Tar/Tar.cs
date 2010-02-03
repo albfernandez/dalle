@@ -29,6 +29,8 @@ using ICSharpCode.SharpZipLib.Tar;
 
 using Dalle.Utilidades;
 using Dalle.Compression.LZMA;
+using Dalle.Streams;
+
 namespace Dalle.Formatos.Tar
 {
 
@@ -59,7 +61,7 @@ namespace Dalle.Formatos.Tar
 			FileStream input = File.OpenRead (fichero);
 			Stream input2 = input;
 			
-			if (fichero.ToLower ().EndsWith (".bz2") || fichero.ToLower ().EndsWith (".tbz2")) 
+			if (fichero.ToLower ().EndsWith (".bz2") || fichero.ToLower ().EndsWith (".tbz2") || fichero.ToLower ().EndsWith (".tbz")) 
 			{
 				// No hay forma de saber el tamaño descomprimido de un bz2 de forma inmediata
 				input2 = new BZip2InputStream (input);
@@ -127,6 +129,7 @@ namespace Dalle.Formatos.Tar
 					l.EndsWith (".tar.gz") || 
 					l.EndsWith (".tgz") ||
 					l.EndsWith (".tbz2") ||
+					l.EndsWith (".tbz") ||
 					l.EndsWith (".tar");
 
 		}

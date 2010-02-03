@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using System.Threading;
-using PipeStream;
+using Dalle.Streams;
 using SevenZip.Compression.LZMA;
 
 namespace Dalle.Compression.LZMA
@@ -13,7 +13,7 @@ namespace Dalle.Compression.LZMA
 	{
 		private Stream inStream; 
 		private Thread writeThread;
-		PipeStream.PipeStream pipe;
+		PipeStream pipe;
 		private Decoder decoder = null;
 		private long uncompressedSize = 0;
 		private long compressedSize = 0;
@@ -21,8 +21,8 @@ namespace Dalle.Compression.LZMA
 		public LZMAInputStream (Stream inStream)
 		{
 			this.inStream = inStream;
-			pipe = new PipeStream.PipeStream ();
-			pipe.MaxBufferLength = PipeStream.PipeStream.MB * 4;
+			pipe = new PipeStream ();
+			pipe.MaxBufferLength = PipeStream.MB * 4;
 			pipe.BlockLastReadBuffer = true;
 			
 			this.InitDecoder ();

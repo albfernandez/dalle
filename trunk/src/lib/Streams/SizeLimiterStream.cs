@@ -21,7 +21,7 @@
 using System;
 using System.IO;
 
-namespace Dalle.Formatos
+namespace Dalle.Streams
 {
 
 

@@ -27,6 +27,7 @@ using System.Security.Cryptography;
 
 using Dalle.Formatos;
 using Dalle.Utilidades;
+using Dalle.Streams;
 
 namespace Dalle.Formatos.Xstremsplit
 {
