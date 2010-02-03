@@ -21,7 +21,8 @@ namespace Dalle
 {
 	public class Consts 
 	{
-		public const int BUFFER_LENGTH = 1024;
+		// 1Mb
+		public const int BUFFER_LENGTH = 1024*1024;
 	}
 
 }
