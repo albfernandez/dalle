@@ -46,6 +46,8 @@ namespace Dalle.UI.DalleGtk
 		private Gtk.SpinButton sizeSpin;
 		private ArrayList listaFormatos;
 		
+		private bool updatingSpin = false;
+		
 		private static SplitDialog instance;
 		
 		public static SplitDialog Instance{
@@ -118,7 +120,7 @@ namespace Dalle.UI.DalleGtk
 			table.Attach (lbl2, 0,1, 1,2);
 			
 			
-			Gtk.Adjustment adj = new Gtk.Adjustment (1.0,1.0,999.0, 1.0, 10.0, 0.0);
+			Gtk.Adjustment adj = new Gtk.Adjustment (1.0,1.0,999.0, 1.0, 1.0, 0.0);
 			numberSpin = new Gtk.SpinButton (adj, 1.0, 0);
 			numberSpin.ValueChanged += new EventHandler (this.OnNumberSpinChanged);
 			table.Attach (numberSpin, 1,2, 1,2);
@@ -128,7 +130,7 @@ namespace Dalle.UI.DalleGtk
 			lbl3.Yalign = 0.5f;
 			table.Attach (lbl3, 0, 1, 2, 3);
 			
-			Gtk.Adjustment adj2 = new Gtk.Adjustment (1420.0, 1.0, 1.024e6, 10.0,100.0,0.0); 
+			Gtk.Adjustment adj2 = new Gtk.Adjustment (256.0, 1.0, 8.192e6, 10.0,100.0,0.0); 
 			sizeSpin = new Gtk.SpinButton (adj2, 10.0, 0);
 			sizeSpin.ValueChanged += new EventHandler (this.OnSizeSpinChanged);
 			Gtk.HBox hbox3 = new Gtk.HBox (false, 6);
@@ -180,14 +182,27 @@ namespace Dalle.UI.DalleGtk
 		
 		protected void OnSizeSpinChanged (object o, EventArgs args)
 		{
+			if (updatingSpin) 
+			{
+				return;
+			}
+			updatingSpin = true;
 			OnEntryChanged (o, args);
+			updatingSpin = false;
 		}
 		protected void OnNumberSpinChanged (object o, EventArgs args)
 		{
-			if (! File.Exists (this.FileEntry.Text) )
+			if (!File.Exists (this.FileEntry.Text))
 				return;
-			long tamano = new FileInfo(this.FileEntry.Text).Length;
-			sizeSpin.Value = Math.Ceiling ((double) (tamano) / (numberSpin.ValueAsInt * 1024));
+			if (updatingSpin)
+			{
+				return;
+			}
+			updatingSpin = true;
+			long tamano = new FileInfo (this.FileEntry.Text).Length;
+			double newValue = Math.Ceiling ((double) (tamano) / (numberSpin.ValueAsInt * 1024));
+			sizeSpin.Value = newValue;
+			updatingSpin = false;
 		}
 		
 		protected void OnEntryChanged (object sender, EventArgs args)
