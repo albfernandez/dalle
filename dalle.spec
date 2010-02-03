@@ -94,7 +94,7 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 /usr/lib/dalle/dalle-gtk.exe
 /usr/lib/dalle/openhacha-gtk.exe
 /usr/lib/dalle/libDalle.dll
-/usr/lib/dalle/lib7zip.dll
+/usr/lib/dalle/liblzma.dll
 
 /usr/share/locale/es/LC_MESSAGES/dalle.mo
 /usr/share/locale/gl/LC_MESSAGES/dalle.mo
