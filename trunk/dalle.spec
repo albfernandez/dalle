@@ -1,5 +1,5 @@
 %define name dalle
-%define version 0.9.1
+%define version 0.10.1
 %define release 1
 %define prefix /usr
 
@@ -103,6 +103,9 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 /usr/share/icons/dalle.xpm
 
 %changelog
+
+* Wed Feb 3 2010 Alberto Fernandez <infjaf@gmail.com>
+- Version 0.10.1
 
 * Mon Jan 25 2010 Alberto Fernandez <infjaf@gmail.com>
 - Version 0.9.1
