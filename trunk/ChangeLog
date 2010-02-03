@@ -1,3 +1,17 @@
+2010-02-03
+	Version 0.10.1
+
+2010-02-03
+	Corregido bug al partir en formato 'generico'.
+	Aumentado el tamaño del buffer a 1Mb para mejorar el rendimiento.
+
+2010-01-27
+	Mejora del soporte de astrotite. Código reescrito. 
+	Soporta bloques y archivos vacios.
+
+2010-01-26
+	Mejora al mostrar el progreso en gzip, lzma, zip y tar.
+
 2010-01-25
 	Version 0.9.1
 

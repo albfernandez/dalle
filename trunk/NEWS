@@ -1,3 +1,8 @@
+03-02-2010  - Version 0.10.1
+	Corregido bug al partir en formato 'generico'.
+	Aumentado el tamaño del buffer a 1Mb para mejorar el rendimiento.
+	Mejora del soporte de astrotite. Código reescrito. 
+
 25-01-2010  - Version 0.9.1
 	Soporte LZMA
 
