@@ -64,21 +64,26 @@ namespace Dalle.Formatos.Generico
 			
 			Partir (fichero, sal1, dir, kb, info);
 		}
-		public  int Partir (string fichero, string sal1, string dir, long kb, InfoGenerico info)
+		public int Partir (string fichero, string sal1, string dir, long kb, InfoGenerico info)
 		{
 			long tamano = new FileInfo (fichero).Length;
 			long tFragmento = 1024 * kb;
 			long transferidos = 0;
 			
-			Stream fis = File.OpenRead(fichero);
+			Stream fis = File.OpenRead (fichero);
 			int leidos = 0;
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			int contador = 0;
 			do {
-				Stream fos = UtilidadesFicheros.CreateWriter (info.GetFragmentName(contador+1));
-				int parcial = 0;
-				while ((leidos = fis.Read (buffer, 0, Math.Min ((int)tFragmento - parcial, buffer.Length))) > 0)
+				
+				string fullOutputFilename = info.Directory.FullName +
+					Path.DirectorySeparatorChar + 
+					info.GetFragmentName (contador + 1);
+				Stream fos = UtilidadesFicheros.CreateWriter (fullOutputFilename);
+				long parcial = 0;
+				while ((leidos = fis.Read (buffer, 0, (int)Math.Min (tFragmento - parcial, buffer.Length))) > 0)
 				{
+					fos.Write (buffer, 0, leidos);
 					parcial += leidos;
 					transferidos += leidos;
 					OnProgress (transferidos, tamano);
