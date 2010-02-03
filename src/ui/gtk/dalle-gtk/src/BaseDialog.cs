@@ -156,40 +156,41 @@ namespace Dalle.UI.DalleGtk
 		protected void ActionButtonClicked (object sender, EventArgs args)
 		{
 		
-			if (!File.Exists (FileEntry.Text)){
+			if (!File.Exists (FileEntry.Text)) {
 				Gtk.MessageDialog d = new Gtk.MessageDialog (
 					this, 
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Error,
 					Gtk.ButtonsType.Ok,
-					Catalog.GetString("Selected file does not exist"));
-				d.Run();
-				d.Destroy();
+					Catalog.GetString ("Selected file does not exist"));
+				d.Run ();
+				d.Destroy ();
 				return;
 			}
-				
+			
 					
 					
 				
 			running = true;
-			OnBegin();
+			OnBegin ();
 			String mensajeError = null;
 			try {
-				ExecuteAction();
+				ExecuteAction ();
 			}
 			catch (System.IO.FileNotFoundException e) {
-				mensajeError = String.Format(Catalog.GetString("File not found: {0}"), e.FileName);
+				mensajeError = String.Format (Catalog.GetString ("File not found: {0}"), e.FileName);
 			}
-			catch (Dalle.Formatos.FileFormatException){
-				mensajeError = Catalog.GetString("Couldn't determine file type or the file is corrupted");
+			catch (Dalle.Formatos.FileFormatException) {
+				mensajeError = Catalog.GetString ("Couldn't determine file type or the file is corrupted");
 			}
-			catch (Dalle.Formatos.FileAlreadyExistsException e){
-				mensajeError = String.Format(Catalog.GetString("The file {0} already exists"), e.FileName);
+			catch (Dalle.Formatos.FileAlreadyExistsException e) {
+				mensajeError = String.Format (Catalog.GetString ("The file {0} already exists"), e.FileName);
 			}
 			catch (Dalle.Formatos.ChecksumVerificationException) {
-				mensajeError = Catalog.GetString("The checksum is invalid");
+				mensajeError = Catalog.GetString ("The checksum is invalid");
 			}
-			catch (Exception e){
+			catch (Exception e) {
+				Console.WriteLine (e);
 				mensajeError = e.Message;
 			}
 			if (mensajeError != null) {
