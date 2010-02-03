@@ -1,0 +1,184 @@
+
+Splitter & Merger
+------------------------
+
+v 1.02
+---------
+Corte simple
+Nombre de los fragmentos:
+	BASE_SIN_EXT.%d
+	Empieza la numeracion en 1
+archivo spl (ASCII) BASE_SIN_EXT.SPL:
+	Nombre del archivo\nNumero de partes
+	
+v 1.1 (MS-DOS)
+---------------------
+Corte normal
+Nombre de los fragmentos:
+	BASE_SIN_EXT.%d
+	Empieza la numeracion en  1
+archivo spl (ASCII) SPLITTER.DAT:
+	Nombre del archivo\r\nNumero de partes\r\n
+	
+Ejecutable para unir los fragmentos (13kb, no contiene partes del fichero)
+BASE_SIN_EXT.EXE
+
+	
+
+v 2.0
+-----------------
+Corte normal
+Nombre de los fragmentos:
+	BASE_CON_EXT.%d
+	Empieza la numeracion en 1
+archivo spl (ASCII) BASE_CON_EXT.SPL
+	Nombre del archivo\nNumero de partes
+
+En el caso del exe
+	BASE_CON_EXT.EXE La numeracion del resto empieza en 2
+	Ejecutable de 0x1600
+	0x1600 nombre del archivo orginal 
+	0000
+	0x1704 - numero de partes en ascii (4 char)
+	Si el el numero de partes es > 9999, se corta a 4 digitos
+	0x1708 Comienzo de los datos 
+Magic: 0x960 "to!"
+
+El tamaño del primer fragmento en caso del exe es mayor que el resto
+5896 bytes(exe + header)
+		
+v 3.0
+---------------
+Normal
+Nombre de los fragmentos:
+	BASE_CON_EXT.%d
+	La numeracion empieza en uno,  4 digitos
+	BASE_CON_EXT.spl
+exe
+	BASE_CON_EXT.EXE
+	La numeracion del resto empieza en 2
+	(sin spl)
+comprimido
+	BASE_CON_EXT.spc.%d
+	La numeracion empieza en uno,  4 digitos
+	BASE_CON_EXT.spc.spl
+exe y comprimido
+	BASE_CON_EXT.spl.EXE
+	La numeración del resto empieza en 2
+	(sin spl).
+
+en el exe: exe - spl - datos (en esta version y las posteriores)
+
+Archivo spl
+	280 bytes
+Bytes Contenido
+  256  Nombre del archivo rellenando con ceros. (Caso comprimido BASE_CON_EXT.spc)
+    8  Tamaño del archivo unido. (Si es comprimido, del archivo comprimido)
+    8  Time stamp del archivo armado.
+    4  Número de partes.
+    4  Comprimido.1=Comprimido, 0=No comprimido.
+    
+ 
+ Cuando la primer parte es autoextractable su tamaño es:
+
+Tamaño del ejecutable + Tamaño del SPL + Tamaño de la parte: El primer archivo es más grande que el resto.
+ 
+NOTA: tamaño (+1byte en exe+comprimido)?
+NOTA: algoritmo de compresión desconocido
+
+exe
+standard->0x1C00 contenido 0x1D18
+magic. 0xDF1 "se pued"
+ 
+ Splitter & Merger v4.0
+======================
+Lite -> 13kb, no permite comprimir ni descomprimir las partes (construye el gz)
+"standard" 28.5 kb (puede comprimir y descomprimir con gz)
+
+Este programa puede cortar las partes con o sin compresión y creando o no un
+autoextractable. Por lo que son cuatro altenativas. El nombre de las partes
+se construye a partir del nombre del archivo a cortar agregando extensiones:
+
+base = nombreOriginalConExtension
+
+Comp. Extr.   Partes
+No    No      base.001, base.002, etc. y un base.spl
+Si    No      base.gz.001, base.gz.002, etc. y un base.gz.spl
+No    Si      base.exe, base.002, base.003, etc.
+Si    Si      base.gz.exe, base.gz.002, base.gz.003, etc.
+
+Todas las partes tienen igual tamaño (menos la última), no importa si son o
+no la .exe.
+El tamaño del autoextractable es de 0x7200 bytes (relleno con 0 para
+redondear). 
+Nota: daiset dice que hay una version no española (inglesa?) de 0x7000
+
+Lite -> 0x3400 - contenido 0x3520
+Magic . 0x19C2 "de Splitter & Mg"
+standard 0x7200 - contenido 0x7320
+Magic . 0x51A8 "Spl"
+
+
+El formato del SPL es:
+Total: 288 bytes
+Bytes Contenido
+  256 Nombre terminado en 0. Si se hizo otra partición sin salir del programa
+      con un nombre más largo los remanentes del nombre anterior quedan en el
+      buffer.
+      (Caso comprimido : base + .gz)
+    8 Relleno. 
+    8 Tamaño del archivo unido [con compresion].
+    8 Time stamp del archivo de destino en un formato propio de Win32.
+    4 0. En versiones anteriores esto era el número de partes,
+    4 1=Comprimido, 0=No comprimido.
+
+
+El archivo comprimido tiene el header básico de un .gz. Aparentemente el
+programa primero comprime el archivo y luego lo corta. 
+
+El exe del mismo tamaño que el resto
+ 
+
+Splitter & Merger v5.0 (Beta 2)
+===============================
+
+En esta versión los nombres de las partes son adaptados para que sean más
+"limpios", por ejemplo: sólo una extensión y no pepe.gz.001. Para ello el
+header se agrandó y hay lugar para guardar el nombre base usado para las
+partes. También se agregó un campo que parece ser la versión del programa
+multiplicada por 10. Otro detalle interesante es que se agregó un CRC32 de
+los datos.
+El nuevo formato del SPL es:
+
+544 bytes
+Bytes Contenido
+  260  Nombre del de salida (original).
+  260  Nombre base usado para cortar las partes. ejemplo: r.bz2 => r_bz2
+    8  Largo del archivo [con compresión].
+    8  Time stamp.
+    4  CRC32 del archivo [sin compresión]. 0 si crc desactivado       
+    2  0x32 Parece ser la versión: 0x32 == 50 == 5.0
+    2  Comprimido
+
+
+exe: 0x7A00 contenido 0x7C20
+magic: 0x3200 7C1C
+	0x564F "archivo .gz+ N"
+	
+el exe del mismo tamaño que el resto
+
+Splitter & Merger v5.5 
+===============================
+
+El formato del spl es el mismo que la version 5.02
+
+exe
+0x8600
+contenido
+0x8820
+
+magic:
+0x5DF0 "*GSPL"
+0x881C 3200
+
+

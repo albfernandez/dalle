@@ -1,0 +1,32 @@
+El formato de los archvivos realizados con hacha son:
+
+---------
+5 caracteres -> 3F
+1 caracter   -> [Caracter de control]
+3 caracteres -> 00
+5 caracteres -> 3F
+? caracteres -> [Nombre del archivo original]
+5 caracteres -> 3F
+? caracteres -> [Tamaño total]
+5 caracteres -> 3F
+? caracteres -> [Tamaño del fragmento]
+5 caracteres -> 3F
+[Tamaño del fragmento] -> Archivo original
+---------
+
+El primer fragmento sera mas grande que el resto y el ultimo mas pequeño
+
+El caracter de control se calcula de la siguiente forma:
+    * Se obtiene el numero de caracteres del nombre original del archivo
+    * Se obtiene el numero de digitos del tamaño del archivo
+    * Se obtiene el numero de digitos del tamaño de los fragmentos
+    * Se suman todos los numeros y al resultado se le suma 20
+    * Del numero que se obtiene calculamos cual es el caracter ASCII al 
+      que representa (p.e. 65 representa a la 'A')
+Este caracter se ha añadido unicamente por compatibilidad con el programa
+hacha
+
+Por convenio el nombre de los archivos que contienen los fragmentos es
+el nombre del primer fragmento sustrayendole la extension .0 y serializando
+la extension como un entero.
+

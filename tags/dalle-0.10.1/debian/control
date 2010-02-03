@@ -1,0 +1,32 @@
+Source: dalle
+Section: utils
+Priority: optional
+Maintainer: Alberto Fernández <infjaf@gmail.com>
+Homepage: http://dalle.sourceforge.net/
+Build-Depends: debhelper (>= 4.0.0), 
+               nant (>=0.85), 
+               mono-runtime (>= 1.1.8.1), 
+               libgtk2.0-cil (>= 2.10.2), 
+               libglade2.0-cil(>=1.0),
+               libgnome2.24-cil (>= 2.24.0), 
+               mono-mcs(>=1.0), 
+               perl, 
+               make,
+               cli-common-dev (>= 0.4.4),
+               libmono-sharpzip2.84-cil (>= 2.0), 
+               libglade2.0-cil-dev, 
+               libgnome2.0-cil-dev, 
+               libgtk2.0-cil-dev, 
+               libglib2.0-cil-dev
+Standards-Version: 3.8.3
+
+Package: dalle
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${cli:Depends},mono-runtime (>= 1.1.8.1),libmono-sharpzip2.84-cil (>= 2.0),libgnome2.24-cil (>= 2.24.0),libgtk2.0-cil (>= 2.10.2)
+Description: Dalle is a file management tool
+ Dalle is a utility to join fragments of files that were splited with 
+ other software.
+ Dalle support a wide variety of formats so you can work with a unique 
+ application to work with these files.
+
+

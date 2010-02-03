@@ -1,0 +1,32 @@
+
+
+FORMATO AST2
+===========================
+
+Cabecera -
+	id - 'AST2'
+	url - 'www.astroteam.tk'
+	filecount - (2 bytes)
+	
+Lista de ficheros (filecount bloques con este formato)
+	filesize (4 bytes)
+	blocks (4 bytes)
+	filenamelength (1 byte)
+	filename (filenamelength bytes)
+
+Archivos (filecount)
+	mark 3 char (
+		'SDT' para marcar el principio del primero
+		'FDA' para marcar el fin del anterior y comienzo de uno nuevo
+	)
+	NOTA- En modo debug de la version 2 pueden aparecer de 0 a 5 bytes arbitrarios despues del FDA.
+	
+	Bloques (al menos uno por archivo, aunque esté vacio, hasta el total de bloques)
+		block: 3 char ('BLD')
+		size:  2 bytes
+		crc :  4 bytes
+		data: (size bytes)
+
+
+
+crc - Simplemente suma el valor de todos los bytes de cada bloque.

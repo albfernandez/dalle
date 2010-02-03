@@ -1,0 +1,3 @@
+Los datos cortados tal cual.
+El formato del nombre de los fragmentos es:
+<nombre original>.<numero de secuencia, 3 digitos, comenzando en 001>
