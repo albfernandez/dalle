@@ -1,3 +1,8 @@
+dalle(0.10.1-1) unstable; urgency=medium
+	* Updated build. Bugfixes
+
+ -- Alberto Fernández <infjaf@gmail.com>  Wed, 3 Feb 2010 19:18:46 +0100 
+
 dalle (0.9.1-1) unstable; urgency=low
   * Updated build. LZMA support.
 
