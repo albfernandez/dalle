@@ -28,6 +28,7 @@ using ICSharpCode.SharpZipLib.GZip;
 using Dalle;
 using Dalle.Formatos;
 using Dalle.Utilidades;
+using Dalle.Streams;
 
 
 namespace Dalle.Formatos.SplitterMerger

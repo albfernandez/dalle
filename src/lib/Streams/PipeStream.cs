@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 
-namespace PipeStream
+namespace Dalle.Streams
 {
 	/// <summary>
 	/// PipeStream is a thread-safe read/write data stream for use between two threads in a 

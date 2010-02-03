@@ -22,7 +22,8 @@
 using System;
 using System.IO;
 using ICSharpCode.SharpZipLib.Checksums;
-namespace Dalle.Utilidades
+
+namespace Dalle.Streams
 {
 
 
