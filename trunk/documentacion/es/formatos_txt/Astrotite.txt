@@ -1,3 +1,16 @@
+FORMATO AST
+===========================
+Cabecera (en asccii)
+nº de archivos.
+
+Despues se repite para cada archivo :
+- nombre de archivo
+- '*'
+- posicion (toma como 0 el primer byte de datos)
+- '\n'
+
+
+seccion de datos: El contenido de los archivos concatenado uno detrás de otro
 
 
 FORMATO AST2
