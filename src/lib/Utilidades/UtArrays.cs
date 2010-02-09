@@ -230,5 +230,15 @@ namespace Dalle.Utilidades
 
 			return new DateTime(LeerInt64(bytes, pos_ini));
 		}
+		private static System.Text.ASCIIEncoding  asciiEncoder = new System.Text.ASCIIEncoding ();
+		
+		public static string ToAsciiString (byte[] bytes)
+		{
+			return asciiEncoder.GetString(bytes);
+		}
+		public static byte[] ToAsciiBytes(String inputString)
+		{
+			return asciiEncoder.GetBytes(inputString);
+		}
 	}
 }

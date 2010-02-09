@@ -77,6 +77,9 @@ namespace Dalle.Formatos
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v1 ());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHachaPro ());
 			formatos.Add (new Dalle.Formatos.Cutter.Cutter ());
+			formatos.Add (new Dalle.Formatos.Deb.Deb ());
+			formatos.Add (new Dalle.Formatos.Ar.Ar ());
+			formatos.Add (new Dalle.Formatos.Cpio.Cpio ());
 			formatos.Add (new Dalle.Formatos.Tar.Tar ());
 			formatos.Add (new Dalle.Formatos.GZip.GZip ());
 			formatos.Add (new Dalle.Formatos.LZMA.LZMA ());
