@@ -47,8 +47,7 @@ namespace Dalle.Formatos.Hacha
 		}
 		protected override void _Unir (string fichero, string dirDest)
 		{
-			CRC crc = new HachaCRC (new FileInfo (fichero).Length);
-			base.UnirHacha (fichero, dirDest,crc);
+			base.UnirHacha (fichero, dirDest);
 			
 			// TODO Recuperar comprobacion del 'crc'
 			// Comprobamos el CRC.

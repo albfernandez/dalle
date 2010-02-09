@@ -28,6 +28,7 @@ using System.IO;
 using Dalle.Formatos;
 using Dalle.Utilidades;
 using Dalle.Checksums;
+using ICSharpCode.SharpZipLib.Checksums;
 
 namespace Dalle.Formatos.Hacha
 {
@@ -98,18 +99,79 @@ namespace Dalle.Formatos.Hacha
 		}
 		
 		
-		protected void UnirHacha(string fichero, string dirDest, CRC crc)
+		protected void UnirHacha (string fichero, string dirDest)
 		{
-			CabeceraHacha_v1 cab = CabeceraHacha_v1.LeerCabecera(fichero);
+			int leidos = 0;
+			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
+			CabeceraHacha_v1 cab = CabeceraHacha_v1.LeerCabecera (fichero);
+			int cabSize = cab.Size;
+			
+			
+			HachaCRC crcHacha = null;
+			Crc32 crc32 = null;
+			if (cab.Version.Equals("2") && cab.CRC != 7 && cab.CRC != 0)
+			{
+				crcHacha = new HachaCRC (cab.Tamano);
+				crc32 = new Crc32 ();
+			}
+			
 
 			string salida = dirDest + Path.DirectorySeparatorChar + cab.NombreOriginal;
-			UtilidadesFicheros.ComprobarSobreescribir (salida);
 			
 			string b = fichero.Substring (0, fichero.Length - 1);
 			OnProgress (0, 1);
 			int fragmento = 0;
 			long transferidos = 0;
 			string fich = b + fragmento;
+			Stream outStream = UtilidadesFicheros.CreateWriter (salida);
+			while (File.Exists (fich))
+			{
+				int parcial = 0;
+				Stream inStream = File.OpenRead (fich);
+				if (fragmento == 0) 
+				{
+					if (inStream.Read (buffer, 0, cabSize) != cabSize) 
+					{
+						throw new IOException ();
+					}
+				}
+				
+				while ((leidos = inStream.Read (buffer, 0, buffer.Length)) > 0)
+				{
+					outStream.Write (buffer, 0, leidos);
+					if (crc32 != null)
+					{
+						crcHacha.Update (buffer, 0, leidos);
+						crc32.Update (buffer, 0, leidos);
+					}
+					transferidos += leidos;
+					parcial += leidos;
+					OnProgress (transferidos, cab.Tamano);
+				}
+				
+				if (parcial != cab.TamanoFragmento && transferidos != cab.Tamano) 
+				{
+					throw new IOException ();
+				}
+				
+				fragmento++;
+				fich = b + fragmento;
+			}
+			outStream.Close ();
+			if (crc32 != null)
+			{
+				if (cab.CRC != crc32.Value && cab.CRC != crcHacha.Value) 
+				{
+					// TODO Lanzar excepcion
+					Console.WriteLine("crc verification failed!");
+				}
+			}
+			OnProgress (cab.Tamano, cab.Tamano);
+			
+			// Comprobar crcs
+			
+			/*
+			
 			transferidos = UtilidadesFicheros.CopiarIntervalo (fich, salida, cab.Size, crc);
 			if ((transferidos != cab.TamanoFragmento) && (transferidos != cab.Tamano)){
 				throw new Dalle.Formatos.FileFormatException();
@@ -126,11 +188,11 @@ namespace Dalle.Formatos.Hacha
 					throw new Dalle.Formatos.FileFormatException();
 				}
 				fragmento++;
-			}
+			}*/
 		}
 		protected override void _Unir (string fichero, string dirDest)
 		{			
-			UnirHacha (fichero, dirDest, new NullHachaCRC());
+			UnirHacha (fichero, dirDest);
 		}
 		
 		public override bool PuedeUnir (string fichero)
