@@ -44,7 +44,6 @@ namespace Dalle.Formatos.Hacha
 			ret[5] = (byte) (CRC & 0x000000FF);
 			ret[6] = (byte) ((CRC & 0x0000FF00) >> 8);
 			ret[7] = (byte) ((CRC & 0x00FF0000) >> 16);
-			//ret[8] = (byte) (unchecked ((CRC & (int)0xFF000000)>>24));
 			ret[8] = (byte) (CRC >> 24);
 			return ret;
 		}
