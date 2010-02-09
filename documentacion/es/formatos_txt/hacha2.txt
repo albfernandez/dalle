@@ -31,3 +31,5 @@ El CRC es 0x07 00 00 00 si no hay crc
 en otro caso es el crc de 4 bytes
 
 NOTA: Hacha2 y HachaPro utilizan el mismo crc.
+
+NOTA2: Hay una version de hacha, "3.5", con este formato y usa CRC32
