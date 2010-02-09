@@ -33,7 +33,6 @@ namespace Dalle.Formatos.Cutter
 {	
 	public class Cutter : Parte 
 	{
-		//private static int buffSize = 262144;
 		
 		public Cutter()
 		{
