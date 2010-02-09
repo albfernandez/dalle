@@ -60,6 +60,7 @@ namespace Dalle.Formatos
 		private Manager ()
 		{
 			formatos.Add (new Dalle.Formatos.SplitterMerger.SplitterMerger ());
+			formatos.Add (new Dalle.Formatos.Astrotite.AstrotiteV0 ());
 			formatos.Add (new Dalle.Formatos.Astrotite.Astrotite ());
 			formatos.Add (new Dalle.Formatos.Axman.Axman3 ());
 			formatos.Add (new Dalle.Formatos.Zip.Zip ());
