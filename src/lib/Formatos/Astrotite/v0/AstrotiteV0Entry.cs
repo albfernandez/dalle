@@ -35,7 +35,6 @@ namespace Dalle.Formatos.Astrotite.v0
 
 		private long size;
 		private string name;
-		private bool isDirectory;
 		#region ArchiveEntry implementation
 		public bool IsDirectory {
 			get {
