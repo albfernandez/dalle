@@ -70,9 +70,14 @@ namespace Dalle.Streams
 		}
 		public override int Read (byte[] buffer, int offset, int count)
 		{
-			int leidos = stream.Read (buffer, offset, (int) Math.Min (count, maxSize - alreadyRead));
-			alreadyRead += leidos;
-			return leidos;
+			if (maxSize >= 0) {
+				int leidos = stream.Read (buffer, offset, (int)Math.Min (count, maxSize - alreadyRead));
+				alreadyRead += leidos;
+				return leidos;
+			}
+			else {
+				return stream.Read (buffer, offset, count);
+			}
 		}
 		
 		public override long Seek (long offset, SeekOrigin origin)
