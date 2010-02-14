@@ -302,6 +302,7 @@ namespace Dalle.Utilidades
 		
 		public static Stream CreateWriter (string file)
 		{
+			file = ChangeDirectorySeparatorChar (file);
 			UtilidadesFicheros.ComprobarSobreescribir (file);
 
 			int last = file.LastIndexOf (Path.DirectorySeparatorChar);
@@ -328,15 +329,26 @@ namespace Dalle.Utilidades
 			long total = 0;
 			long count = 0;
 			
-			do{
+			do {
 				count = reader.Read (buffer, 0, buffer.Length);
-				crc.Update (buffer, 0, (int) count);
+				crc.Update (buffer, 0, (int)count);
 				total += count;
-			}while (count > 0);
+			} while (count > 0);
 			
 			
 			reader.Close ();
 			return total;
+		}
+		public static string ChangeDirectorySeparatorChar (string orig)
+		{
+			if (Path.DirectorySeparatorChar == '/')
+			{
+				return orig.Replace('\\', '/');
+			}
+			else if (Path.DirectorySeparatorChar == '\\') {
+				return orig.Replace('/', '\\');
+			}
+			return orig;
 		}
 	}
 }
