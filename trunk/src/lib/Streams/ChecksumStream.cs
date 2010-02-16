@@ -90,7 +90,13 @@ namespace Dalle.Streams
 		}
 		public override int Read (byte[] buffer, int offset, int count)
 		{
-			return stream.Read (buffer, offset, count);
+			int bytesReaded = stream.Read (buffer, offset, count);
+			if (crc != null) 
+			{
+				crc.Update (buffer, offset, bytesReaded);
+			}
+			return bytesReaded;
+			
 		}
 		public override long Seek (long offset, SeekOrigin origin)
 		{
@@ -104,6 +110,17 @@ namespace Dalle.Streams
 			stream.Close();
 		}
 
+		public override int ReadByte ()
+		{
+			int r = stream.ReadByte ();
+			if (r >= 0 && crc != null)
+			{
+				crc.Update (r);
+			}
+			return r;
+		}
+		
+		
 
 
 

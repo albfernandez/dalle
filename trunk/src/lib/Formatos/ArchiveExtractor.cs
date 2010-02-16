@@ -22,11 +22,10 @@ namespace Dalle.Formatos
 			while ((e = stream.GetNextEntry ()) != null) 
 			{
 				if (e.IsDirectory) {
-					Console.WriteLine ("Directory:" + e.Name);
 					continue;
 				}
-				Console.WriteLine (e.Name);
 				leidos = 0;
+			
 				Stream s = Dalle.Utilidades.UtilidadesFicheros.CreateWriter (outDir + Path.DirectorySeparatorChar + e.Name);
 				while ((leidos = stream.Read (buffer)) > 0) 
 				{
