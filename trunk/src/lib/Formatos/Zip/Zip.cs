@@ -103,8 +103,16 @@ namespace Dalle.Formatos.Zip
 			OnProgress (0, 1);
 			while ((entrada = s.GetNextEntry ()) != null)
 			{
+
 				String dirName = Path.GetDirectoryName (entrada.Name);
 				String ficName = Path.GetFileName (entrada.Name);
+				
+				Console.WriteLine (entrada.Name);
+				if (!entrada.IsFile)
+				{
+					Console.WriteLine ("directorio");
+					continue;
+				}
 				
 				DirectoryInfo currDir = Directory.CreateDirectory (Path.Combine (dirDest, dirName));
 				if (ficName != null && ficName.Length != 0)
@@ -113,10 +121,12 @@ namespace Dalle.Formatos.Zip
 					Stream writer = UtilidadesFicheros.CreateWriter (fi);
 					byte[] data = new byte[Consts.BUFFER_LENGTH];
 					int leidos = 0;
-					while ((leidos = s.Read (data, 0, data.Length)) > 0) {
-						writer.Write (data, 0, leidos);
-						transferidos += leidos;
-						OnProgress (transferidos, total);
+					if (entrada.Size > 0) {
+						while ((leidos = s.Read (data, 0, data.Length)) > 0) {
+							writer.Write (data, 0, leidos);
+							transferidos += leidos;
+							OnProgress (transferidos, total);
+						}
 					}
 					writer.Close();
 					fi.LastWriteTime = entrada.DateTime;
