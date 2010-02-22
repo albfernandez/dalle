@@ -24,6 +24,7 @@
 */
 using System;
 using System.IO;
+using System.Collections;
 using Dalle.Archivers;
 using Dalle.Streams;
 
@@ -36,6 +37,7 @@ namespace Dalle.Archivers.ar
 	{
 		private byte[] buffer = new byte[1024];
 		private ArArchiveEntry currentEntry = null;
+		private Hashtable gnuNames = new Hashtable();
 		
 	    public ArArchiveInputStream (Stream inputStream) : base(inputStream)
 	    {
@@ -102,6 +104,7 @@ namespace Dalle.Archivers.ar
 			}
 			string name = Utilidades.UtArrays.LeerTexto (header, 0, 16).Trim ();
 			long size = long.Parse (Utilidades.UtArrays.LeerTexto (header, 48, 10).Trim ());
+			
 			if (name.EndsWith ("/"))
 			{
 				name = name.Substring (0, name.Length - 1);
@@ -109,21 +112,22 @@ namespace Dalle.Archivers.ar
 			// TODO Leer todos los campos de la cabecera
 			// TODO Leer los nombres de archivo largos (GNU y BSD)
 			currentEntry = new ArArchiveEntry (name, size);
-			dataStream = new SizeLimiterStream (this.inputStream, size);
+			
+			
 			
 			// GNU AR
-			if (currentEntry.Name.Equals ("//"))
+			if (currentEntry.Name.Equals ("/"))
 			{
 				ReadGNUFilenamesEntry ();
 				return GetNextArEntry ();
 			}
-			else if (currentEntry.Name.Equals("/")){
+			/*else if (currentEntry.Name.Equals("/")){
 				// Special file for symbol lookup table, ignoring
 				return GetNextArEntry();
-			}
-			else if (currentEntry.Name.StartsWith ("/"))
+			}*/
+			else if (currentEntry.Name.StartsWith ("/") && gnuNames.Count > 0)
 			{
-				
+				currentEntry.name = (string)gnuNames[currentEntry.Name.Substring(1)];
 			}
 			
 			
@@ -137,19 +141,42 @@ namespace Dalle.Archivers.ar
 					throw new IOException ("Filename too long (bsd)");
 				}
 				byte[] buffer2 = new byte[s];
-				int l = this.Read (buffer2);
+				int l = this.inputStream.Read (buffer2, 0, buffer2.Length);
 				if (l != s) {
 					throw new IOException ("Filename error (bsd)");
 				}
 				currentEntry.name = Utilidades.UtArrays.LeerTexto (buffer2, 0);
 			}
-			
+			dataStream = new SizeLimiterStream (this.inputStream, currentEntry.Size);
 			
 			return currentEntry;
 			
 		}
 		private void ReadGNUFilenamesEntry ()
 		{
+			dataStream = new SizeLimiterStream (this.inputStream, this.currentEntry.Size);
+			byte[] datos = new byte[this.currentEntry.Size];
+			int l = dataStream.Read (datos, 0, datos.Length);
+			if (l != datos.Length)
+			{
+				throw new IOException ();
+			}
+			string c = Utilidades.UtArrays.LeerTexto (datos, 0);
+			string[] ficheros = c.Split (new char[] { '\n' });
+			
+			int pos = 0;
+			foreach (string f in ficheros) 
+			{
+
+				string nombre = f;
+				if (nombre.EndsWith("/")){
+					nombre = nombre.Substring (0, nombre.Length - 1);
+				}
+				gnuNames.Add ("" + pos, nombre);
+				pos += f.Length + 1;
+			}
+			
+			
 			// TODO
 		}
 		public override ArchiveEntry GetNextEntry () 
