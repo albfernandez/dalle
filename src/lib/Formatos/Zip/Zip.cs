@@ -45,7 +45,7 @@ namespace Dalle.Formatos.Zip
 			descripcion = "Fichero comprimido con ZIP";
 			web = "_";
 			compatible = false;
-			parteFicheros = true;
+			parteFicheros = false;
 			
 		}
 
