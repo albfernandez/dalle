@@ -43,3 +43,37 @@ Archivos (filecount)
 
 
 crc - Simplemente suma el valor de todos los bytes de cada bloque.
+
+
+
+AST3 
+======= 
+¿?
+
+ASTP y ASTPxxx
+====
+Multiparte
+¿?
+
+AST4
+=======
+¿?
+
+
+
+
+ASTR (v2006)
+===
+¿?
+
+
+ASMPxxx (v2006)
+====
+Multiparte
+
+
+AFA y .AFP.xxx
+==============
+Formatos normal y multiparte de astrotite 200x
+
+¿?
