@@ -1,5 +1,18 @@
+2010-02-28
+	Corregido error extrayendo archivos cpio
+
+2010-02-22
+	Permite extraer archivos de 0bytes de archivos zip (error en sharpzilib 2.84)
+
+2010-02-21
+	Soporte para la extensión de nombres largos de ar (GNU)
+	Primeros tests con Nunit (algunos archivadores)
+
+2010-02-14
+	Mejor soporte de las rutas en Windows.
+
 2010-02-09
-	Soporte para astrotite v.0
+	Soporte para astrotite v0 y v1
 
 2010-02-07
 	Soporte para ar
