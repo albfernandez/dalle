@@ -1,3 +1,10 @@
+?-?-2010 - Version 0.10.?
+	Test Nunit de los "archivers"
+	Soporte para astrotite v0 y v1
+	Soporte para ar
+	Soporte para deb
+	Soporte para cpio
+
 03-02-2010  - Version 0.10.1
 	Corregido bug al partir en formato 'generico'.
 	Aumentado el tamaño del buffer a 1Mb para mejorar el rendimiento.
