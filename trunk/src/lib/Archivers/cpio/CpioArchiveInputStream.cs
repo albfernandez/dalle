@@ -90,13 +90,14 @@ namespace Dalle.Archivers.cpio
 		{
 			return GetNextCPIOEntry ();
 		}
-		private void CloseEntry() {
-	        EnsureOpen();
+		private void CloseEntry ()
+		{
+			EnsureOpen ();
 			
-	        while (Read(this.tmpbuf, 0, this.tmpbuf.Length) >0) {
-	            // do nothing
-	        }
-	
+	        while (this.Read (this.tmpbuf, 0, this.tmpbuf.Length) > 0) {
+				// do nothing
+			}
+			//Console.WriteLine ("CloseEntry: bytes_readed" + this.entryBytesRead);
 
 	    }
 		private void EnsureOpen ()
@@ -144,7 +145,11 @@ namespace Dalle.Archivers.cpio
 	    		} else if (magicString.Equals (CpioConstants.MAGIC_OLD_ASCII)) {
 	    			this.currentEntry = ReadOldAsciiEntry ();
 	    		} else {
-	    			throw new IOException ("Unknown magic [" + magicString + "]. Occured at byte: " + Position);
+	    			string tmpString = "";
+					foreach (byte b in tmp){
+						tmpString += b.ToString("X") + ",";
+					}
+	    			throw new IOException ("Unknown magic [" + magicString + "][" + tmpString + "]. Occured at byte: " + Position + "/0x" + Position.ToString("X"));
 	    		}
 	    	}
 	    	
@@ -353,6 +358,7 @@ namespace Dalle.Archivers.cpio
 
 		private void Skip (int bytes)
 		{
+			//Console.WriteLine ("Skip:" + bytes);
 			byte[] buff = new byte[4];
 			// Cannot be more than 3 bytes
 			if (bytes > 0) {
@@ -363,7 +369,7 @@ namespace Dalle.Archivers.cpio
 		{
 			int tmp = base.Read (b, off, len);
 			this.entryBytesRead += tmp;
-			if (this.entryBytesRead == this.currentEntry.Size)
+			if (tmp != 0 && this.entryBytesRead == this.currentEntry.Size)
 			{
 				// Comprobar crc
 				if (this.currentEntry.Format == CpioConstants.FORMAT_NEW_CRC) 
