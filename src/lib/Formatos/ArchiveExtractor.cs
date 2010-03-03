@@ -55,7 +55,8 @@ namespace Dalle.Formatos
 				while ((leidos = stream.Read (buffer)) > 0) 
 				{
 					s.Write (buffer, 0, leidos);
-					if (p != null) {
+					
+					if (leidos > 0 && p != null) {
 						if (totalData > 0) {
 							p.OnProgress (stream.Position, totalData);
 						} else if (stream.Length > 0) {

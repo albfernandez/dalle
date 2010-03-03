@@ -45,6 +45,7 @@ namespace Dalle.Formatos.Astrotite.v2
 		private AstrotiteV2Entry currentEntry;
 		private BlockHeader currentBlock = null;
 		private int currentBlockNumber = 0;
+		private bool finished = false;
 		
 		public override ArchiveEntry GetNextEntry ()
 		{
@@ -61,6 +62,20 @@ namespace Dalle.Formatos.Astrotite.v2
 			dataStream = null;
 			
 			if (entryCursor >= entryList.Count) {
+				if (!finished) 
+				{
+					finished = true;
+					byte[] finalbuffer = new byte[3];
+					int leidos = this.inputStream.Read (finalbuffer, 0, 3);
+					this.Count (leidos);
+					StringBuilder tmp = new StringBuilder ();
+					for (int i = 0; i < "EOF".Length; i++) {
+						tmp.Append (Convert.ToChar (finalbuffer[i]));
+					}
+					if (!"EOF".Equals (tmp.ToString ())) {
+						throw new IOException ("Unexpected EOF:[" + tmp.ToString () +"]");
+					}
+				}
 				return null;
 			}
 			this.currentEntry = (AstrotiteV2Entry)entryList[entryCursor++];
@@ -87,9 +102,8 @@ namespace Dalle.Formatos.Astrotite.v2
 			for (int i = 0; i < "AST2www.astroteam.tk".Length; i++) {
 				tmp.Append (Convert.ToChar (initbuffer[i]));
 			}
-			Console.WriteLine (tmp.ToString ());
 			if (!"AST2www.astroteam.tk".Equals (tmp.ToString ())) {
-				throw new IOException ();
+				throw new IOException ("Unexpected magic:" + tmp.ToString());
 			}
 			
 			nArchivos = (int)UtArrays.LeerInt16 (initbuffer, 20);
@@ -133,7 +147,7 @@ namespace Dalle.Formatos.Astrotite.v2
 				string it = sb.ToString ();
 				if (!it.Equals ("SDT") && !it.Equals ("FDA")) 
 				{
-					throw new IOException ();
+					throw new IOException ("Unexpected file start tag:[" + it + "]");
 				}
 				this.currentBlock = ReadBlockHeader ();
 				this.currentBlockNumber = 1;
@@ -176,7 +190,7 @@ namespace Dalle.Formatos.Astrotite.v2
 			int _size = UtArrays.LeerUInt16 (tmpBuffer, 3);
 			int _crc = UtArrays.LeerInt32 (tmpBuffer, 5);
 			if (!_block.Equals("BLD")){
-				throw new IOException();
+				throw new IOException("unexpected block start tag [" + _block + "]");
 			}
 			return new BlockHeader(_block, _size, _crc);
 			
