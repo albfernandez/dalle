@@ -81,6 +81,7 @@ namespace Dalle.Formatos
 			formatos.Add (new Dalle.Formatos.Deb.Deb ());
 			formatos.Add (new Dalle.Formatos.Ar.Ar ());
 			formatos.Add (new Dalle.Formatos.Cpio.Cpio ());
+			formatos.Add (new Dalle.Formatos.Xar.Xar ());
 			formatos.Add (new Dalle.Formatos.Tar.Tar ());
 			formatos.Add (new Dalle.Formatos.GZip.GZip ());
 			formatos.Add (new Dalle.Formatos.LZMA.LZMA ());

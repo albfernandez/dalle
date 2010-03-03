@@ -98,6 +98,14 @@ namespace Dalle.Utilidades
 			
 			return ((short)(b0 | (b1 << 8)));
 		}
+		public static short LeerInt16BE (byte[] bytes, int pos_ini)
+		{
+			byte b0, b1;
+			b0 = bytes[pos_ini+1];
+			b1 = bytes[pos_ini + 0];
+			
+			return ((short)(b0 | (b1 << 8)));
+		}
 		
 		public static ushort LeerUInt16 (byte[] bytes, int pos_ini)
 		{
@@ -142,7 +150,16 @@ namespace Dalle.Utilidades
 			b2 = bytes[pos_ini + 2];
 			b3 = bytes[pos_ini + 3];
 			
-			return ((int) (b0 | (b1 << 8) | (b2 << 16) | (b3 << 24)));			
+			return ((int)(b0 | (b1 << 8) | (b2 << 16) | (b3 << 24)));
+		}
+		public static int LeerInt32BE (byte[] bytes, int pos_ini)
+		{
+			byte b0, b1, b2, b3;
+			b0 = bytes[pos_ini + 3];
+			b1 = bytes[pos_ini + 2];
+			b2 = bytes[pos_ini + 1];
+			b3 = bytes[pos_ini + 0];
+			return ((int)(b0 | (b1 << 8) | (b2 << 16) | (b3 << 24)));
 		}
 		
 		/// <summary>Escribe un entero de 32 bits en la posición dada.</summary>
@@ -182,9 +199,22 @@ namespace Dalle.Utilidades
 			v1 = (i0 & 0xFFFFFFFF) | (i1 << 32);
 			return v1;
 		}
+		
+		public static long LeerInt64BE (byte[] bytes, int pos_ini)
+		{
+			long v1;
+			long i0, i1;
+			
+			i0 = LeerInt32BE (bytes, pos_ini+ 4);
+			i1 = LeerInt32BE(bytes, pos_ini );
+			v1 = (i0 & 0xFFFFFFFF) | (i1 << 32);
+			return v1;
+		}
+		
+		
 		public static void EscribirInt64 (byte[] bytes, long value, int pos)
 		{
-			// TODO Implement
+			throw new System.NotImplementedException();
 		}
 		
 		/// <summary>Escribe un entero de 64 bits en la posición dada.</summary>
