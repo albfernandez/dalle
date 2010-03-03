@@ -117,7 +117,16 @@ namespace Dalle.Archivers
 
 		public override void WriteByte (byte value)
 		{
-			base.WriteByte(value);
+			throw new System.NotImplementedException();
+		}
+		public long TotalLength {
+			get { return -1; }
+		}
+		public long EntriesCount {
+			get { return -1; }
+		}
+		public long CurrentEntryCount {
+			get { return -1; }
 		}
 		
 		

@@ -55,6 +55,13 @@ namespace Dalle.Archivers.xar
 		public static readonly int XAR_HEADER_MAGIC = 0x78617221;
 		public static readonly int XAR_HEADER_VERSION =  0;
 		public static readonly int XAR_HEADER_SIZE = 28;
+		private long streamLength = -1;
+		
+		public override long Length {
+			get {
+				return this.streamLength;
+			}
+		}
 		public override ArchiveEntry GetNextEntry ()
 		{
 			return GetNextXarEntry ();
@@ -130,6 +137,7 @@ namespace Dalle.Archivers.xar
 		{
 			byte[] header = new byte[XAR_HEADER_SIZE];
 			int leidos = this.inputStream.Read (header, 0, header.Length);
+			this.Count (leidos);
 			if (leidos != header.Length) {
 				throw new IOException ("Invalid header, readed " + leidos + " bytes expected " + header.Length);
 			}
@@ -170,9 +178,14 @@ namespace Dalle.Archivers.xar
 
 
 			this.ReadToc (st);
-			
 			st.Close ();
 			this.Count ((int)toc_length_uncompressed);
+			streamLength = this.Position;
+			foreach (XarArchiveEntry e in entryList)
+			{
+				streamLength += e.Size;
+			}
+			
 			
 			if (this.tocHashAlgorithm != XarHashAlgorithm.None) 
 			{

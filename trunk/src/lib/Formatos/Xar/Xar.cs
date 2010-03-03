@@ -46,7 +46,7 @@ namespace Dalle.Formatos.Xar
 		protected override void _Unir (string fichero, string dirDest)
 		{
 			XarArchiveInputStream instream = new XarArchiveInputStream (File.OpenRead (fichero));
-			ArchiveExtractor.Extract (instream, dirDest, this, new FileInfo (fichero).Length);
+			ArchiveExtractor.Extract (instream, dirDest, this, -1);
 		}
 		
 		protected override void _Partir (string fichero, string sal1, string dir, long kb)
