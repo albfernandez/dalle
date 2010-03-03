@@ -110,7 +110,6 @@ namespace Dalle.Archivers.ar
 				name = name.Substring (0, name.Length - 1);
 			}
 			// TODO Leer todos los campos de la cabecera
-			// TODO Leer los nombres de archivo largos (GNU y BSD)
 			currentEntry = new ArArchiveEntry (name, size);
 			
 			
@@ -121,10 +120,6 @@ namespace Dalle.Archivers.ar
 				ReadGNUFilenamesEntry ();
 				return GetNextArEntry ();
 			}
-			/*else if (currentEntry.Name.Equals("/")){
-				// Special file for symbol lookup table, ignoring
-				return GetNextArEntry();
-			}*/
 			else if (currentEntry.Name.StartsWith ("/") && gnuNames.Count > 0)
 			{
 				currentEntry.name = (string)gnuNames[currentEntry.Name.Substring(1)];
@@ -156,7 +151,7 @@ namespace Dalle.Archivers.ar
 		{
 			dataStream = new SizeLimiterStream (this.inputStream, this.currentEntry.Size);
 			byte[] datos = new byte[this.currentEntry.Size];
-			int l = dataStream.Read (datos, 0, datos.Length);
+			int l = this.Read (datos, 0, datos.Length);
 			if (l != datos.Length)
 			{
 				throw new IOException ();
@@ -175,9 +170,6 @@ namespace Dalle.Archivers.ar
 				gnuNames.Add ("" + pos, nombre);
 				pos += f.Length + 1;
 			}
-			
-			
-			// TODO
 		}
 		public override ArchiveEntry GetNextEntry () 
 		{
