@@ -17,6 +17,10 @@ namespace Dalle.Nunit
 		Hashtable h = null;
 		FileHasherSHA1 hasher = new FileHasherSHA1();
 
+		public TestArchivers ()
+		{
+			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
+		}
 		public string GetBaseDir ()
 		{
 			return "/home/dalle/test_files/archivers/";
@@ -24,9 +28,19 @@ namespace Dalle.Nunit
 		[TearDown()]
 		public void CleanTempDir ()
 		{
-			Directory.Delete (Path.GetTempPath () + Path.DirectorySeparatorChar + "test", true);
+			try {
+				Directory.Delete (Path.GetTempPath () + Path.DirectorySeparatorChar + "test", true);
+			} catch (Exception e) {
+			}
+			try {
+				Directory.Delete (Path.GetTempPath () + Path.DirectorySeparatorChar + "usr", true);
+			} catch (Exception e) {
+			}
+			
 		}
 
+
+		
 		[Test()]
 		public void TestAr ()
 		{
@@ -45,7 +59,30 @@ namespace Dalle.Nunit
 			Manager.Instance.Unir (GetBaseDir () + "test.ast2", Path.GetTempPath ());
 			ComprobarResultado ();
 		}
-
+		[Test()]
+		public void TestCpioOldBin ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "test.bin.cpio", Path.GetTempPath ());
+			ComprobarResultado ();
+		}
+		[Test()]
+		public void TestCpioOldPortable ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "test.odc.cpio", Path.GetTempPath ());
+			ComprobarResultado ();
+		}
+		[Test()]
+		public void TestCpioNewPortable ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "test.newc.cpio", Path.GetTempPath ());
+			ComprobarResultado ();
+		}
+		[Test()]
+		public void TestCpioNewPortableCrc ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "test.crc.cpio", Path.GetTempPath ());
+			ComprobarResultado ();
+		}
 		[Test()]
 		public void TestTar ()
 		{
@@ -76,6 +113,32 @@ namespace Dalle.Nunit
 			Manager.Instance.Unir (GetBaseDir () + "test.zip", Path.GetTempPath ());
 			ComprobarResultado ();
 		}
+		[Test()]
+		public void TestXarSC ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "test.xar", Path.GetTempPath ());
+			ComprobarResultado ();
+		}
+		[Test()]
+		public void TestXarBz2 ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "test.bz.xar", Path.GetTempPath ());
+			ComprobarResultado ();
+		}
+		[Test()]
+		public void TestXarGz ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "test.gz.xar", Path.GetTempPath ());
+			ComprobarResultado ();
+		}
+		[Test()]
+		public void TestDeb ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "test_2010.02.13-1_all.deb", Path.GetTempPath ());
+			ComprobarResultado ();
+		}
+		
+		
 		
 		private void ComprobarResultado ()
 		{
@@ -96,9 +159,9 @@ namespace Dalle.Nunit
 				string realFile = dir + Path.DirectorySeparatorChar + key;
 				if (!fullPath) 
 				{
-					realFile = dir + Path.DirectorySeparatorChar + key.Substring (key.LastIndexOf(Path.DirectorySeparatorChar));
+					realFile = dir + Path.DirectorySeparatorChar + key.Substring (key.LastIndexOf (Path.DirectorySeparatorChar));
 				}
-				Assert.IsTrue (File.Exists (realFile));
+				Assert.IsTrue (File.Exists (realFile), "Archivo no creado " + key + "[" + realFile + "]");				
 				string computedHash = hasher.GenerateHash (realFile);				
 				Assert.AreEqual (realHash, computedHash);				
 			}
@@ -128,7 +191,14 @@ namespace Dalle.Nunit
 			h.Add ("test/testdir/testfiles2/modules/squashfs/squashfs_fs_i.h", "70b7c75ef822eab77c05f0bdfe825612f51b7c9d");
 			h.Add ("test/testdir/testfiles2/modules/squashfs/squashfs_fs_sb.h", "e2f3e1ccc222ed99e45b4ad1b5883abccb7b449e");
 			h.Add ("test/testdir/testfiles2/squashfs.tar.bz2", "83240763c718c2d1cc289d4de0ec79c2ebf8f1ca");			
+			
+			
 		}	
+		protected virtual void OnProgress (long done, long total)
+		{
+			double fraction = ((double)done) / ((double)total);
+			Console.WriteLine ("progreso=" + done + "/" + total + "=" + fraction);
+		}
 	}
 }
 /* 
