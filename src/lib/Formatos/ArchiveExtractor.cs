@@ -42,7 +42,9 @@ namespace Dalle.Formatos
 			ArchiveEntry e = null;
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			int leidos = 0;
-			p.OnProgress (0, 1);
+			if (p != null) {
+				p.OnProgress (0, 1);
+			}
 			while ((e = stream.GetNextEntry ()) != null) 
 			{
 				

@@ -61,6 +61,10 @@ using Dalle.Streams;
  * Based on code from the jRPM project (jrpm.sourceforge.net)
  */
 
+//    case 'c':	/* Use the old portable ASCII format.  */
+//     case 'H':		/* Header format name.  */
+// crc newc odc bin ustar tar (all-caps also recognized)"), arg);
+
 
 namespace Dalle.Archivers.cpio
 {
@@ -97,8 +101,6 @@ namespace Dalle.Archivers.cpio
 	        while (this.Read (this.tmpbuf, 0, this.tmpbuf.Length) > 0) {
 				// do nothing
 			}
-			//Console.WriteLine ("CloseEntry: bytes_readed" + this.entryBytesRead);
-
 	    }
 		private void EnsureOpen ()
 		{
@@ -146,18 +148,26 @@ namespace Dalle.Archivers.cpio
 	    			this.currentEntry = ReadOldAsciiEntry ();
 	    		} else {
 	    			string tmpString = "";
-					foreach (byte b in tmp){
-						tmpString += b.ToString("X") + ",";
-					}
-	    			throw new IOException ("Unknown magic [" + magicString + "][" + tmpString + "]. Occured at byte: " + Position + "/0x" + Position.ToString("X"));
+	    			foreach (byte b in tmp) {
+	    				tmpString += b.ToString ("X") + ",";
+	    			}
+	    			throw new IOException ("Unknown magic [" + magicString + "][" + tmpString + "]. Occured at byte: " + Position + "/0x" + Position.ToString ("X"));
 	    		}
 	    	}
 	    	
 	    	this.entryBytesRead = 0;
+	    
+	    
 
 	    	
-	    	if (this.currentEntry.Name.Equals (CpioConstants.CPIO_TRAILER)) {
-
+			if (this.currentEntry.Name.Equals (CpioConstants.CPIO_TRAILER)) {
+				int contador = 0;
+				while (this.inputStream.ReadByte() >= 0){
+					contador++;
+				}
+				//Console.WriteLine("Bytes al final = " + contador);
+	    		//Console.WriteLine ("TRAILER---" + this.currentEntry.Size);
+				//Console.WriteLine("Trailer--" + this.currentEntry.HeaderPadCount + "/" + this.currentEntry.DataPadCount);
 	    		return null;
 	    	}
 	    	
@@ -260,44 +270,9 @@ namespace Dalle.Archivers.cpio
 	    	byte[] tmpBuffer = new byte[length];
 	    	ReadFully (tmpBuffer, 0, tmpBuffer.Length);
 	    	return UtArrays.LeerTexto (tmpBuffer, 0, tmpBuffer.Length - 1);
-	    	//return new String (tmpBuffer, 0, tmpBuffer.Length - 1);
 	    }
 		
-		 /**
-     * Skips specified number of bytes in the current CPIO entry.
-     * 
-     * @param n
-     *            the number of bytes to skip
-     * @return the actual number of bytes skipped
-     * @throws IOException
-     *             if an I/O error has occurred
-     * @throws IllegalArgumentException
-     *             if n < 0
-     */
-	    /*public long Skip (long n)
-	    {
-	    	if (n < 0) {
-	    		throw new InvalidOperationException ("negative skip length");
-	    	}
-	    	EnsureOpen ();
-	    	int max = (int)Math.Min (n, Int32.MaxValue);
-	    	int total = 0;
-	
-	        while (total < max) {
-	    		int len = max - total;
-	    		if (len > this.tmpbuf.Length) {
-	    			len = this.tmpbuf.Length;
-	    		}
-	    		len = Read (this.tmpbuf, 0, len);
-	    		if (len == -1) {
-	    			this.entryEOF = true;
-	    			break;
-	    		}
-	    		total += len;
-	    	}
-	    	return total;
-	    }*/
-		
+
 
 	    /**
 	     * Checks if the signature matches one of the following magic values:
@@ -416,6 +391,15 @@ namespace Dalle.Archivers.cpio
 	    	//return Long.parseLong(UtArrays.ToAsciiString(tmpBuffer), radix);
 	    	return Convert.ToInt64 (UtArrays.ToAsciiString (tmpBuffer), radix);
 	    }
+		
+		protected override void Count (int c)
+		{
+			//Console.WriteLine ("Count " + c);
+			base.Count(c);
+			/*if (this.Position != inputStream.Position){
+				Console.WriteLine(" --> " + this.Position + "/" + inputStream.Position);
+			}*/
+		}
 
 	}
 }

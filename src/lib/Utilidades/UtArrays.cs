@@ -152,6 +152,18 @@ namespace Dalle.Utilidades
 			
 			return ((int)(b0 | (b1 << 8) | (b2 << 16) | (b3 << 24)));
 		}
+		public static uint LeerUInt32 (byte[] bytes, int pos_ini)
+		{
+			byte b0, b1, b2, b3;
+			b0 = bytes[pos_ini];
+			b1 = bytes[pos_ini + 1];
+			b2 = bytes[pos_ini + 2];
+			b3 = bytes[pos_ini + 3];
+			
+			return ((uint)(b0 | (b1 << 8) | (b2 << 16) | (b3 << 24)));
+		}
+		
+		
 		public static int LeerInt32BE (byte[] bytes, int pos_ini)
 		{
 			byte b0, b1, b2, b3;
@@ -160,6 +172,16 @@ namespace Dalle.Utilidades
 			b2 = bytes[pos_ini + 1];
 			b3 = bytes[pos_ini + 0];
 			return ((int)(b0 | (b1 << 8) | (b2 << 16) | (b3 << 24)));
+		}
+		
+		public static uint LeerUInt32BE (byte[] bytes, int pos_ini)
+		{
+			byte b0, b1, b2, b3;
+			b0 = bytes[pos_ini + 3];
+			b1 = bytes[pos_ini + 2];
+			b2 = bytes[pos_ini + 1];
+			b3 = bytes[pos_ini + 0];
+			return ((uint)(b0 | (b1 << 8) | (b2 << 16) | (b3 << 24)));
 		}
 		
 		/// <summary>Escribe un entero de 32 bits en la posición dada.</summary>

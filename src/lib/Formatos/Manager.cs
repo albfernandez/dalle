@@ -80,6 +80,7 @@ namespace Dalle.Formatos
 			formatos.Add (new Dalle.Formatos.Cutter.Cutter ());
 			formatos.Add (new Dalle.Formatos.Deb.Deb ());
 			formatos.Add (new Dalle.Formatos.Ar.Ar ());
+			formatos.Add (new Dalle.Formatos.RPM.RPM ());
 			formatos.Add (new Dalle.Formatos.Cpio.Cpio ());
 			formatos.Add (new Dalle.Formatos.Xar.Xar ());
 			formatos.Add (new Dalle.Formatos.Tar.Tar ());

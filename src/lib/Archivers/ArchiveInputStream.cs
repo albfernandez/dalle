@@ -48,7 +48,7 @@ namespace Dalle.Archivers
 			int num = Read (SINGLE, 0, 1);
 			return num <= 0 ? -1 : SINGLE[0] & BYTE_MASK;
 		}
-		protected void Count (int read)
+		protected virtual void Count (int read)
 		{
 			if (read != -1) 
 			{
