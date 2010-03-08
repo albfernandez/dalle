@@ -56,7 +56,11 @@ namespace Dalle.Archivers.xar
 		public static readonly int XAR_HEADER_VERSION =  0;
 		public static readonly int XAR_HEADER_SIZE = 28;
 		private long streamLength = -1;
+		private int version;
 		
+		public int Version {
+			get { return this.version; }
+		}
 		public override long Length {
 			get {
 				return this.streamLength;
@@ -83,7 +87,7 @@ namespace Dalle.Archivers.xar
 			if (this.currentEntry.IsDirectory) {
 				return this.currentEntry;
 			}
-			// TODO Comprobar el offset
+
 			Stream s = new SizeLimiterStream (this.inputStream, this.currentEntry.Length);
 			if (this.currentEntry.ArchivedChecksum != null) {
 				switch (this.currentEntry.HashAlgorithmArchived) {
@@ -143,12 +147,18 @@ namespace Dalle.Archivers.xar
 			}
 			int magic = UtArrays.LeerInt32BE (header, 0);
 			int size = UtArrays.LeerInt16BE (header, 4);
-			int version = UtArrays.LeerInt16BE (header, 6);
+			version = UtArrays.LeerInt16BE (header, 6);
 			long toc_length_compressed = UtArrays.LeerInt64BE (header, 8);
 			long toc_length_uncompressed = UtArrays.LeerInt64BE (header, 16);
 			int cksum_alg = UtArrays.LeerInt32BE (header, 24);
 			
-
+			if (magic != XAR_HEADER_MAGIC) 
+			{
+				throw new Exception ("Invalid header, not valid magic:" + magic);
+			}
+			if (size != header.Length) {
+				throw new IOException ("Invalid header, size = " + size);
+			}
 			this.tocHashAlgorithm = (XarHashAlgorithm)cksum_alg;
 
 
@@ -187,7 +197,7 @@ namespace Dalle.Archivers.xar
 			}
 			
 			
-			if (this.tocHashAlgorithm != XarHashAlgorithm.None) 
+			if (this.tocHashAlgorithm != XarHashAlgorithm.None && this.tocHashOffset == 0) 
 			{
 				byte[] h = new byte[this.tocHashSize];
 				int br = this.inputStream.Read (h, 0, h.Length);
