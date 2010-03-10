@@ -25,42 +25,72 @@
 
 using System;
 using System.IO;
+using Dalle.Utilidades;
 
-using Dalle.Archivers;
 namespace Dalle.Archivers.rpm
 {
 
 
-	public class RPMArchiveEntry : ArchiveEntry
-	{
-		#region ArchiveEntry implementation
-		public bool IsDirectory {
-			get {
-				return this.isDirectory;
-			}
-		}
-		
-		
-		public string Name {
-			get {
-				return this.name;
-			}
-		}
-		
-		
-		public long Size {
-			get {
-				return this.size;
-			}
-		}
-		
-		#endregion
 
-		private long size = 0;
-		private string name = "";
-		private bool isDirectory = false;
-		public RPMArchiveEntry ()
-		{
+	public class RpmHeader {		
+		int magic;
+		int version;
+		int numIndex;
+		int numData;
+		public int Version {
+			get {
+				return version;
+			}
+			set {
+				version = value;
+			}
 		}
+		
+		
+		public int NumIndex {
+			get {
+				return numIndex;
+			}
+			set {
+				numIndex = value;
+			}
+		}
+		
+		
+		public int NumData {
+			get {
+				return numData;
+			}
+			set {
+				numData = value;
+			}
+		}
+		
+		
+		public int Magic {
+			get {
+				return magic;
+			}
+			set {
+				magic = value;
+			}
+		}
+		
+		
+		public RpmHeader ()
+		{
+
+		}
+		public RpmHeader (byte[] data)
+		{
+
+			if (data[0] != 0x8E || data[1] != 0xAD || data[2] != 0xE8){
+				throw new IOException("Invalid header magic");
+			}
+			this.numIndex = UtArrays.LeerInt32BE (data, 8);
+			this.numData = UtArrays.LeerInt32BE (data, 12);
+		}
+
 	}
+	
 }
