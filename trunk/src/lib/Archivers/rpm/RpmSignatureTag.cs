@@ -24,43 +24,24 @@
 */
 
 using System;
-using System.IO;
 
-using Dalle.Archivers;
 namespace Dalle.Archivers.rpm
 {
-
-
-	public class RPMArchiveEntry : ArchiveEntry
+	public enum RpmSignatureTag 
 	{
-		#region ArchiveEntry implementation
-		public bool IsDirectory {
-			get {
-				return this.isDirectory;
-			}
-		}
-		
-		
-		public string Name {
-			get {
-				return this.name;
-			}
-		}
-		
-		
-		public long Size {
-			get {
-				return this.size;
-			}
-		}
-		
-		#endregion
-
-		private long size = 0;
-		private string name = "";
-		private bool isDirectory = false;
-		public RPMArchiveEntry ()
-		{
-		}
+		RPMSIGTAG_HEADERSIGNATURES = 62,
+		RPMSIGTAG_BADSHA1_1	= 264,
+		RPMSIGTAG_BADSHA1_2 = 265,
+		RPMSIGTAG_DSA = 267,
+		RPMSIGTAG_RSA = 268,
+		RPMSIGTAG_SHA1 =269,
+		RPMSIGTAG_SIZE	= 1000,	/*!< internal Header+Payload size (32bit) in bytes. */
+		RPMSIGTAG_LEMD5_1	= 1001,	/*!< internal Broken MD5, take 1 @deprecated legacy. */
+		RPMSIGTAG_PGP	= 1002,	/*!< internal PGP 2.6.3 signature. */
+		RPMSIGTAG_LEMD5_2	= 1003,	/*!< internal Broken MD5, take 2 @deprecated legacy. */
+		RPMSIGTAG_MD5	= 1004,	/*!< internal MD5 signature. */
+		RPMSIGTAG_GPG	= 1005, /*!< internal GnuPG signature. */
+		RPMSIGTAG_PGP5	= 1006,	/*!< internal PGP5 signature @deprecated legacy. */
+		RPMSIGTAG_PAYLOADSIZE = 1007,/*!< internal uncompressed payload size (32bit) in bytes. */
 	}
 }

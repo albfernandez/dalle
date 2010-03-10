@@ -59,7 +59,7 @@ namespace Dalle.Formatos.RPM
 		protected override void _Unir (string fichero, string dirDest)
 		{
 			RPMArchiveInputStream instream = new RPMArchiveInputStream (File.OpenRead (fichero));
-			ArchiveExtractor.Extract (instream, dirDest, this, new FileInfo (fichero).Length);
+			ArchiveExtractor.Extract (instream, dirDest, this);
 			
 		}
 		public override bool PuedeUnir (string fichero)

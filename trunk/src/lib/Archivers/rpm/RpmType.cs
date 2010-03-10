@@ -24,43 +24,20 @@
 */
 
 using System;
-using System.IO;
 
-using Dalle.Archivers;
 namespace Dalle.Archivers.rpm
 {
-
-
-	public class RPMArchiveEntry : ArchiveEntry
+	public enum RpmType
 	{
-		#region ArchiveEntry implementation
-		public bool IsDirectory {
-			get {
-				return this.isDirectory;
-			}
-		}
-		
-		
-		public string Name {
-			get {
-				return this.name;
-			}
-		}
-		
-		
-		public long Size {
-			get {
-				return this.size;
-			}
-		}
-		
-		#endregion
-
-		private long size = 0;
-		private string name = "";
-		private bool isDirectory = false;
-		public RPMArchiveEntry ()
-		{
-		}
-	}
+		RPM_NULL_TYPE		=  0,
+		RPM_CHAR_TYPE		=  1,
+		RPM_INT8_TYPE		=  2,
+		RPM_INT16_TYPE		=  3,
+		RPM_INT32_TYPE		=  4,
+		RPM_INT64_TYPE		=  5,
+		RPM_STRING_TYPE		=  6,
+		RPM_BIN_TYPE		=  7,
+		RPM_STRING_ARRAY_TYPE	=  8,
+		RPM_I18NSTRING_TYPE		=  9,
+	};
 }
