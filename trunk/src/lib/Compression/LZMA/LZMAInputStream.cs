@@ -79,7 +79,7 @@ namespace Dalle.Compression.LZMA
 
 		public override long Length {
 			get {
-				throw new System.NotImplementedException();
+				return this.uncompressedSize;
 			}
 		}
 
@@ -106,7 +106,7 @@ namespace Dalle.Compression.LZMA
 		{
 			byte[] one = new byte[1];
 			int leidos = Read (one, 0, 1);
-			if (leidos == 1) {
+			if (leidos == 0) {
 				return -1;
 			}
 			else {

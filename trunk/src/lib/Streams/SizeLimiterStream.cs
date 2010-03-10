@@ -31,10 +31,22 @@ namespace Dalle.Streams
 		private Stream stream;
 		private long maxSize;
 		private long alreadyRead = 0;
+		private long length;
 		public SizeLimiterStream (Stream stream, long maxSize)
 		{
 			this.stream = stream;
 			this.maxSize = maxSize;
+			try {
+				this.length = stream.Length - stream.Position;
+			}
+			catch (Exception) 
+			{
+				this.length = maxSize;
+			}
+			if (maxSize > 0) {
+				this.length = Math.Min (this.length, maxSize);
+			}
+
 		}
 		public override bool CanRead {
 			get {
@@ -53,7 +65,7 @@ namespace Dalle.Streams
 		}
 		public override long Length {
 			get {
-				return Math.Min (stream.Length, maxSize);
+				return this.length;
 			}
 		}
 		public override long Position {
