@@ -4,16 +4,19 @@
 	Soporte para ar
 	Soporte para deb
 	Soporte para cpio
+	Soporte para xar
+	Soporte para rpm
+	Soporte Gnome Split
 
-03-02-2010  - Version 0.10.1
+03-ene-2010  - Version 0.10.1
 	Corregido bug al partir en formato 'generico'.
 	Aumentado el tamaño del buffer a 1Mb para mejorar el rendimiento.
 	Mejora del soporte de astrotite. Código reescrito. 
 
-25-01-2010  - Version 0.9.1
+25-ene-2010  - Version 0.9.1
 	Soporte LZMA
 
-21-01-2010  - Version 0.9.0
+21-ene-2010  - Version 0.9.0
 	Cambio del repositorio de código a subversion
 	Soporte gcutter
 	Soporte split de unix
@@ -29,7 +32,7 @@
 	Soporte para gettext
 	Traduccion gallego
 	Construccion con nant
-	Recuperado el empaquetado en rpm
+	Recuperado el empaquetado en rpm	
 
 19-ago-2006 - Version 0.7.7
 

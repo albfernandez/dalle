@@ -47,7 +47,7 @@ Leyenda:
 	- [ ]  Repaso de dalle-sfv.
 	- [ ]  Paquete deb cumple con las políticas de debian.
 	- [ ]  Recuperar formato splitfile
-	- [ ]  Soporte checksum hacha 3.5
+	- [-]  Soporte checksum hacha 3.5
 	- [-]  Soporte "completo" para zip.
 	- [X]  Soporte "completo" para tar, gz, bz2.
 	- [-]  Mejorar el soporte de Astrotite.
@@ -59,7 +59,7 @@ Leyenda:
 	- [X] Soporte cutkiller
 	- [X] Soporte XTREMSPLIT
 	- [X] Soporte divij
-	- [ ] Soporte GNOME Split
+	- [X] Soporte GNOME Split
 	- [ ] Formatos soportados por yoyocut
 	- [ ] Nueva web.
 
