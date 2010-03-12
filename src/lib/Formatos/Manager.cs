@@ -78,6 +78,7 @@ namespace Dalle.Formatos
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v1 ());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHachaPro ());
 			formatos.Add (new Dalle.Formatos.Cutter.Cutter ());
+			formatos.Add (new Dalle.Formatos.GnomeSplit.GnomeSplit ());
 			formatos.Add (new Dalle.Formatos.Deb.Deb ());
 			formatos.Add (new Dalle.Formatos.Ar.Ar ());
 			formatos.Add (new Dalle.Formatos.RPM.RPM ());
