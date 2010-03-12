@@ -8,7 +8,7 @@
 	<property name="copyright" value="Copyright (c) 2005-2010, Alberto Fernández" overwrite="false"/>
 	<property name="prefix" value="/usr/" overwrite="false" />
 	<property name="DESTDIR" value="/" overwrite="false" />
-	<property name="lib7zip" value="liblzma.dll" />
+	<property name="liblzma" value="liblzma.dll" />
 	<property name="libDalle" value="libDalle.dll"/>
 	<property name="buildDir" value="build"/>
 	
@@ -100,11 +100,11 @@
 		<delete dir="build" />
     </target>
 
-    <target name="build" depends="generate-mo,build-lib-7zip,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
+    <target name="build" depends="generate-mo,build-lib-lzma,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
     
-    <target name="build-lib-7zip" description="compiles 7zip library">
+    <target name="build-lib-lzma" description="compiles LZMA library">
     	<mkdir dir="${buildDir}" />    	
-		<csc target="library" output="${buildDir}/${lib7zip}" debug="${debug}">
+		<csc target="library" output="${buildDir}/${liblzma}" debug="${debug}">
 			<sources>
 				<include name="src/external/7zip/**.cs" />
 			</sources>
@@ -122,7 +122,7 @@
 			<references>
 				<include name="ICSharpCode.SharpZipLib.dll" />
 				<include name="Mono.Posix.dll"/>
-				<include name="${buildDir}/${lib7zip}"/>
+				<include name="${buildDir}/${liblzma}"/>
 			</references>
 		</csc>
 	</target>
@@ -217,7 +217,18 @@
 			</fileset>
 		</zip>
 	</target>
-		
+	<target name="build-dalle-crcs">
+		<csc target="exe" output="build/crcs.exe" debug="${debug}">
+			<sources>
+				<include name="src/ui/console/dalle-crcs/src/**.cs" />
+			</sources>
+			<references>
+				<include name="${buildDir}/${libDalle}"/>
+				<include name="Mono.Posix.dll"/>
+				<include name="ICSharpCode.SharpZipLib.dll" />
+			</references>
+		</csc>
+	</target>
 	<target name="generate-assembly-infos">
 		<asminfo output="src/lib/AssemblyInfo.cs" language="CSharp">
 		    <imports>
