@@ -40,9 +40,9 @@ Archivos (filecount)
 		crc :  4 bytes
 		data: (size bytes)
 
-
-
 crc - Simplemente suma el valor de todos los bytes de cada bloque.
+
+El archivo termina con un 'EOF' en ASCII
 
 
 
