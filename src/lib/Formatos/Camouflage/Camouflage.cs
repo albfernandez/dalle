@@ -26,6 +26,7 @@ using System;
 using System.IO;
 
 using Dalle.Utilidades;
+using Dalle.Streams;
 
 namespace Dalle.Formatos.Camouflage
 {
@@ -41,6 +42,8 @@ namespace Dalle.Formatos.Camouflage
 		}
 		protected override void _Unir (string fichero, string dirDest)
 		{
+			OnProgress (0, 1);
+			long total = new FileInfo (fichero).Length;
 			CamouflageMetaInfo info = CamouflageMetaInfo.LoadFromFile (fichero);
 			
 			if (info == null) {
@@ -53,15 +56,72 @@ namespace Dalle.Formatos.Camouflage
 			string destino = dirDest + Path.DirectorySeparatorChar + fichero;
 			
 			
+			int leidos = 0;
+			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
+			FileStream inStream = File.OpenRead (fichero);
 			
 			if (true) {
 				// Este código extrae la piel
 				destino = dirDest + Path.DirectorySeparatorChar + info.Archivos[0].Nombre;
-				UtilidadesFicheros.ComprobarSobreescribir (destino);
-				UtilidadesFicheros.CopiarIntervalo (fichero, destino, 0, largoPiel);
-				pos = largoPiel;
-				byte[] perm = UtilidadesFicheros.LeerSeek (fichero, pos, 26);
-				info.Archivos[0].Permisos = UtArrays.LeerInt16 (perm, 0);
+				Stream os = UtilidadesFicheros.CreateWriter (destino);
+				Stream sls = new SizeLimiterStream (inStream, largoPiel);
+				while ((leidos = sls.Read (buffer, 0, buffer.Length)) > 0) 
+				{
+					os.Write (buffer, 0, leidos);
+					pos += leidos;
+					OnProgress (pos, total);
+				}
+				os.Close ();
+				
+				// Permisos y tiempos de acceso
+				if (26 != inStream.Read (buffer, 0, 26)) 
+				{
+					throw new IOException ("Unexpected end of file");
+				}
+				pos += 26;
+				
+			}
+			byte[] lc = new byte[4];
+			byte[] chunk = new byte[1024 * 1024];
+			Aleatorizador aleat = new Aleatorizador ();
+			for (int i = 1; i < info.Archivos.Length; i++) {
+				destino = dirDest + Path.DirectorySeparatorChar + info.Archivos[i].Nombre;
+				Stream os = UtilidadesFicheros.CreateWriter (destino);
+				int largoChunk = 0;
+				do {
+					if (4 != inStream.Read (lc, 0, 4)) {
+						throw new IOException ("Unexpected end of file");
+					}
+					largoChunk = UtArrays.LeerInt32 (lc, 0);
+					pos += 4;
+					if (largoChunk > 0) {
+						aleat.Reset ();
+						leidos = inStream.Read (chunk, 0, largoChunk);
+						if (leidos != largoChunk) {
+							throw new IOException ("Unexpected end of file");
+						}
+						pos += largoChunk;
+						aleat.Desencriptar (chunk, 0, leidos);
+						os.Write (chunk, 0, leidos);						
+					}
+					OnProgress (pos, total);
+				} while (largoChunk > 0);
+				os.Close ();
+				
+				// Permisos y tiempos de acceso
+				if (26 != inStream.Read (buffer, 0, 26)) {
+					throw new IOException ("Unexpected end of file");
+				}
+				pos += 26;
+			}
+			inStream.Close ();
+			OnProgress (total, total);
+			
+			
+			
+
+//byte[] perm = UtilidadesFicheros.LeerSeek (fichero, pos, 26);
+				//info.Archivos[0].Permisos = UtArrays.LeerInt16 (perm, 0);
 				//info.Archivos[0].Creado = UtArrays.LeerDateTime (perm, 2);
 				//info.Archivos[0].Accedido = UtArrays.LeerDateTime (perm, 10);
 				//info.Archivos[0].Modificado = UtArrays.LeerDateTime (perm, 18);
@@ -73,81 +133,8 @@ namespace Dalle.Formatos.Camouflage
 				fi.CreationTime = info.Archivos[0].Creado;	
 				fi.LastAccessTime = info.Archivos[0].Accedido;
 				fi.LastWriteTime = info.Archivos[0].Modificado;
-				*/			
-			
-			
-			
-
-			
-
-				
+				*/		
 				//fi.Attributes = (FileAttributes) info.Archivos[0].Permisos;
-			
-			
-
-
-			}		
-		
-
-
-			pos = largoPiel + 26;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		
-		
-		
-		
-
-			
-			
-			
-			
-			Aleatorizador aleat = new Aleatorizador ();
-			for (int i = 1; i < info.Archivos.Length; i++) {
-				destino = dirDest + Path.DirectorySeparatorChar + info.Archivos[i].Nombre;
-				UtilidadesFicheros.ComprobarSobreescribir (destino);
-				int largoChunk = 0;
-				do {
-					
-					byte[] lc = UtilidadesFicheros.LeerSeek (fichero, pos, 4);
-					pos += 4;
-					largoChunk = UtArrays.LeerInt32 (lc, 0);
-					if (largoChunk > 0) {
-						aleat.Reset ();
-						byte[] chunk = UtilidadesFicheros.LeerSeek (fichero, pos, largoChunk);
-						pos += largoChunk;
-						aleat.Desencriptar (chunk);
-						UtilidadesFicheros.Append (destino, chunk);
-					}
-				} while (largoChunk > 0);
-				
-				byte[] perm = UtilidadesFicheros.LeerSeek (fichero, pos, 26);
-				
-				pos += 26;
-				//info.Archivos[i].Permisos = UtArrays.LeerInt16(perm, 0);
-				//info.Archivos[i].Creado = UtArrays.LeerDateTime (perm, 2);
-				//info.Archivos[i].Accedido = UtArrays.LeerDateTime (perm, 10);
-				//info.Archivos[i].Modificado = UtArrays.LeerDateTime (perm, 18);	
-
-				//FileInfo fi = new FileInfo (destino);
-				
-				/*
-				fi.CreationTime = info.Archivos[i].Creado;
-				fi.LastAccessTime = info.Archivos[i].Accedido;
-				fi.LastWriteTime = info.Archivos[i].Modificado;
-				*/
-				//fi.Attributes = (FileAttributes) info.Archivos[i].Permisos;
-
-			}
 		}
 		protected override void _Partir (string fichero,string salida1, string dir, long kb)
 		{
