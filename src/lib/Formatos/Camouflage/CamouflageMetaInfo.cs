@@ -74,13 +74,13 @@ namespace Dalle.Formatos.Camouflage
 			get { return archivos;  }
 		}
 		
-		public static CamouflageMetaInfo LoadFromFile(String fichero)
+		public static CamouflageMetaInfo LoadFromFile (String fichero)
 		{
 		
-			CamouflageMetaInfo info = new CamouflageMetaInfo();
+			CamouflageMetaInfo info = new CamouflageMetaInfo ();
 			FileStream reader = null;
 			try {
-				reader = new FileStream (fichero, FileMode.Open);
+				reader = File.OpenRead (fichero);
 				reader.Seek (-277, SeekOrigin.End);
 				byte[] b1 = new byte[277];
 				reader.Read (b1, 0, 277);

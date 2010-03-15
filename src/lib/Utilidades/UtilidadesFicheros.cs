@@ -235,7 +235,7 @@ namespace Dalle.Utilidades
 	
 		public static byte[] LeerSeek (String fichero, long seek, long count)
 		{
-			FileStream reader = new FileStream (fichero, FileMode.Open);
+			FileStream reader = File.OpenRead (fichero);
 			reader.Seek (seek, SeekOrigin.Begin);
 			long tamano = (count < (reader.Length - seek)) ? count : (reader.Length - seek);
 			
