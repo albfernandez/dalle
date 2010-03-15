@@ -43,8 +43,8 @@ namespace Dalle.Formatos.Camouflage
 		{
 			CamouflageMetaInfo info = CamouflageMetaInfo.LoadFromFile (fichero);
 			
-			if (info == null){
-				throw new Exception();
+			if (info == null) {
+				throw new Exception ();
 			}
 			
 			
@@ -54,70 +54,98 @@ namespace Dalle.Formatos.Camouflage
 			
 			
 			
-			if (true){
+			if (true) {
 				// Este código extrae la piel
 				destino = dirDest + Path.DirectorySeparatorChar + info.Archivos[0].Nombre;
 				UtilidadesFicheros.ComprobarSobreescribir (destino);
 				UtilidadesFicheros.CopiarIntervalo (fichero, destino, 0, largoPiel);
 				pos = largoPiel;
 				byte[] perm = UtilidadesFicheros.LeerSeek (fichero, pos, 26);
-				info.Archivos[0].Permisos = UtArrays.LeerInt16(perm, 0);
-				info.Archivos[0].Creado = UtArrays.LeerDateTime (perm, 2);
-				info.Archivos[0].Accedido = UtArrays.LeerDateTime (perm, 10);
-				info.Archivos[0].Modificado = UtArrays.LeerDateTime (perm, 18);
+				info.Archivos[0].Permisos = UtArrays.LeerInt16 (perm, 0);
+				//info.Archivos[0].Creado = UtArrays.LeerDateTime (perm, 2);
+				//info.Archivos[0].Accedido = UtArrays.LeerDateTime (perm, 10);
+				//info.Archivos[0].Modificado = UtArrays.LeerDateTime (perm, 18);
 				
-				FileInfo fi = new FileInfo (destino);				
+				//FileInfo fi = new FileInfo (destino);				
 				/* 
 				Debería funcionar pero el programa falla
 				
 				fi.CreationTime = info.Archivos[0].Creado;	
 				fi.LastAccessTime = info.Archivos[0].Accedido;
 				fi.LastWriteTime = info.Archivos[0].Modificado;
-				*/
+				*/			
+			
+			
+			
+
+			
+
 				
-				fi.Attributes = (FileAttributes) info.Archivos[0].Permisos;
-	
-			}
+				//fi.Attributes = (FileAttributes) info.Archivos[0].Permisos;
+			
+			
+
+
+			}		
+		
+
+
 			pos = largoPiel + 26;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
 
 			
 			
 			
 			
-			Aleatorizador aleat = new Aleatorizador();
-			for (int i=1; i < info.Archivos.Length; i++){
-				destino = dirDest + Path.DirectorySeparatorChar + info.Archivos[i].Nombre; 
+			Aleatorizador aleat = new Aleatorizador ();
+			for (int i = 1; i < info.Archivos.Length; i++) {
+				destino = dirDest + Path.DirectorySeparatorChar + info.Archivos[i].Nombre;
 				UtilidadesFicheros.ComprobarSobreescribir (destino);
 				int largoChunk = 0;
 				do {
 					
-					byte[] lc = UtilidadesFicheros.LeerSeek(fichero, pos, 4);
-					pos+=4;
-					largoChunk = UtArrays.LeerInt32(lc, 0);
-					if (largoChunk > 0){
-						aleat.Reset();
+					byte[] lc = UtilidadesFicheros.LeerSeek (fichero, pos, 4);
+					pos += 4;
+					largoChunk = UtArrays.LeerInt32 (lc, 0);
+					if (largoChunk > 0) {
+						aleat.Reset ();
 						byte[] chunk = UtilidadesFicheros.LeerSeek (fichero, pos, largoChunk);
-						pos+=largoChunk;
-						aleat.Desencriptar(chunk);
-						UtilidadesFicheros.Append(destino, chunk);
+						pos += largoChunk;
+						aleat.Desencriptar (chunk);
+						UtilidadesFicheros.Append (destino, chunk);
 					}
-				} while (largoChunk > 0);	
+				} while (largoChunk > 0);
 				
 				byte[] perm = UtilidadesFicheros.LeerSeek (fichero, pos, 26);
 				
-				info.Archivos[i].Permisos = UtArrays.LeerInt16(perm, 0);
-				info.Archivos[i].Creado = UtArrays.LeerDateTime (perm, 2);
-				info.Archivos[i].Accedido = UtArrays.LeerDateTime (perm, 10);
-				info.Archivos[i].Modificado = UtArrays.LeerDateTime (perm, 18);	
+				pos += 26;
+				//info.Archivos[i].Permisos = UtArrays.LeerInt16(perm, 0);
+				//info.Archivos[i].Creado = UtArrays.LeerDateTime (perm, 2);
+				//info.Archivos[i].Accedido = UtArrays.LeerDateTime (perm, 10);
+				//info.Archivos[i].Modificado = UtArrays.LeerDateTime (perm, 18);	
 
-				FileInfo fi = new FileInfo (destino);
+				//FileInfo fi = new FileInfo (destino);
 				
 				/*
 				fi.CreationTime = info.Archivos[i].Creado;
 				fi.LastAccessTime = info.Archivos[i].Accedido;
 				fi.LastWriteTime = info.Archivos[i].Modificado;
 				*/
-				fi.Attributes = (FileAttributes) info.Archivos[i].Permisos;
+				//fi.Attributes = (FileAttributes) info.Archivos[i].Permisos;
 
 			}
 		}
@@ -227,30 +255,34 @@ namespace Dalle.Formatos.Camouflage
 		{
 			FileStream reader = null;
 			byte[] buf = new byte[20];
-			if ( ! File.Exists (fichero) )
+			if (!File.Exists (fichero))
+			{
 				return false;
+			}
 
-			try{
+			try {
 				
-				reader = new FileStream(fichero, FileMode.Open);
-				if (reader.Length < 300){
+				//reader = new FileStream (fichero, FileMode.Open);
+				reader = File.OpenRead (fichero);
+				if (reader.Length < 300) {
 					return false;
 				}
 				reader.Seek (-buf.Length, SeekOrigin.End);
 				reader.Read (buf, 0, buf.Length);
 			}
-			catch (Exception e){
-				Console.WriteLine(e.Message);
+			catch (Exception e) {
+				Console.WriteLine (e.Message);
 				return false;
 			}
-			finally{
-				if (reader != null){
-					reader.Close();
+			finally {
+				if (reader != null) {
+					reader.Close ();
 			
 				}
 			}
-			if (reader != null){
-				return Aleatorizador.DesencriptarTexto(buf).StartsWith("v1.");
+			if (reader != null) {
+				string textoDesencriptado = Aleatorizador.DesencriptarTexto(buf);
+				return textoDesencriptado.StartsWith("v1.");
 			}
 			else{
 				return false;
