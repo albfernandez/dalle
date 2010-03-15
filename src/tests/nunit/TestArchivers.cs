@@ -137,6 +137,12 @@ namespace Dalle.Nunit
 			Manager.Instance.Unir (GetBaseDir () + "test_2010.02.13-1_all.deb", Path.GetTempPath ());
 			ComprobarResultado ();
 		}
+		[Test()]
+		public void TestCamouflage ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "camouflage.png", Path.GetTempPath () + Path.DirectorySeparatorChar + "test");
+			ComprobarResultado (Path.GetTempPath () + Path.DirectorySeparatorChar + "test", false, false);
+		}
 		
 		
 		
@@ -148,10 +154,14 @@ namespace Dalle.Nunit
 		
 		private void ComprobarResultado (string dir)
 		{
-			ComprobarResultado (dir,true);
+			ComprobarResultado (dir,true, true);
 		}
 		
 		private void ComprobarResultado (string dir, bool fullPath)
+		{
+		
+		}
+		private void ComprobarResultado (string dir, bool fullPath, bool emptyFiles)
 		{
 			foreach (string key in h.Keys) 
 			{
@@ -161,6 +171,11 @@ namespace Dalle.Nunit
 				{
 					realFile = dir + Path.DirectorySeparatorChar + key.Substring (key.LastIndexOf (Path.DirectorySeparatorChar));
 				}
+				if (realFile.EndsWith ("vacio.txt") && !emptyFiles) 
+				{
+					continue;
+				}
+				
 				Assert.IsTrue (File.Exists (realFile), "Archivo no creado " + key + "[" + realFile + "]");				
 				string computedHash = hasher.GenerateHash (realFile);				
 				Assert.AreEqual (realHash, computedHash);				
@@ -172,6 +187,7 @@ namespace Dalle.Nunit
 		[SetUp()]
 		public void SetUp ()
 		{
+			CleanTempDir ();
 			h = new Hashtable ();
 			h.Add("test/testdir/testfiles/aes.txt", "134e7c465126409a9e8fb15fdaada00c0b4715d7");
 			h.Add("test/testdir/testfiles/random.img", "6c4b9579231edd9c4977e59f66633307e1f37722");
