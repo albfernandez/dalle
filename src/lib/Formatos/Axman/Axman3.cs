@@ -26,6 +26,7 @@ using System.IO;
 using Dalle.Utilidades;
 using Dalle.Checksums;
 using Dalle.Formatos.Zip;
+using Dalle.Streams;
 
 namespace Dalle.Formatos.Axman
 {
@@ -34,7 +35,7 @@ namespace Dalle.Formatos.Axman
 	{
 		private CRC crc = new AxmanCRC();
 		
-		public Axman3() : base ("axman3", "Axman 3", "http://www.mosaicware.com/", true, false)
+		public Axman3() : base ("axman3", "Axman 3", "http://www.mosaicware.com/", false, false)
 		{
 		}
 		protected override void _Unir (string fichero, string dirDest)
@@ -44,57 +45,66 @@ namespace Dalle.Formatos.Axman
 			string formato = "";
 			bool comprimido = false;
 			
-			string bas = fichero.Substring (0, fichero.LastIndexOf('.', fichero.Length - 7));
+			string bas = fichero.Substring (0, fichero.LastIndexOf ('.', fichero.Length - 7));
 
-			if (bas.EndsWith("ZIP"))
+			if (bas.ToLower ().EndsWith (".zip"))
+			{
 				comprimido = true;
+			}
 	
-			formato = bas + ".{0}." + fichero.Substring(fichero.Length -5);
+			formato = bas + ".{0}." + fichero.Substring (fichero.Length - 5);
 			
 			int i = 1;
 			string f = String.Format (formato, i);
-			while (File.Exists(f)){
+			while (File.Exists (f)) 
+			{
 				i++;
-				f = String.Format(formato, i);
-			}			
-			f = String.Format(formato, i-1);
-
-			// TODO: Terminar el CRC y comprobarlo.
-			
-
-			ColaAxman c = ColaAxman3.LoadFromFile (f);
-
-			string destino = dirDest + Path.DirectorySeparatorChar + c.Nombre;
-			UtilidadesFicheros.ComprobarSobreescribir (destino);
-			
-			for (i=1; i < c.Fragmentos; i++){
-
 				f = String.Format (formato, i);
-				CabeceraAxman cabAxman = CabeceraAxman.LoadFromFile (f);
-				if (cabAxman.Fragmento != i){
-					throw new Dalle.Formatos.FileFormatException();
-				}
-				crc.Reset();
-				transferidos += UtilidadesFicheros.CopiarIntervalo (f, destino, 23, crc);
-				// TODO: Cuando funcione crc, descomentar estas lineas.
-				// if (crc.Value != cabAxman.Checksum)
-				// 		throw new Exception ("CRC incorrecto");
-				OnProgress (transferidos, c.TamanoOriginal);
 			}
-			
-			// El último fragmento...
-			f = String.Format (formato, i);
-			crc.Reset();
-			transferidos += UtilidadesFicheros.CopiarIntervalo (f, destino, 23, c.TamanoOriginal - transferidos,crc);
-			// TODO: Cuando funcione crc, descomentar estas lineas.
-			// if (crc.Value != cabAxman.Checksum)
-			// 		throw new Exception ("CRC incorrecto");
-			OnProgress (transferidos, c.TamanoOriginal);
-			
-			if (comprimido){
-				Dalle.Formatos.Zip.Zip zip = new Dalle.Formatos.Zip.Zip();
+			f = String.Format (formato, i - 1);
+			ColaAxman c = ColaAxman3.LoadFromFile (f);
+			string destino = dirDest + Path.DirectorySeparatorChar + c.Nombre;
+			Stream os = UtilidadesFicheros.CreateWriter (destino);
+			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
+			int leidos = 0;
+			for (i = 1; i <= c.Fragmentos; i++)
+			{
+				f = String.Format (formato, i);
+				
+				Stream ins = File.OpenRead (f);
+				if (23 != ins.Read (buffer, 0, 23))
+				{
+					throw new IOException ("Unexpected end of file:" + f);
+				}
+				CabeceraAxman cabAxman = CabeceraAxman.LoadFromArray (buffer);
+				if (cabAxman.Fragmento != i) {
+					throw new Dalle.Formatos.FileFormatException ();
+				}
+				crc.Reset ();
+				Stream inStream = ins;
+				if (i == c.Fragmentos) {
+					inStream = new SizeLimiterStream (ins, c.TamanoOriginal - transferidos);
+				}
+				while ((leidos = inStream.Read (buffer, 0, buffer.Length)) > 0)
+				{
+					os.Write (buffer, 0, leidos);
+					transferidos += leidos;
+					OnProgress (transferidos, c.TamanoOriginal);
+				}
+				ins.Close ();
+
+			}
+			os.Close ();
+			if (comprimido) {
+				Dalle.Formatos.Zip.Zip zip = new Dalle.Formatos.Zip.Zip ();
 				zip.Progress += new ProgressEventHandler (this.OnProgress);
 				zip.Unir (destino);
+				try {
+					File.Delete (destino);
+				}
+				catch (Exception) 
+				{
+				}
 			}
 			
 		}
