@@ -4,7 +4,7 @@ using System.IO;
 using NUnit.Framework;
 using Dalle.FileVerification.FileHashers;
 using Dalle.Formatos;
-namespace nunit
+namespace Dalle.Nunit
 {
 
 
@@ -26,12 +26,26 @@ namespace nunit
 		{
 			try {
 				//Directory.Delete (Path.GetTempPath () + Path.DirectorySeparatorChar + "test", true);
-				File.Delete (Path.GetTempPath() + Path.DirectorySeparatorChar + "aes5.txt");
+				File.Delete (Path.GetTempPath () + Path.DirectorySeparatorChar + "aes5.txt");
 			}
 			catch (Exception e) 
 			{
 			}
 		}
+		
+		[Test()]
+		public void TestAxmanNormal() 
+		{
+			Manager.Instance.Unir(GetBaseDir() + "axman/normal/cortado.1.axman", Path.GetTempPath());
+			ComprobarResultado (Path.GetTempPath());
+		}
+		[Test()]
+		public void TestAxmanZip ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "axman/zip/cortado.zip.1.axman", Path.GetTempPath ());
+			ComprobarResultado (Path.GetTempPath ());
+		}
+		
 		[Test()]
 		public void TestGnomeSplit ()
 		{
