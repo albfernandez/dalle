@@ -60,6 +60,12 @@ namespace Dalle.Nunit
 			ComprobarResultado ();
 		}
 		[Test()]
+		public void TestAxman ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "axman/axman.zip.1.axman", Path.GetTempPath () + Path.DirectorySeparatorChar + "test");
+			ComprobarResultado (Path.GetTempPath () + Path.DirectorySeparatorChar + "test", false);
+		}
+		[Test()]
 		public void TestCpioOldBin ()
 		{
 			Manager.Instance.Unir (GetBaseDir () + "test.bin.cpio", Path.GetTempPath ());
