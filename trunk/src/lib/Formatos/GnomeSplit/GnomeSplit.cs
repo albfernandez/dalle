@@ -82,8 +82,8 @@ namespace Dalle.Formatos.GnomeSplit
 			int fragmentosTotales = 0;
 			bool hasMd5 = false;
 			string fileMd5 = "";
-			string headerVersion;
-			string headerFileName;
+			//string headerVersion;
+			//string headerFileName;
 			
 			for (i = 1; File.Exists (String.Format (baseName + ".{0:000}.gsp", i)); i++)
 			{
@@ -100,8 +100,8 @@ namespace Dalle.Formatos.GnomeSplit
 					}
 					hasMd5 = (buffer[0x38] != 0);
 					fragmentosTotales = UtArrays.LeerInt32BE (buffer, 0x39);
-					headerVersion = UtArrays.LeerTexto (buffer, 1, 4);
-					headerFileName = UtArrays.LeerTexto (buffer, 6, 50);
+					//headerVersion = UtArrays.LeerTexto (buffer, 1, 4);
+					//headerFileName = UtArrays.LeerTexto (buffer, 6, 50);
 					total = UtArrays.LeerInt64BE(buffer, 0x3D);					
 				}
 				
