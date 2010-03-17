@@ -80,16 +80,16 @@ namespace Dalle.Formatos.Axman
 		
 		public static CabeceraAxman LoadFromFile (String file)
 		{
+			byte[] bytes = UtilidadesFicheros.LeerSeek (file, 0, 23);
+			return LoadFromArray (bytes);		
+		}
+		public static CabeceraAxman LoadFromArray (byte[] bytes)
+		{
 			CabeceraAxman cab = new CabeceraAxman ();
-			
-
-			byte[] bytes = UtilidadesFicheros.LeerSeek (file, 0, 23);	
 			cab.version = Utilidades.UtArrays.LeerTexto (bytes, 0, 15);
 			cab.fragmento = UtArrays.LeerInt32 (bytes, 15);
 			cab.checksum = UtArrays.LeerInt32 (bytes, 19);
-			
 			return cab;
-			
 		}
 	}
 }
