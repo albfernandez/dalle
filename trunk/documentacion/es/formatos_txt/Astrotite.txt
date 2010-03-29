@@ -48,32 +48,55 @@ El archivo termina con un 'EOF' en ASCII
 
 AST3 
 ======= 
-¿?
+¿Ninguna release pública?
 
 ASTP y ASTPxxx
 ====
 Multiparte
-¿?
+¿Ninguna release pública?
 
 AST4
 =======
-¿?
+¿Ninguna release pública?
 
 
 
 
 ASTR (v2006)
 ===
-¿?
+¿Ninguna release pública?
 
 
 ASMPxxx (v2006)
 ====
 Multiparte
+¿Ninguna release pública?
+
 
 
 AFA y .AFP.xxx
 ==============
 Formatos normal y multiparte de astrotite 200x
+Formato cerrado.
 
-¿?
+
+http://www.astroteamrg.org/foro/index.php?showtopic=16755
+
+
+Harukaze 
+15 Dec 2009, 12:58 
+
+
+Si, si, es lo que necesitaba astroteam para volver a ser importante. Un archivo cerrado que nadie conoce y que nadie puede abrir...
+
+PD: que funcione en wine no lo hace multiplataforma. Publica las especificaciones del archivo y si a alguien le interesa lo hará multiplataforma. 
+
+
+matabyte 
+15 Dec 2009, 21:03 #21
+
+
+Bueno, ya tenéis las modificaciones para que podáis abrir y descomprimir archivos .rar y .zip con el Astrotite tan fácilmente como con el winrar.
+Harukaze, que lo use quien quiera, pero desde luego no voy a publicar las especificaciones XD, Que para eso me he matado 1 año de trabajo XD. 
+Y si, ya estoy trabajando en el porte a linux (y macos), pero no tengo ni el dinero ni el tiempo para hacerlo todo inmediatamente como comprenderás. 
+
