@@ -1,3 +1,8 @@
+dalle (0.10.4-1) unstable; urgency=low
+  * Updated build.
+
+ -- Alberto Fernández <infjaf@gmail.com>  Sun, 25 Apr 2010 22:05:46 +0100 
+
 dalle (0.10.1-1) unstable; urgency=low
   * Updated build.
 
