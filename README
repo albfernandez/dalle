@@ -14,7 +14,6 @@ La versión en línea de comandos puede funcionar en otros CLRs
 (.Net y Portable.net), pero no está muy probado.
 
 Para compilar:
-- Linux y mono (lo siento, pero no lo he preparado para más).
   Lea INSTALL
 
 
