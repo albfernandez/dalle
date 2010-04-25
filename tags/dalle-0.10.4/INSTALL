@@ -1,0 +1,73 @@
+########
+IMPORTANTE:
+
+En estos momentos se está migrando para usar nant.
+El proyecto ahora mismo está configurado para compilar en Debian Sid, otras distros
+quizás necesiten trabajo/configuracion adicional
+
+Para compilar
+- Instalar nant
+- ejecutar nant
+
+Los ejecutables quedan en la carpeta build.
+
+########
+
+
+Este archivo contiene información acerca de como compilar e instalar dalle.
+De momento sólo se ha probado en Linux.
+
+./configure --mono-path={librerias de mono}
+make
+(hacerse root).
+make install
+
+{librerias de mono} - 
+Los directorios donde están las librerias a usar por el compilador
+(si no están establecidos en MONO_PATH)
+Ejemplo en Debian:
+./configure --prefix=/usr --build-release --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp
+
+
+
+En build/ quedan los exes, las dlls y los wrappers.
+
+
+
+
+Para instalar el rpm
+
+rpm -vih dalle-VERSION.noarch.rpm
+
+Para instalar el rpm cambiando el directorio de instalación por otro
+
+rpm -vih --prefix=directorio dalle-VERSION.noarch.rpm
+
+
+
+
+Para instalar el paquete deb
+
+dpkg -i dalle_$VERSION_all.deb
+
+
+
+Para ejecutar el programa de linea de comandos
+
+dalle-console <comando> [opciones] <ficheros>
+ 
+<comandos>
+-s Partir ficheros
+-j Unir ficheros
+-i Mostrar información de los ficheros (formato)
+-l Lista de los formatos soportados
+(ausente) unir los ficheros.
+ 
+<opciones>
+-d=directorio Especifica el directorio de destino
+-f=formato Formato para partir
+-b=fichero Nombre del fichero destino, o prefijo de los fragmentos
+-t=tamano Tamaño de los fragmentos en kb (si es aplicable).
+
+
+INFORMACIÓN DETALLADA DE INSTALACIÓN

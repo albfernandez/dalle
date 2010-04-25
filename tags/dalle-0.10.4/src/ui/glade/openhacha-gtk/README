@@ -1,0 +1,42 @@
+
+		OpenHacha
+		=========
+
+	The beginning
+	--------------
+	
+	This project was based on Sierra (http://sierra.sourceforge.net/), a
+	free implementation of the Hacha for MS Windows program
+	(http://www.hachaweb.com). Sierra developed two implementations
+	(Python and C#), and a simple text based frontend.
+
+	I took the work made in C# as starting point for OpenHacha. 
+
+	
+	The future
+	----------
+	
+	For the 0.3 release and up, OpenHacha works with libhacha2, from the Dalle 
+	project (http://dalle.sourceforge.net). This new library supports all Hacha
+	file formats (v1, v2 and pro).
+
+	
+	The freedom
+	-----------
+
+	This project aims to provide a Gtk# frontend and a text console client to
+	manage and create Hacha files.
+
+	OpenHacha is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA

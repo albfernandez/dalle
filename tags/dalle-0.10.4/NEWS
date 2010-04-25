@@ -1,0 +1,97 @@
+25-04-2010 - Version 0.10.4
+	Test Nunit de los "archivers"
+	Soporte para astrotite v0 y v1
+	Soporte para ar
+	Soporte para deb
+	Soporte para cpio
+	Soporte para xar
+	Soporte para rpm
+	Soporte Gnome Split
+
+03-ene-2010  - Version 0.10.1
+	Corregido bug al partir en formato 'generico'.
+	Aumentado el tamaño del buffer a 1Mb para mejorar el rendimiento.
+	Mejora del soporte de astrotite. Código reescrito. 
+
+25-ene-2010  - Version 0.9.1
+	Soporte LZMA
+
+21-ene-2010  - Version 0.9.0
+	Cambio del repositorio de código a subversion
+	Soporte gcutter
+	Soporte split de unix
+	Soporte Splitter&Merger (Salvo descompresion en version 3)
+	Soporte Gzip, Bzip2, tar
+	Soporte cutkiller
+	Soporte Xtremsplit
+	Soporte Divij
+	Soporte Drag&Drop en dalle-gtk
+	Interfaz SWF
+
+24-mar-2008 - Version 0.7.8
+	Soporte para gettext
+	Traduccion gallego
+	Construccion con nant
+	Recuperado el empaquetado en rpm	
+
+19-ago-2006 - Version 0.7.7
+
+13-jun-2006 - Version 0.7.6
+
+11-jun-2005 - Version 0.7.5
+	
+11-jun-2005 - Version 0.7.4
+	Revision de OpenHacha, ahora es un Gnome.Program y no da Warnings
+	ni mensajes de depuración en tiempo de ejecución.
+	Soporte para verificacion de archivos con hash sha1
+
+24-sep-2004 - Version 0.7.3
+	Paquete debian
+	Soporte para archivos de Camouflage
+	Soporte completado para KamaleoN 2
+	Retoques en dalle-gtk
+	Openhacha actulizado
+
+17-mar-2004 - Version 0.7.2
+	Corregido un bug "muy tonto" de soporte de formatos
+	Inicio de una nueva ventana principal de dalle-gtk (Ramón Rey Vicente)
+
+16-feb-2004 - Version 0.7.1
+	Corregido error en sfv, que le hacia fallar cuando 
+	encontraba líneas en blanco
+
+12-feb-2004 - Version 0.7.0
+	Soporte para Astrotite
+	Soporte para los archivos de verificacion md5, md5 de bsd y sfv.
+	(dalle-sfv-console)
+
+27-ene-2004 - Version 0.6.0
+	OpenHacha actualizado a 0.5cvs
+	Nueva interfaz gtk# (dalle-gtk)
+	RPM relocalizable.
+	Nuevo sistema I18N
+	Incluido openhacha-text
+	Nuevo configure (shell-script)
+	Ya funciona el wrapper para dalle-console
+	Soporte para Axman3 (sin CRC)
+
+18-dic-2003  - Version 0.5.1
+	Interfaz grafica actualizada a OpenHacha 0.2.
+	Mejoras en el configure.
+
+16-dic-2003  - Version 0.5.0.
+	Nueva interfaz grafica gtk# (basada en openhacha).
+	Creados paquetes RPM.
+
+26-nov-2003  -  Version 0.4 - Primera version publica.
+
+	Interfaz por linea de comandos (dalle-console.exe).
+	Formatos soportados:
+		- Hacha: Todas las versiones.
+		- Splitfile.
+		- EasyFileSplitter.
+		- FileSplit.
+		- Kamaleon 1 y 2.
+		- MaxSplitter.
+		- SF.
+		- Zip.

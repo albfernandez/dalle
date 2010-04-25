@@ -1,0 +1,42 @@
+MaxSplitter 1.53 Free Edition
+http://www.acc.umu.se/~max/
+
+corta los archivos tal cual.
+El formato del nombre de los fragmentos es:
+<nombre original>.<numero de fragmento, 3 digitos, comenzando en 001>
+
+
+
+genera un archivo bat <nombre original>.bat para juntar los archivos. ej:
+@echo off
+rem Created by MaxSplitter v1.53 Free Edition
+rem Copyright (c) Max Bylesjö 2001
+copy /b "ceros.txt.001" "ceros.txt"
+copy /b "ceros.txt"+"ceros.txt.002" "ceros.txt"
+copy /b "ceros.txt"+"ceros.txt.003" "ceros.txt"
+copy /b "ceros.txt"+"ceros.txt.004" "ceros.txt"
+copy /b "ceros.txt"+"ceros.txt.005" "ceros.txt"
+copy /b "ceros.txt"+"ceros.txt.006" "ceros.txt"
+echo File ceros.txt was merged successfully!
+cls
+@exit
+
+Genera un archivo de texto, con los siguientes campos, separados por un byte a null.
+
+MXS<nombre_original>
+tamaño original en bytes
+numero de fragmentos generados
+version del programa que creo el archivo (1.53 Free Edition)
+atributos del archivo*
+N (zipped o no Y/N ?)
+numero de elementos en el batch de cortar (y para que está aquí?)(termina en null)
+
+
+Los atributos del archivo son los usados en msdos:
+
+a	Archivo
+r	Solo lectura
+h	Oculto
+s	Sistema
+d	Directorio
+
