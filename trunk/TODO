@@ -45,13 +45,13 @@ Leyenda:
 	- [ ]  Repasar y usar un tamaño de buffer constante
 	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
 	- [ ]  Repaso de dalle-sfv.
-	- [ ]  Paquete deb cumple con las políticas de debian.
+	- [X]  Paquete deb cumple con las políticas de debian.
 	- [ ]  Recuperar formato splitfile
 	- [-]  Soporte checksum hacha 3.5
 	- [-]  Soporte "completo" para zip.
 	- [X]  Soporte "completo" para tar, gz, bz2.
-	- [-]  Mejorar el soporte de Astrotite.
-	- [-]  Soporte para Splitter & Merger.
+	- [X]  Mejorar el soporte de Astrotite.
+	- [X]  Soporte para Splitter & Merger.
 	
 	- [X] Soporte HJSplit.
 	- [X] Soporte gcutter.

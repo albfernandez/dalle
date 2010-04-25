@@ -3,8 +3,8 @@
 	<description>Build file for dalle.</description>
 	<property name="debug" value="false" overwrite="false" />
 	<property name="codepage" value="utf8" overwrite="false" />
-	<property name="version" value="0.10.1.1" overwrite="false" />
-	<property name="shortVersion" value="0.10.1" overwrite="false"/>
+	<property name="version" value="0.10.4.1" overwrite="false" />
+	<property name="shortVersion" value="0.10.4" overwrite="false"/>
 	<property name="copyright" value="Copyright (c) 2005-2010, Alberto Fernández" overwrite="false"/>
 	<property name="prefix" value="/usr/" overwrite="false" />
 	<property name="DESTDIR" value="/" overwrite="false" />
@@ -218,7 +218,7 @@
 		</zip>
 	</target>
 	<target name="build-dalle-crcs">
-		<csc target="exe" output="build/crcs.exe" debug="${debug}">
+		<csc target="exe" output="build/dalle-crcs.exe" debug="${debug}">
 			<sources>
 				<include name="src/ui/console/dalle-crcs/src/**.cs" />
 			</sources>
@@ -246,8 +246,8 @@
 		        <attribute type="AssemblyCultureAttribute" value="" />
 		        <attribute type="AssemblyVersionAttribute" value="${version}" />
 		        <attribute type="AssemblyDelaySignAttribute" value="false" />
-		        <attribute type="AssemblyKeyFileAttribute" value="" />
-		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		        <attribute type="AssemblyKeyFileAttribute" value="dalle.key" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />	     
 		    </attributes>
 		</asminfo>
 		<asminfo output="src/ui/console/dalle-console/src/AssemblyInfo.cs" language="CSharp">
@@ -266,8 +266,8 @@
 		        <attribute type="AssemblyCultureAttribute" value="" />
 		        <attribute type="AssemblyVersionAttribute" value="${version}" />
 		        <attribute type="AssemblyDelaySignAttribute" value="false" />
-		        <attribute type="AssemblyKeyFileAttribute" value="" />
-		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		        <attribute type="AssemblyKeyFileAttribute" value="dalle.key" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />  
 		    </attributes>
 		</asminfo>
 		<asminfo output="src/ui/console/dalle-sfv-console/src/AssemblyInfo.cs" language="CSharp">
@@ -286,8 +286,8 @@
 		        <attribute type="AssemblyCultureAttribute" value="" />
 		        <attribute type="AssemblyVersionAttribute" value="${version}" />
 		        <attribute type="AssemblyDelaySignAttribute" value="false" />
-		        <attribute type="AssemblyKeyFileAttribute" value="" />
-		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		        <attribute type="AssemblyKeyFileAttribute" value="dalle.key" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />  
 		    </attributes>
 		</asminfo>
 		<asminfo output="src/ui/glade/openhacha-gtk/src/AssemblyInfo.cs" language="CSharp">
@@ -299,7 +299,8 @@
 		        <attribute type="AssemblyTitleAttribute" value="OpenHacha" />
 		        <attribute type="AssemblyDescriptionAttribute" value="A free as in freedom implementation of Hacha"/>
 		        <attribute type="AssemblyCopyrightAttribute" value="Copyright (c) 2003-2004, Ramón Rey Vicente" />
-		        <attribute type="AssemblyVersionAttribute" value="${version}" />	        
+		        <attribute type="AssemblyVersionAttribute" value="${version}" />
+		        <attribute type="AssemblyKeyFileAttribute" value="dalle.key" />        
 		    </attributes>
 		</asminfo>
 		<asminfo output="src/ui/gtk/dalle-gtk/src/AssemblyInfo.cs" language="CSharp">
@@ -318,8 +319,8 @@
 		        <attribute type="AssemblyCultureAttribute" value="" />
 		        <attribute type="AssemblyVersionAttribute" value="${version}" />
 		        <attribute type="AssemblyDelaySignAttribute" value="false" />
-		        <attribute type="AssemblyKeyFileAttribute" value="" />
-		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		        <attribute type="AssemblyKeyFileAttribute" value="dalle.key" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />  
 		    </attributes>
 		</asminfo>
 		<asminfo output="src/ui/swf/dalle-swf/src/AssemblyInfo.cs" language="CSharp">
@@ -338,8 +339,8 @@
 		        <attribute type="AssemblyCultureAttribute" value="" />
 		        <attribute type="AssemblyVersionAttribute" value="${version}" />
 		        <attribute type="AssemblyDelaySignAttribute" value="false" />
-		        <attribute type="AssemblyKeyFileAttribute" value="" />
-		        <attribute type="AssemblyKeyNameAttribute" value="" />		        
+		        <attribute type="AssemblyKeyFileAttribute" value="dalle.key" />
+		        <attribute type="AssemblyKeyNameAttribute" value="" />    
 		    </attributes>
 		</asminfo>
 	</target>

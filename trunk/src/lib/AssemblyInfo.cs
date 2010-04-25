@@ -19,8 +19,8 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyrightAttribute("Copyright (c) 2005-2010, Alberto Fernández")]
 [assembly: AssemblyTrademarkAttribute("")]
 [assembly: AssemblyCultureAttribute("")]
-[assembly: AssemblyVersionAttribute("0.10.1.1")]
+[assembly: AssemblyVersionAttribute("0.10.4.1")]
 [assembly: AssemblyDelaySignAttribute(false)]
-[assembly: AssemblyKeyFileAttribute("")]
+[assembly: AssemblyKeyFileAttribute("dalle.key")]
 [assembly: AssemblyKeyNameAttribute("")]
 
