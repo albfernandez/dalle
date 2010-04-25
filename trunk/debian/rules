@@ -11,7 +11,7 @@
 
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
-export MONO_SHARED_DIR=$(CURDIR)
+export MONO_DISABLE_SHM = 1
 
 # These are used for cross-compiling and for saving the configure script
 # from having to guess our platform (since we know it already)
@@ -21,10 +21,6 @@ DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
 CFLAGS = -Wall -g
 
-#config.status: configure
-#	dh_testdir
-#	./configure --prefix=/usr --build-debug --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp-2.0/
-#	touch config.status
 
 
 build: 
@@ -37,7 +33,6 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-arch-stamp build-indep-stamp #CONFIGURE-STAMP#
-	rm -rf $(MONO_SHARED_DIR)/.wapi
 	nant -nologo clean
 	
 	dh_clean 
@@ -52,12 +47,12 @@ install:
 	install -d debian/dalle/usr/share/dalle/pixmaps/
 	install -d debian/dalle/usr/share/applications
 	install -d debian/dalle/usr/share/icons
-#	cp debian/dalle.xpm debian/dalle/usr/share/dalle/pixmaps/
 	cp pixmaps/dalle.xpm debian/dalle/usr/share/dalle/pixmaps/
 	cp pixmaps/dalle.xpm debian/dalle/usr/share/icons/
 	cp debian/dalle-gtk.desktop debian/dalle/usr/share/applications/
+	
 	dh_makeclilibs -i -V
-	dh_installcligac -i
+#	dh_installcligac -i
 	dh_clideps -i
 	find debian/dalle/ -type f -name "*.dll" -or -name "*.mdb" -or -name "*.cs" -or -name "*.config" | xargs chmod -x
 	find debian/dalle/ -type f -name "*.exe" | xargs chmod +x
@@ -71,7 +66,7 @@ binary-common:
 	dh_installdocs
 	dh_installexamples
 	dh_installmenu
-	dh_installman debian/man/dalle-gtk.1 debian/man/dalle-console.1 debian/man/openhacha.1 debian/man/dalle-sfv-console.1 
+	dh_installman debian/man/dalle-gtk.1 debian/man/dalle-console.1 debian/man/openhacha-gtk.1 debian/man/dalle-sfv-console.1 
 	dh_link
 	dh_strip
 	dh_compress 

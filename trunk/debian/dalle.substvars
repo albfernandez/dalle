@@ -1,2 +1,2 @@
-cli:Depends=mono-runtime (>= 1.1.8.1), libglade2.0-cil (>= 2.12.9), libglib2.0-cil (>= 2.12.9), libgnome2.24-cil (>= 2.24.0), libgtk2.0-cil (>= 2.12.9), libmono-corlib2.0-cil (>= 1.2.2.1), libmono-posix2.0-cil (>= 2.4), libmono-sharpzip2.84-cil (>= 1.0), libmono-system2.0-cil (>= 2.4.3), libmono-winforms2.0-cil (>= 2.4)
+cli:Depends=mono-runtime (>= 1.1.8.1), libglade2.0-cil (>= 2.12.9), libglib2.0-cil (>= 2.12.9), libgnome2.24-cil (>= 2.24.0), libgtk2.0-cil (>= 2.12.9), libmono-corlib2.0-cil (>= 1.2.2.1), libmono-posix2.0-cil (>= 2.4), libmono-sharpzip2.84-cil (>= 1.0), libmono-system2.0-cil (>= 2.4.3)
 misc:Depends=
