@@ -87,6 +87,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
 				"Daniel Martinez Contador <dmcontador@terra.es>",
 				"Dai SET <dai__set@yahoo.com>"
 			};
+			this.TranslatorCredits = "Leandro Regueiro <leandro.regueiro@gmail.com>";
 			this.Response += new ResponseHandler (close_click);
 			this.DeleteEvent += new DeleteEventHandler (this.HideDialog);
 			this.WindowPosition = WindowPosition.CenterOnParent;
