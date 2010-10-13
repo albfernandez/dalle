@@ -73,6 +73,7 @@ namespace Dalle.Formatos
 			formatos.Add (new Dalle.Formatos.FileSplit.FileSplit ());
 			// De momento anulado (tampoco es que sea muy usado)
 			//formatos.Add (new Dalle.Formatos.SplitFile.SplitFile_v1());
+			formatos.Add (new Dalle.Formatos.Yoyocut.Yoyocut ());
 			formatos.Add (new Dalle.Formatos.Xstremsplit.Xtremsplit ());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v2 ());
 			formatos.Add (new Dalle.Formatos.Hacha.ParteHacha_v1 ());
