@@ -127,13 +127,13 @@ namespace Dalle.UI.DalleGtk
 			vbox2 = new Gtk.VBox (false, 3);
 			texto2 = new Gtk.Label (Catalog.GetString("What do you want to do?"));
 			
-			SplitOption = new Gtk.RadioButton (Catalog.GetString("Split Files"));
+			PasteOption = new Gtk.RadioButton (Catalog.GetString ("Merge Files"));
 			
-			PasteOption = new Gtk.RadioButton (SplitOption, Catalog.GetString("Merge Files"));
+			SplitOption = new Gtk.RadioButton (PasteOption, Catalog.GetString("Split Files"));
 
 			vbox2.PackStart(texto2, false, false, 7);
-			vbox2.PackStart(SplitOption, false , false, 7);
-			vbox2.PackStart(PasteOption, false, false, 7);
+			vbox2.PackStart(PasteOption, false , false, 7);
+			vbox2.PackStart(SplitOption, false, false, 7);
 			
 			hbox2.PackStart(vbox2, false, false, 7);
 			
