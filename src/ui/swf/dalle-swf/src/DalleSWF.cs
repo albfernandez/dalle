@@ -100,20 +100,24 @@ namespace Dalle.UI.DalleSWF
 			this.btnAbout.Text = "About";
 			
 			
-			this.rbSplit.Location = new Point (25, 75);
-			this.rbSplit.Name = "rbSplit";
-			this.rbSplit.Size = new Size (100, 30);
-			this.rbSplit.TabIndex = 1;
-			//this.rbSplit.Text = Catalog.GetString("Split");
-			this.rbSplit.Text = "Split";
-			this.rbSplit.Checked = true;
+
 			
-			this.rbMerge.Location = new Point (25, 100);
+			this.rbMerge.Location = new Point (25, 75);
 			this.rbMerge.Name = "rbJoin";
 			this.rbMerge.Size = new Size (100, 30);
-			this.rbMerge.TabIndex = 2;
+			this.rbMerge.TabIndex = 1;
 			//this.rbMerge.Text = Catalog.GetString("Merge");
 			this.rbMerge.Text = "Join";
+			this.rbMerge.Checked = true;
+			
+			this.rbSplit.Location = new Point (25, 100);
+			this.rbSplit.Name = "rbSplit";
+			this.rbSplit.Size = new Size (100, 30);
+			this.rbSplit.TabIndex = 2;
+			//this.rbSplit.Text = Catalog.GetString("Split");
+			this.rbSplit.Text = "Split";
+			
+			
 			
 			this.lblWhat.Location = new Point (25, 50);
 			this.lblWhat.Name = "lblWhat";
