@@ -104,7 +104,7 @@ namespace Dalle.Formatos.Generico
 			OnProgress (0, info.Length);
 			Stream fos = UtilidadesFicheros.CreateWriter (dirDest + Path.DirectorySeparatorChar + info.OriginalFile);
 			for (int i = 1; i <= info.FragmentsNumber; i++) {
-				Stream fis = File.OpenRead (info.Directory.FullName + Path.DirectorySeparatorChar + info.GetFragmentName (i));
+				Stream fis = File.OpenRead (info.GetFragmentFullPath (i));
 				fis.Seek (info.GetOffset (i), SeekOrigin.Begin);
 				while ((leidos = fis.Read (buffer, 0, buffer.Length)) > 0) {
 					transferidos += leidos;
@@ -121,48 +121,6 @@ namespace Dalle.Formatos.Generico
 			Unir (fichero, dirDest, info);
 		}
 
-		/*
-		public void Unir (string formato, int ini, int digitos)
-		{
-			Unir (formato, formato.Substring (0, formato.LastIndexOf('.')), 
-				ini, digitos);
-		}
-		public void Unir (string formato, string destino, int ini, int digitos)
-		{
-			InfoGenerico info = new InfoGenerico ();
-			
-			info.Formato = formato;
-			info.Digitos = digitos;
-			info.Fragmento = ini;
-			
-			long total = 0;
-			while (File.Exists (info.ToString ())) {
-				total += new FileInfo (info.ToString ()).Length;
-				info.Fragmento++;
-			}
-			
-			long transferidos = 0;
-			info.Fragmento = ini;
-			OnProgress (0, total);
-			
-			FileStream fos = UtilidadesFicheros.CreateWriter (destino);
-			int leidas = 0;
-			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
-			while (File.Exists (info.ToString ())) {
-				// TODO Tamaño de buffer
-				FileStream fin = File.OpenRead (info.ToString ());
-				while ((leidas = fin.Read (buffer, 0, buffer.Length)) > 0) {
-					fos.Write (buffer, 0, leidas);
-					transferidos += leidas;
-					OnProgress (transferidos, total);
-				}
-				fin.Close ();
-				info.Fragmento++;
-				
-			}
-			fos.Close ();
-		}
-		*/
 
 		public override bool PuedeUnir (String fichero)
 		{
@@ -183,6 +141,13 @@ namespace Dalle.Formatos.Generico
 					return true;
 				}
 				if (File.Exists (bas + "." + UtilidadesCadenas.Format (1, longitud))) 
+				{
+					return true;
+				}
+				
+				// Soporte ultraSplitter
+				
+				if (File.Exists (bas + ".u" + UtilidadesCadenas.Format (1, longitud))) 
 				{
 					return true;
 				}
