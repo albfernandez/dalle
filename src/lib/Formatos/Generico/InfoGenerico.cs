@@ -99,23 +99,37 @@ namespace Dalle.Formatos.Generico
 			{
 				return String.Format (this.format, (fragment - (1 - this.initialFragment)));
 			}
-			return this.baseName + "." + UtilidadesCadenas.Format (fragment - (1-this.initialFragment), this.Digits);
+			return this.baseName + UtilidadesCadenas.Format (fragment - (1 - this.initialFragment), this.Digits);
+		}
+		public string GetFragmentFullPath (int fragment)
+		{
+			return this.Directory.FullName + Path.DirectorySeparatorChar + GetFragmentName (fragment);
+
 		}
 		public static InfoGenerico GetFromFile (string fichero)
 		{
 			InfoGenerico info = new InfoGenerico ();
-			
-			info.baseName = fichero.Substring (0, fichero.LastIndexOf ('.'));
-			info.digits = fichero.Length - info.baseName.Length - 1;
-			string original = new FileInfo (fichero).Name;
-			original = original.Substring (0, original.LastIndexOf ('.'));
-			info.originalFile = original;
 			info.Directory = new FileInfo (fichero).Directory;
-			if (File.Exists (info.BaseName + "." + UtilidadesCadenas.Format (0, info.Digits))) 
+			string original = new FileInfo (fichero).Name;
+			string extensionParte = original.Substring (original.LastIndexOf (".")+1);
+			info.baseName = original.Substring (0, original.LastIndexOf ('.') + 1);
+			info.originalFile = original.Substring (0, original.LastIndexOf ('.'));
+			
+			// Soporte ultrasplit
+			if (extensionParte.StartsWith ("u")) {
+				info.baseName = original.Substring (0, original.LastIndexOf ('.') + 2);
+			}
+			info.digits = original.Length - info.baseName.Length;		
+			
+			
+
+			
+			
+			if (File.Exists (info.Directory.FullName + Path.DirectorySeparatorChar + info.BaseName + UtilidadesCadenas.Format (0, info.Digits))) 
 			{
 				info.initialFragment = 0;
 			}
-			else if (File.Exists (info.BaseName + "." + UtilidadesCadenas.Format (1, info.Digits)))
+			else if (File.Exists (info.Directory.FullName + Path.DirectorySeparatorChar + info.BaseName  + UtilidadesCadenas.Format (1, info.Digits)))
 			{
 				info.initialFragment = 1;
 			}
@@ -125,18 +139,18 @@ namespace Dalle.Formatos.Generico
 			int contador = 1;
 			
 			
-			while (File.Exists (info.GetFragmentName (contador + 1)))
+			while (File.Exists (info.GetFragmentFullPath (contador)))
 			{
-				FileInfo fi = new FileInfo (info.GetFragmentName (contador + 1));
+				FileInfo fi = new FileInfo (info.GetFragmentFullPath (contador));
 				info.Length += fi.Length;
 				contador++;
 			}
-			info.fragmentsNumber = contador;
+			info.fragmentsNumber = contador - 1;
 			
 			// Comprobar cutkiller
 			if (info.initialFragment == 1 && info.Digits == 3) 
 			{				
-				byte[] buffer = UtilidadesFicheros.LeerSeek (info.GetFragmentName (1), 0, 8);
+				byte[] buffer = UtilidadesFicheros.LeerSeek (info.GetFragmentFullPath(1), 0, 8);
 				string extension = UtArrays.LeerTexto (buffer, 0, 3);
 				string fragmentos = UtArrays.LeerTexto (buffer, 3, 5);
 				if (extension.Length > 0 && fragmentos.Length == 5) 
@@ -166,10 +180,10 @@ namespace Dalle.Formatos.Generico
 			this.length = 0;
 			for (int i = 1; i <= this.FragmentsNumber; i++) 
 			{
-				string n = this.GetFragmentName (i);
-				if (File.Exists (this.Directory.FullName + Path.DirectorySeparatorChar + n)) 
+				string n = this.GetFragmentFullPath (i);
+				if (File.Exists (n)) 
 				{
-					this.length += new FileInfo (this.Directory.FullName + Path.DirectorySeparatorChar + n).Length;
+					this.length += new FileInfo (n).Length;
 				}
 			}
 		}
