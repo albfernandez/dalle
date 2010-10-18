@@ -85,7 +85,8 @@ namespace Dalle.Formatos.Yoyocut
 				md5.TransformFinalBlock (buffer, 0, 0);
 				byte[] res = md5.Hash;
 				md5Hash = UtilidadesCadenas.FormatHexHash (res).ToLower ();
-				if (!md5Hash.Equals (info.Md5)) {
+				if (!md5Hash.Equals (info.Md5)) 
+				{
 					throw new ChecksumVerificationException ();
 				}
 			}
