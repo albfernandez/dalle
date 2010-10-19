@@ -1,19 +1,44 @@
 Los formatos que soporta la aplicacion son:
 
-UNIR
+UNIR / EXTRAER
+	ar
 	Axman3
+	Astrotite v1, v2 y v3
+	bzip2	
 	Camouflage
-	Generico
-	SF
-	SplitFile
+	cpio
+	cutkiller
+	deb
+	Divij
+	Easy File Splitter v 1.05
 	FileSplit
-	Kamaleon 1 y 2
+	HJSplit
+	gcutter
+	Generico
+	Gnome Split
+	gzip	
 	Hacha1
 	Hacha2
 	HachaPro
-	Easy File Splitter v 1.05
+	Kamaleon 1 y 2
+	lzma
 	MaxSplitter v 1.53 Free Edition
+	RPM
+	SF
+	SplitFile
+	Splitter&Merger (1,2,3*,4 y 5) (*v3 comprimida no soportada)
+	tar
+	ultrasplitter
+	unixsplit	
+	XAR
+	Xtremsplit
+	Yoyocut2
 	zip
+	
+
+
+
+	Soporte 
 
 PARTIR
 	Axman3
