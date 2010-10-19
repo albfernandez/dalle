@@ -51,16 +51,43 @@ Leyenda:
 	- [-]  Soporte "completo" para zip.
 	- [X]  Soporte "completo" para tar, gz, bz2.
 	- [X]  Mejorar el soporte de Astrotite.
-	- [X]  Soporte para Splitter & Merger.
-	
-	- [X] Soporte HJSplit.
+	- [X]  Soporte para Splitter & Merger.	
 	- [X] Soporte gcutter.
 	- [X] Soporte split (/usr/bin/split de coreutils).
-	- [X] Soporte cutkiller
-	- [X] Soporte XTREMSPLIT
 	- [X] Soporte divij
 	- [X] Soporte GNOME Split
-	- [ ] Formatos soportados por yoyocut
+	- [ ] Formatos soportados por yoyocut y xtremsplit
+		- [ ] Yoyocut
+		- [X] Yoyocut 2
+		- [X] Xtremsplit 1.x (*.001.xtm)
+		- [X] CutKiller, DecoupFich 2.0 (*.001)
+		- [X] HJSplit, File Splitter 4.5, MaxSplitter 1.53, UltraSplitter (*.001;*.u001)
+		- [ ] Splitter 4 (*.h001)
+		- [ ] Easy Split 2002 (*.000)
+		- [ ] Coupe-Fichier 1.1 (*.cpf)
+		- [ ] Cut4Net2 (*0000.c4n)
+		- [ ] D-Koup' 2.5 (*.D00)
+		- [ ] KFK 3.9 (*.kk0)
+		- [ ] MaxSplit Pro 3.1 (*.spt)
+		- [ ] Scieber 2.01 (*infos.sci)
+		- [ ] Splitteur 1.01 (*.1-*.part)
+		- [ ] Splitty 3.0 (*.fsm)
+		- [ ] Turbo Cut File 2.21 (*.TCF0)
+		- [ ] Wind 1.75 (*.d)
+		- [ ] WinFrag Lite 2.0, WinFrag Pro 2.0 Beta 4 (*.1)
+		- [ ] Koup-Koup 1.9, Koup-Koup XP (*.kop)
+		- [X] Standard (*.001) 
+		- [X] Hacha
+		- [ ] Splitter 3.1, 
+		- [ ] Chainsaw, 
+		- [ ] EasyFileCut, 
+		- [ ] Découpeur, 
+		- [ ] File Splitter Deluxe, 
+		- [ ] Cluster v1.0, 
+	- [ ] Otros formatos documentados
+		- [ ] Winsplit
+		- [ ] FastSplit
+		- [ ] MasterSplitter
 	- [ ] Sonidos u otros eventos configurables (popups..) al terminar la operación.
 	- [ ] Nueva web.
 
@@ -92,3 +119,10 @@ Otras cosas por hacer (cuando haya tiempo, posiblemente despues de v 1.0)
 	- [X]  Soporte sha1
 	- [ ]  Soporte PAR1
 	- [ ]  Soporte PAR2
+
+	
+	
+	
+
+
+
