@@ -14,6 +14,6 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitleAttribute("OpenHacha")]
 [assembly: AssemblyDescriptionAttribute("A free as in freedom implementation of Hacha")]
 [assembly: AssemblyCopyrightAttribute("Copyright (c) 2003-2004, Ramón Rey Vicente")]
-[assembly: AssemblyVersionAttribute("0.10.4.1")]
+[assembly: AssemblyVersionAttribute("0.10.10.1")]
 [assembly: AssemblyKeyFileAttribute("dalle.key")]
 
