@@ -1,0 +1,10 @@
+http://www.jaojsoft.com/
+
+Corte simple.
+Nombre de los fragmentos
+
+ORIGINAL_CON_EXT%d-%t
+d = numero de framento (3 digitos)
+t = fragmentos totales
+
+Ejemplo: original.txt002-7
