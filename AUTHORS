@@ -6,6 +6,7 @@
 		- libDalle.
 		- dalle-console.
 		- dalle-gtk.
+		- dalle-swf
 	
 	* Ramón Rey Vicente <ramon.rey@hispalinux.es>
 		- OpenHacha GTK# interface
