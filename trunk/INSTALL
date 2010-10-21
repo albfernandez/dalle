@@ -5,32 +5,14 @@ En estos momentos se está migrando para usar nant.
 El proyecto ahora mismo está configurado para compilar en Debian Sid, otras distros
 quizás necesiten trabajo/configuracion adicional
 
+Prerequisitos
+apt-get install nant dpkg-dev debhelper mono-mcs  cli-common-dev libglade2.0-cil-dev libgnome2.0-cil-dev libgtk2.0-cil-dev libglib2.0-cil-dev
+
 Para compilar
 - Instalar nant
 - ejecutar nant
 
 Los ejecutables quedan en la carpeta build.
-
-########
-
-
-Este archivo contiene información acerca de como compilar e instalar dalle.
-De momento sólo se ha probado en Linux.
-
-./configure --mono-path={librerias de mono}
-make
-(hacerse root).
-make install
-
-{librerias de mono} - 
-Los directorios donde están las librerias a usar por el compilador
-(si no están establecidos en MONO_PATH)
-Ejemplo en Debian:
-./configure --prefix=/usr --build-release --mono-path=/usr/lib/mono/1.0:/usr/lib/mono/gtk-sharp
-
-
-
-En build/ quedan los exes, las dlls y los wrappers.
 
 
 
