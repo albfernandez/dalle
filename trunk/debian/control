@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Alberto Fernández <infjaf@gmail.com>
 Homepage: http://dalle.sourceforge.net/
-Build-Depends: debhelper (>= 4.0.0), 
+Build-Depends: debhelper (>= 5.0.0), 
                nant (>=0.85), 
                mono-runtime (>= 1.1.8.1), 
                libgtk2.0-cil (>= 2.10.2), 
@@ -11,14 +11,13 @@ Build-Depends: debhelper (>= 4.0.0),
                libgnome2.24-cil (>= 2.24.0), 
                mono-mcs(>=1.0), 
                perl, 
-               make,
-               cli-common-dev (>= 0.4.4),
+               cli-common-dev (>= 0.7),
                libmono-sharpzip2.84-cil (>= 2.0), 
                libglade2.0-cil-dev, 
                libgnome2.0-cil-dev, 
                libgtk2.0-cil-dev, 
                libglib2.0-cil-dev
-Standards-Version: 3.8.3
+Standards-Version: 3.9.1
 
 Package: dalle
 Architecture: all
