@@ -1,7 +1,7 @@
 Source: dalle
 Section: utils
 Priority: optional
-Maintainer: Alberto Fernández <infjaf@gmail.com>
+Maintainer: Alberto Fernández Martínez <infjaf@gmail.com>
 Homepage: http://dalle.sourceforge.net/
 Build-Depends: debhelper (>= 5.0.0), 
                nant (>=0.85), 
