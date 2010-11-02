@@ -28,5 +28,4 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("4.12.*")]
 
-// Dalle key sign
-[assembly: AssemblyKeyFileAttribute("dalle.key")]
+
