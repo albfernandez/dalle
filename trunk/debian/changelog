@@ -1,6 +1,7 @@
 dalle (0.10.11) unstable; urgency=low
 
-  * Updated deb files 
+  * New debian package (uploaded to debian) 
+  * Closes: #599851
 
  -- Alberto Fernández Martínez <infjaf@gmail.com>  Tue, 02 Nov 2010 01:50:56 +0100
 
