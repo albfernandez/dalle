@@ -1,3 +1,9 @@
+dalle (0.10.11) unstable; urgency=low
+
+  * Updated deb files 
+
+ -- Alberto Fernández <infjaf@gmail.com>  Tue, 02 Nov 2010 01:50:56 +0100
+
 dalle (0.10.10-1) unstable; urgency=low
   * Updated build.
 

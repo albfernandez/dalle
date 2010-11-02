@@ -19,7 +19,6 @@ DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
 
-CFLAGS = -Wall -g
 
 
 
@@ -51,8 +50,6 @@ install:
 	cp pixmaps/dalle.xpm debian/dalle/usr/share/icons/
 	cp debian/dalle-gtk.desktop debian/dalle/usr/share/applications/
 	
-	dh_makeclilibs -i -V
-#	dh_installcligac -i
 	dh_clideps -i
 	find debian/dalle/ -type f -name "*.dll" -or -name "*.mdb" -or -name "*.cs" -or -name "*.config" | xargs chmod -x
 	find debian/dalle/ -type f -name "*.exe" | xargs chmod +x
@@ -71,6 +68,7 @@ binary-common:
 	dh_strip
 	dh_compress 
 	dh_fixperms
+	dh_clifixperms
 	dh_makeshlibs
 	dh_installdeb
 	dh_shlibdeps
