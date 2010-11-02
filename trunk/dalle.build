@@ -300,7 +300,7 @@
 		        <attribute type="AssemblyDescriptionAttribute" value="A free as in freedom implementation of Hacha"/>
 		        <attribute type="AssemblyCopyrightAttribute" value="Copyright (c) 2003-2004, Ramón Rey Vicente" />
 		        <attribute type="AssemblyVersionAttribute" value="${version}" />
-		        <attribute type="AssemblyKeyFileAttribute" value="${keyfile}" />        
+		        <!--attribute type="AssemblyKeyFileAttribute" value="${keyfile}" /-->        
 		    </attributes>
 		</asminfo>
 		<asminfo output="src/ui/gtk/dalle-gtk/src/AssemblyInfo.cs" language="CSharp">
