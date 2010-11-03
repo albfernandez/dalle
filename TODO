@@ -1,62 +1,10 @@
-
-A continuación se indican los cambios que se realizarán y las versiones 
-correspondientes que serán liberadas, una vez un grupo de ellos se haya 
-terminado.
-No se indican plazos de tiempo porque se que no voy a ser capaz 
-de cumplirlos ;-)
-
-
-Leyenda:
-	[ ] Tarea por hacer
-	[-] A medias/sin probar
-	[X] Completo (o casi).
-	
 ===============================
 
 	Versión 1.0
 
 ===============================
 	
-	- [X]  Soporte para cortar en kamaleon2.
-	- [X]  Dialogo Gtk.AboutDialog
-	- [X]  Revisar getstrings.pl (hacer que agrupe las claves duplicadas).
-	- [X]  Paquete deb.
-	- [X]  Hacer que el configure busque glade-sharp.dll y gnome-sharp.dll
-	- [X]  Revisar todos los scripts para que funcione bien con mono 1.0
-	- [X]  Soporte Gettext
-	- [X]  Nuevo sistema de configuracion / compilacion (autotools?, nant?)
-	- [X]  Sacar las cadenas de texto I18N de la libreria.
-	- [X]  Excepciones bien estructuradas en la libreria.
-	- [X]  Nueva estructura de instalación.
-	- [X]  Iconos en el menu de debian/ubuntu (deb)	
-	- [X]  Iconos en el menu de fedora	(rpm)
-	- [X]  Quitar los warnings de compilación
-	- [X]  Quitar los warnings en tiempo de ejecución (gtk nuevo)
-	- [X]  Paquete RPM.
-	- [X]  Nuevo selector de fichero Gtk.FileChooserDialog	
-	- [X]  Traduccion de los elementos del nuevo Gtk.FileChooserDialog
-	- [-]  Licencia en el about de dalle-gtk
-	
-	- [X]  Interfaz swf.
-	- [X]  DragNDrop.
-	- [ ]  Repaso de dalle-console.
-	- [ ]  Repaso de dalle-gtk.
-	- [ ]  Repasar dalle-gtk para que la interfaz responda mejor trabajando con archivos grandes
-	- [ ]  Repasar y usar un tamaño de buffer constante
-	- [ ]  Repasar dalle-gtk para que siga las Gnome HIG
-	- [ ]  Repaso de dalle-sfv.
-	- [X]  Paquete deb cumple con las políticas de debian.
-	- [ ]  Recuperar formato splitfile
-	- [-]  Soporte checksum hacha 3.5
-	- [-]  Soporte "completo" para zip.
-	- [X]  Soporte "completo" para tar, gz, bz2.
-	- [X]  Mejorar el soporte de Astrotite.
-	- [X]  Soporte para Splitter & Merger.	
-	- [X] Soporte gcutter.
-	- [X] Soporte split (/usr/bin/split de coreutils).
-	- [X] Soporte divij
-	- [X] Soporte GNOME Split
-	- [ ] Formatos soportados por yoyocut y xtremsplit
+	- [ ] Formats supported by yoyocut and xtremsplit
 		- [ ] Yoyocut
 		- [X] Yoyocut 2
 		- [X] Xtremsplit 1.x (*.001.xtm)
@@ -84,45 +32,23 @@ Leyenda:
 		- [??] Découpeur, 
 		- [ ] File Splitter Deluxe, 
 		- [??] Cluster v1.0, 
-	- [ ] Otros formatos documentados
+	- [ ] Other formatss
 		- [ ] Winsplit
 		- [ ] FastSplit
 		- [ ] MasterSplitter
-	- [ ] Sonidos u otros eventos configurables (popups..) al terminar la operación.
-	- [ ] Nueva web.
+	- [ ] Notify (libnotify, sounds?) when finish a operation.
+	- [ ] New Homepage.
+	
 
 ===========================================================================
 
-Otras cosas por hacer (cuando haya tiempo, posiblemente despues de v 1.0)
+Other things (after 1.0)
 
 ===========================================================================
 	
-	- [ ] Soporte "File Splitter and Joiner" __a?
-	- [ ] Manual de usuario.
-	- [ ] Diagramas de clases.
-	- [ ] Documentar los formatos.
-	- [ ] Hacer tests (NUnit) de los formatos.
-	- [ ] Hacer tests (NUnit) de los crcs implementados.
-	- [ ] Todo el código comentado.
-	- [ ] Limpieza de código.
-	- [ ] Mejor sistema de threads que permita mejor respuesta de la interfaz.
-	- [ ] Soporte para indicar el directorio de salida en dalle-gtk
-	- [ ]  Hacer que Axman3 soporte la verificación crc que tiene.
-	- [ ]  Hacer un soporte completo para los archivos FSI de FileSplit
-	- [ ]  Hacer los programas compatibles con pnet.
-	- [ ]  Posibilidad de compilar con cscc (y poner ilrun como entorno de ejecución).
-	- [ ]  Instalador NSIS para Windows.
+	- [ ] Support "File Splitter and Joiner" __a?
+	- [ ] Threaded gui to give better responsivity.
+	- [ ] dalle-gtk: Indicate output directory.
+	- [ ] new format to split directorys (tar + split + shasum)
+	- [ ] reduce combo in split dialog (less "split" formats)
 	
-	Soporte para archivos de verificación:
-	- [X]  Soporte sfv
-	- [X]  Soporte md5
-	- [X]  Soporte sha1
-	- [ ]  Soporte PAR1
-	- [ ]  Soporte PAR2
-
-	
-	
-	
-
-
-
