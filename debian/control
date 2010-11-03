@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Alberto Fernández Martínez <infjaf@gmail.com>
 Homepage: http://dalle.sourceforge.net/
-Build-Depends: debhelper (>= 5.0.0), 
+Build-Depends: debhelper (>= 7.0.0), 
                nant (>=0.85), 
                mono-runtime (>= 1.1.8.1), 
                libgtk2.0-cil (>= 2.10.2), 
@@ -23,9 +23,9 @@ Package: dalle
 Architecture: all
 Depends: ${misc:Depends}, ${cli:Depends},mono-runtime (>= 1.1.8.1),libmono-sharpzip2.84-cil (>= 2.0),libgnome2.24-cil (>= 2.24.0),libgtk2.0-cil (>= 2.10.2)
 Description: File management tool
- Utility to join fragments of files that were splited with 
+ Utility to join fragments of files that were split with 
  other software.
- Dalle support a wide variety of formats so you can work with a unique 
+ Dalle supports a wide variety of formats so you can work with a unique 
  application to work with these files.
 
 
