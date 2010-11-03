@@ -1,27 +1,14 @@
-¿Qué es Dalle?
+Dalle is a tool to work with files splitted with programs like Hacha, SplitFile, Winsplit
 
-Dalle pretende ser una herramienta para trabajar con archivos partidos 
-con programas como hacha, splitfile, winsplit ...
+The requeriments to run dalle are:
+mono >= 1.0
+gtk-sharp >= 2.0
 
-¿Requerimientos?
+To compile from source code, you must read INSTALL file.
 
-Los requerimientos son los siguientes:
+Homepage:
+http://dalle.sf.net
 
-Mono >= 1.0
-gtk-sharp >= 1.0
-
-La versión en línea de comandos puede funcionar en otros CLRs 
-(.Net y Portable.net), pero no está muy probado.
-
-Para compilar:
-  Lea INSTALL
+Contact by email at <infjaf@gmail.com>
 
 
-¿Dónde conseguir la última versión?
-	Visita http://dalle.sf.net
-
-¿Cómo contactar con el autor?
-	En los foros en la página del programa en sourceforge 
-	(http://sourceforge.net/projects/dalle)
-
-	Enviando un correo a <infjaf@gmail.com>
