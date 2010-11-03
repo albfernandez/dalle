@@ -1,4 +1,4 @@
-dalle (0.10.11) unstable; urgency=low
+dalle (0.10.11-1) unstable; urgency=low
 
   * New debian package (uploaded to debian) 
   * Closes: #599851

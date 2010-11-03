@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Dalle
-Comment=Corta y une archivos en varios formatos.
+Comment=Split and join files in various formats
+Comment[es]=Corta y une archivos en varios formatos
 Exec=/usr/bin/dalle-gtk
 Icon=dalle.xpm
 StartupNotify=false

@@ -1,0 +1,4 @@
+debian/tmp/usr/bin 
+debian/tmp/usr/lib/dalle/ 
+pixmaps/dalle.xpm /usr/share/dalle/pixmaps/
+pixmaps/dalle.xpm /usr/share/icons/
