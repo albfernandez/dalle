@@ -26,7 +26,7 @@ install:
 binary-common:
 	dh_testdir
 	dh_testroot
-	dh_installchangelogs ChangeLog
+	dh_installchangelogs ChangeLog NEWS
 	dh_installdocs
 	dh_installexamples
 	dh_installmenu
