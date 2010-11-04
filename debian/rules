@@ -46,7 +46,7 @@ binary-common:
 
 binary-indep: install
 	$(MAKE) -f debian/rules DH_OPTIONS=-i binary-common
+binary-indep: install
 
-
-binary: binary-indep
+binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install install-indep install-arch
