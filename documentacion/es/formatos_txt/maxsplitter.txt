@@ -10,7 +10,6 @@ El formato del nombre de los fragmentos es:
 genera un archivo bat <nombre original>.bat para juntar los archivos. ej:
 @echo off
 rem Created by MaxSplitter v1.53 Free Edition
-rem Copyright (c) Max Bylesjö 2001
 copy /b "ceros.txt.001" "ceros.txt"
 copy /b "ceros.txt"+"ceros.txt.002" "ceros.txt"
 copy /b "ceros.txt"+"ceros.txt.003" "ceros.txt"
@@ -24,12 +23,12 @@ cls
 Genera un archivo de texto, con los siguientes campos, separados por un byte a null.
 
 MXS<nombre_original>
-tamaño original en bytes
+tamaÃ±o original en bytes
 numero de fragmentos generados
 version del programa que creo el archivo (1.53 Free Edition)
 atributos del archivo*
 N (zipped o no Y/N ?)
-numero de elementos en el batch de cortar (y para que está aquí?)(termina en null)
+numero de elementos en el batch de cortar (y para que estÃ¡ aquÃ­?)(termina en null)
 
 
 Los atributos del archivo son los usados en msdos:
