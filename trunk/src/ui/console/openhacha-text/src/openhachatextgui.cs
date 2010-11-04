@@ -1,7 +1,7 @@
 /*
 
     OpenHacha, a "free as in freedom" implementation of Hacha.	
-    Copyright (C) 2003  Ram�n Rey Vicente <ramon.rey@hispalinux.es>
+    Copyright (C) 2003  Ramón Rey Vicente <ramon.rey@hispalinux.es>
 
 
     This program is free software: you can redistribute it and/or modify
