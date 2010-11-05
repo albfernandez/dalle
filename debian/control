@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Alberto Fernández Martínez <infjaf@gmail.com>
 Homepage: http://dalle.sourceforge.net/
-Build-Depends: debhelper (>= 7.0.0), 
+Build-Depends: debhelper (>= 7.0.50), 
                nant (>=0.85), 
                mono-runtime (>= 1.1.8.1), 
                libgtk2.0-cil (>= 2.10.2), 
