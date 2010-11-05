@@ -51,4 +51,4 @@ Other things (after 1.0)
 	- [ ] dalle-gtk: Indicate output directory.
 	- [ ] new format to split directorys (tar + split + shasum)
 	- [ ] reduce combo in split dialog (less "split" formats)
-	
+
