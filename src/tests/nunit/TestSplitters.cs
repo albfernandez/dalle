@@ -11,7 +11,7 @@ namespace Dalle.Nunit
 	[TestFixture()]
 	public class TestSplitters
 	{
-		FileHasherSHA1 hasher = new FileHasherSHA1 ();
+		
 		public TestSplitters ()
 		{
 			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
@@ -28,7 +28,7 @@ namespace Dalle.Nunit
 				//Directory.Delete (Path.GetTempPath () + Path.DirectorySeparatorChar + "test", true);
 				File.Delete (Path.GetTempPath () + Path.DirectorySeparatorChar + "aes5.txt");
 			}
-			catch (Exception e) 
+			catch (Exception) 
 			{
 			}
 		}
@@ -52,6 +52,25 @@ namespace Dalle.Nunit
 			Manager.Instance.Unir (GetBaseDir () + "gnomesplit/aes5.txt.001.gsp", Path.GetTempPath ());
 			ComprobarResultado (Path.GetTempPath());
 		}
+		[Test()]
+		public void TestGzip ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "aes5.txt.gz", Path.GetTempPath ());
+			ComprobarResultado (Path.GetTempPath ());
+		}
+		[Test()]
+		public void TestLzma ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "aes5.txt.lzma", Path.GetTempPath ());
+			ComprobarResultado (Path.GetTempPath ());
+		}
+		[Test()]
+		public void TestBzip2 ()
+		{
+			Manager.Instance.Unir (GetBaseDir () + "aes5.txt.bz2", Path.GetTempPath ());
+			ComprobarResultado (Path.GetTempPath ());
+		}
+		
 		
 		public const string sha1sum = "7cb47081866de78c7bc5359b265c941586f04b16";
 		private void ComprobarResultado (string dir)
@@ -59,6 +78,7 @@ namespace Dalle.Nunit
 			string realHash = sha1sum;
 			string realFile = dir + Path.DirectorySeparatorChar + "aes5.txt";
 			Assert.IsTrue (File.Exists (realFile), "Archivo no creado [" + realFile + "]");
+			FileHasherSHA1 hasher = new FileHasherSHA1 ();
 			string computedHash = hasher.GenerateHash (realFile);
 			Assert.AreEqual (realHash, computedHash);
 		}

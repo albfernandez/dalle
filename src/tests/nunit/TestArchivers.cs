@@ -30,11 +30,11 @@ namespace Dalle.Nunit
 		{
 			try {
 				Directory.Delete (Path.GetTempPath () + Path.DirectorySeparatorChar + "test", true);
-			} catch (Exception e) {
+			} catch (Exception) {
 			}
 			try {
 				Directory.Delete (Path.GetTempPath () + Path.DirectorySeparatorChar + "usr", true);
-			} catch (Exception e) {
+			} catch (Exception) {
 			}
 			
 		}
