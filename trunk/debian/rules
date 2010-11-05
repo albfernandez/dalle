@@ -1,52 +1,19 @@
 #!/usr/bin/make -f
 
-export DH_OPTIONS
 export MONO_DISABLE_SHM = 1
 
-DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
-DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
-
-build: 
-	nant -nologo build    	
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-arch-stamp build-indep-stamp #CONFIGURE-STAMP#
-	dh_clean 
-
-install: 
-	dh_testdir
-	dh_testroot
-	dh_prep 
-	dh_installdirs -i
-	
-	nant -nologo -D:DESTDIR=$(CURDIR)/debian/tmp  install
-	dh_install -i
-
-binary-common:
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs ChangeLog NEWS
-	dh_installdocs
-	dh_installexamples
-	dh_installmenu
-	dh_installman 
-	dh_link
-	dh_strip
-	dh_compress 
+override_dh_auto_build:
+	nant -nologo -q build
+override_dh_install:
+	nant -nologo -q -D:DESTDIR=$(CURDIR)/debian/tmp  install
+	dh_install
+override_dh_fixperms:
 	dh_fixperms
 	dh_clifixperms
-	dh_makeshlibs
-	dh_installdeb
+override_dh_shlibdeps:
 	dh_shlibdeps
 	dh_clideps -i
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
+	
 
-binary-indep: install
-	$(MAKE) -f debian/rules DH_OPTIONS=-i binary-common
-binary-indep: install
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install install-indep install-arch
+%:
+	dh $@
