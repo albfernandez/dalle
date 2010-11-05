@@ -42,8 +42,9 @@ namespace Dalle.UI.DalleGtk
 		
 		
 		
-		protected AboutDialog () : base ()
+		protected AboutDialog () : base()
 		{
+			this.Modal = true;
 			Assembly asm = Assembly.GetExecutingAssembly ();
 			this.ProgramName = (asm.GetCustomAttributes (
                typeof (AssemblyTitleAttribute), false) [0]
