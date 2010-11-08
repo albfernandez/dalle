@@ -3,7 +3,7 @@
     Dalle - A split/join file utility library	
     
 	
-    Copyright (C) 2004-2010
+    Copyright (C) 2004-2010 Alberto Fernández  <infjaf@gmail.com>
     Original author (C - code) - Dai SET <dai_set@yahoo.com>
     C# translation by - Alberto Fernández  <infjaf@gmail.com>
 
