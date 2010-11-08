@@ -1,3 +1,25 @@
+/*
+
+    Dalle - A split/join file utility library
+    Dalle.Formatos.Astrotite.v2.Astrotite.AstrotiteV2InputStream
+          Join files in astrotite format.
+	
+    Copyright (C) 2003-2010 Alberto Fernández  <infjaf@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
 
 using System;
 using System.Collections;
@@ -201,89 +223,3 @@ namespace Dalle.Formatos.Astrotite.v2
 	}
 }
 
-
-/*
- * 
- *
- *
- *
-
- 
-			foreach (Descript des in listaFicheros) 
-			{
-				Console.WriteLine ("Procsando " + des.name);
-				byte[] initialMark = new byte[3];
-				astReader.Read (initialMark, 0, initialMark.Length);
-				string iMark = UtArrays.LeerTexto (initialMark, 0);
-				
-				if (!"SDT".Equals (iMark) && !"FDA".Equals (iMark))
-				{
-					throw new FileFormatException ();
-				}
-
-				Stream writer = UtilidadesFicheros.CreateWriter (dirDest + Path.DirectorySeparatorChar + des.name);
-
-				int l = 0;
-				long bloquesLeidos = 0;
-				while (bloquesLeidos < des.blocks)
-				{					
-					Block block = readBlock (astReader);
-					crc.Reset ();					
-					int quedan1 = block.size;
-					while (quedan1 > 0) 
-					{
-						l = astReader.Read(initbuffer, 0, Dalle.Consts.BUFFER_LENGTH < quedan1 ? Dalle.Consts.BUFFER_LENGTH: quedan1 );
-						writer.Write (initbuffer, 0, l);						
-						
-						if ((long)block.crc != 0xFFFFFFFF && block.crc != 0){
-							crc.Update(initbuffer, 0,  l);
-						}
-						quedan1 -= l;				
-						leidos += l;
-						OnProgress (leidos, totales);
-					}					
-					
-					if ((long)block.crc != 0xFFFFFFFF && block.crc != 0 && (long) block.crc != crc.Value){
-						throw new Dalle.Formatos.ChecksumVerificationException();
-					}	
-					bloquesLeidos++;
-				}
-				writer.Close();							
-			}
-			astReader.Close();			
-		}
-		private Block readBlock(FileStream astReader){	
-			byte[] info = new byte[9];		
-			astReader.Read(info, 0, 9);
-			Block block = new Block();
-			block.block = UtArrays.LeerTexto (info, 0, 3);
-			block.size  = UtArrays.LeerUInt16 (info, 3);
-			block.crc   = UtArrays.LeerInt32 (info, 5);
-			return block;
-		}
-
-
-*/
-
-
-
-/*
- * 
- byte[] initbuffer = new byte[255];
-			Descript d;
-			astReader.Read (initbuffer, 0, 9);
-			d.length = UtArrays.LeerInt32 (initbuffer, 0);
-			// Astrotite genera siempre un bloque por archivo. Si el archivo está vacio, tambien
-			// Pero graba un 0 en el numero de bloques.
-			d.blocks = UtArrays.LeerInt32 (initbuffer, 4);
-			if (d.blocks == 0)
-			{
-				d.blocks = 1;
-			}
-			d.namelength = initbuffer[8];
-			astReader.Read (initbuffer, 0, d.namelength);
-			d.name = UtArrays.LeerTexto (initbuffer, 0, d.namelength);
-			d.name = d.name.Replace ('\\', Path.DirectorySeparatorChar);
-			return d;
- 
- */
