@@ -4,8 +4,7 @@
     Dalle.Formatos.Astrotite.Astrotite.v0.AstrotiteV0InputStream
           Join files in astrotite format (version 0.02).
 	
-    Copyright (C) 2004-2010
-    Alberto Fernández  <infjaf@gmail.com>
+    Copyright (C) 2004-2010 Alberto Fernández  <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
