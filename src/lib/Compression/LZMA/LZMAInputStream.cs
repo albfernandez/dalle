@@ -44,8 +44,6 @@ namespace Dalle.Compression.LZMA
 		{
 			this.inStream = inStream;
 			pipe = new PipeStream ();
-			pipe.MaxBufferLength = PipeStream.MB * 4;
-			pipe.BlockLastReadBuffer = true;
 			
 			this.InitDecoder ();
 			
@@ -67,10 +65,8 @@ namespace Dalle.Compression.LZMA
 			compressedSize = inStream.Length - inStream.Position;
 		}
 		private void Writer ()
-		{
-			
-			decoder.Code (inStream, pipe, compressedSize, uncompressedSize, null);			
-			pipe.BlockLastReadBuffer = false;
+		{			
+			decoder.Code (inStream, pipe, compressedSize, uncompressedSize, null);
 			pipe.Flush ();
 		}
 		
