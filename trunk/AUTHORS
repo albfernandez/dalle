@@ -14,11 +14,7 @@
 	
 	* Álvaro Peña <apg@esware.com>
 		- HIG'ed the OpenHacha Gtk# interface.
-	
-	* Eduardo García Cebollero <kiwnix@yahoo.es>
-		- libhacha, the "free as in freedom" C# implementation of
-		  Hacha (starting point of libDalle)
-	
+		
 	* Daniel Martinez Contador <dmcontador@terra.es>
 		- lastre, unpacker for Astrotite files written in C.
 		
