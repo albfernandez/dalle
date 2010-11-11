@@ -46,7 +46,7 @@ namespace Dalle.Formatos.GnomeSplit
 			nombre = "gnomesplit";
 			descripcion = "Gnome Split";
 			web = "http://www.gnome-split.org/index.html";
-			parteFicheros = true;
+			parteFicheros = false;
 			compatible = false;
 	
 		}
