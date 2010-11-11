@@ -44,7 +44,7 @@ namespace Dalle.Formatos.Hacha
 			descripcion = "Hacha Pro 3";
 			web = "http://www.hacha.org";
 			compatible = true;
-			parteFicheros = true;
+			parteFicheros = false;
 			
 			zip.Progress += new ProgressEventHandler (this.OnProgress);
 		}

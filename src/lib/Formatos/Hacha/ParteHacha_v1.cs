@@ -39,7 +39,7 @@ namespace Dalle.Formatos.Hacha
 			nombre = "hacha1";
 			descripcion = "Hacha v1.0";
 			web = "http://www.hacha.org";
-			parteFicheros = true;
+			parteFicheros = false;
 			compatible = false;			
 		}
 		
