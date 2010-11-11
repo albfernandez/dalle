@@ -38,7 +38,7 @@ namespace Dalle.Formatos.Camouflage
 			descripcion = "Camouflage";
 			web = "";
 			compatible = false;
-			parteFicheros = true;
+			parteFicheros = false;
 		}
 		protected override void _Unir (string fichero, string dirDest)
 		{

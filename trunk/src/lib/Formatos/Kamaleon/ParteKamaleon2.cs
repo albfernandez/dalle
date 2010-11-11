@@ -33,7 +33,7 @@ namespace Dalle.Formatos.Kamaleon
 			descripcion = "KamaleoN v 2.0";
 			web = "http://www.kamaleonsoft.com";
 			compatible = false;
-			parteFicheros = true;
+			parteFicheros = false;
 			crc = new Kamaleon2CRC();
 
 		}

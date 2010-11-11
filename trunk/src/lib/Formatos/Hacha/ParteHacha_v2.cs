@@ -38,7 +38,7 @@ namespace Dalle.Formatos.Hacha
 			nombre = "hacha2";
 			descripcion = "Hacha v2.79 +";
 			web = "http://www.hacha.org";
-			parteFicheros = true;
+			parteFicheros = false;
 			compatible = false;
 		}
 		protected override void _Partir (string fichero, string sal1, string dir, long kb)
