@@ -5,7 +5,7 @@
 	
 	
     Copyright (C) 2010 Alberto Fernández  <infjaf@gmail.com>s
-    Original java code: commons-commpress, from apache (http://commons.apache.org/compress/)
+    Original java code: commons-compress, from apache (http://commons.apache.org/compress/)
     C# translation by - Alberto Fernández  <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
