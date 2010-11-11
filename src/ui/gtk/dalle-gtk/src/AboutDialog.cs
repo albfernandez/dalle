@@ -82,11 +82,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
           
           this.Authors =  new string[] {
 				"Alberto Fernández <infjaf@gmail.com>",
-				"Ramón Rey Vicente <ramon.rey@hispalinux.es>",
-				"Álvaro Peña <apg@esware.com>",
-				"Eduardo García Cebollero <kiwnix@yahoo.es>", 
-				"Daniel Martinez Contador <dmcontador@terra.es>",
-				"Dai SET <dai__set@yahoo.com>"
+				"Ramón Rey Vicente <ramon.rey@hispalinux.es>"
 			};
 			this.TranslatorCredits = "Leandro Regueiro <leandro.regueiro@gmail.com>";
 			this.Response += new ResponseHandler (close_click);
