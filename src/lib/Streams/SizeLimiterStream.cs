@@ -32,6 +32,7 @@ namespace Dalle.Streams
 		private long maxSize;
 		private long alreadyRead = 0;
 		private long length;
+
 		public SizeLimiterStream (Stream stream, long maxSize)
 		{
 			this.stream = stream;
