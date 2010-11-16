@@ -66,6 +66,7 @@ namespace Dalle.FileVerification.Verifiers
 				}					
 				linea = reader.ReadLine ();
 			}
+			reader.Close();
 			return ret;
 		}
 		public override void CreateSFV (string[] files, bool recursive, TextWriter writer)
