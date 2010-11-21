@@ -186,8 +186,11 @@ namespace Dalle.UI.DalleGtk
 			catch (Dalle.Formatos.FileAlreadyExistsException e) {
 				mensajeError = String.Format (Catalog.GetString ("The file {0} already exists"), e.FileName);
 			}
-			catch (Dalle.Formatos.ChecksumVerificationException) {
+			catch (Dalle.Formatos.ChecksumVerificationException ex) {
 				mensajeError = Catalog.GetString ("The checksum is invalid");
+				if (ex.File != null) {
+					mensajeError += ":" + ex.File;
+				}
 			}
 			catch (Exception e) {
 				Console.WriteLine (e);
