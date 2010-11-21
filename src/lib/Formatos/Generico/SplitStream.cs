@@ -152,7 +152,6 @@ namespace Dalle.Formatos.Generico
 					this.Write (buffer, offset + c1, count - c1);
 				}
 			}
-			//throw new NotImplementedException ();
 		}
 		public override void WriteByte (byte value)
 		{

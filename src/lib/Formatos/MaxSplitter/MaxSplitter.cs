@@ -86,6 +86,7 @@ namespace Dalle.Formatos.MaxSplitter
 			info.OriginalFile = new FileInfo (fichero).Name;
 			info.BaseName = info.OriginalFile;
 			info.Directory = new DirectoryInfo (dir);
+			// TODO Rewrite to use new generic
 			int fragmentos = new ParteGenerico().Partir (fichero, sal1, dir, kb, info);
 			
 			MXSInfo mxsinfo = new MXSInfo ();
