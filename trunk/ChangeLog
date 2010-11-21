@@ -1,3 +1,7 @@
+2010-11-20
+	New split format (tar + gzip + split + sha512sum)
+	Reduced number of supported formats to split (keeps it simple)
+
 2010-10-18
 	Version 0.10.10
 2010-10-18
