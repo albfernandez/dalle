@@ -33,8 +33,8 @@ namespace Dalle.Formatos.Generico
 	{
 		public ParteGenerico()
 		{
-			nombre = "generico";
-			descripcion = "generico";
+			nombre = "generic";
+			descripcion = "generic";
 			web = "_";
 			compatible = true;
 			parteFicheros= true;
@@ -57,13 +57,35 @@ namespace Dalle.Formatos.Generico
 			
 			info.InitialFragment = 1;
 			info.Digits = 3;
-			info.OriginalFile = new FileInfo(fichero).Name;
-			info.BaseName = info.OriginalFile;
+			info.OriginalFile = new FileInfo (fichero).Name;
+			//info.BaseName = info.OriginalFile;
+			info.BaseName = sal1;
 			info.Directory = new DirectoryInfo (dir);
 			
 			
-			Partir (fichero, sal1, dir, kb, info);
+			Stream stream = new SplitStream (
+				info, 
+				kb * 1024,
+				dir + Path.DirectorySeparatorChar + info.BaseName + "sha512sum", 
+				"SHA512");
+			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
+			int leidos = 0;
+			long transferidos = 0;
+			long tamano = new FileInfo (fichero).Length;
+			OnProgress (0, tamano);
+			Stream fis = File.OpenRead (fichero);
+			while ((leidos = fis.Read (buffer, 0, buffer.Length)) > 0) {
+				stream.Write (buffer, 0, leidos);
+				transferidos += leidos;
+				OnProgress (transferidos, tamano);
+			}
+			fis.Close ();
+			stream.Close ();
+			
+			//Partir (fichero, sal1, dir, kb, info);
 		}
+		
+		// deprecated
 		public int Partir (string fichero, string sal1, string dir, long kb, InfoGenerico info)
 		{
 			long tamano = new FileInfo (fichero).Length;
