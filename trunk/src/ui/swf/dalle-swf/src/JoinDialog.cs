@@ -203,8 +203,12 @@ namespace Dalle.UI.DalleSWF
 				mensajeError = "Couldn't determine file type or the file is corrupted";
 			} catch (Dalle.Formatos.FileAlreadyExistsException e) {
 				mensajeError = String.Format ("The file {0} already exists", e.FileName);
-			} catch (Dalle.Formatos.ChecksumVerificationException) {
+			} catch (Dalle.Formatos.ChecksumVerificationException ex) {
 				mensajeError = "The checksum is invalid";
+				if (ex.File != null) 
+				{
+					mensajeError += ":" + ex.File;
+				}
 			} catch (Exception e) {
 				mensajeError = e.Message;
 			}

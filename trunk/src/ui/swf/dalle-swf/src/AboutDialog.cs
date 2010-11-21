@@ -59,12 +59,7 @@ namespace Dalle.UI.DalleSWF
 			this.Text = "Dalle-Swf " + Assembly.GetExecutingAssembly().GetName().Version;
 			
 			String[] authors = new String[] {
-				"Alberto Fernandez <infjaf@gmail.com>",
-				"Ramon Rey Vicente <ramon.rey@hispalinux.es>",
-				"Alvaro Pena <apg@esware.com>",
-				"Eduardo Garcia Cebollero <kiwnix@yahoo.es>", 
-				"Daniel Martinez Contador <dmcontador@terra.es>",
-				"Dai SET <dai_set@yahoo.com>"};
+				"Alberto Fernandez <infjaf@gmail.com>"};
 			
 			int ypos = 100;
 			
