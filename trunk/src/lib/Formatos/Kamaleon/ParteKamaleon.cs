@@ -49,42 +49,43 @@ namespace Dalle.Formatos.Kamaleon
 			MetaInfoKamaleon metaInfo = new MetaInfoKamaleon (fichero);
 			long transferidos = 0;
 			if (metaInfo.PrimerInfo == null)
-				throw new NoMetaInfoException();
-				
+				throw new NoMetaInfoException ();
+			
 				
 				
 			// Verificamos que todo está en su sitio.
-			foreach (InfoFicheroKamaleon i in metaInfo.infos){
-				OnProgress (0,1);
+			foreach (InfoFicheroKamaleon i in metaInfo.infos) {
+				OnProgress (0, 1);
 				string fich = baseDir + Path.DirectorySeparatorChar + i.NombreFragmento;
 				
 				
-				if (! File.Exists (fich) ){
-					throw new System.IO.FileNotFoundException("", fich);
+				if (!File.Exists (fich)) {
+					throw new System.IO.FileNotFoundException ("", fich);
 				}
-								
+				
 				byte primer = UtilidadesFicheros.LeerByte (fich, 0);
 				byte ultimo = UtilidadesFicheros.LeerByte (fich, i.TamanoFragmento - 1);
-				if ((primer != i.PrimerByte) || (ultimo != i.UltimoByte)){
-					throw new Dalle.Formatos.FileFormatException();
-				}				
-			}			
+				if ((primer != i.PrimerByte) || (ultimo != i.UltimoByte)) {
+					throw new Dalle.Formatos.FileFormatException ();
+				}
+			}
 			string f = metaInfo.PrimerInfo.NombreOriginal;
 			UtilidadesFicheros.ComprobarSobreescribir (f);
 			
 			
 			OnProgress (0, 1);
-			foreach (InfoFicheroKamaleon i in metaInfo.infos){
+			foreach (InfoFicheroKamaleon i in metaInfo.infos) {
 				//Copiar la zona de datos del fragmento al archivo destino
 				string fich = baseDir + Path.DirectorySeparatorChar + i.NombreFragmento;
 				
-				crc.Reset();				
+				crc.Reset ();
+				// TODO Optimizar este metodo (evitar abrir el archivo dos veces)
 				UtilidadesFicheros.CalcularCRC (fich, 0, i.TamanoPiel, crc);
 				
 				transferidos += UtilidadesFicheros.CopiarIntervalo
 					(fich, f, i.TamanoPiel, i.TamanoDatos, crc);
 				if (crc.Value != i.Checksum){
-					throw new Dalle.Formatos.ChecksumVerificationException();
+					throw new Dalle.Formatos.ChecksumVerificationException("Checksum failed", fich);
 				}					
 				OnProgress (transferidos, i.TamanoOriginal); 
 			}

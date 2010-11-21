@@ -82,7 +82,7 @@ namespace Dalle.Formatos.Dalle1
 		public override int Read (byte[] buffer, int offset, int count)
 		{
 			if (currentStream == null) {
-				if (currentIndex == Int32.MaxValue){
+				if (currentIndex == Int32.MaxValue) {
 					return 0;
 				}
 				if (currentIndex < listaFicheros.Count) {
@@ -90,8 +90,8 @@ namespace Dalle.Formatos.Dalle1
 				}
 				if (currentIndex >= listaFicheros.Count) {
 					return 0;
-				}	
-				currentFile = listaFicheros[currentIndex];				
+				}
+				currentFile = listaFicheros[currentIndex];
 				currentStream = new HashStream (
 					File.OpenRead (currentFile.File.FullName),
 					HashAlgorithm.Create ("SHA512"),
@@ -104,6 +104,10 @@ namespace Dalle.Formatos.Dalle1
 			if (tmp < count) {
 				try {
 					currentStream.Close ();
+				}
+				catch (ChecksumVerificationException ex) 
+				{
+					throw new ChecksumVerificationException (ex.Message, currentFile.File.FullName, ex);
 				}
 				catch (IOException e) {
 					throw new IOException (currentFile.File + " " + e.Message);
@@ -133,10 +137,15 @@ namespace Dalle.Formatos.Dalle1
 		{
 			currentIndex = Int32.MaxValue;
 			if (currentStream != null) {
-				try {					
+				try {
 					currentStream.Close ();
 					currentStream = null;
-				} catch (IOException e) {
+				}
+				catch (ChecksumVerificationException ex) 
+				{
+					throw new ChecksumVerificationException (ex.Message, currentFile.File.FullName, ex);
+				}
+				catch (IOException e) {
 					throw new IOException (currentFile.File + " " + e.Message);
 				}
 			}

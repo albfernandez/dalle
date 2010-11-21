@@ -23,6 +23,10 @@ using System;
 namespace Dalle.Formatos {
 	public class ChecksumVerificationException : System.Exception 
 	{
+		private string file;
+		public String File {
+			get { return this.file;}
+		}
 		public ChecksumVerificationException () 
 		{
 		}
@@ -32,5 +36,13 @@ namespace Dalle.Formatos {
 		public ChecksumVerificationException (string mensaje, Exception e) : base(mensaje, e)
 		{
 		}	
+		public ChecksumVerificationException (string mensaje, string file) : base(mensaje)
+		{
+			this.file = file;
+		}
+		public ChecksumVerificationException (string mensaje, string file, Exception e) : base(mensaje, e)
+		{
+			this.file = file;
+		}
 	}
 }

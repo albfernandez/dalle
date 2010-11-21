@@ -119,7 +119,7 @@ namespace Dalle.Formatos.Xstremsplit
 				{
 					if (!hashesCalculados[i].Equals (hashesAlmacenados[i]))
 					{
-						throw new ChecksumVerificationException (info.GetFragmentName(i+1));
+						throw new ChecksumVerificationException ("Checksum verification failed",info.GetFragmentName(i+1));
 					}
 				}
 				

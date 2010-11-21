@@ -87,7 +87,7 @@ namespace Dalle.Formatos.Yoyocut
 				md5Hash = UtilidadesCadenas.FormatHexHash (res).ToLower ();
 				if (!md5Hash.Equals (info.Md5)) 
 				{
-					throw new ChecksumVerificationException ();
+					throw new ChecksumVerificationException ("checksum verification failed", fichero);
 				}
 			}
 		}

@@ -87,7 +87,7 @@ namespace Dalle.Formatos.SplitterMerger
 				{
 					if (validator.Crc.Value != info.Crc)
 					{
-						throw new ChecksumVerificationException ("");
+						throw new ChecksumVerificationException ("Checksum verification failed", fichero);
 					}
 				}
 			}

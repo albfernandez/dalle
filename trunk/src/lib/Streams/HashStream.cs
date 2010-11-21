@@ -117,7 +117,7 @@ namespace Dalle.Streams
 			if (expected != null) {				
 				if (!expected.Equals (this.hash))
 				{
-					throw new IOException ("Verification failed");
+					throw new Dalle.Formatos.ChecksumVerificationException ("Verification failed");
 				}
 			}
 			

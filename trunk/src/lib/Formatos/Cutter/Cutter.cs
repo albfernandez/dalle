@@ -76,7 +76,7 @@ namespace Dalle.Formatos.Cutter
 					fis.Close ();
 					if (crc.Value != tail.Crc)
 					{
-						throw new Dalle.Formatos.ChecksumVerificationException ("checksum failed on file " + contador);
+						throw new Dalle.Formatos.ChecksumVerificationException ("checksum failed on file " + contador, ficheroBase + contador );
 					}
 					contador++;					
 				}

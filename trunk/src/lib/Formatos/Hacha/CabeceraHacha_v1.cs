@@ -175,8 +175,8 @@ namespace Dalle.Formatos.Hacha
 			
 			CabeceraHacha_v1 ret;		
 			
-			// Determinamos si hemos leido una cabecera v1 o v2. (seg�n
-			// el campo de verificaci�n).
+			// Determinamos si hemos leido una cabecera v1 o v2. (segun
+			// el campo de verificacion).
 			int c = b0 + (b1 << 8) + (b2 << 16) + (b3 << 24);
 			
 			
@@ -188,7 +188,7 @@ namespace Dalle.Formatos.Hacha
 				ret.TamanoFragmento = Convert.ToInt64(stTamanoFrag);
 				ret.NombreOriginal = nOriginal;
 				if (check != ret.CheckSum)
-					throw new Dalle.Formatos.ChecksumVerificationException();
+					throw new Dalle.Formatos.ChecksumVerificationException("Header checksum failed",fichero);
 			}
 			else{
 				// Hacha v.2
