@@ -4,6 +4,8 @@
 
 ===============================
 	
+	- [X] new format to split directorys (tar + gzip + split + sha512sum)
+	- [X] reduce combo in split dialog (less "split" formats)
 	- [ ] Formats supported by yoyocut and xtremsplit
 		- [ ] Yoyocut
 		- [X] Yoyocut 2
@@ -32,12 +34,13 @@
 		- [??] Découpeur, 
 		- [ ] File Splitter Deluxe, 
 		- [??] Cluster v1.0, 
-	- [ ] Other formatss
+	- [ ] Other formats
 		- [ ] Winsplit
 		- [ ] FastSplit
 		- [ ] MasterSplitter
 	- [ ] Notify (libnotify, sounds?) when finish a operation.
 	- [ ] New Homepage.
+	- [ ] dalle-gtk: Indicate output directory.
 	
 
 ===========================================================================
@@ -48,7 +51,6 @@ Other things (after 1.0)
 	
 	- [ ] Support "File Splitter and Joiner" __a?
 	- [ ] Threaded gui to give better responsivity.
-	- [ ] dalle-gtk: Indicate output directory.
-	- [ ] new format to split directorys (tar + split + shasum)
-	- [ ] reduce combo in split dialog (less "split" formats)
+
+
 
