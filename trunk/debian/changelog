@@ -1,7 +1,7 @@
-dalle (0.10.11-1) unstable; urgency=low
+dalle (0.11.04-1) unstable; urgency=low
 
   * Initial release (Closes: #599851)
   * This is my first Debian package.  
   * Thanks Mònica <monica@probeta.net> for helping to polish the package.
 
- -- Alberto Fernández Martínez <infjaf@gmail.com>  Tue, 02 Nov 2010 01:50:56 +0100
+ -- Alberto Fernández Martínez <infjaf@gmail.com>  Sat, 09 Apr 2011 10:50:56 +0100

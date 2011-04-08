@@ -16,9 +16,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfigurationAttribute("")]
 [assembly: AssemblyCompanyAttribute("Dalle")]
 [assembly: AssemblyProductAttribute("dalle-sfv-console")]
-[assembly: AssemblyCopyrightAttribute("Copyright (c) 2003-2010, Alberto Fernández")]
+[assembly: AssemblyCopyrightAttribute("Copyright (c) 2003-2011, Alberto Fernández")]
 [assembly: AssemblyTrademarkAttribute("")]
 [assembly: AssemblyCultureAttribute("")]
-[assembly: AssemblyVersionAttribute("0.10.11.1")]
+[assembly: AssemblyVersionAttribute("0.11.04.1")]
 [assembly: AssemblyDelaySignAttribute(false)]
 
