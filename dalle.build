@@ -3,9 +3,9 @@
 	<description>Build file for dalle.</description>
 	<property name="debug" value="false" overwrite="false" />
 	<property name="codepage" value="utf8" overwrite="false" />
-	<property name="version" value="0.10.11.1" overwrite="false" />
-	<property name="shortVersion" value="0.10.11" overwrite="false"/>
-	<property name="copyright" value="Copyright (c) 2003-2010, Alberto Fernández" overwrite="false"/>
+	<property name="version" value="0.11.04.1" overwrite="false" />
+	<property name="shortVersion" value="0.11.04" overwrite="false"/>
+	<property name="copyright" value="Copyright (c) 2003-2011, Alberto Fernández" overwrite="false"/>
 	<property name="prefix" value="/usr/" overwrite="false" />
 	<property name="DESTDIR" value="/" overwrite="false" />
 	<property name="liblzma" value="liblzma.dll" />
