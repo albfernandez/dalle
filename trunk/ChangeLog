@@ -1,3 +1,6 @@
+2012-05-28
+	Finally, version 1: Version 1.12.04
+
 2010-11-20
 	New split format (tar + gzip + split + sha512sum)
 	Reduced number of supported formats to split (keeps it simple)
