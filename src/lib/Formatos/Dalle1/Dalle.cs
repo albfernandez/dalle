@@ -47,7 +47,7 @@ namespace Dalle.Formatos.Dalle1
 			descripcion = "Dalle";
 			web = "http://dalle.sourceforge.net";
 			compatible = true;
-			parteFicheros = true;
+			parteFicheros = false;
 		}
 		
 		public void Unir (FileInfo fichero, DirectoryInfo dirDest)
