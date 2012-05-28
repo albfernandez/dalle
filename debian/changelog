@@ -1,4 +1,4 @@
-dalle (0.11.04-1) unstable; urgency=low
+dalle (0.12.04-1) unstable; urgency=low
 
   * Initial release (Closes: #599851)
   * This is my first Debian package.  
