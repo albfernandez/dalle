@@ -59,7 +59,7 @@ namespace Dalle.Formatos.Generico
 			info.Digits = 3;
 			info.OriginalFile = new FileInfo (fichero).Name;
 			//info.BaseName = info.OriginalFile;
-			info.BaseName = sal1;
+			info.BaseName = sal1 +".";
 			info.Directory = new DirectoryInfo (dir);
 			
 			
