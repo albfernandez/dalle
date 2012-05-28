@@ -4,4 +4,4 @@ dalle (1.12.04-1) unstable; urgency=low
   * This is my first Debian package.  
   * Thanks Mònica <monica@probeta.net> for helping to polish the package.
 
- -- Alberto Fernández Martínez <infjaf@gmail.com>  Sat, 09 Apr 2011 10:50:56 +0100
+ -- Alberto Fernández Martínez <infjaf@gmail.com>  Mon, 28 May 2012 10:50:56 +0100
