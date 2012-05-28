@@ -10,7 +10,6 @@ Build-Depends: debhelper (>= 7.0.50),
                libglade2.0-cil(>=1.0),
                libgnome2.24-cil (>= 2.24.0), 
                mono-mcs(>=1.0), 
-               perl, 
                cli-common-dev (>= 0.8~),
                libmono-sharpzip2.84-cil (>= 2.0), 
                libglade2.0-cil-dev, 
@@ -18,7 +17,7 @@ Build-Depends: debhelper (>= 7.0.50),
                libgtk2.0-cil-dev, 
                libglib2.0-cil-dev,
                libmono-posix4.0-cil
-Standards-Version: 3.9.2
+Standards-Version: 3.9.3
 
 Package: dalle
 Architecture: all
