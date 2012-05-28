@@ -100,6 +100,24 @@ namespace Dalle.Formatos.Dalle1
 			DirectoryInfo din = null;
 			DirectoryInfo dout = new DirectoryInfo (dir);
 
+
+			if (File.Exists (fichero)) {
+				fi = new FileInfo (fichero);
+			} else if (Directory.Exists (fichero)) {
+				din = new DirectoryInfo (fichero);
+			} else {
+				throw new Exception ("" + fichero + " not found");
+			}
+			List<FileInfo> files = load (fichero);
+			
+			string baseName = "";
+			if (fi != null) {
+				baseName = fi.Name;
+			} else if (din != null) {
+				baseName = din.Name;
+			}
+			
+			
 			if ((sal1 == null) || (sal1 == string.Empty)) {
 				//
 				if (din != null) {
@@ -108,27 +126,6 @@ namespace Dalle.Formatos.Dalle1
 				if (fi != null) {
 					sal1 = fi.Name;
 				}
-			}
-			if (File.Exists (fichero))
-			{
-				fi = new FileInfo (fichero);
-			}
-			else if (Directory.Exists (fichero))
-			{
-				din = new DirectoryInfo (fichero);
-			}
-			else {
-				throw new Exception ("" + fichero + " not found");
-			}
-			List<FileInfo> files = load (fichero);
-			
-			string baseName = "";
-			if (fi != null) 
-			{
-				baseName = fi.Name;
-			}
-			else if (din != null) {
-				baseName = din.Name;
 			}
 			
 			long totalSize = calculateTotalSize (files);
