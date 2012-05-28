@@ -164,8 +164,7 @@ namespace Dalle.Formatos.Dalle1
 				}
 				taros.CloseEntry ();
 				fs.Close ();
-			}
-			taros.Flush ();
+			}			
 			taros.Close ();
 			OnProgress (totalSize, totalSize);
 		}
