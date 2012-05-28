@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="dalle" default="build" basedir=".">
 	<description>Build file for dalle.</description>
-	<property name="debug" value="false" overwrite="false" />
+	<property name="debug" value="true" overwrite="false" />
 	<property name="codepage" value="utf8" overwrite="false" />
 	<property name="version" value="1.12.04.1" overwrite="false" />
 	<property name="shortVersion" value="1.12.04" overwrite="false"/>
