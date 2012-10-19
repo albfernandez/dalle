@@ -1,7 +1,7 @@
 
 MONO = mono
 MCS = mcs
-MCSFLAGS = -g
+MCSFLAGS = -debug
 MONOFLAGS = --debug
 MAKEWEB = MakeWeb.exe
 TEMPLATE = src/template/index.html.in
@@ -23,7 +23,7 @@ clean:
 	rm -f $(DESTDIR)/*.html *.exe $(DESTDIR)/*.css src/NEWS
 
 upload:
-	 scp -r deploy/*.* infjaf@shell.sf.net:/home/groups/d/da/dalle/htdocs
+	 scp -r deploy/*.* infjaf@web.sourceforge.net:/home/project-web/dalle/htdocs
 	
 
 .PHONY: clean

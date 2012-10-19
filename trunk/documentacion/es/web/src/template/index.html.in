@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -24,18 +24,16 @@
 </div>
 
 <div class="bottombanner">
+	<a href="http://www.mono-project.com/Main_Page">
+		<img src="images/mono.png" style="border:0" alt="Mono" align="left" />
+	</a>
+	<a href="http://www.mono-project.com/GtkSharp">
+		<img src="images/gtk.png" style="border:0" align="middle" alt="Gtk-Sharp"/>
+	</a>
 	<a href="http://sourceforge.net/">
 		<img align="right" src="http://sourceforge.net/sflogo.php?group_id=95720&amp;type=5"
-			width="203" height="60" alt="SourceForge.net" />
+			width="203" height="60" style="border:0" alt="SourceForge.net" />
 	</a>
-
-	<a href="http://www.go-mono.com">
-		<img src="images/mono.png" border="0" alt="Mono" align="left" />
-	</a>
-	<a href="http://gtk-sharp.sourceforge.net">
-		<img src="images/gtk.png" border="0" align="middle" alt="Gtk-Sharp"/>
-	</a>
-	
 	
 </div>
 
