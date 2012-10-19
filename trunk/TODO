@@ -4,7 +4,7 @@
 
 ===============================
 	
-	- [X] new format to split directorys (tar + gzip + split + sha512sum)
+	- [X] new format to split directories (tar + gzip + split + sha512sum)
 	- [X] reduce combo in split dialog (less "split" formats)
 	- [ ] Formats supported by yoyocut and xtremsplit
 		- [ ] Yoyocut
