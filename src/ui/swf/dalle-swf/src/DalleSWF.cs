@@ -60,6 +60,7 @@ namespace Dalle.UI.DalleSWF
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
 			//this.ControlBox = false;
+			this.Padding = new Padding(20);
 			
 			// Crear los objetos
 			
@@ -104,18 +105,18 @@ namespace Dalle.UI.DalleSWF
 			
 			this.rbMerge.Location = new Point (25, 75);
 			this.rbMerge.Name = "rbJoin";
-			this.rbMerge.Size = new Size (100, 30);
+			this.rbMerge.Size = new Size (200, 30);
 			this.rbMerge.TabIndex = 1;
 			//this.rbMerge.Text = Catalog.GetString("Merge");
-			this.rbMerge.Text = "Join";
+			this.rbMerge.Text = "Join the fragments of a file";
 			this.rbMerge.Checked = true;
 			
 			this.rbSplit.Location = new Point (25, 100);
 			this.rbSplit.Name = "rbSplit";
-			this.rbSplit.Size = new Size (100, 30);
+			this.rbSplit.Size = new Size (200, 30);
 			this.rbSplit.TabIndex = 2;
 			//this.rbSplit.Text = Catalog.GetString("Split");
-			this.rbSplit.Text = "Split";
+			this.rbSplit.Text = "Split a file";
 			
 			
 			
@@ -137,7 +138,7 @@ namespace Dalle.UI.DalleSWF
 			
 			
 			// Tamaño
-			this.Size = new System.Drawing.Size (410, 230);
+			this.Size = new System.Drawing.Size (420, 250);
 			this.MinimumSize = this.Size;
 			this.MaximumSize = this.Size;
 			//this.MaximumSize = new System.Drawing.Size(400,350);
