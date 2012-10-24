@@ -69,6 +69,7 @@ namespace Dalle.UI.DalleSWF
 		{
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
+			this.ControlBox = false;
 			this.Size = new Size (340, 270);
 			this.MinimumSize = this.Size;
 			this.MaximumSize = this.Size;

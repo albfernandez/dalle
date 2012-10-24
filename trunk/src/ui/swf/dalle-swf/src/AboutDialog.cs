@@ -51,15 +51,16 @@ namespace Dalle.UI.DalleSWF
 		{
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
+			this.ControlBox = false;
+			this.Padding = new Padding(20);
 			this.SuspendLayout ();
-			this.Size = new Size (450, 350);
+			this.Size = new Size (450, 225);
 			this.MaximumSize = this.Size;
 			this.MinimumSize = this.Size;
 			//this.Text = Catalog.GetString("Dalle-Swf") + " "  + Assembly.GetExecutingAssembly().GetName().Version;
 			this.Text = "Dalle-Swf " + Assembly.GetExecutingAssembly().GetName().Version;
 			
-			String[] authors = new String[] {
-				"Alberto Fernandez <infjaf@gmail.com>"};
+			String[] authors = new String[] {"Alberto Fernandez <infjaf@gmail.com>"};
 			
 			int ypos = 100;
 			
@@ -82,7 +83,7 @@ namespace Dalle.UI.DalleSWF
 			
 			Button btnClose = new Button();
 			btnClose.Size = new Size (60, 30);
-			btnClose.Location = new Point (375, ypos + 20);
+			btnClose.Location = new Point (350, ypos + 20);
 			//btnClose.Text = Catalog.GetString("Close");
 			btnClose.Text = "Close";
 			btnClose.Click += new EventHandler (btnCloseClicked);
