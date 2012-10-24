@@ -61,21 +61,21 @@ rm -rf %{buildroot}
 # Reconstruimos todos los wrappers para poder tenerlo relocalizable.
 
 echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/dalle-console
-echo "mono $RPM_INSTALL_PREFIX/lib/dalle/dalle-console.exe \"\$@\"" >> "$RPM_INSTALL_PREFIX"/bin/dalle-console
+echo "mono --debug $RPM_INSTALL_PREFIX/lib/dalle/dalle-console.exe \"\$@\"" >> "$RPM_INSTALL_PREFIX"/bin/dalle-console
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-console
 
 echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/dalle-gtk
-echo "mono $RPM_INSTALL_PREFIX"/lib/dalle/dalle-gtk.exe >> "$RPM_INSTALL_PREFIX"/bin/dalle-gtk
+echo "mono --debug $RPM_INSTALL_PREFIX"/lib/dalle/dalle-gtk.exe >> "$RPM_INSTALL_PREFIX"/bin/dalle-gtk
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-gtk
 
 
 echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/openhacha-gtk
-echo "mono $RPM_INSTALL_PREFIX/lib/dalle/openhacha-gtk.exe" >> "$RPM_INSTALL_PREFIX"/bin/openhacha-gtk
+echo "mono --debug $RPM_INSTALL_PREFIX/lib/dalle/openhacha-gtk.exe" >> "$RPM_INSTALL_PREFIX"/bin/openhacha-gtk
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/openhacha-gtk
 
 
 echo "#!/bin/sh" > "$RPM_INSTALL_PREFIX"/bin/dalle-sfv-console
-echo "mono $RPM_INSTALL_PREFIX/lib/dalle/dalle-sfv-console.exe " >> "$RPM_INSTALL_PREFIX"/bin/dalle-sfv-console
+echo "mono --debug $RPM_INSTALL_PREFIX/lib/dalle/dalle-sfv-console.exe " >> "$RPM_INSTALL_PREFIX"/bin/dalle-sfv-console
 echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 
 
