@@ -20,7 +20,6 @@
 
 */
 
-
 using System;
 using System.IO;
 using System.Xml;
@@ -62,16 +61,17 @@ namespace Dalle
 		
 		static string GenerarIndice (Pagina[] list)
 		{
-			String ret = "<ul style='list-style-type: none;margin-left:0; padding-left:0;'>\n";
+			String ret = "<table>\n";
 			foreach (Pagina p in list){
 				ret +=
 					String.Format (
-						"<li><a href=\"{0}.html\">{1}</a></li>\n",
+						"<tr><td><a href=\"{0}.html\">{1}</a></td></tr>\n",
 						p.FileName, 
 						p.Name
 					);
 			}
-			ret += "</ul>\n";
+			ret +="<tr><td><img src=\"images/lazo-negro.jpg\"></img></td></tr>";
+			ret += "</table>\n";
 			return ret;
 		}
 		
@@ -270,8 +270,10 @@ namespace Dalle
 				return texto;
 
 			}
-			catch (ArgumentException){
-				TextReader file = new StreamReader (archivo, System.Text.Encoding.Default);
+			catch (ArgumentException ex){
+
+				TextReader file = new StreamReader (
+									archivo, System.Text.Encoding.Default);
 				String texto = file.ReadToEnd ();
 				file.Close ();
 				return texto;
