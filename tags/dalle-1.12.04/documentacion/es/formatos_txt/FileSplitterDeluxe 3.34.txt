@@ -1,0 +1,23 @@
+FileSplitterDeluxe 3.34
+
+El formato es cortado tal cual, con un bat para regenerar los archivos
+en DOS/Windows.
+el nombre original esta en el bat.
+El formato de nombre de los archivos es:
+
+{nombre_original_sin_extension}.{numero de secuencia comenzando en 1}
+
+
+El formato del bat es:
+
+
+
+
+
+
+Ejemplo del bat
+
+@ECHO OFF
+Copy /b "aes.1" + "aes.2" + "aes.3" + "aes.4" + "aes.5" + "aes.6" + "aes.7" + "aes.8" + "aes.9" + "aes.10" "aes.txt"
+@ECHO aes.txt has been recreated for you.
+

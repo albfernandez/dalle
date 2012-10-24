@@ -1,0 +1,19 @@
+
+	OpenHacha Authors
+	=================
+	
+	* Ramón Rey Vicente <ramon.rey@hispalinux.es>
+		- GTK# interface
+		- command line interface
+	
+	* Alberto Fernández <infjaf@gmail.com>
+		- libhacha2, a full featured and "free as in freedom"
+		  implementation of Hacha
+
+	* Álvaro Peña <apg@esware.com>
+		- HIG'ed the Gtk# interface.
+	
+	* Eduardo García Cebollero <kiwnix@yahoo.es>
+		- libhacha, the "free as in freedom" C# implementation of
+		  Hacha (used in 0.0.99, 0.1 and 0.2 releases, but now libacha 
+		  is deprecated)

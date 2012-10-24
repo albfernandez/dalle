@@ -1,0 +1,49 @@
+Join / Extract files from
+	ar
+	Axman3
+	Astrotite v1, v2 y v3
+	bzip2	
+	Camouflage
+	cpio
+	cutkiller
+	deb
+	Divij
+	Easy File Splitter v 1.05
+	FileSplit
+	HJSplit
+	gcutter
+	Generico
+	Gnome Split
+	gzip	
+	Hacha1
+	Hacha2
+	HachaPro
+	Kamaleon 1 y 2
+	lzma
+	MaxSplitter v 1.53 Free Edition
+	RPM
+	SF
+	SplitFile
+	Splitter&Merger (1,2,3*,4 y 5) (*v3 comprimida no soportada)
+	tar
+	ultrasplitter
+	unixsplit	
+	XAR
+	Xtremsplit
+	Yoyocut2
+	zip
+	
+
+Split
+	Axman3
+	Camouflage
+	Generico
+	SF
+	Kamaleon 1 y 2
+	SplitFile
+	Hacha1
+	Hacha2	
+	HachaPro
+	Easy File Splitter v 1.05
+	MaxSplitter v 1.53 Free Edition
+	zip

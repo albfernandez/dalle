@@ -1,0 +1,19 @@
+
+
+
+<orig>.<nnn>.gsp
+
+
+pos bytes
+0 - 1     - Longitud de la version
+1 - 4    - Version (terminada en null)
+5 - 1    - Longitud del nombre
+6 - 50   - Nombre (terminada en null)
+56 - 1   - usa md5?
+57 - 4   - partes
+61 - 8   - longitud original
+
+// data
+
+// si tenemos md5, los ultimos 32 bytes del último archivo son el md5 (en texto)
+ 
