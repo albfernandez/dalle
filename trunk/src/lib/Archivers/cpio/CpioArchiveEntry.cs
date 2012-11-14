@@ -156,7 +156,7 @@ namespace Dalle.Archivers.cpio
 
 		private string name;
 		private long size;
-		#region ArchiveEntry implementation
+
 		public bool IsDirectory {
 			get {
 				return (this.mode & S_IFMT) == C_ISDIR;
@@ -185,7 +185,7 @@ namespace Dalle.Archivers.cpio
 			}
 			
 		}
-		#endregion
+
 
 	
 		private short fileFormat; 
