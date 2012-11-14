@@ -1,3 +1,8 @@
+28-05-2012 - Version 1.12.11
+	Small visualization fixes on swf for windows 7
+	Repackaging for all suported distros.
+	Enables debug by default to easy solving bugs.
+
 28-05-2012 - Version 1.12.04
 	New split format (tar + gzip + split + sha512sum)
 	Reduced number of supported formats to split (keeps it simple)
