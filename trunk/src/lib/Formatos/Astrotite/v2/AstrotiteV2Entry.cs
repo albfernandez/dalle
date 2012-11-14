@@ -33,7 +33,7 @@ namespace Dalle.Formatos.Astrotite.v2
 		private long size;
 		private string name;
 		private int numBlocks;
-		#region ArchiveEntry implementation
+
 		public bool IsDirectory {
 			get { return false; }
 		}
@@ -50,7 +50,6 @@ namespace Dalle.Formatos.Astrotite.v2
 		}
 
 
-		#endregion
 		
 		public int NumBlocks {
 			get { return this.numBlocks; }			

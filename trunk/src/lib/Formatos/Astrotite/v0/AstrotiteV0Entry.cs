@@ -34,7 +34,7 @@ namespace Dalle.Formatos.Astrotite.v0
 
 		private long size;
 		private string name;
-		#region ArchiveEntry implementation
+
 		public bool IsDirectory {
 			get {
 				return false;
@@ -56,8 +56,7 @@ namespace Dalle.Formatos.Astrotite.v0
 			internal set { this.size = value; }
 		}
 
-		
-		#endregion
+
 		public AstrotiteV0Entry (string name, long size)
 		{
 			this.name = name;
