@@ -16,6 +16,7 @@ rpmbuild -ba dalle.spec
 
 
 
+svn copy  https://dalle.svn.sourceforge.net/svnroot/dalle/trunk  https://dalle.svn.sourceforge.net/svnroot/dalle/tags/dalle-${version} -m "Version ${version}"
 
 
 Configurando el entorno:
