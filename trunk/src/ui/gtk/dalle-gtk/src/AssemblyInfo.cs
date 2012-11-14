@@ -16,7 +16,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfigurationAttribute("")]
 [assembly: AssemblyCompanyAttribute("Dalle")]
 [assembly: AssemblyProductAttribute("dalle-gtk")]
-[assembly: AssemblyCopyrightAttribute("Copyright (c) 2003-2011, Alberto Fernández")]
+[assembly: AssemblyCopyrightAttribute("Copyright (c) 2003-2012, Alberto Fernández")]
 [assembly: AssemblyTrademarkAttribute("")]
 [assembly: AssemblyCultureAttribute("")]
 [assembly: AssemblyVersionAttribute("1.12.12.1")]
