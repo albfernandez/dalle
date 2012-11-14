@@ -33,7 +33,7 @@ namespace Dalle.Archivers.cpio
 		byte[] oneByte = new byte[1];
 		private long crc = 0;
 
-		#region IChecksum implementation
+
 		public void Reset ()
 		{
 			this.crc = 0;
@@ -63,7 +63,7 @@ namespace Dalle.Archivers.cpio
 				return crc;
 			}
 		}
-		#endregion
+
 
 		public CpioChecksum ()
 		{

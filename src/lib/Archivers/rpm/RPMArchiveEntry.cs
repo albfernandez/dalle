@@ -33,7 +33,7 @@ namespace Dalle.Archivers.rpm
 
 	public class RPMArchiveEntry : ArchiveEntry
 	{
-		#region ArchiveEntry implementation
+
 		public bool IsDirectory {
 			get {
 				return this.isDirectory;
@@ -54,7 +54,7 @@ namespace Dalle.Archivers.rpm
 			}
 		}
 		
-		#endregion
+
 
 		private long size = 0;
 		private string name = "";
