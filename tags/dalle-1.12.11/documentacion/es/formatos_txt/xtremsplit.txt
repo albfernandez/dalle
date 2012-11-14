@@ -1,0 +1,34 @@
+http://xtremsplit.fr/
+http://xtremsplit.fr/xtremsplit-developpeurs-format-extension-xtm.html
+
+
+Nombre de los ficheros:
+ORIGINAL_CON_EXT.001.xtm (comienza la numeración en 1)
+
+Cabecera en el primer archivo (104 bytes):
+pos     tamano    Nombre
+0       1         Longitud del campo "Nombre de programa"
+1       20        Nombre de Programa ('Xtremsplit')
+21      1         Logitud del campo version
+22      4         Version ('1.1', '1.2')
+26      10        Reservado
+36      4         Fecha ¿formato?
+40      1         Logitud del campo "Nombre Original"
+41      50        Nombre Original
+91      1         Se ha guardado hash md5
+92      4         Número de fragmentos generados
+96      8         Tamaño del archivo original
+
+Si tiene md5 se encuentra en los ultimos 32*numero_fragmentos bytes del ultimo fichero
+
+Archivo exe:
+Sigue los nombres de la version normal, salvo que el 001 tiene extension exe
+en lugar de xtm
+En el exe la cabecera comienza en la posición 0x4AA00
+Además tiene una cola de 24 bytes al final del primer archivo (el exe)
+pos     tamano    Nombre
+0       1         Longitud del campo programa
+1       6         Programa ('XTMSFX')
+7       1         Tamaño del campo version
+8       8         Version (por ejemplo, '1.2')
+16      8         Tamaño de datos del fragmento

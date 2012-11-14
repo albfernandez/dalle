@@ -1,0 +1,176 @@
+/*
+
+    Dalle - A split/join file utility library	
+    
+	
+    Copyright (C) 2004-2010 Alberto Fernández  <infjaf@gmail.com>
+    Original author (C - code) - Dai SET <dai_set@yahoo.com>
+    C# translation by - Alberto Fernández  <infjaf@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+using System;
+
+
+namespace Dalle.Formatos.Camouflage
+{
+	public class Aleatorizador
+	{		
+		private byte[] matriz;
+		private byte camuIndice;
+		private byte camuSalteador;
+		
+		public Aleatorizador ()
+		{
+			Reset();
+		}
+		
+		public byte GetNext () 
+		{
+			byte v2 = 0;
+			byte v1 = 0;
+			
+			camuIndice++;
+			v2=matriz[camuIndice];
+			// Tomar un byte del salteador moviéndolo
+			camuSalteador+=v2;
+			v1=matriz[camuSalteador];
+			// Intercambiarlos
+			matriz[camuIndice]=v1;
+			matriz[camuSalteador]=v2;
+			// Usar como índice la suma
+			v2+=v1;
+			return matriz[v2];
+		}
+		
+		
+		public void Reset ()
+		{
+			camuIndice = 0;
+			camuSalteador = 0;
+			matriz = new byte[]{
+				 0xD4, 0x07, 0x80, 0x12, 0xEF, 0x19, 0x9C, 0xF2, 
+				 0x43, 0xBB, 0xC9, 0xED, 0x32, 0x6F, 0xF3, 0x03, 
+				 0xB3, 0x66, 0x3C, 0x04, 0x92, 0xD9, 0xBD, 0x5B, 
+				 0x99, 0xF4, 0x1F, 0x29, 0x45, 0x5E, 0x6B, 0x9A, 
+				 0x8E, 0x2B, 0x2C, 0x76, 0x0A, 0x4E, 0x0F, 0x7C, 
+				 0x51, 0x31, 0xF6, 0x4A, 0x0E, 0x22, 0x28, 0x5D, 
+				 0xDB, 0xD3, 0x56, 0x8A, 0x67, 0xD6, 0xFB, 0x14, 
+				 0x6A, 0xA3, 0x85, 0xEC, 0xD8, 0x34, 0xA4, 0x4C, 
+				 0xE9, 0xC8, 0x08, 0x09, 0x30, 0xB8, 0xB1, 0x87, 
+				 0x24, 0x69, 0x5F, 0x7F, 0x86, 0x7A, 0x50, 0x96, 
+				 0xBA, 0xA8, 0x55, 0xB4, 0xA0, 0x7B, 0x23, 0xE8, 
+				 0x89, 0x1D, 0xBC, 0xA5, 0x59, 0x83, 0xC2, 0xD5, 
+				 0xCC, 0x3A, 0xCE, 0x5A, 0x2F, 0xAB, 0x65, 0x78, 
+				 0x82, 0xA7, 0x38, 0xAC, 0xFF, 0x8B, 0xCD, 0x3D, 
+				 0xE6, 0x0B, 0x72, 0x61, 0x73, 0x0C, 0x2E, 0x33, 
+				 0x63, 0xC7, 0xDA, 0x20, 0xD1, 0x84, 0x48, 0x98, 
+				 0x91, 0x9B, 0xA9, 0x9D, 0xB2, 0xD2, 0x44, 0x25, 
+				 0x3E, 0x6C, 0xCA, 0x35, 0xF9, 0x4F, 0xD0, 0xC5, 
+				 0x15, 0x97, 0xAE, 0x0D, 0x77, 0x00, 0x4B, 0xE7, 
+				 0xAA, 0x3B, 0x47, 0x81, 0x52, 0x93, 0xEE, 0xCB, 
+				 0xF0, 0x5C, 0x9F, 0xDF, 0x06, 0x95, 0xFA, 0x46, 
+				 0x70, 0xE0, 0xB7, 0xBF, 0x42, 0xE4, 0xF1, 0x9E, 
+				 0xF8, 0xC4, 0x94, 0xEB, 0x37, 0x53, 0xCF, 0x10, 
+				 0x79, 0xFE, 0x7D, 0x11, 0xB0, 0xAD, 0xEA, 0x01, 
+				 0x2A, 0x6E, 0xC3, 0xE1, 0x27, 0x41, 0xB5, 0x16, 
+				 0x88, 0x1B, 0x57, 0x68, 0x62, 0xC6, 0x74, 0x71, 
+				 0xA6, 0x1E, 0xDE, 0x21, 0xE2, 0x60, 0xFC, 0x39, 
+				 0x54, 0x49, 0x36, 0x8D, 0xE3, 0x05, 0xDD, 0xD7, 
+				 0x3F, 0x7E, 0x75, 0x13, 0x1C, 0x64, 0x1A, 0xA2, 
+				 0x58, 0xC0, 0xAF, 0x40, 0x6D, 0x26, 0x8C, 0xE5, 
+				 0xFD, 0xC1, 0x2D, 0xF5, 0xB9, 0x4D, 0xDC, 0xF7, 
+				 0x90, 0x02, 0xB6, 0x18, 0x8F, 0xA1, 0xBE, 0x17
+			};
+		}
+		
+		public void Desencriptar (byte[] b, int offset, int len)
+		{
+			for (int i=0; len > 0; len--){
+				b[offset + i] ^= GetNext();
+				i++;				
+			}
+		}
+		
+		
+		public void Desencriptar (byte[] b)
+		{
+			Desencriptar (b, 0, b.Length);
+		}
+		
+		public static byte[] EncriptarTexto (string texto, int len)
+		{
+			byte[] ret = new byte[len];
+			
+			for (int i=0; i < len; i++){
+				ret[i] = 0x20;	
+			}
+			if ((texto == null) || (texto.Length == 0)){
+				return ret;
+			}
+			if (texto.Length > len)
+				texto = texto.Substring (0, len);
+				
+			Aleatorizador aleat = new Aleatorizador();
+			
+			int j=0;
+			foreach (char c in texto){
+				byte b = (byte) c;
+				ret[j] = (byte) (b ^ aleat.GetNext());				
+				j++;
+			}
+			return ret;
+		}
+		
+		public static string DesencriptarTexto (byte[] texto, int off, int length)
+		{
+			length--;
+			while ((length > 0) && (texto[off + length] == 0x20))
+				length--;
+			if (length == 0)
+				return String.Empty;
+			char[] res = new char [ length + 1 ];
+			Aleatorizador aleat = new Aleatorizador();
+			
+			for (int i=0; i <= length; i++){
+				res[i] = (char) (texto[off +i]  ^ aleat.GetNext());
+			}
+			return new String (res);
+		}
+		
+		public static string DesencriptarTexto (byte[] texto)
+		{
+			return DesencriptarTexto (texto, 0, texto.Length);
+		}
+		
+		public static string DesencriptarTexto (byte[] texto, String nada)
+		{
+		
+			int indice = texto.Length -1;
+			while ((indice > 0) && (texto[indice] == 0x20))
+				indice--;
+			if (indice == 0)
+				return String.Empty;
+			Aleatorizador aleat = new Aleatorizador ();
+			char[] res = new char [indice + 1];
+			for (int i=0; i <= indice; i++){
+				res[i] = (char) (texto[i] ^ aleat.GetNext());
+			}
+			return new String (res);		
+		}
+		
+	}
+}

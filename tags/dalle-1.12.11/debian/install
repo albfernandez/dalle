@@ -1,0 +1,6 @@
+debian/tmp/usr/bin/
+debian/tmp/usr/lib/dalle/ 
+debian/tmp/usr/share/locale/
+pixmaps/dalle.xpm /usr/share/dalle/pixmaps/
+pixmaps/dalle.xpm /usr/share/icons/
+debian/dalle-gtk.desktop /usr/share/applications/

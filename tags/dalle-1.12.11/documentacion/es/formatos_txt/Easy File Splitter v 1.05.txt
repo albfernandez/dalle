@@ -1,0 +1,8 @@
+Easy File Splitter v 1.05
+http://www.filesplitter.net
+"Shareware" La versión trial no permite trabajar con archivos de más de 10mb.
+
+El formato son los datos cortados tal cual. El formato del nombre de los fragmentos es el siguiente:
+
+<nombre original>.<numero total de fragmentos>_<numero de fragmento>
+

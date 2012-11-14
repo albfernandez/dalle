@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<formats xmlns="http://dalle.sourceforge.net/formats.xsd">
+	<format>
+		<name>axman3</name>
+		<progname>Axman 3</progname>
+		<web>http://www.mosaicware.com</web>
+		<popularity>6</popularity>
+		<supportsjoin>8</supportsjoin>
+		<supportssplit>7</supportssplit>
+		<license>Shareware</license>
+		<sinceversion>0.5.5</sinceversion>
+		
+	</format>
+	<format>
+		<name>hacha1</name>
+		<progname>Hacha anterior a 2.79</progname>
+		<web>http://www.hachaweb.com</web>
+		<popularity>10</popularity>
+		<supportsjoin>10</supportsjoin>
+		<supportssplit>10</supportssplit>
+		<license>Freeware</license>
+		<sinceversion>0.4.0</sinceversion>
+		<description>
+			<p>
+			Hacha es uno de los programas mas conocidos para partir ficheros.
+			El formato es sencillo: añade una cabecera al primer archivo, y luego
+			n bytes del archivo original a cada fragmento.
+			</p>
+			<p>
+			Con esto tenemos que el primer archivo es ligeramente mayor que el resto,
+			y el ultimo, generalmente, es menor que el resto.
+			</p>
+		</description>
+		<checksums>
+			Hacha genera un caracter de control para la cabecera. Se calcula de la siguiente forma:
+			<ul>
+    			<li>Se obtiene el numero de caracteres del nombre original del archivo</li>
+    			<li>Se obtiene el numero de digitos del tamaño del archivo</li>
+    			<li>Se obtiene el numero de digitos del tamaño de los fragmentos</li>
+    			<li>Se suman todos los numeros y al resultado se le suma 20</li>
+    			<li>Del numero que se obtiene calculamos cual es el caracter ASCII al 
+     			  que representa (p.e. 65 representa a la 'A')</li>
+			</ul>		
+		</checksums>
+		<naming>
+			<p>
+			La forma de nombrar los fragmentos es la siguiente:
+			</p>
+			<pre>
+			[Prefijo].[numero de secuencia]
+			</pre>
+			<p>
+			<ul>
+				<li><b>Prefijo</b> es común a todos los fragmentos, y suele ser
+				el nombre del archivo original (con o sin extensión).</li>
+				<li><b>Número de secuencia.</b> Comienza en 0 y se incrementa
+				para los fragmentos siguientes.</li>
+			</ul>
+						
+			</p>
+			<p>
+				Ejemplo:
+				<ul><li>Archivo original: MiFichero.txt</li>
+				<li>Archivos resultantes MiFichero.txt.0 MiFichero.txt.1 MiFichero.txt.2 ...
+				</li>
+				</ul>
+			</p>			
+		</naming>
+		<headers>
+			<p>Hacha pone cabecera sólo al primer fragmento.
+			</p>
+			<p>El formato de la cabecera es el siguiente:</p>
+			<table border="1">
+			<tr><td>5 bytes</td><td>0x3F "?".</td></tr>
+			<tr><td>1 byte</td><td>Checksum de control de la cabecera.</td></tr>
+			<tr><td>3 bytes</td><td>0, reservados.</td></tr>
+			<tr><td>5 bytes</td><td>0x3F "?"</td></tr>
+			<tr><td>? bytes</td><td>Nombre del archivo original</td></tr>
+			<tr><td>5 bytes</td><td>0x3F "?"</td></tr>
+			<tr><td>? bytes</td><td>Tamaño total, en ascii</td></tr>
+			<tr><td>5 bytes</td><td>0x3F "?"</td></tr>
+			<tr><td>? bytes</td><td>Tamaño de los fragmentos</td></tr>
+			<tr><td>5 bytes</td><td>0x3F "?"</td></tr>
+			</table>
+		</headers>
+		
+	</format>
+	<format>
+		<name>hacha2</name>
+		<progname>Hacha igual o posterior  2.79</progname>
+		<web>http://www.hachaweb.com</web>
+		<popularity>10</popularity>
+		<supportsjoin>10</supportsjoin>
+		<supportssplit>10</supportssplit>
+		<license>Freeware</license>
+		<sinceversion>0.4.0</sinceversion>
+		
+		<description>
+			<p>
+			Hacha es uno de los programas mas conocidos para partir ficheros.
+			El formato es sencillo: añade una cabecera al primer archivo, y luego
+			n bytes del archivo original a cada fragmento.
+			</p>
+			<p>
+			Con esto tenemos que el primer archivo es ligeramente mayor que el resto,
+			y el ultimo, generalmente, es menor que el resto.
+			</p>
+		</description>
+		<checksums>
+			Hacha genera un Checksum de control del archivo original.
+			Dicho Checksum es de 4 bytes, y se calcula de la siguiente forma:
+			<ul><li>Los dos bytes de mayor peso:<br />
+				(sumatorio (valorByte x (tamañoFichero - posicion_del_byte))) modulo (0xFFF1)
+			</li>			
+			<li>Los dos bytes de menor peso:<br />
+				(Suma del valor de todos los bytes del fichero) modulo (0xFFF1)
+			</li></ul>
+			
+		</checksums>
+		<naming>
+			<p>
+			La forma de nombrar los fragmentos es la siguiente:
+			</p>
+			<pre>
+			[Prefijo].[numero de secuencia]
+			</pre>
+			<p>
+			<ul>
+				<li><b>Prefijo</b> es común a todos los fragmentos, y suele ser
+				el nombre del archivo original (con o sin extensión).</li>
+				<li><b>Número de secuencia.</b> Comienza en 0 y se incrementa
+				para los fragmentos siguientes.</li>
+			</ul>
+						
+			</p>
+			<p>
+				Ejemplo:
+				<ul><li>Archivo original: MiFichero.txt</li>
+				<li>Archivos resultantes MiFichero.txt.0 MiFichero.txt.1 MiFichero.txt.2 ...
+				</li>
+				</ul>
+			</p>			
+		</naming>
+		<headers>
+			<p>Hacha pone cabecera sólo al primer fragmento.
+			</p>
+			<p>El formato de la cabecera es el siguiente:</p>
+			<table border="1">
+			<tr><td>5 bytes</td><td>0x3F "?".</td></tr>
+			<tr><td>4 byte</td><td>Checksum del archivo original (0x07 00 00 00 si no hay crc)</td></tr>
+			<tr><td>5 bytes</td><td>0x3F "?"</td></tr>
+			<tr><td>? bytes</td><td>Nombre del archivo original</td></tr>
+			<tr><td>5 bytes</td><td>0x3F "?"</td></tr>
+			<tr><td>? bytes</td><td>Tamaño total, en ascii</td></tr>
+			<tr><td>5 bytes</td><td>0x3F "?"</td></tr>
+			<tr><td>? bytes</td><td>Tamaño de los fragmentos</td></tr>
+			<tr><td>5 bytes</td><td>0x3F "?"</td></tr>
+			</table>
+		</headers>
+		
+		
+	</format>
+	<format>
+		<name>hachapro</name>
+		<progname>Hacha Pro</progname>
+		<web>http://www.hachaweb.com</web>
+		<popularity>8</popularity>
+		<supportsjoin>10</supportsjoin>
+		<supportssplit>10</supportssplit>
+		<license>Freeware</license>
+		<sinceversion>0.4.0</sinceversion>
+	</format>	
+	<format>
+		<name>kamaleon1</name>
+		<progname>KamaleoN</progname>
+		<web></web>
+		<popularity>8</popularity>
+		<supportsjoin>10</supportsjoin>
+		<supportssplit>10</supportssplit>
+		<license>Freeware</license>
+		<sinceversion>0.4.0</sinceversion>
+	</format>
+	<format>
+		<name>kamaleon2</name>
+		<progname>KamaleoN 2</progname>
+		<web></web>
+		<popularity>8</popularity>
+		<supportsjoin>9</supportsjoin>
+		<supportssplit>0</supportssplit>
+		<license>Freeware</license>
+		<sinceversion>0.4.0</sinceversion>
+	</format>
+		
+</formats>

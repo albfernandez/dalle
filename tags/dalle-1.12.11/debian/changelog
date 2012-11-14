@@ -1,0 +1,7 @@
+dalle (1.12.11-1) unstable; urgency=low
+
+  * Initial release (Closes: #599851)
+  * This is my first Debian package.  
+  * Thanks Mònica <monica@probeta.net> for helping to polish the package.
+
+ -- Alberto Fernández Martínez <infjaf@gmail.com>  Mon, 28 May 2012 10:50:56 +0100

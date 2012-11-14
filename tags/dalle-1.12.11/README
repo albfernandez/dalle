@@ -1,0 +1,15 @@
+Dalle is a tool to work with files splitted with programs like Hacha,
+SplitFile, Winsplit
+
+The requeriments to run dalle are:
+mono >= 1.0
+gtk-sharp >= 2.0
+
+To compile from source code, you must read INSTALL file.
+
+Homepage:
+http://dalle.sourceforge.net
+
+Contact by email at <infjaf@gmail.com>
+
+

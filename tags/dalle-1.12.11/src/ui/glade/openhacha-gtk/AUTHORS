@@ -1,0 +1,10 @@
+
+	OpenHacha Authors
+	=================
+	
+	* Ramón Rey Vicente <ramon.rey@hispalinux.es>
+		- GTK# interface
+		- command line interface
+	
+	* Álvaro Peña <apg@esware.com>
+		- HIG'ed the Gtk# interface.
