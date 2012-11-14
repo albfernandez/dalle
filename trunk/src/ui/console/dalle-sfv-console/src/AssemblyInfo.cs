@@ -19,6 +19,6 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyrightAttribute("Copyright (c) 2003-2011, Alberto Fernández")]
 [assembly: AssemblyTrademarkAttribute("")]
 [assembly: AssemblyCultureAttribute("")]
-[assembly: AssemblyVersionAttribute("1.12.04.1")]
+[assembly: AssemblyVersionAttribute("1.12.12.1")]
 [assembly: AssemblyDelaySignAttribute(false)]
 
