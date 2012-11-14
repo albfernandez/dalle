@@ -7,12 +7,12 @@ Some code in LZMA SDK is based on public domain code from another developers:
   1) PPMd var.H (2001): Dmitry Shkarin
   2) SHA-256: Wei Dai (Crypto++ library)
 */
-﻿#region Using directives
+
 
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-#endregion
+
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information

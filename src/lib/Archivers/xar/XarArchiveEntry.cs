@@ -29,7 +29,6 @@ namespace Dalle.Archivers.xar
 
 	public class XarArchiveEntry : ArchiveEntry
 	{
-		#region ArchiveEntry implementation
 		public string Name {
 			get {
 				return this.name;
@@ -59,7 +58,6 @@ namespace Dalle.Archivers.xar
 			}
 		}
 		
-		#endregion
 		public string User {
 			get {
 				return user;
