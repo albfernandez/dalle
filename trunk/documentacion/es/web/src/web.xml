@@ -96,15 +96,15 @@
 					   basadas en RPM (RedHat, Fedora, Mandrake ...)
 					</li>
 					<li><strong>dalle-VERSION.tar.bz2.</strong>  Contiene las fuentes.</li>
-					<li><strong>dalle-VERSION-windows.zip</strong>Contiene una version especifica para windows y .NET</li>
-					<li><strong>dalle-VERSION-bin.zip.</strong> Contiene los programa las y 
-						librerias compilados, así como la libreria 
-						ICSharpCode.SharZipLib.dll, necesaria si trabajas con MS.NET.</li>
+					<li><strong>dalle-VERSION-windows.zip.</strong> Contiene una version especifica para windows y .NET</li>
+					<li><strong>dalle-VERSION-bin.zip.</strong> Contiene los programas las y 
+						librerias compilados, así como la libreria ICSharpCode.SharZipLib.dll, 
+						necesaria si trabajas con MS.NET.</li>
 				</ul>
 			</p>
 			<h2>Descargar las fuentes de Subversion</h2>
 			<p>Si quieres descargarte la última versión del
-			svn, solo tienes que usar el acceso anonimo.</p>
+			svn, solo tienes que usar el acceso anónimo.</p>
 			<pre>
     svn co https://dalle.svn.sourceforge.net/svnroot/dalle/trunk dalle
 			</pre>
