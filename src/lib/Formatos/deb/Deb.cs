@@ -59,6 +59,7 @@ namespace Dalle.Formatos.Deb
 		{
 			DebArchiveInputStream instream = new DebArchiveInputStream (File.OpenRead (fichero));
 			ArchiveExtractor.Extract (instream, dirDest, this, new FileInfo (fichero).Length);
+			this.OnProgress(1,1);
 			
 		}
 		public override bool PuedeUnir (string fichero)

@@ -23,52 +23,52 @@ using System.IO;
 
 using Dalle.Archivers;
 
-namespace Dalle.Formatos
-{
+namespace Dalle.Formatos {
 
+	public class ArchiveExtractor{
 
-	public class ArchiveExtractor
-	{
-
-		public ArchiveExtractor ()
-		{
+		public ArchiveExtractor (){
 		}
-		public static void Extract (ArchiveInputStream stream, string outDir, Parte p)
-		{
+		public static void Extract (ArchiveInputStream stream, string outDir, Parte p){
 			Extract (stream, outDir, p, -1);	
 		}
-		public static void Extract (ArchiveInputStream stream, string outDir, Parte p, long totalData)
-		{
-			ArchiveEntry e = null;
+		public static void Extract (ArchiveInputStream stream, string outDir, Parte p, long totalData){
+			ArchiveEntry entrada = null;
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			int leidos = 0;
 			if (p != null) {
 				p.OnProgress (0, 1);
 			}
-			while ((e = stream.GetNextEntry ()) != null) 
-			{
+			while ((entrada = stream.GetNextEntry ()) != null) 	{
 				
-				if (e.IsDirectory) {
+				if (entrada.IsDirectory) {
 					continue;
 				}
-				leidos = 0;
-			
-				Stream s = Dalle.Utilidades.UtilidadesFicheros.CreateWriter (outDir + Path.DirectorySeparatorChar + e.Name);
-				while ((leidos = stream.Read (buffer)) > 0) 
-				{
-					s.Write (buffer, 0, leidos);
-					
-					if (leidos > 0 && p != null) {
-						if (totalData > 0) {
-							p.OnProgress (stream.Position, totalData);
-						} else if (stream.Length > 0) {
-							p.OnProgress (stream.Position, stream.Length);
-						}
-					}
+				if (entrada.IsLink){
+					// TODO Implementar el link.
+					continue;
+
 				}
-				
-				s.Close ();
-			
+				leidos = 0;
+				try {
+					Stream s = Dalle.Utilidades.UtilidadesFicheros.CreateWriter (outDir + Path.DirectorySeparatorChar + entrada.Name);
+					while ((leidos = stream.Read (buffer)) > 0)	{
+						s.Write (buffer, 0, leidos);
+						
+						if (leidos > 0 && p != null) {
+							if (totalData > 0) {
+								p.OnProgress (stream.Position, totalData);
+							} else if (stream.Length > 0) {
+								p.OnProgress (stream.Position, stream.Length);
+							}
+						}
+					
+					}
+					s.Close ();
+				}
+				catch (Exception ex) {
+					Console.WriteLine(ex.StackTrace);
+				}			
 			}
 			if (p != null) {
 				if (totalData > 0) {

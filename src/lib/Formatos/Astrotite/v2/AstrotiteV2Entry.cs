@@ -49,7 +49,12 @@ namespace Dalle.Formatos.Astrotite.v2
 			internal set { this.size = value; }
 		}
 
-
+		public bool IsLink {
+			get {return false;}
+		}
+		public string LinkTo {
+			get { return null;}
+		}
 		
 		public int NumBlocks {
 			get { return this.numBlocks; }			

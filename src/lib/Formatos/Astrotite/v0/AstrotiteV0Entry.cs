@@ -56,6 +56,12 @@ namespace Dalle.Formatos.Astrotite.v0
 			internal set { this.size = value; }
 		}
 
+		public bool IsLink {
+			get {return false;}
+		}
+		public string LinkTo {
+			get { return null;}
+		}
 
 		public AstrotiteV0Entry (string name, long size)
 		{
