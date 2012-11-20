@@ -149,7 +149,7 @@
 		</csc>
 	</target>
 	<target name="build-dalle-gtk">
-		<csc target="exe" output="build/dalle-gtk.exe" codepage="${codepage}">
+		<csc target="exe" output="build/dalle-gtk.exe" codepage="${codepage}" debug="${debug}>
 			<sources>
 				<include name="src/ui/gtk/dalle-gtk/src/**.cs" />
 			</sources>
