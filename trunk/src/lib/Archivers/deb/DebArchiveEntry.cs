@@ -30,26 +30,33 @@ namespace Dalle.Archivers.deb
 {
 
 
-	public class DebArchiveEntry : ArchiveEntry
-	{
+	public class DebArchiveEntry : ArchiveEntry	{
 
-		private string name;
-		private long size;
-		private bool isDirectory;
+		private TarEntry tarEntry;
+
 		public string Name {
-			get { return this.name; }
+			get { return this.tarEntry.Name; }
 		}
 		public long Size {
-			get { return size; }
+			get { return this.tarEntry.Size; }
 		}
 		public bool IsDirectory {
-			get { return this.isDirectory;}
+			get { return this.tarEntry.IsDirectory;}
 		}
-		public DebArchiveEntry (TarEntry t)
-		{
-			this.name = t.Name;
-			this.size = t.Size;
-			this.isDirectory = t.IsDirectory;
+		public bool IsLink {
+			get {
+				return 
+					this.Size == 0 && 
+					this.tarEntry.TarHeader.LinkName != null && 
+					this.tarEntry.TarHeader.LinkName !="";
+			}
+		}
+		public string LinkTo {
+			get {return this.tarEntry.TarHeader.LinkName;}
+		}
+
+		public DebArchiveEntry (TarEntry t)	{
+			this.tarEntry = t;
 		}
 	}
 }

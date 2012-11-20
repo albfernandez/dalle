@@ -199,7 +199,12 @@ namespace Dalle.Archivers.xar
 		
 		
 
-		
+		public bool IsLink {
+			get {return false;}
+		}
+		public string LinkTo {
+			get { return null;}
+		}
 		
 		
 		private long id;

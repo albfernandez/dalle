@@ -655,7 +655,12 @@ namespace Dalle.Archivers.cpio
     public bool IsSymbolicLink {
         get {return (this.mode & S_IFMT) == C_ISLNK;}
     }		
-		
+		public bool IsLink {
+			get {return IsSymbolicLink;}
+		}
+		public string LinkTo {
+			get { return null;}
+		}
 	}
 }
 

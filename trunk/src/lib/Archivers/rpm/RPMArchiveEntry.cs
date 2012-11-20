@@ -53,7 +53,13 @@ namespace Dalle.Archivers.rpm
 				return this.size;
 			}
 		}
-		
+
+		public bool IsLink {
+			get {return false;}
+		}
+		public string LinkTo {
+			get { return null;}
+		}
 
 
 		private long size = 0;

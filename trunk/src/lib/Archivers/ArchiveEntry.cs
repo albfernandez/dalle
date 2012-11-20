@@ -39,6 +39,12 @@ namespace Dalle.Archivers
 		bool IsDirectory {
 			get;
 		}
+		string LinkTo {
+			get;
+		}
+		bool IsLink {
+			get;
+		}
 	}
 }
 

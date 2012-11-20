@@ -132,6 +132,13 @@ namespace Dalle.Archivers.ar
 			}
 		}
 
+		public bool IsLink {
+			get {return false;}
+		}
+		public string LinkTo {
+			get { return null;}
+		}
+
 		
 	}
 }
