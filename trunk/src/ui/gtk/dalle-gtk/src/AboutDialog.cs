@@ -42,8 +42,7 @@ namespace Dalle.UI.DalleGtk
 		
 		
 		
-		protected AboutDialog () : base()
-		{
+		protected AboutDialog () : base() {
 			this.Modal = true;
 			Assembly asm = Assembly.GetExecutingAssembly ();
 			this.ProgramName = (asm.GetCustomAttributes (
@@ -91,15 +90,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
 	     
 		}
 
-		private void close_click (object sender, EventArgs args)
-		{
+		private void close_click (object sender, EventArgs args) {
 			this.Hide();
 		}
 		
-		protected void HideDialog (object sender, DeleteEventArgs args)
-		{	
-			if (args != null)
+		protected void HideDialog (object sender, DeleteEventArgs args) {	
+			if (args != null) {
 				args.RetVal = true;
+			}
 			this.Hide ();
 		}
 		

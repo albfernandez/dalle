@@ -61,14 +61,12 @@ namespace Dalle.UI.DalleGtk
 		private SplitDialog (Gtk.Window parent) : base (parent)
 		{
 			this.Title = Catalog.GetString("Split Files");
-			this.SetSizeRequest (550,300);
+			this.SetSizeRequest (550,330);
 			this.FileEntry.Changed += new EventHandler (OnEntryChanged);
 			Formats = CreateFormatsComboBox();
 			LayoutComponents();
 		}
-		private void LayoutComponents()
-		{			
-			
+		private void LayoutComponents()	{			
 			Gtk.Image img = null;
 			Gtk.HBox hbox1 = new Gtk.HBox (false, 12);
 			hbox1.BorderWidth = 0;
@@ -79,11 +77,9 @@ namespace Dalle.UI.DalleGtk
 				hbox1.PackStart (img, false, false, 0);
 			}
 			catch (Exception){
-			}
+			}			
 			
-			
-			Gtk.VBox vbox1 = new Gtk.VBox (false, 12);
-			
+			Gtk.VBox vbox1 = new Gtk.VBox (false, 12);			
 						
 			Gtk.Label lbl = new Gtk.Label (String.Empty);
 			lbl.Markup = String.Format (
@@ -94,8 +90,7 @@ namespace Dalle.UI.DalleGtk
 			lbl.Xalign = 0.0f;
 			lbl.Yalign = 0.0f;
 			
-			vbox1.PackStart (lbl, false, false, 0);
-			
+			vbox1.PackStart (lbl, false, false, 0);			
 			
 			Gtk.Table table = new Gtk.Table (4, 2, false);
 			table.ColumnSpacing = 6;
@@ -111,14 +106,12 @@ namespace Dalle.UI.DalleGtk
 			hbox2.PackStart (FileEntry);
 			hbox2.PackStart (BrowseButton);
 			
-			table.Attach (hbox2, 1,2, 0,1);
-			
+			table.Attach (hbox2, 1,2, 0,1);			
 			
 			Gtk.Label lbl2 = new Gtk.Label (Catalog.GetString("Number of fragments"));
 			lbl2.Xalign = 0.0f;
 			lbl2.Yalign = 0.5f;
-			table.Attach (lbl2, 0,1, 1,2);
-			
+			table.Attach (lbl2, 0,1, 1,2);			
 			
 			Gtk.Adjustment adj = new Gtk.Adjustment (1.0,1.0,999.0, 1.0, 1.0, 0.0);
 			numberSpin = new Gtk.SpinButton (adj, 1.0, 0);
@@ -144,22 +137,16 @@ namespace Dalle.UI.DalleGtk
 			table.Attach (lbl4, 0, 1, 3, 4);
 			
 			table.Attach (Formats, 1,2,3,4);
-			
-			
-			
-			
-			
+
 			vbox1.PackStart (table, true, true, 0);
-			hbox1.PackStart (vbox1, true, true, 0);
-			
+			hbox1.PackStart (vbox1, true, true, 0);			
 			
 			this.VBox.PackStart (hbox1, false, false, 0);
 			this.VBox.PackStart(Progress, true, false, 0);
 			
 			LayoutActionArea();
 		}
-		protected override Gtk.Button CreateActionButton ()
-		{
+		protected override Gtk.Button CreateActionButton ()	{
 			return new Gtk.Button (Gtk.Stock.Cut);
 		}
 		protected override void ExecuteAction()
@@ -180,22 +167,19 @@ namespace Dalle.UI.DalleGtk
 			Manager.Instance.Partir (format, FileEntry.Text, "", sizeSpin.ValueAsInt);
 		}
 		
-		protected void OnSizeSpinChanged (object o, EventArgs args)
-		{
-			if (updatingSpin) 
-			{
+		protected void OnSizeSpinChanged (object o, EventArgs args)	{
+			if (updatingSpin){
 				return;
 			}
 			updatingSpin = true;
 			OnEntryChanged (o, args);
 			updatingSpin = false;
 		}
-		protected void OnNumberSpinChanged (object o, EventArgs args)
-		{
-			if (!File.Exists (this.FileEntry.Text))
+		protected void OnNumberSpinChanged (object o, EventArgs args){
+			if (!File.Exists (this.FileEntry.Text)) {
 				return;
-			if (updatingSpin)
-			{
+			}
+			if (updatingSpin){
 				return;
 			}
 			updatingSpin = true;
@@ -205,21 +189,21 @@ namespace Dalle.UI.DalleGtk
 			updatingSpin = false;
 		}
 		
-		protected void OnEntryChanged (object sender, EventArgs args)
-		{
-			if (! File.Exists (this.FileEntry.Text) )
+		protected void OnEntryChanged (object sender, EventArgs args){
+			if (! File.Exists (this.FileEntry.Text)) {
 				return;
+			}
 			long tamano = new FileInfo(this.FileEntry.Text).Length;
 			numberSpin.Value = Math.Ceiling ((double) (tamano) / (sizeSpin.ValueAsInt * 1024));
 			
 		}
-		private Gtk.ComboBox CreateFormatsComboBox () 
-		{
+		private Gtk.ComboBox CreateFormatsComboBox (){
 			ComboBox combo = ComboBox.NewText ();
 			listaFormatos = Dalle.Formatos.Manager.Instance.GetFormatosParte();
 			foreach (IParte p in listaFormatos){
 				combo.AppendText (p.Nombre);
 			}
+			combo.Active = 0;
 			
 			return combo;		
 		}
