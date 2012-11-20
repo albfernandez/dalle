@@ -35,20 +35,20 @@ using Mono.Unix;
 
  
 
-namespace Dalle.UI.DalleGtk
-{
-	public abstract class BaseDialog : Gtk.Dialog
-	{
+namespace Dalle.UI.DalleGtk {
+	public abstract class BaseDialog : Gtk.Dialog {
 		protected Gtk.Button ActionButton;
 		protected Gtk.Button CloseButton;
 		protected Gtk.Button BrowseButton;
 		protected Gtk.Entry  FileEntry;
 		protected CustomProgressBar Progress;
+		protected Gtk.CheckButton CheckOutputDir;
+		protected Gtk.Label LabelOutputDir;
+		protected Gtk.Entry FileOutputDirEntry;
 		protected bool running = false;
 		protected string currentFolder = null;
 		public BaseDialog (Gtk.Window parent) : 
-			base ("", parent, Gtk.DialogFlags.DestroyWithParent)
-		{
+			base ("", parent, Gtk.DialogFlags.DestroyWithParent) {
 			InitComponents();
 			Manager.Instance.Progress += new ProgressEventHandler (this.OnProgress);
 			this.DeleteEvent += new DeleteEventHandler (this.HideDialog);
@@ -69,15 +69,15 @@ namespace Dalle.UI.DalleGtk
 
 		
 
-		private void InitComponents ()
-		{
+		private void InitComponents () {
 			CloseButton = new Gtk.Button (Gtk.Stock.Close);
 			FileEntry = new Gtk.Entry ();
 			BrowseButton = new Gtk.Button (Catalog.GetString ("Browse..."));
 			ActionButton = CreateActionButton ();
 			Progress = new CustomProgressBar ();
-			
-			
+			CheckOutputDir = new Gtk.CheckButton ();
+			LabelOutputDir = new Gtk.Label(Catalog.GetString ("Output directory"));
+			FileOutputDirEntry = new Gtk.Entry ();
 			CloseButton.Clicked += new EventHandler (this.CloseButtonClicked);
 			ActionButton.Clicked += new EventHandler (this.ActionButtonClicked);
 			BrowseButton.Clicked += new EventHandler (this.BrowseButtonClicked);
@@ -86,31 +86,69 @@ namespace Dalle.UI.DalleGtk
 				new TargetEntry ("STRING", 0, 1),
 			};
 			Gtk.Drag.DestSet (this, DestDefaults.All, te, Gdk.DragAction.Copy | Gdk.DragAction.Move );
-
+			
+			FileEntry.DragDataReceived += new DragDataReceivedHandler(DropHandler);
+			FileOutputDirEntry.DragDataReceived += new DragDataReceivedHandler(DropHandler2);
+			FileOutputDirEntry.Sensitive = false;
 			this.DragDataReceived += new DragDataReceivedHandler (DropHandler);
+			
+			CheckOutputDir.Toggled += HandleCheckOutputDirToggled;			
+			//LabelOutputDir. ButtonPressEvent += HandleLabelOutputDirClicked;
+		}
+		//private void HandleLabelOutputDirClicked (object sender, EventArgs e){
+		//	Console.WriteLine (sender.ToString ());
+		//	CheckOutputDir.Toggle();
+		//}
+		private void HandleCheckOutputDirToggled (object sender, EventArgs e) {
+			//Console.WriteLine (e.ToString());
+			//Console.WriteLine (sender.ToString ());
+			try {
+				Gtk.CheckButton s = (Gtk.CheckButton)sender;
+				if (s.Active) {
+					FileOutputDirEntry.Sensitive = true;
+					FileOutputDirEntry.Text = "";
+				}
+				else {
+					FileOutputDirEntry.Sensitive = false;
+					FileOutputDirEntry.Text = "";
+				}
+			}
+			catch (Exception) {
+				
+			}
+			
+		}
 
+
+		private string FormatDropString (string source)	{
+			if (source.StartsWith ("file:///")){
+				source = source.Substring ("file://".Length);
+			}
+			if (source.EndsWith ("\r\n"))
+				{
+				source = source.Substring (0, source.Length - 2);
+			}
+			
+			if (source.EndsWith ("\n"))	{
+				source = source.Substring (0, source.Length - 1);
+			}
+			return source;
+		}
+		protected void DropHandler2 (object o, DragDataReceivedArgs args){
+			try {
+				string fichero = FormatDropString (args.SelectionData.Text);			
+				this.FileOutputDirEntry.Text = fichero;			
+			}
+			catch (Exception)
+			{
+				
+			}
 		}
 		
-		protected void DropHandler (object o, DragDataReceivedArgs args)
-		{
-			try 
-			{
-				string fichero = args.SelectionData.Text;
-				if (fichero.StartsWith ("file:///"))
-				{
-					fichero = fichero.Substring ("file://".Length);
-				}
-				if (fichero.EndsWith ("\r\n"))
-				{
-					fichero = fichero.Substring (0, fichero.Length - 2);
-				}
-				
-				if (fichero.EndsWith ("\n")) 
-				{
-					fichero = fichero.Substring (0, fichero.Length - 1);
-				}
-				this.FileEntry.Text = fichero;
-			
+		protected void DropHandler (object o, DragDataReceivedArgs args){
+			try {
+				string fichero = FormatDropString (args.SelectionData.Text);
+				this.FileEntry.Text = fichero;			
 			}
 			catch (Exception)
 			{
@@ -123,8 +161,7 @@ namespace Dalle.UI.DalleGtk
 		
 		protected abstract void ExecuteAction();
 		
-		protected void LayoutActionArea ()
-		{
+		protected void LayoutActionArea (){
 			HBox hbox = new HBox (false, 10);
 			hbox.PackStart (this.CloseButton);
 			hbox.PackStart (this.ActionButton);
@@ -132,8 +169,7 @@ namespace Dalle.UI.DalleGtk
 			this.ActionArea.Add(hbox);
 		}
 		
-		protected void BrowseButtonClicked (object sender, EventArgs args)
-		{
+		protected void BrowseButtonClicked (object sender, EventArgs args){
 			Gtk.FileChooserDialog fc = new Gtk.FileChooserDialog (
 				Catalog.GetString("Choose the file to open"), 
 				this, 
@@ -141,8 +177,7 @@ namespace Dalle.UI.DalleGtk
 				Catalog.GetString("Cancel"), ResponseType.Cancel, 
 				Catalog.GetString("Open"), ResponseType.Accept
 			);
-			if (currentFolder != null && !String.Empty.Equals (currentFolder))
-			{
+			if (currentFolder != null && !String.Empty.Equals (currentFolder)){
 				fc.SetCurrentFolder (currentFolder);
 			}
 			
@@ -153,8 +188,7 @@ namespace Dalle.UI.DalleGtk
 			fc.Destroy ();
 		}
 		
-		protected void ActionButtonClicked (object sender, EventArgs args)
-		{
+		protected void ActionButtonClicked (object sender, EventArgs args){
 		
 			if (!File.Exists (FileEntry.Text)) {
 				Gtk.MessageDialog d = new Gtk.MessageDialog (
@@ -167,10 +201,7 @@ namespace Dalle.UI.DalleGtk
 				d.Destroy ();
 				return;
 			}
-			
-					
-					
-				
+						
 			running = true;
 			OnBegin ();
 			String mensajeError = null;
@@ -209,66 +240,68 @@ namespace Dalle.UI.DalleGtk
 			OnFinish();
 			running = false;
 		}
-		protected void CloseButtonClicked (object sender, EventArgs args)
-		{
+		protected void CloseButtonClicked (object sender, EventArgs args){
 			RequestHideDialog ();
 		}
-		protected void HideDialog (object sender, DeleteEventArgs args)
-		{	
-			if (args != null)
+		protected void HideDialog (object sender, DeleteEventArgs args)	{	
+			if (args != null) {
 				args.RetVal = true;
+			}
 			RequestHideDialog ();
 		}
-		protected void RequestHideDialog ()
-		{
+		protected void RequestHideDialog ()	{
 		
-			if (running){
+			if (running) {
 				Gtk.MessageDialog d = new Gtk.MessageDialog (
 					this, 
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Question,
 					Gtk.ButtonsType.YesNo,
-					Catalog.GetString("Do you want to stop file operation?"));
-				int ret = d.Run();
-				d.Destroy();
+					Catalog.GetString ("Do you want to stop file operation?"));
+				int ret = d.Run ();
+				d.Destroy ();
 				
-				switch (ret){
+				switch (ret) {
 				
 				case (int) Gtk.ResponseType.No:
 					break;
 				case (int) Gtk.ResponseType.Yes:
-					Manager.Instance.Stop();
-					this.Hide();
+					Manager.Instance.Stop ();
+					this.Hide ();
 					break;				
 				}
+			} else {
+				this.Hide ();
 			}
-			else
-				this.Hide();
 		}
-		public new void ShowAll()
-		{
+		public new void ShowAll (){
 			Progress.Fraction = 0.0;
+			CheckOutputDir.Active = false;
+			FileOutputDirEntry.Sensitive = this.CheckOutputDir.Active;
+			FileOutputDirEntry.Text = "";
+			FileEntry.Text = "";
+			FileEntry.Sensitive = true;
 			base.ShowAll();
 		}
-		protected virtual void OnProgress (long done, long total)
-		{
+		protected virtual void OnProgress (long done, long total){
 			double fraction = ((double) done) / ((double)total);
 			this.Progress.Fraction = fraction;
 			DalleGtk.DoEvents();
 		}
-		protected virtual void OnFinish()
-		{
-			this.FileEntry.Sensitive = true;
+		protected virtual void OnFinish (){
+			this.FileEntry.Sensitive = true;			
+			this.FileOutputDirEntry.Sensitive = this.CheckOutputDir.Active;
 			this.BrowseButton.Sensitive = true;
 			this.ActionButton.Sensitive  = true;
 			DalleGtk.DoEvents();
 		}
-		protected virtual void OnBegin()
-		{
+		protected virtual void OnBegin (){
 			this.FileEntry.Sensitive = false;
+			this.FileOutputDirEntry.Sensitive = false;
 			this.ActionButton.Sensitive = false;
 			this.BrowseButton.Sensitive = false;
-			DalleGtk.DoEvents();
-		}				
+			DalleGtk.DoEvents ();
+		}
+		
 	}
 }

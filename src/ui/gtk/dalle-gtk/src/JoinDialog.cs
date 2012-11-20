@@ -26,37 +26,34 @@ using Gtk;
 using Gdk;
 using GtkSharp;
 using System;
+using System.IO;
 
 using Dalle.Formatos;
 using System.Reflection;
 using Mono.Unix;
 
 
-namespace Dalle.UI.DalleGtk
-{
-	public class JoinDialog : BaseDialog
-	{
+namespace Dalle.UI.DalleGtk{
+	public class JoinDialog : BaseDialog{
 	
 		private static JoinDialog instance = null;
 		
-		public static JoinDialog Instance{
-			get{
-				if (instance == null){
+		public static JoinDialog Instance {
+			get {
+				if (instance == null) {
 					instance = new JoinDialog (DalleGtk.Instance);
 				}
 				return instance;
 			}
 		}
-		private JoinDialog (Gtk.Window parent) : base (parent)
-		{
-			this.SetSizeRequest (500, 230);
+		
+		private JoinDialog (Gtk.Window parent) : base (parent) {
+			this.SetSizeRequest (500, 330);
 			this.Title = Catalog.GetString("Join File Fragments");
-
 			this.LayoutComponents();
 
 		}
-		private void LayoutComponents()
-		{
+		private void LayoutComponents()	{
 			Gtk.Image img = null;
 						
 			Gtk.HBox hbox1 = new Gtk.HBox (false, 6);
@@ -98,37 +95,76 @@ namespace Dalle.UI.DalleGtk
 
 			vbox1.PackStart (hbox2, true, true, 2);
 			
-			Gtk.HBox hbox3 = new Gtk.HBox(false, 12);
-			hbox3.PackStart (Progress);
+
+			Gtk.HBox hbox3 = new Gtk.HBox();
+			hbox3.PackStart(CheckOutputDir,false,false,10);
+			hbox3.PackStart(LabelOutputDir,false,false,0);
+			hbox3.PackStart(new HBox(), true, true, 0);
+			
+			Gtk.HBox hbox4 = new Gtk.HBox(false, 2);
+			hbox4.PackStart(FileOutputDirEntry);
+			
+			Gtk.HBox hbox5 = new Gtk.HBox(false, 12);
+			hbox5.PackStart (Progress);
 			
 			hbox1.PackStart (vbox1, true, true, 0);
 			
 			this.VBox.PackStart (hbox1, false, false, 15);
-			this.VBox.PackStart (hbox3, false, false, 3);
+			this.VBox.PackStart (hbox3, false, false, 0);
+			this.VBox.PackStart (hbox4);
+			this.VBox.PackStart (hbox5, false, false, 3);
 			
 			
 			LayoutActionArea();
 		}
 
-		protected override Gtk.Button CreateActionButton ()
-		{
+		protected override Gtk.Button CreateActionButton ()	{
 			return new Gtk.Button (Gtk.Stock.Paste);
 		}
-		protected override void ExecuteAction()
+		protected override void ExecuteAction ()
 		{
-			if (Manager.Instance.GetFormatoFichero (FileEntry.Text) == null){
+			String mensaje = null;
+			if (String.Empty.Equals (FileEntry.Text)){
+				mensaje = Catalog.GetString ("You must select a file");
+			}
+			if (mensaje == null && !File.Exists (FileEntry.Text)) {
+				//mensaje = String.Format(Catalog.GetString ("File {0} not exists"), FileEntry.Text));
+				mensaje = String.Format(Catalog.GetString ("File not found: {0}"), FileEntry.Text);
+			}
+
+			// Comprobar que el formato existe
+			
+			if (Manager.Instance.GetFormatoFichero (FileEntry.Text) == null) {
 				Gtk.MessageDialog d = new Gtk.MessageDialog (
 					this, 
 					Gtk.DialogFlags.DestroyWithParent,
 					Gtk.MessageType.Error,
 					Gtk.ButtonsType.Ok,
-					Catalog.GetString("Unknown file format"));
-				d.Run();
-				d.Destroy();
+					Catalog.GetString ("Unknown file format"));
+				d.Run ();
+				d.Destroy ();
 				return;
 			
 			}
-			Manager.Instance.Unir (FileEntry.Text);
+
+			if (!CheckOutputDir.Active){
+				Manager.Instance.Unir (FileEntry.Text);
+				return;
+			}
+
+			if (FileOutputDirEntry.Text == "") {
+				return;
+			}
+			if (File.Exists(FileOutputDirEntry.Text)){
+				return;
+			}
+			if (!Directory.Exists (FileOutputDirEntry.Text)){
+				Directory.CreateDirectory(FileOutputDirEntry.Text);
+			}
+
+			if ( Directory.Exists(FileOutputDirEntry.Text)){
+				Manager.Instance.Unir (FileEntry.Text, FileOutputDirEntry.Text);
+			}
 		}					
 	}
 }
