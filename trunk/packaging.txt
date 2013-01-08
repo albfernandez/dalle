@@ -42,3 +42,19 @@ yum install gnome-sharp-devel.x86_64 gnome-sharp.x86_64
 Once you're logged in as the build/dummy user, create the required directory structure in your home directory by executing:
 
 $ rpmdev-setuptree
+
+
+
+Notas internas.
+Preparando una release:
+
+
+Regenerar assembly infos:
+	Editar dalle.build con la nueva versión
+	nant generate-assembly-infos
+	actualizar NEWS ChangeLog
+
+Entrada changelog debian.
+debchange -v foo --distribution unstable
+
+actualizar dalle.spec para fedora/redhat

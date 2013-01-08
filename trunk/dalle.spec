@@ -104,6 +104,9 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 
 %changelog
 
+* Mon Jan 7 2013 Alberto Fernandez <infjaf@gmail.com>
+- Version 1.13.01
+
 * Wed Nov 14 2012 Alberto Fernandez <infjaf@gmail.com>
 - Version 1.12.11
 

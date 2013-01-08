@@ -40,7 +40,7 @@
 		- [ ] MasterSplitter
 	- [ ] Notify (libnotify, sounds?) when finish a operation.
 	- [ ] New Homepage.
-	- [ ] dalle-gtk: Indicate output directory.
+	- [-] dalle-gtk: Indicate output directory.
 	
 
 ===========================================================================
