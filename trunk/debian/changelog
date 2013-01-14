@@ -1,3 +1,11 @@
+dalle (1.13.01-1) unstable; urgency=low
+
+  * Fix extract of deb files
+  * Allow to set output directory while extracting files 
+  * Standards-Version bump to 3.9.4, no changes needed
+
+ -- Alberto Fernández Martínez <infjaf@gmail.com>  Mon, 07 Jan 2013 23:43:26 +0100
+
 dalle (1.12.11-1) unstable; urgency=low
 
   * Initial release (Closes: #599851)
