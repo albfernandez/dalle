@@ -106,7 +106,7 @@
 			<p>Si quieres descargarte la última versión del
 			svn, solo tienes que usar el acceso anónimo.</p>
 			<pre>
-    svn co https://dalle.svn.sourceforge.net/svnroot/dalle/trunk dalle
+    svn checkout svn://svn.code.sf.net/p/dalle/code/trunk dalle
 			</pre>
 		</content>
 	</page>
