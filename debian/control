@@ -17,7 +17,7 @@ Build-Depends: debhelper (>= 7.0.50),
                libgnome2.0-cil-dev, 
                libgtk2.0-cil-dev, 
                libglib2.0-cil-dev
-Standards-Version: 3.9.3
+Standards-Version: 3.9.4
 
 Package: dalle
 Architecture: all
