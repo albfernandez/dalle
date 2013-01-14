@@ -5,13 +5,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dalle 0.7.8.2\n"
 "Report-Msgid-Bugs-To: infjaf@gmail.com\n"
-"POT-Creation-Date: 2010-01-20 23:44+0100\n"
-"PO-Revision-Date: 2008-02-26 13:06+0100\n"
-"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
+"POT-Creation-Date: 2013-01-14 21:19+0100\n"
+"PO-Revision-Date: 2013-01-14 21:22+0100\n"
+"Last-Translator: Alberto Fernández <infjaf@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: src/ui/console/dalle-console/src/HelpJob.cs:48
 msgid "Bad options"
@@ -123,7 +124,8 @@ msgid "Using libDalle v.{0}"
 msgstr "Usando libDalle v.{0}"
 
 #: src/ui/console/dalle-crcs/src/crcs.cs:72
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:181
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:212
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:132
 #, csharp-format
 msgid "File not found: {0}"
 msgstr "Ficheiro non atopado: {0}"
@@ -212,78 +214,82 @@ msgstr "Verificando os ficheiros cun ficheiro sfv"
 msgid "Creating sfv file (recursing into directories)"
 msgstr "Creando ficheiro sfv (de forma recursiva nos directorios)"
 
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:76
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:75
 msgid "Browse..."
 msgstr "Explorar..."
 
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:138
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:79
+msgid "Output directory"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:174
 msgid "Choose the file to open"
 msgstr ""
 
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:141
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:177
 msgid "Cancel"
 msgstr ""
 
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:142
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:178
 msgid "Open"
 msgstr ""
 
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:165
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:199
 msgid "Selected file does not exist"
 msgstr "O ficheiro seleccionado non existe"
 
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:184
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:215
 msgid "Couldn't determine file type or the file is corrupted"
 msgstr ""
 "Non se puido determinar o tipo de ficheiro ou o ficheiro está corrompido"
 
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:187
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:218
 #, csharp-format
 msgid "The file {0} already exists"
 msgstr "O ficheiro {0} xa existe"
 
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:190
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:221
 msgid "The checksum is invalid"
 msgstr "A suma de verificación é incorrecta"
 
-#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:227
+#: src/ui/gtk/dalle-gtk/src/BaseDialog.cs:260
 msgid "Do you want to stop file operation?"
 msgstr "Desexa deter a operación?"
 
-#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:61
-#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:130
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:63
+#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:132
 msgid "Split Files"
 msgstr "Dividir Ficheiros"
 
-#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:89
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:87
 msgid "Split a File"
 msgstr "Dividir un Ficheiro"
 
-#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:90
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:88
 msgid "Split a file in small pieces"
 msgstr "Dividir un ficheiro en anacos pequenos"
 
-#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:102
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:99
 msgid "Select a file to split"
 msgstr "Seleccione un ficheiro para dividilo"
 
-#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:115
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:111
 msgid "Number of fragments"
 msgstr "Número de anacos"
 
-#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:126
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:121
 msgid "Size of fragments"
 msgstr "Tamaño dos anacos"
 
-#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:136
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:131
 msgid "KiB"
 msgstr "KiB"
 
-#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:139
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:134
 msgid "File Format"
 msgstr "Formato do Ficheiro"
 
-#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:172
+#: src/ui/gtk/dalle-gtk/src/SplitDialog.cs:161
 msgid "You must select a destination format"
 msgstr ""
 
@@ -299,7 +305,7 @@ msgstr "Benvido a Dalle."
 msgid "What do you want to do?"
 msgstr "Que desexa facer?"
 
-#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:132
+#: src/ui/gtk/dalle-gtk/src/DalleGtk.cs:130
 msgid "Merge Files"
 msgstr "Unir Ficheiros"
 
@@ -307,23 +313,27 @@ msgstr "Unir Ficheiros"
 msgid "About"
 msgstr "Acerca de"
 
-#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:53
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:52
 msgid "Join File Fragments"
 msgstr "Unir Anacos de Ficheiro"
 
-#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:82
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:79
 msgid "Join the fragments of a file"
 msgstr "Unir os anacos dun ficheiro"
 
-#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:83
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:80
 msgid "Re-create a file from its fragments"
 msgstr "Volver crear un ficheiro a partir dos seus anacos"
 
-#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:92
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:89
 msgid "Fragment to join"
 msgstr "Anaco a unir"
 
-#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:125
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:128
+msgid "You must select a file"
+msgstr ""
+
+#: src/ui/gtk/dalle-gtk/src/JoinDialog.cs:143
 msgid "Unknown file format"
 msgstr "Formato de ficheiro descoñecido"
 
@@ -353,6 +363,3 @@ msgstr "Formato de ficheiro descoñecido"
 
 #~ msgid "{0}, File not found"
 #~ msgstr "{0}, Ficheiro non atopado"
-
-#~ msgid "Select a file"
-#~ msgstr "Seleccione un ficheiro"
