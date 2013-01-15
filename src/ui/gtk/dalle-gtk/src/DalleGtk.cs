@@ -3,7 +3,7 @@
 	Dalle - A split/join file utility library
 	Dalle.UI.DalleGtk.DalleGtk - Main Window
 		
-    Copyright (C) 2003-2009  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -166,10 +166,6 @@ namespace Dalle.UI.DalleGtk
 			
 			this.Add (vbox);
 
-
-
-
-
 			/*
 			 * Eventos
 			 */
@@ -184,8 +180,7 @@ namespace Dalle.UI.DalleGtk
 		private void exit_click (object sender, EventArgs args)
 		{
 			this.WindowExit();
-		}
-	
+		}	
 		private void run_click (object sender, EventArgs args)
 		{
 			if (SplitOption.Active == true){
@@ -194,8 +189,7 @@ namespace Dalle.UI.DalleGtk
 			if (PasteOption.Active == true){
 				JoinDialog.Instance.ShowAll();
 			}
-		}
-		
+		}		
 		public static void HideWindow (object o, DeleteEventArgs args)
 		{
 			Gtk.Window w = o as Gtk.Window;
@@ -203,8 +197,7 @@ namespace Dalle.UI.DalleGtk
 			if (args != null){
 				args.RetVal = true;
 			}
-		}
-		
+		}		
 		public static void Main (String[] args)
 		{
 			Dalle.I18N.GettextCatalog.Init();

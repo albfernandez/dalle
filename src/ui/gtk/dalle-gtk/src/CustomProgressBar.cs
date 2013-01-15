@@ -4,7 +4,7 @@
 	Dalle.UI.DalleGtk.CustomProgressBar - 
 		ProgressBar that shows text percentage.
 		
-    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -41,8 +41,7 @@ namespace Dalle.UI.DalleGtk
 			set{
 				if ((value >=0) && (value <= 1)){
 					base.Text = "" + ((int) (value * 100)) + " %";
-					base.Fraction = value;
-					
+					base.Fraction = value;					
 				}				
 			}
 		}
