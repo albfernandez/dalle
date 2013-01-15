@@ -1,6 +1,6 @@
 /*
 
-    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -66,7 +66,7 @@ namespace Dalle.UI.DalleSWF
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
 			this.ControlBox = false;
-			this.Size = new Size (350, 165);
+			this.Size = new Size (360, 170);
 			this.MaximumSize = this.Size;
 			this.MinimumSize = this.Size;
 			//this.Text = Catalog.GetString("Merge");
