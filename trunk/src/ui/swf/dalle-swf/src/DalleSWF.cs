@@ -1,6 +1,6 @@
 /*
 
-    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -81,7 +81,6 @@ namespace Dalle.UI.DalleSWF
 			this.btnExecute.Name = "btnExecute";
 			this.btnExecute.Size = new Size (100, 30);
 			this.btnExecute.TabIndex = 5;
-			//this.btnExecute.Text = Catalog.GetString("Execute");
 			this.btnExecute.Text = "Execute";
 			
 			
@@ -89,7 +88,6 @@ namespace Dalle.UI.DalleSWF
 			this.btnExit.Name = "btnExit";
 			this.btnExit.Size = new Size (100, 30);
 			this.btnExit.TabIndex = 4;
-			//this.btnExit.Text = Catalog.GetString("Exit");
 			this.btnExit.Text = "Exit";
 			
 			
@@ -97,7 +95,6 @@ namespace Dalle.UI.DalleSWF
 			this.btnAbout.Name = "btnAbout";
 			this.btnAbout.Size = new Size (100, 30);
 			this.btnAbout.TabIndex = 3;
-			//this.btnAbout.Text = Catalog.GetString("About");
 			this.btnAbout.Text = "About";
 			
 			
@@ -107,7 +104,6 @@ namespace Dalle.UI.DalleSWF
 			this.rbMerge.Name = "rbJoin";
 			this.rbMerge.Size = new Size (200, 30);
 			this.rbMerge.TabIndex = 1;
-			//this.rbMerge.Text = Catalog.GetString("Merge");
 			this.rbMerge.Text = "Join the fragments of a file";
 			this.rbMerge.Checked = true;
 			
@@ -115,7 +111,6 @@ namespace Dalle.UI.DalleSWF
 			this.rbSplit.Name = "rbSplit";
 			this.rbSplit.Size = new Size (200, 30);
 			this.rbSplit.TabIndex = 2;
-			//this.rbSplit.Text = Catalog.GetString("Split");
 			this.rbSplit.Text = "Split a file";
 			
 			
@@ -123,14 +118,12 @@ namespace Dalle.UI.DalleSWF
 			this.lblWhat.Location = new Point (25, 50);
 			this.lblWhat.Name = "lblWhat";
 			this.lblWhat.Size = new Size (250, 20);
-			//this.lblWhat.Text = Catalog.GetString("What do you want to do?");
 			this.lblWhat.Text = "What do you want to do?";
 			
 			
 			this.lblWelcome.Location = new Point (25, 25);
 			this.lblWelcome.Name = "lblWelcome";
 			this.lblWelcome.Size = new Size (200, 20);
-			//this.lblWelcome.Text = Catalog.GetString("Welcome to dalle");
 			this.lblWelcome.Text = "Welcome to dalle";
 			
 			
@@ -138,11 +131,9 @@ namespace Dalle.UI.DalleSWF
 			
 			
 			// Tamaño
-			this.Size = new System.Drawing.Size (420, 250);
+			this.Size = new System.Drawing.Size (430, 250);
 			this.MinimumSize = this.Size;
 			this.MaximumSize = this.Size;
-			//this.MaximumSize = new System.Drawing.Size(400,350);
-			//this.MinimumSize = new System.Drawing.Size(400,350);
 			
 			
 			this.Controls.AddRange (new Control[] {
@@ -156,7 +147,6 @@ namespace Dalle.UI.DalleSWF
 			});
 			
 			// Titulo y resumir layout
-			//this.Text = Catalog.GetString("Dalle-swf");
 			this.Text = "Dalle " + Assembly.GetExecutingAssembly ().GetName ().Version;
 			
 			// Conectar los eventos.
@@ -180,7 +170,6 @@ namespace Dalle.UI.DalleSWF
 		}
 		private void about_clicked (object sender, EventArgs args)
 		{
-			//AboutDialog.Instance.Visible = true;
 			AboutDialog.Instance.ShowDialog ();
 		}
 		private void exit_clicked (object sender, EventArgs args)
@@ -193,7 +182,6 @@ namespace Dalle.UI.DalleSWF
 		}
 		[STAThread]
 		public static void Main (String[] args){
-			//Dalle.I18N.GettextCatalog.Init();
 			Application.Run(DalleSWF.Instance);			
 		
 		}

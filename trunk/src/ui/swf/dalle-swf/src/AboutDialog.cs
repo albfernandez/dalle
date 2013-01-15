@@ -1,6 +1,6 @@
 /*
 
-    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -57,7 +57,6 @@ namespace Dalle.UI.DalleSWF
 			this.Size = new Size (450, 225);
 			this.MaximumSize = this.Size;
 			this.MinimumSize = this.Size;
-			//this.Text = Catalog.GetString("Dalle-Swf") + " "  + Assembly.GetExecutingAssembly().GetName().Version;
 			this.Text = "Dalle-Swf " + Assembly.GetExecutingAssembly().GetName().Version;
 			
 			String[] authors = new String[] {"Alberto Fernandez <infjaf@gmail.com>"};
@@ -66,7 +65,6 @@ namespace Dalle.UI.DalleSWF
 			
 			Label lbl0 = new Label();
 			lbl0.Size = new Size (300, 25);
-			//lbl0.Text = Catalog.GetString("Dalle-Swf") + " "  + Assembly.GetExecutingAssembly().GetName().Version;
 			lbl0.Text = "Dalle-Swf " + Assembly.GetExecutingAssembly().GetName().Version;
 			lbl0.Location = new Point (25, 25);
 			this.Controls.Add(lbl0);
@@ -84,7 +82,6 @@ namespace Dalle.UI.DalleSWF
 			Button btnClose = new Button();
 			btnClose.Size = new Size (60, 30);
 			btnClose.Location = new Point (350, ypos + 20);
-			//btnClose.Text = Catalog.GetString("Close");
 			btnClose.Text = "Close";
 			btnClose.Click += new EventHandler (btnCloseClicked);
 			this.Controls.Add(btnClose); 
