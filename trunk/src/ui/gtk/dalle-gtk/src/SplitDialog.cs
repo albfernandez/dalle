@@ -3,7 +3,7 @@
 	Dalle - A split/join file utility library
 	Dalle.UI.DalleGtk.SplitDialog - Dialog to split files
 	
-    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -203,8 +203,7 @@ namespace Dalle.UI.DalleGtk
 			foreach (IParte p in listaFormatos){
 				combo.AppendText (p.Nombre);
 			}
-			combo.Active = 0;
-			
+			combo.Active = 0;			
 			return combo;		
 		}
 	}

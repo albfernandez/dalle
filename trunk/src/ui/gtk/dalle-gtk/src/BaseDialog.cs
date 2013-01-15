@@ -4,7 +4,7 @@
 	Dalle.UI.DalleGtk.BaseDialog - 
 		Abstract base dialog for Split and Join dialogs
 		
-    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ namespace Dalle.UI.DalleGtk {
 		protected Gtk.Entry  FileEntry;
 		protected CustomProgressBar Progress;
 		protected Gtk.CheckButton CheckOutputDir;
-		protected Gtk.Label LabelOutputDir;
+		protected Gtk.EventBox LabelOutputDir;
 		protected Gtk.Entry FileOutputDirEntry;
 		protected bool running = false;
 		protected string currentFolder = null;
@@ -62,12 +62,8 @@ namespace Dalle.UI.DalleGtk {
 			Resizable = false;
 			BorderWidth = 10;
 			HasSeparator = false;
-			this.WindowPosition = Gtk.WindowPosition.CenterOnParent;
-			
-		}
-		
-
-		
+			this.WindowPosition = Gtk.WindowPosition.CenterOnParent;			
+		}	
 
 		private void InitComponents () {
 			CloseButton = new Gtk.Button (Gtk.Stock.Close);
@@ -76,7 +72,10 @@ namespace Dalle.UI.DalleGtk {
 			ActionButton = CreateActionButton ();
 			Progress = new CustomProgressBar ();
 			CheckOutputDir = new Gtk.CheckButton ();
-			LabelOutputDir = new Gtk.Label(Catalog.GetString ("Output directory"));
+			LabelOutputDir = new Gtk.EventBox();
+			LabelOutputDir.Add(new Gtk.Label(Catalog.GetString ("Output directory")));
+			LabelOutputDir.ButtonPressEvent += HandleLabelOutputDirClicked;
+
 			FileOutputDirEntry = new Gtk.Entry ();
 			CloseButton.Clicked += new EventHandler (this.CloseButtonClicked);
 			ActionButton.Clicked += new EventHandler (this.ActionButtonClicked);
@@ -90,18 +89,17 @@ namespace Dalle.UI.DalleGtk {
 			FileEntry.DragDataReceived += new DragDataReceivedHandler(DropHandler);
 			FileOutputDirEntry.DragDataReceived += new DragDataReceivedHandler(DropHandler2);
 			FileOutputDirEntry.Sensitive = false;
-			this.DragDataReceived += new DragDataReceivedHandler (DropHandler);
-			
+			this.DragDataReceived += new DragDataReceivedHandler (DropHandler);			
 			CheckOutputDir.Toggled += HandleCheckOutputDirToggled;			
-			//LabelOutputDir. ButtonPressEvent += HandleLabelOutputDirClicked;
+
 		}
-		//private void HandleLabelOutputDirClicked (object sender, EventArgs e){
-		//	Console.WriteLine (sender.ToString ());
-		//	CheckOutputDir.Toggle();
-		//}
+		private int contador = 0;
+		private void HandleLabelOutputDirClicked(object sender, EventArgs e) {
+			Console.WriteLine ("Clickado " + (++contador));
+			CheckOutputDir.Click();
+		}
+
 		private void HandleCheckOutputDirToggled (object sender, EventArgs e) {
-			//Console.WriteLine (e.ToString());
-			//Console.WriteLine (sender.ToString ());
 			try {
 				Gtk.CheckButton s = (Gtk.CheckButton)sender;
 				if (s.Active) {

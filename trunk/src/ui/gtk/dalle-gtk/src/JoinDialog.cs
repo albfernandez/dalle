@@ -3,7 +3,7 @@
 	Dalle - A split/join file utility library
 	Dalle.UI.DalleGtk.JoinDialog - Dialog to join files
 	
-    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -94,7 +94,7 @@ namespace Dalle.UI.DalleGtk{
 			hbox2.PackStart (BrowseButton, false, false, 3);
 
 			vbox1.PackStart (hbox2, true, true, 2);
-			
+
 
 			Gtk.HBox hbox3 = new Gtk.HBox();
 			hbox3.PackStart(CheckOutputDir,false,false,10);
@@ -128,7 +128,6 @@ namespace Dalle.UI.DalleGtk{
 				mensaje = Catalog.GetString ("You must select a file");
 			}
 			if (mensaje == null && !File.Exists (FileEntry.Text)) {
-				//mensaje = String.Format(Catalog.GetString ("File {0} not exists"), FileEntry.Text));
 				mensaje = String.Format(Catalog.GetString ("File not found: {0}"), FileEntry.Text);
 			}
 
