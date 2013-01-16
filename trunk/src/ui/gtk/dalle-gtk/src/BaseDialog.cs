@@ -93,9 +93,8 @@ namespace Dalle.UI.DalleGtk {
 			CheckOutputDir.Toggled += HandleCheckOutputDirToggled;			
 
 		}
-		private int contador = 0;
+		
 		private void HandleLabelOutputDirClicked(object sender, EventArgs e) {
-			Console.WriteLine ("Clickado " + (++contador));
 			CheckOutputDir.Click();
 		}
 
