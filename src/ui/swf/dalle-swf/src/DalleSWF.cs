@@ -27,6 +27,14 @@ using System.Reflection;
 namespace Dalle.UI.DalleSWF
 {
 	public class DalleSWF : System.Windows.Forms.Form {
+		private Button btnExecute;
+		private Button btnExit;
+		private Button btnAbout;
+		private Label lblWelcome;
+		private Label lblWhat;
+		
+		private RadioButton rbSplit;
+		private RadioButton rbMerge;
 
 
 		private static DalleSWF instance = null;
@@ -40,26 +48,13 @@ namespace Dalle.UI.DalleSWF
 			}
 		}
 
-
-		private Button btnExecute;
-		private Button btnExit;
-		private Button btnAbout;
-		private Label lblWelcome;
-		private Label lblWhat;
-		
-		private RadioButton rbSplit;
-		private RadioButton rbMerge;
-
-
 		private DalleSWF (){
 			InitializeComponent();
 		}
 		private void InitializeComponent ()
-		{
-		
+		{		
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
-			//this.ControlBox = false;
 			this.Padding = new Padding(20);
 			
 			// Crear los objetos
