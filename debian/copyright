@@ -1,6 +1,4 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Name: dalle
-Maintainer: Alberto Fernández <infjaf@gmail.com>
 Source: http://dalle.sourceforge.net
 
 Files: *
@@ -19,6 +17,7 @@ Copyright: 2003-2004, Ramón Rey Vicente <ramon.rey@hispalinux.es>
 License: GPL-3
 
 Files: src/external/7zip/*
+Copyright: Public Domain
 License: public-domain
 
 License:GPL-3
@@ -35,6 +34,10 @@ License:GPL-3
        On Debian systems, the full text of the GNU General Public
      License version 3 can be found in the file
      `/usr/share/common-licenses/GPL-3'.
+
+License:public-domain
+    No license required for any purpose; the work is not subject to
+    copyright in any jurisdiction.
     
 
 
