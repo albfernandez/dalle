@@ -1,5 +1,6 @@
 dalle (1.13.01-1) unstable; urgency=low
 
+  * Initial release (Closes: #599851)
   * Fix extract of deb files
   * Allow to set output directory while extracting files 
   * Standards-Version bump to 3.9.4, no changes needed
