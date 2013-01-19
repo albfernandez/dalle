@@ -1,0 +1,35 @@
+HACHA v2.0
+
+
+
+Formato del nombre de los archivos
+{base}.{nº de secuencia, empezando en 0}
+
+
+
+
+
+Formato del primer fragmento:
+
+cabecera + {tamano_fragmento} datos
+
+
+Formato de los siguientes fragmentos
+
+{tamano_fragmento} datos
+
+Notese que el primer archivo es mayor que el resto.
+
+
+Formato de la cabecera del primer fragmento:
+
+Es una cabecera de texto con el siguiente formato:
+
+?????{CRC - 4bytes}?????{nombreOriginal}?????{tamano_original}??????{tamanoDeLosFragmentos}??????
+
+El CRC es 0x07 00 00 00 si no hay crc
+en otro caso es el crc de 4 bytes
+
+NOTA: Hacha2 y HachaPro utilizan el mismo crc.
+
+NOTA2: Hay una version de hacha, "3.5", con este formato y usa CRC32

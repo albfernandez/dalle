@@ -1,0 +1,49 @@
+.TH DALLE-CONSOLE "1" "March 30, 2009"
+.SH NAME
+dalle-console \- Utility to join fragments of files that were splited with other software
+
+.SH SYNOPSIS
+.B dalle-console <command>
+.RI [\fIOPTIONS\fR] [files]
+
+.SH DESCRIPTION
+\fBdalle-console\fP  Utility to join fragments of files that were splited with other software.
+Dalle support a wide variety of formats so you can work with a unique application to work with these files.
+.SH COMMANDS
+.TP
+.B \-\-version
+output version information and exit
+.TP
+.B \-\-help
+display a option overview and exit
+.TP
+.B \-s,\-\-split
+Split files
+.TP
+.B -j,\-\-join
+Join files
+.TP
+.B -i,\-\-info
+Show info about files (format)
+.TP
+.B -l,\-\-list
+List all supported formats
+.SH OPTIONS
+.TP
+.B \-d=dir
+Use dir as output directory
+.TP
+.B \-f=format  
+Format used to split the file
+.TP
+.B \-b=file 
+Name of dest file, or prefix for fragments
+.TP
+.B \-\-debug\-gui
+Print debugging messages of all GUI functions
+.TP
+.B -t=size 
+Size of pieces (in kb)
+
+.SH AUTHOR
+This manual page was written by Alberto Fernandez <infjaf@gmail.com>.

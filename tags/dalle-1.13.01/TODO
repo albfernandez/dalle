@@ -1,0 +1,56 @@
+===============================
+
+	Versión 1.x
+
+===============================
+	
+	- [X] new format to split directories (tar + gzip + split + sha512sum)
+	- [X] reduce combo in split dialog (less "split" formats)
+	- [ ] Formats supported by yoyocut and xtremsplit
+		- [ ] Yoyocut
+		- [X] Yoyocut 2
+		- [X] Xtremsplit 1.x (*.001.xtm)
+		- [X] CutKiller, DecoupFich 2.0 (*.001)
+		- [X] HJSplit, File Splitter 4.5, MaxSplitter 1.53, UltraSplitter (*.001;*.u001)
+		- [ ] Splitter 4 (*.h001)
+		- [ ] Easy Split 2002 (*.000)
+		- [ ] Coupe-Fichier 1.1 (*.cpf)
+		- [ ] Cut4Net2 (*0000.c4n)
+		- [ ] D-Koup' 2.5 (*.D00)
+		- [ ] KFK 3.9 (*.kk0)
+		- [ ] MaxSplit Pro 3.1 (*.spt)
+		- [ ] Scieber 2.01 (*infos.sci)
+		- [ ] Splitteur 1.01 (*.1-*.part)
+		- [ ] Splitty 3.0 (*.fsm)
+		- [??] Turbo Cut File 2.21 (*.TCF0)
+		- [ ] Wind 1.75 (*.d)
+		- [ ] WinFrag Lite 2.0, WinFrag Pro 2.0 Beta 4 (*.1)
+		- [ ] Koup-Koup 1.9, Koup-Koup XP (*.kop)
+		- [X] Standard (*.001) 
+		- [X] Hacha
+		- [ ] Splitter 3.1, 
+		- [ ] Chainsaw, 
+		- [ ] EasyFileCut, 
+		- [??] Découpeur, 
+		- [ ] File Splitter Deluxe, 
+		- [??] Cluster v1.0, 
+	- [ ] Other formats
+		- [ ] Winsplit
+		- [ ] FastSplit
+		- [ ] MasterSplitter
+	- [ ] Notify (libnotify, sounds?) when finish a operation.
+	- [ ] New Homepage.
+	- [-] dalle-gtk: Indicate output directory.
+	
+
+===========================================================================
+
+Other things
+
+===========================================================================
+	
+	- [ ] Support "File Splitter and Joiner" __a?
+	- [ ] Threaded gui to give better responsivity.
+
+
+
