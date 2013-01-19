@@ -1,6 +1,6 @@
 Debian/Ubuntu
 
-svn export https://dalle.svn.sourceforge.net/svnroot/dalle/trunk dalle-${version}
+svn export svn://svn.code.sf.net/p/dalle/code/trunk dalle-${version}
 tar jcvf dalle_${version}.orig.tar.bz2 dalle-${version}
 cd dalle-${version}
 debuild 
@@ -14,9 +14,6 @@ cd ~/rpmbuild/SPECS/
 rpmbuild -ba dalle.spec
 
 
-
-
-svn copy  https://dalle.svn.sourceforge.net/svnroot/dalle/trunk  https://dalle.svn.sourceforge.net/svnroot/dalle/tags/dalle-${version} -m "Version ${version}"
 
 
 Configurando el entorno:
@@ -55,6 +52,10 @@ Regenerar assembly infos:
 	actualizar NEWS ChangeLog
 
 Entrada changelog debian.
-debchange -v foo --distribution unstable
+debchange -v ${version} --distribution unstable
 
 actualizar dalle.spec para fedora/redhat
+
+Hacer un tag en el repositorio
+svn copy svn://svn.code.sf.net/p/dalle/code/trunk  svn://svn.code.sf.net/p/dalle/code/tags/dalle-${version} -m "Version ${version}"
+
