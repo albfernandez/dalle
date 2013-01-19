@@ -18,8 +18,10 @@ rpmbuild -ba dalle.spec
 
 Configurando el entorno:
 Debian / ubuntu
-apt-get install nant
-[.. TODO .. ]
+apt-get install devscripts debhelper
+apt-get install nant mono-mcs cli-common-dev
+apt-get install libgtk2.0-cil libglade2.0-cil libgnome2.24-cil 
+apt-get install libglade2.0-cil-dev libgnome2.0-cil-dev libgtk2.0-cil-dev libglib2.0-cil-dev
 
 
 
@@ -30,6 +32,7 @@ http://fedoraproject.org/wiki/How_to_create_an_RPM_package
 yum install @development-tools
 yum install fedora-packager
 yum install nant gtk-sharp2 gtk-sharp2-devel gnome-sharp-devel gnome-sharp
+
 
 # /usr/sbin/useradd makerpm
 # usermod -a -G mock makerpm
@@ -55,5 +58,10 @@ debchange -v ${version} --distribution unstable
 actualizar dalle.spec para fedora/redhat
 
 Hacer un tag en el repositorio
-svn copy svn://svn.code.sf.net/p/dalle/code/trunk  svn://svn.code.sf.net/p/dalle/code/tags/dalle-${version} -m "Version ${version}"
+svn copy --username=infjaf svn+ssh://infjaf@svn.code.sf.net/p/dalle/code/trunk  svn+ssh://infjaf@svn.code.sf.net/p/dalle/code/tags/dalle-${version} -m "Version ${version}"
+
+construir en Ubuntu con 
+debuild -S
+y subir el archivo con 
+dput ppa:infjaf/dalle 
 
