@@ -1,4 +1,4 @@
-Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Name: dalle
 Maintainer: Alberto Fernández <infjaf@gmail.com>
 Source: http://dalle.sourceforge.net
