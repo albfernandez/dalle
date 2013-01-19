@@ -63,5 +63,5 @@ svn copy --username=infjaf svn+ssh://infjaf@svn.code.sf.net/p/dalle/code/trunk  
 construir en Ubuntu con 
 debuild -S
 y subir el archivo con 
-dput ppa:infjaf/dalle 
+dput ppa:infjaf/dalle dalle_${version}_source.changes
 
