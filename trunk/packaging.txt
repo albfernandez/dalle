@@ -6,7 +6,7 @@ cd dalle-${version}
 debuild 
 
 Fedora
-svn export https://dalle.svn.sourceforge.net/svnroot/dalle/trunk dalle-${version}
+svn export svn://svn.code.sf.net/p/dalle/code/trunk dalle-${version}
 tar jcvf dalle-${version}.tar.bz2 dalle-${version}
 cp dalle-${version}.tar.bz2 ~/rpmbuild/SOURCES/
 cp dalle-${version}/dalle.spec ~/rpmbuild/SPECS/
@@ -29,9 +29,7 @@ http://fedoraproject.org/wiki/How_to_create_an_RPM_package
 
 yum install @development-tools
 yum install fedora-packager
-yum install nant
-yum install gtk-sharp2.x86_64 gtk-sharp2-devel.x86_64
-yum install gnome-sharp-devel.x86_64 gnome-sharp.x86_64
+yum install nant gtk-sharp2 gtk-sharp2-devel gnome-sharp-devel gnome-sharp
 
 # /usr/sbin/useradd makerpm
 # usermod -a -G mock makerpm
