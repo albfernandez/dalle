@@ -19,8 +19,38 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
+/*
+
+7z a -v1m test.zip prueba.iso 
+
+test.zip.001
+test.zip.002
+test.zip.003
+test.zip.004
+test.zip.005
+test.zip.006
+test.zip.007
+test.zip.008
+test.zip.009
+test.zip.010
+test.zip.011
 
 
+zip -s 1m test2.zip prueba.iso
+
+test2.z01
+test2.z02
+test2.z03
+test2.z04
+test2.z05
+test2.z06
+test2.z07
+test2.z08
+test2.z09
+test2.z10
+test2.zip
+
+*/
 using System;
 using System.IO;
 
@@ -28,6 +58,7 @@ using ICSharpCode.SharpZipLib.Checksums;
 using ICSharpCode.SharpZipLib.Zip;	
 
 using Dalle.Utilidades;
+using Dalle.Streams;
 
 namespace Dalle.Formatos.Zip
 {
@@ -84,7 +115,7 @@ namespace Dalle.Formatos.Zip
 		public long ObtenerTamanoDatos (string fichero)
 		{
 			long ret = 0;
-			ZipInputStream s = new ZipInputStream (File.OpenRead (fichero));
+			ZipInputStream s = new ZipInputStream (new JoinStream(new ZipJoinInfo(fichero)));
 			ZipEntry entrada;
 			while ((entrada = s.GetNextEntry ()) != null)
 			{
@@ -98,7 +129,7 @@ namespace Dalle.Formatos.Zip
 		{
 			long total = ObtenerTamanoDatos (fichero);
 			long transferidos = 0;
-			ZipInputStream s = new ZipInputStream (File.OpenRead (fichero));
+			ZipInputStream s = new ZipInputStream (new JoinStream(new ZipJoinInfo(fichero)));
 			ZipEntry entrada;
 			OnProgress (0, 1);
 			while ((entrada = s.GetNextEntry ()) != null)
