@@ -26,6 +26,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 using Dalle.Formatos.Generico;
+using Dalle.Streams;
 
 namespace Dalle.Formatos.Divij
 {
@@ -50,7 +51,7 @@ namespace Dalle.Formatos.Divij
 		{
 			FileInfo fi = new FileInfo (fichero);
 			string[] partes = GetPartesNombre (fi.Name);
-			InfoGenerico info = new InfoGenerico ();
+			JoinInfo info = new JoinInfo ();
 			info.Digits = 3;
 			info.InitialFragment = 1;
 			info.BaseName = partes[0];

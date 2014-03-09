@@ -31,7 +31,7 @@ namespace Dalle.Formatos.Generico
 	public class SplitStream :Stream
 	{
 		private int currentFragment= 0;
-		private InfoGenerico info = null;
+		private JoinInfo info = null;
 		private Stream currentStream = null;
 		private long fragmentSize = 0;
 		private string md5File = null;
@@ -55,12 +55,12 @@ namespace Dalle.Formatos.Generico
 			return fis;			
 		}
 		
-		public SplitStream (InfoGenerico info, long fragmentSize, string md5File, string hashAlg) : this(info, fragmentSize)
+		public SplitStream (JoinInfo info, long fragmentSize, string md5File, string hashAlg) : this(info, fragmentSize)
 		{
 			this.md5File = md5File;
 			this.hashAlg = hashAlg;
 		}
-		public SplitStream (InfoGenerico info, long fragmentSize)
+		public SplitStream (JoinInfo info, long fragmentSize)
 		{
 			this.info = info;
 			this.fragmentSize = fragmentSize;

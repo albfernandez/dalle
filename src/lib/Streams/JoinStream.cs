@@ -29,36 +29,28 @@ namespace Dalle.Streams
 		private long alreadyRead = 0;
 		private int currentFragment = 0;
 		private Stream currentStream = null;
-		public JoinStream (IJoinInfo info) {
-			this.info = info;
-		}
+		private long length;
+
 		public override bool CanRead {
-			get {
-				return true;
-			}
+			get {return true;}
 		}
 		public override bool CanSeek {
-			get {
-				return false;
-			}
+			get {return false;}
 		}
 		public override bool CanWrite {
-			get {
-				return false;
-			}
+			get {return false;}
 		}
 		public override long Length {
-			get {
-				return info.Length;
-			}
+			get {return this.length;}
 		}
 		public override long Position {
-			get {
-				return alreadyRead;
-			}
-			set {
-				throw new System.NotImplementedException ();
-			}
+			get {return alreadyRead;}		
+			set {throw new System.NotImplementedException ();}
+		}
+
+		public JoinStream (IJoinInfo info) {
+			this.info = info;
+			this.length = info.Length;
 		}
 		public override void Flush ()
 		{
@@ -66,23 +58,22 @@ namespace Dalle.Streams
 		}
 		public override int Read (byte[] buffer, int offset, int count)
 		{
-			if (currentFragment >= info.FragmentsNumber) {
+			if (this.currentFragment > this.info.FragmentsNumber) {
 				return 0;
 			}
 			int bytesRead = 0;			
-			if (currentStream == null) {
-				CreateStream(currentFragment++);
+			if (this.currentStream == null) {
+				CreateStream(++this.currentFragment);
 			}
-			bytesRead = currentStream.Read(buffer, offset, count);
+			bytesRead = this.currentStream.Read(buffer, offset, count);
 			if (bytesRead < count) {
-				if (currentFragment >= info.FragmentsNumber) {
-					return 0;
+				if (this.currentFragment >= this.info.FragmentsNumber) {
+					return bytesRead;
 				}
-				CreateStream(currentFragment++);
+				CreateStream(++this.currentFragment);
 				return bytesRead += Read(buffer, offset+bytesRead, count - bytesRead);				
 			}
 			return bytesRead;
-
 		}
 		private void CreateStream (int fragment) {
 			if (currentStream != null) {
@@ -105,17 +96,25 @@ namespace Dalle.Streams
 		{
 			throw new System.NotImplementedException ();
 		}
+		public override int ReadByte ()
+		{
+			byte[] buffer = new byte[1];
+			int cantidad = Read (buffer, 0, 1);
+			if (cantidad == 1) {
+				return (int)buffer [0];
+			}
+			return -1;
+		}
+		public override void WriteByte (byte value)
+		{
+			Write (new byte[1]{value}, 0, 1);
+		}
 		public override void Close() {
 			if (currentStream != null) {
 				currentStream.Close();
 			}
 		}
-		
-	
 	
 	}
-
-
-
 
 }

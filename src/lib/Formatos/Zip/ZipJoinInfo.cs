@@ -3,7 +3,7 @@
 	Dalle - A split/join file utility library
 	Dalle.Formatos.Zip.Zip - Basic support for compressed zip files.
 	
-    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2014  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,11 +37,10 @@ namespace Dalle.Formatos.Zip
 
 		private string baseName;
 		private int numberOfFragments;
-		private long length;
+		private long length = 0;
 		public ZipJoinInfo (string zipFile) {
 			calculateBaseName(zipFile);
-			calculateNumberOfFragmentsAndLength();
-			
+			calculateNumberOfFragmentsAndLength();			
 		}
 		private void calculateBaseName(string zipFile) 
 		{
@@ -49,12 +48,14 @@ namespace Dalle.Formatos.Zip
 		}
 		private void calculateNumberOfFragmentsAndLength()
 		{
-			int fragmento = 0;
+			int fragmento = 1;
 			while (new FileInfo(GetFragmentName(fragmento)).Exists) {
-				length += new FileInfo(GetFragmentName(fragmento)).Length;
-				fragmento ++;
+				fragmento++;
 			}
 			this.numberOfFragments = fragmento;
+			for (int i = 1 ; i <= this.numberOfFragments; i++) {
+				this.length += new FileInfo(GetFragmentName(i)).Length;
+			}
 		}
 		public int FragmentsNumber {
 			get { return numberOfFragments; }
@@ -67,7 +68,7 @@ namespace Dalle.Formatos.Zip
 			return 0;
 		}
 		public string GetFragmentName (int fragment) {
-			if (fragment == 0) {
+			if (fragment == FragmentsNumber) {
 				return baseName + ".zip";
 			}
 			return baseName + ".z" +  UtilidadesCadenas.Format (fragment, 2);
@@ -76,6 +77,5 @@ namespace Dalle.Formatos.Zip
 			return GetFragmentName(fragment);
 		}
 	}
-
 
 }

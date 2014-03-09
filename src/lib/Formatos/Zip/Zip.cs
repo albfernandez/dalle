@@ -98,7 +98,7 @@ namespace Dalle.Formatos.Zip
 			// TODO: Cuidado con los ficheros zip cortados (tarda mucho).
 			if ( ! File.Exists (fichero) )
 				return false;
-			return fichero.ToUpper().EndsWith(".ZIP");
+			return fichero.ToUpper().EndsWith(".ZIP") || fichero.ToUpper().EndsWith(".ZIP.001");
 		}
 		
 		public bool EsZipPorContenido (string fichero)
@@ -115,7 +115,7 @@ namespace Dalle.Formatos.Zip
 		public long ObtenerTamanoDatos (string fichero)
 		{
 			long ret = 0;
-			ZipInputStream s = new ZipInputStream (new JoinStream(new ZipJoinInfo(fichero)));
+			ZipInputStream s = new ZipInputStream (new JoinStream(GetJoinInfo(fichero)));
 			ZipEntry entrada;
 			while ((entrada = s.GetNextEntry ()) != null)
 			{
@@ -124,24 +124,33 @@ namespace Dalle.Formatos.Zip
 			s.Close();
 			return ret;
 		}
-		
+
+		private IJoinInfo GetJoinInfo (string fichero) 
+		{
+			IJoinInfo joinInfo = null;
+			if (fichero.ToUpper().EndsWith (".ZIP")) {
+				joinInfo = new ZipJoinInfo (fichero);
+			} else if (fichero.ToUpper().EndsWith (".ZIP.001")) {
+				joinInfo = JoinInfo.GetFromFile (fichero);
+			}
+			return joinInfo;
+		}
 		public void Descomprimir (string fichero, string dirDest)
 		{
 			long total = ObtenerTamanoDatos (fichero);
 			long transferidos = 0;
-			ZipInputStream s = new ZipInputStream (new JoinStream(new ZipJoinInfo(fichero)));
+			IJoinInfo joinInfo = GetJoinInfo(fichero);
+
+
+			ZipInputStream s = new ZipInputStream (new JoinStream(joinInfo));
 			ZipEntry entrada;
 			OnProgress (0, 1);
 			while ((entrada = s.GetNextEntry ()) != null)
 			{
-
 				String dirName = Path.GetDirectoryName (entrada.Name);
-				String ficName = Path.GetFileName (entrada.Name);
-				
-				Console.WriteLine (entrada.Name);
+				String ficName = Path.GetFileName (entrada.Name);				
 				if (!entrada.IsFile)
 				{
-					Console.WriteLine ("directorio");
 					continue;
 				}
 				

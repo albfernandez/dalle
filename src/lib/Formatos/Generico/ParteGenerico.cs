@@ -25,6 +25,7 @@ using System.IO;
 
 using Dalle.Formatos;
 using Dalle.Utilidades;
+using Dalle.Streams;
 
 namespace Dalle.Formatos.Generico
 {
@@ -53,7 +54,7 @@ namespace Dalle.Formatos.Generico
 			{
 				sal1 = new FileInfo (fichero).Name;
 			}
-			InfoGenerico info = new InfoGenerico ();
+			JoinInfo info = new JoinInfo ();
 			
 			info.InitialFragment = 1;
 			info.Digits = 3;
@@ -86,7 +87,7 @@ namespace Dalle.Formatos.Generico
 		}
 		
 		// deprecated
-		public int Partir (string fichero, string sal1, string dir, long kb, InfoGenerico info)
+		public int Partir (string fichero, string sal1, string dir, long kb, JoinInfo info)
 		{
 			long tamano = new FileInfo (fichero).Length;
 			long tFragmento = 1024 * kb;
@@ -118,7 +119,7 @@ namespace Dalle.Formatos.Generico
 			return contador;
 		}
 		
-		public void Unir (string fichero, string dirDest, InfoGenerico info)
+		public void Unir (string fichero, string dirDest, JoinInfo info)
 		{
 			byte[] buffer = new byte[Consts.BUFFER_LENGTH];
 			int leidos = 0;
@@ -139,7 +140,7 @@ namespace Dalle.Formatos.Generico
 		}
 		protected override void _Unir (string fichero, string dirDest)
 		{
-			InfoGenerico info = InfoGenerico.GetFromFile (fichero);
+			JoinInfo info = JoinInfo.GetFromFile (fichero);
 			Unir (fichero, dirDest, info);
 		}
 
