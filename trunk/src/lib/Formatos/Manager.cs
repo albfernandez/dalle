@@ -183,9 +183,7 @@ namespace Dalle.Formatos
 		
 		public IParte GetFormatoFichero (String fichero)
 		{
-			//Console.WriteLine("Formatos soportados " + formatos.Count);
 			foreach (IParte p in formatos){
-				//Console.WriteLine("testeando parte " + p.Nombre + " " + p);
 				if (p.PuedeUnir(fichero)){
 					return p;
 				}

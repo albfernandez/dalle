@@ -129,7 +129,6 @@ namespace Dalle.Formatos.Cutter {
 			}
 			catch (Exception e) 
 			{
-				Console.WriteLine (e.StackTrace);
 				return null;
 			}
 

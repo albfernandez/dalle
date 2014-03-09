@@ -165,9 +165,6 @@ namespace Dalle.Archivers.cpio
 				while (this.inputStream.ReadByte() >= 0){
 					contador++;
 				}
-				//Console.WriteLine("Bytes al final = " + contador);
-	    		//Console.WriteLine ("TRAILER---" + this.currentEntry.Size);
-				//Console.WriteLine("Trailer--" + this.currentEntry.HeaderPadCount + "/" + this.currentEntry.DataPadCount);
 	    		return null;
 	    	}
 	    	
@@ -333,7 +330,6 @@ namespace Dalle.Archivers.cpio
 
 		private void Skip (int bytes)
 		{
-			//Console.WriteLine ("Skip:" + bytes);
 			byte[] buff = new byte[4];
 			// Cannot be more than 3 bytes
 			if (bytes > 0) {
@@ -394,11 +390,7 @@ namespace Dalle.Archivers.cpio
 		
 		protected override void Count (int c)
 		{
-			//Console.WriteLine ("Count " + c);
 			base.Count(c);
-			/*if (this.Position != inputStream.Position){
-				Console.WriteLine(" --> " + this.Position + "/" + inputStream.Position);
-			}*/
 		}
 
 	}

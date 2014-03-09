@@ -164,6 +164,7 @@ namespace Dalle.Formatos.Hacha
 				{
 					// TODO Lanzar excepcion
 					Console.WriteLine("crc verification failed!");
+					//throw new Exception("CRC verification failed");
 				}
 			}
 			OnProgress (cab.Tamano, cab.Tamano);

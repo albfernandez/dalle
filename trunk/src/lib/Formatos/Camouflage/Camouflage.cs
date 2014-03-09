@@ -258,7 +258,6 @@ namespace Dalle.Formatos.Camouflage
 				reader.Read (buf, 0, buf.Length);
 			}
 			catch (Exception e) {
-				Console.WriteLine (e.Message);
 				return false;
 			}
 			finally {

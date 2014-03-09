@@ -98,7 +98,6 @@ namespace Dalle.FileVerification.Verifiers
 				StreamReader reader = File.OpenText (file);
 				string st = reader.ReadLine();
 				reader.Close();
-				Console.WriteLine ("" + st.IndexOf(" "));
 				return (st.IndexOf(" ") == 32);
 			}
 			catch (Exception){

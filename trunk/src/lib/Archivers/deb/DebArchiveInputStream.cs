@@ -109,9 +109,6 @@ namespace Dalle.Archivers.deb
 			if (String.Empty.Equals(tarEntry.Name)){
 				return GetNextDebEntry();
 			}
-			if (tarEntry.Name.EndsWith("axis-ant.jar")){
-				Console.WriteLine ("axis-ant");
-			}
 			DebArchiveEntry debEntry = new DebArchiveEntry (tarEntry);			
 			this.dataStream = new SizeLimiterStream (tarStream, tarEntry.Size);
 			return debEntry;			
