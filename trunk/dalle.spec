@@ -1,5 +1,5 @@
 %define name dalle
-%define version 1.13.01
+%define version 1.14.03
 %define release 1
 %define prefix /usr
 
@@ -103,6 +103,9 @@ echo "" >> "$RPM_INSTALL_PREFIX"/bin/dalle-svf-console
 /usr/share/icons/dalle.xpm
 
 %changelog
+
+* Sun Mar 9 2014 Alberto Fernandez <infjaf@gmail.com>
+- Version 1.14.03. Support for splitted zip files
 
 * Mon Jan 7 2013 Alberto Fernandez <infjaf@gmail.com>
 - Version 1.13.01

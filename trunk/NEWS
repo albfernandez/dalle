@@ -1,3 +1,6 @@
+09-03-2014 - Version 1.14.03
+   Support for splitted zip files
+
 07-01-2013 - Version 1.13.01
 	Fixed deb packages extraction
 	Output directory for joined/extracted files in dalle-gtk
