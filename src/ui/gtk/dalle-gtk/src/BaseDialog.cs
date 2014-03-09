@@ -221,7 +221,6 @@ namespace Dalle.UI.DalleGtk {
 				}
 			}
 			catch (Exception e) {
-				Console.WriteLine (e);
 				mensajeError = e.Message;
 			}
 			if (mensajeError != null) {

@@ -108,7 +108,6 @@ namespace Dalle.FileVerification
 				throw new Exception("");
 			}
 			// TODO: I18N
-			Console.WriteLine ("Format = " + type.Name);
 			type.VerifySFV (file);
 		}	
 		public ArrayList GetSupportedFormats ()

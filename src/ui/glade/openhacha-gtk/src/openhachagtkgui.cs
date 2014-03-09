@@ -93,7 +93,6 @@ namespace OpenHachaGtkGui
 		public void OnSplitDialogSplitButtonClicked (System.Object b, EventArgs e) 
 		{
 			string file = SplitDialogComboEntry.Text;
-			Console.WriteLine(FileFormat.ActiveText);
 			if (File.Exists(file)) {
 				Dalle.Formatos.Manager.GetInstance().Partir (
 					FileFormat.ActiveText, 

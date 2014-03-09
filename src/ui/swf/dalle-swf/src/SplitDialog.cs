@@ -176,7 +176,6 @@ namespace Dalle.UI.DalleSWF
 			}
 			long tamano = new FileInfo(this.txtFilename.Text).Length;
 			decimal nValue = Math.Ceiling(tamano/ (this.nudFragments.Value * 1024));
-			Console.WriteLine("nValue=" + nValue);
 			locked = true;
 			this.nudSize.Value = nValue;
 			locked = false;

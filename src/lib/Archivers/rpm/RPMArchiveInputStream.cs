@@ -4,7 +4,7 @@
 	
 	
 	
-    Copyright (C) 2004-2010 Alberto Fernández  <infjaf@gmail.com>
+    Copyright (C) 2004-2014 Alberto Fernández  <infjaf@gmail.com>
     Original java code: commons-compress, from apache (http://commons.apache.org/compress/)
     C# translation by - Alberto Fernández  <infjaf@gmail.com>
 
@@ -157,7 +157,6 @@ namespace Dalle.Archivers.rpm
 				default:
 					break;					
 				}
-				//PrintDebugInfo(Enum.GetName (r.Tag.GetType (), r.Tag), r.Type, data, r.Offset, r.Count);
 			}
 			
 		}
@@ -180,51 +179,9 @@ namespace Dalle.Archivers.rpm
 				default:
 					break;
 				}
-				//PrintDebugInfo(Enum.GetName (r.Tag.GetType (), r.Tag), r.Type, data, r.Offset, r.Count);
 			}
 		}
-		/*
-		private void PrintDebugInfo (string tag, RpmType tipo, byte[] data, int offset, int count)
-		{
-				Console.Write (tag + ":");
-				switch (tipo)
-				{
-				case (RpmType.RPM_STRING_TYPE):
-					Console.WriteLine (UtArrays.LeerTexto (data, offset));
-					break;
-				case (RpmType.RPM_CHAR_TYPE):
-					Console.WriteLine (UtArrays.LeerTexto (data, offset, count));
-					break;
-				case RpmType.RPM_INT16_TYPE:
-					Console.WriteLine (UtArrays.LeerInt16BE (data, offset));
-					break;
-				case RpmType.RPM_INT32_TYPE:
-					Console.WriteLine (UtArrays.LeerInt32BE (data, offset));
-					break;
-				case RpmType.RPM_INT64_TYPE:
-					Console.WriteLine (UtArrays.LeerInt64BE (data, offset));
-					break;
-				case RpmType.RPM_INT8_TYPE:
-					Console.WriteLine (data[offset]);
-					break;
-				case RpmType.RPM_BIN_TYPE:
-					Console.WriteLine ("*bin*");
-					break;
-				case RpmType.RPM_I18NSTRING_TYPE:
-					Console.WriteLine ("*i18n*");
-					break;
-				case RpmType.RPM_NULL_TYPE:
-					Console.WriteLine ("*null*");
-					break;
-				case RpmType.RPM_STRING_ARRAY_TYPE:
-					Console.WriteLine ("*strarray*");
-					break;
-				default:
-					break;
-						
-				}
-		}
-		*/
+		
 		private List<RpmSignatureIndex> ReadSignatureIndex (int numIndex)
 		{
 			List<RpmSignatureIndex> lista = new List<RpmSignatureIndex> ();

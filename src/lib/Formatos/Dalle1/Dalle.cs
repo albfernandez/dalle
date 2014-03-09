@@ -189,11 +189,9 @@ namespace Dalle.Formatos.Dalle1
 			List<FileInfo> result = new List<FileInfo> ();
 			if (File.Exists (fichero)) {
 				FileInfo fi = new FileInfo (fichero);
-				Console.WriteLine ("Es un fichero");
 				result.Add (fi);
 			} else if (Directory.Exists (fichero)) {
 				DirectoryInfo din = new DirectoryInfo (fichero);
-				Console.WriteLine ("es un directorio");
 				load (result, din);
 			}
 			return result;
