@@ -28,6 +28,7 @@ using System.IO;
 using Dalle.Formatos;
 using Dalle.Formatos.Generico;
 using Dalle.Utilidades;
+using Dalle.Streams;
 
 
 namespace Dalle.Formatos.MaxSplitter
@@ -79,7 +80,7 @@ namespace Dalle.Formatos.MaxSplitter
 		protected override void _Partir (string fichero, string sal1, string dir, long kb)
 		{
 			
-			InfoGenerico info = new InfoGenerico ();
+			JoinInfo info = new JoinInfo ();
 			
 			info.InitialFragment = 1;
 			info.Digits = 3;

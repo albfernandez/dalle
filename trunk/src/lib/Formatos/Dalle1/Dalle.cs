@@ -131,7 +131,7 @@ namespace Dalle.Formatos.Dalle1
 			long totalSize = calculateTotalSize (files);
 			long fragments = totalSize / (kb * 1024);
 			string s = "" + fragments;
-			InfoGenerico info = new InfoGenerico ();
+			JoinInfo info = new JoinInfo ();
 			info.OriginalFile = baseName;
 			info.InitialFragment = 0;
 			info.Digits = Math.Max (s.Length, 3);
