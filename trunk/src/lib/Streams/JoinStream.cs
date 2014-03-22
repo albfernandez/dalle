@@ -84,7 +84,14 @@ namespace Dalle.Streams
 		}
 		public override long Seek (long offset, SeekOrigin origin)
 		{
-			throw new System.NotImplementedException ();
+			if (offset < 0 || origin != SeekOrigin.Current) {
+				throw new System.NotImplementedException ();
+			}
+			if (offset == 0) {
+				return;
+			}
+			byte[] buffer = new byte[offset];
+			return this.Read(buffer, 0, offset);
 		}
 		public override void SetLength (long value)
 		{
