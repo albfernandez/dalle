@@ -95,7 +95,7 @@ namespace Dalle.Formatos.Generico
 			if (currentStream != null) {
 				currentStream.Close ();
 			}
-			if (md5Stream != null) {
+			if (md5Stream != null && currentStream != null) {
 				HashStream hs = (HashStream)currentStream;
 				string h = hs.Hash;
 				md5Stream.WriteLine (h + "  " + currentFileInfo.Name);
