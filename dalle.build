@@ -227,6 +227,12 @@
 				<include name="locale/**"/>
 			</fileset>
 		</zip>
+		<zip zipfile="${build.output.dir}/dalle-windows-${shortVersion}.zip" ziplevel="9">
+			<fileset basedir="${build.output.dir}" prefix="dalle-${shortVersion}">
+				<include name="dalle-swf.exe"/>
+				<include name="*.dll"/>
+			</fileset>
+		</zip>
 	</target>
 	<target name="build-dalle-crcs">
 		<csc target="exe" output="build/dalle-crcs.exe" debug="${debug}">
