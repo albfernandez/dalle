@@ -68,6 +68,8 @@ svn export https://svn.code.sf.net/p/dalle/code/tags/dalle-${version} dalle-${ve
 crear el tar
 tar jcvf dalle_${version}.orig.tar.bz2 dalle-${version}
 
+crear el tar para sourceforge
+cp dalle_${version}.orig.tar.bz2 dalle-${version}.tar.bz2
 
 construir en Ubuntu con 
 debuild -S
@@ -77,9 +79,11 @@ dput ppa:infjaf/dalle dalle_${version}_source.changes
 construir en debian con dpkg-buildpackage
 
 construir en fedora
+cp dalle-${version}.tar.bz2 ~/rpmbuild/SOURCES/
+cp dalle.spec ~/rpmbuild/SPECS/
+cd ~/rpmbuild/SPECS/
+rpm -ba dalle.spec
 
-crear el tar para sourceforge
-mv dalle_${version}.orig.tar.bz2 dalle-${version}.tar.bz2
 
 hacer los zip para sourceforge
 nant make-zip
