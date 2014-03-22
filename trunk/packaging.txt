@@ -44,6 +44,8 @@ $ rpmdev-setuptree
 
 
 Notas internas.
+
+
 Preparando una release:
 
 
@@ -60,8 +62,24 @@ actualizar dalle.spec para fedora/redhat
 Hacer un tag en el repositorio
 svn copy --username=infjaf svn+ssh://infjaf@svn.code.sf.net/p/dalle/code/trunk  svn+ssh://infjaf@svn.code.sf.net/p/dalle/code/tags/dalle-${version} -m "Version ${version}"
 
+exportar desde el tag:
+svn export https://svn.code.sf.net/p/dalle/code/tags/dalle-${version} dalle-${version}
+
+crear el tar
+tar jcvf dalle_${version}.orig.tar.bz2 dalle-${version}
+
+
 construir en Ubuntu con 
 debuild -S
 y subir el archivo con 
 dput ppa:infjaf/dalle dalle_${version}_source.changes
 
+construir en debian con dpkg-buildpackage
+
+construir en fedora
+
+crear el tar para sourceforge
+mv dalle_${version}.orig.tar.bz2 dalle-${version}.tar.bz2
+
+hacer los zip para sourceforge
+nant make-zip
