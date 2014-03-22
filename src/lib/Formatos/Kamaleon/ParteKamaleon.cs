@@ -66,7 +66,7 @@ namespace Dalle.Formatos.Kamaleon
 				byte primer = UtilidadesFicheros.LeerByte (fich, 0);
 				byte ultimo = UtilidadesFicheros.LeerByte (fich, i.TamanoFragmento - 1);
 				if ((primer != i.PrimerByte) || (ultimo != i.UltimoByte)) {
-					throw new Dalle.Formatos.FileFormatException ();
+					throw new Dalle.Formatos.FileFormatException ("Invalid fileFormat:" + fich);
 				}
 			}
 			string f = metaInfo.PrimerInfo.NombreOriginal;
@@ -82,10 +82,9 @@ namespace Dalle.Formatos.Kamaleon
 				// TODO Optimizar este metodo (evitar abrir el archivo dos veces)
 				UtilidadesFicheros.CalcularCRC (fich, 0, i.TamanoPiel, crc);
 				
-				transferidos += UtilidadesFicheros.CopiarIntervalo
-					(fich, f, i.TamanoPiel, i.TamanoDatos, crc);
+				transferidos += UtilidadesFicheros.CopiarIntervalo(fich, f, i.TamanoPiel, i.TamanoDatos, crc);
 				if (crc.Value != i.Checksum){
-					throw new Dalle.Formatos.ChecksumVerificationException("Checksum failed", fich);
+					throw new Dalle.Formatos.ChecksumVerificationException("Checksum failed:"+fich, fich);
 				}					
 				OnProgress (transferidos, i.TamanoOriginal); 
 			}
