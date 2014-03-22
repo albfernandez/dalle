@@ -43,26 +43,28 @@ namespace Dalle.Formatos.Hacha
 			compatible = false;			
 		}
 		
-		protected void Partir (string fichero, string s1, string dir,long kb, string version)
+		protected void Partir (string fichero, string s1, string dir, long kb, string version)
 		{
 			CRC crc = null;
-			if (version == "1")
-				crc = new NullHachaCRC();
-			else	
-				crc = new HachaCRC(new FileInfo (fichero).Length);
+			if (version == "1") {
+				crc = new NullHachaCRC ();
+			} else {
+				crc = new HachaCRC (new FileInfo (fichero).Length);
+			}
 			
 			CabeceraHacha_v1 cab = CabeceraHacha_v1.NewFromVersion (version);
 
-			cab.Tamano = new FileInfo(fichero).Length;
+			cab.Tamano = new FileInfo (fichero).Length;
 			
-			// TODO: Conflicto cuando se especifica el n� de fragmentos?
+			// TODO: Conflicto cuando se especifica el numero de fragmentos?
 			// cab.TamanoFragmento = kb*1024 - 512;
 			cab.TamanoFragmento = kb * 1024;
 			
-			cab.NombreOriginal = new FileInfo(fichero).Name;
+			cab.NombreOriginal = new FileInfo (fichero).Name;
 			
-			if ((s1 == null) || (s1 == string.Empty))
+			if ((s1 == null) || (s1 == string.Empty)) {
 				s1 = new FileInfo (fichero).Name;
+			}
 			
 			string salida1 = dir + Path.DirectorySeparatorChar + s1;
 
@@ -76,8 +78,9 @@ namespace Dalle.Formatos.Hacha
 			
 			do{
 				string s = salida1 + "." + fragmento;
-				if (fragmento != 0)
+				if (fragmento != 0) {
 					UtilidadesFicheros.ComprobarSobreescribir (s);
+				}
 					
 				transferidos += UtilidadesFicheros.CopiarIntervalo (
 					fichero, s, transferidos, cab.TamanoFragmento, crc);
@@ -128,19 +131,15 @@ namespace Dalle.Formatos.Hacha
 			{
 				int parcial = 0;
 				Stream inStream = File.OpenRead (fich);
-				if (fragmento == 0) 
-				{
-					if (inStream.Read (buffer, 0, cabSize) != cabSize) 
-					{
-						throw new IOException ();
+				if (fragmento == 0) {
+					if (inStream.Read (buffer, 0, cabSize) != cabSize){
+						throw new IOException ("Premature end of file:" + fich);
 					}
 				}
 				
-				while ((leidos = inStream.Read (buffer, 0, buffer.Length)) > 0)
-				{
+				while ((leidos = inStream.Read (buffer, 0, buffer.Length)) > 0)	{
 					outStream.Write (buffer, 0, leidos);
-					if (crc32 != null)
-					{
+					if (crc32 != null){
 						crcHacha.Update (buffer, 0, leidos);
 						crc32.Update (buffer, 0, leidos);
 					}
@@ -149,47 +148,21 @@ namespace Dalle.Formatos.Hacha
 					OnProgress (transferidos, cab.Tamano);
 				}
 				
-				if (parcial != cab.TamanoFragmento && transferidos != cab.Tamano) 
-				{
-					throw new IOException ();
+				if (parcial != cab.TamanoFragmento && transferidos != cab.Tamano) {
+					throw new IOException ("Premature end of file:" + fich);
 				}
 				
 				fragmento++;
 				fich = b + fragmento;
 			}
 			outStream.Close ();
-			if (crc32 != null)
-			{
-				if (cab.CRC != crc32.Value && cab.CRC != crcHacha.Value) 
-				{
-					// TODO Lanzar excepcion
-					Console.WriteLine("crc verification failed!");
-					//throw new Exception("CRC verification failed");
-				}
+			if (crc32 != null && cab.CRC != crc32.Value && cab.CRC != crcHacha.Value){
+				// TODO Lanzar excepcion
+				Console.WriteLine("crc verification failed!");
+				//throw new Exception("CRC verification failed");
 			}
-			OnProgress (cab.Tamano, cab.Tamano);
-			
-			// Comprobar crcs
-			
-			/*
-			
-			transferidos = UtilidadesFicheros.CopiarIntervalo (fich, salida, cab.Size, crc);
-			if ((transferidos != cab.TamanoFragmento) && (transferidos != cab.Tamano)){
-				throw new Dalle.Formatos.FileFormatException();
-			}
-			fragmento++;
-			while (transferidos < cab.Tamano){
-				
-				OnProgress (transferidos, cab.Tamano);
-				
-				fich = b + fragmento;
-				long leidos = UtilidadesFicheros.CopiarTodo (fich, salida, crc);
-				transferidos += leidos;
-				if ( (leidos != cab.TamanoFragmento) && (transferidos != cab.Tamano) ){
-					throw new Dalle.Formatos.FileFormatException();
-				}
-				fragmento++;
-			}*/
+			OnProgress (cab.Tamano, cab.Tamano);		
+
 		}
 		protected override void _Unir (string fichero, string dirDest)
 		{			
@@ -198,8 +171,9 @@ namespace Dalle.Formatos.Hacha
 		
 		public override bool PuedeUnir (string fichero)
 		{
-			if (! File.Exists (fichero) )
+			if (! File.Exists (fichero)) {
 				return false;
+			}
 			try{
 				CabeceraHacha_v1.LeerCabecera (fichero);
 				return true;
