@@ -1,0 +1,43 @@
+El formato son los datos cortados tal cual.
+El nombre de los fragmentos es
+nombreOriginal.<numero de secuencia, 3 digitos, comenzando en 001>
+
+Tambien da la posibilidad de encriptar los datos, pero esa opción no está contemplada.
+
+da la posibilidad de crear un archivo con la verificacion del crc. (nombre.crc)su formato es:
+filename=aes.txt
+size=936624
+crc32=3645A9F0
+
+
+genera un bat (Restore.bat) para unir los archivos, con posibilidad de comprobar el crc.
+Ejemplo sin crc
+@Echo off
+Echo Create with the FREEWARE VERSION EASY SPLIT.
+Echo visit my Homepage: http://www.dpaehl.de
+Echo FILE: aes.txt is created
+copy /b "aes.txt.001" + "aes.txt.002" + "aes.txt.003"
+ 
+ren "aes.txt.001" "aes.txt"
+del "aes.txt.002"
+del "aes.txt.003"
+del crc32.exe
+del restore.bat
+
+
+Ejemplo con CRC
+
+@Echo off
+Echo Create with the FREEWARE VERSION EASY SPLIT. 
+Echo visit my Homepage: http://www.dpaehl.de
+Echo FILE: aes.txt is created
+copy /b "aes.txt.001" + "aes.txt.002" + "aes.txt.003"
+ 
+ren "aes.txt.001" "aes.txt"
+del "aes.txt.002"
+del "aes.txt.003"
+CRC32 "aes.txt" 3645a9f0
+del crc32.exe
+del "aes.txt.crc"
+del restore.bat
+

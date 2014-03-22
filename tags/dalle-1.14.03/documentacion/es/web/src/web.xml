@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<web xmlns="http://dalle.sourceforge.net/web.xsd">
+	<page>
+		<name>Home</name>
+		<filename>index</filename>
+		<content>
+		
+			<h1>Dalle</h1>
+			<p>Dalle es un conjunto de librerías y programas 
+			para trabajar con archivos cortados por diversas aplicaciones.</p>
+			<p>En muchas ocasiones nos hemos descargado de internet archivos
+			que han sido cortados y/o camuflados con una aplicación 
+			y nos vemos obligados a bajarnos el programa, que la mayoría 
+			de las veces no está disponible para Linux.</p>
+			<p>Dalle ha venido a solucionar este problema, permitiendo trabajar con una
+			gran variedad de formatos. Así no tenemos que preocuparnos de buscar
+			el programa, sino que simplemente desempaquetamos el fichero con Dalle.</p>
+			<h2>Formatos soportados</h2>
+			<ul>
+				<li>Astrotite</li>
+				<li>Axman 3</li>
+				<li>Camouflage</li>
+				<li>Easy File Splitter</li>
+				<li>File Splitter</li>
+				<li>Genérico</li>
+				<li>Hacha (1, 2 y Pro)</li>
+				<li>KamaleoN (1 y 2)</li>
+				<li>MaxSplitter</li>
+				<li>SplitFile</li>
+				<li>Zip</li>				
+			</ul>
+		</content>
+	</page>
+	
+	
+
+	
+	
+	<page>
+		<name>Screenshots</name>
+		<content>
+			<h1>Capturas de pantalla</h1>
+			
+			<h2 style="margin-bottom:2em;">Dalle-gtk</h2>
+
+			<p style="margin-bottom:2em;text-align:center">
+				<img src="images/dalle-main.png" style="border:0" alt="Pantalla principal de Dalle" /><br/><br/>
+			</p>
+			<p style="margin-bottom:2em;text-align:center">
+				<img src="images/dalle-join.png" style="border:0" alt="Pantalla de unir archivos de Dalle" /><br/><br/>
+			</p>
+			<p style="margin-bottom:2em;text-align:center">
+				<img src="images/dalle-split.png" style="border:0" alt="Pantalla de partir archivos de Dalle" /><br/><br/>
+			</p>
+			
+			<h2 style="margin-bottom:2em;margin-top:2em;">OpenHacha</h2>
+			<p style="margin-bottom:2em;text-align:center">
+				<img  src="images/openhacha-main.png" style="border:0" alt="Pantalla principal de OpenHacha" /><br/><br/>				
+			</p>
+			<p style="margin-bottom:2em;text-align:center">
+				<img  src="images/openhacha-join.png" style="border:0" alt="Pantalla de unir archivos de OpenHacha" /><br/><br/>
+			</p>
+			<p style="margin-bottom:2em;text-align:center">
+				<img src="images/openhacha-split.png" style="border:0" alt="Pantalla de partir archivos de OpenHacha" /><br/><br/>
+			</p>
+		</content>
+	</page>
+	
+	<page>
+		<name>News</name>
+	</page>
+	
+	
+	<page>
+		<name>Instalar</name>
+		<content>
+			<h1>Instalar</h1>
+			<h2>Ubuntu</h2>
+			Puedes añadir el PPA del proyecto e instalarlo desde ahí
+	<pre>
+	sudo add-apt-repository ppa:infjaf/dalle
+	sudo apt-get update
+	sudo apt-get install dalle
+	</pre>
+		<h2>Descarga desde la página de SourceForge</h2>
+			<p>Puedes descargarte el programa ya compilado así como las fuentes
+			de la <a href="http://sourceforge.net/project/showfiles.php?group_id=95720">
+			 página de descargas del proyecto </a> en SourceForge.</p>
+			 
+			<p>En la página de descargas encontrarás:
+				<ul>
+					<li><strong>dalle_VERSION_all.deb</strong>  Paquete para instalar en distribuciones
+						basadas en DEB (como Debian o Ubuntu). Para ubuntu es recomendable usar el PPA indicado arriba</li>
+					<li><strong>dalle-VERSION.noarch.rpm.</strong>  Paquete para instalar en distribuciones
+					   basadas en RPM (RedHat, Fedora, Mandrake ...)
+					</li>
+					<li><strong>dalle-VERSION.tar.bz2.</strong>  Contiene las fuentes.</li>
+					<li><strong>dalle-VERSION-windows.zip.</strong> Contiene una version especifica para windows y .NET</li>
+					<li><strong>dalle-VERSION-bin.zip.</strong> Contiene los programas las y 
+						librerias compilados, así como la libreria ICSharpCode.SharZipLib.dll, 
+						necesaria si trabajas con MS.NET.</li>
+				</ul>
+			</p>
+			<h2>Descargar las fuentes de Subversion</h2>
+			<p>Si quieres descargarte la última versión del
+			svn, solo tienes que usar el acceso anónimo.</p>
+			<pre>
+    svn checkout svn://svn.code.sf.net/p/dalle/code/trunk dalle
+			</pre>
+		</content>
+	</page>
+	
+		<page>
+		<name>Colabora</name>
+		<content>
+			<h1>Colabora</h1>
+			
+			<p> <br/>
+			</p>
+			<p> Puedes colaborar de diversas formas: </p>
+			<ul>
+				<li>Enviando informes de fallos (bugs).</li>
+				<li>Proponiendo nuevas características.</li>
+				<li>Haciendo iconos y/o logos.</li>
+				<li>Escribiendo algo de código:
+					<ul>
+						<li>Soporte para nuevos formatos.</li>
+						<li>Nuevas interfaces gráficas (qt#, swf, swt).</li>
+					</ul>
+				</li>
+				<li>Haciendo o manteniendo paquetes de instalación para distintas plataformas/distros:
+					<ul>
+						<li>RPM.</li>
+						<li>DEB.</li>
+						<li>Windows.</li>
+					</ul>				
+				</li>
+				<li>Traduciendo la aplicación a otros idiomas.</li>
+				<li>Informando de situaciones de éxito en distintas plataformas.</li>
+				<li>Simplemente dando ánimos.</li>
+			</ul>
+			<p>Si quieres colaborar: </p>
+			<ul>
+			<li> Participa en los foros y demás secciones en la 
+			<a href="http://sourceforge.net/projects/dalle/">página del proyecto.</a>
+			</li>
+			<li>Enviame directamente un mail a &lt;infjaf_ARROBA_gmail.com&gt;.
+			</li>
+			</ul>
+		</content>
+	</page>
+	
+</web>

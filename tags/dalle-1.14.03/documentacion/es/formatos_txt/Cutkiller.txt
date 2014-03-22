@@ -1,0 +1,12 @@
+
+Los nombres de los fragmentos son ORIGINAL_SIN_EXT.001 ... > tres digitos y 
+comienza a contar en 1
+
+El primer archivo tiene 8 bytes de cabecera, y es 8 bytes mayor que el resto
+de fragmentos.
+
+estos 8 bytes, contienen
+
+1-3 > extension original, terminado en null si es menor de 3 caracteres
+4-5 > dos espacios en blanco
+6-8 > en ascii, el numero de fragmentos '003'

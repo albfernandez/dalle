@@ -1,0 +1,85 @@
+Debian/Ubuntu
+
+svn export svn://svn.code.sf.net/p/dalle/code/trunk dalle-${version}
+tar jcvf dalle_${version}.orig.tar.bz2 dalle-${version}
+cd dalle-${version}
+debuild 
+
+Fedora
+svn export svn://svn.code.sf.net/p/dalle/code/trunk dalle-${version}
+tar jcvf dalle-${version}.tar.bz2 dalle-${version}
+cp dalle-${version}.tar.bz2 ~/rpmbuild/SOURCES/
+cp dalle-${version}/dalle.spec ~/rpmbuild/SPECS/
+cd ~/rpmbuild/SPECS/
+rpmbuild -ba dalle.spec
+
+
+
+
+Configurando el entorno:
+Debian / ubuntu
+apt-get install devscripts debhelper
+apt-get install nant mono-mcs cli-common-dev
+apt-get install libgtk2.0-cil libglade2.0-cil libgnome2.24-cil 
+apt-get install libglade2.0-cil-dev libgnome2.0-cil-dev libgtk2.0-cil-dev libglib2.0-cil-dev
+
+
+
+
+Fedora
+http://fedoraproject.org/wiki/How_to_create_an_RPM_package
+
+yum install @development-tools
+yum install fedora-packager
+yum install nant gtk-sharp2 gtk-sharp2-devel gnome-sharp-devel gnome-sharp
+
+
+# /usr/sbin/useradd makerpm
+# usermod -a -G mock makerpm
+# passwd makerpm
+Once you're logged in as the build/dummy user, create the required directory structure in your home directory by executing:
+
+$ rpmdev-setuptree
+
+
+
+Notas internas.
+
+
+Preparando una release:
+
+
+Regenerar assembly infos:
+	Editar dalle.build con la nueva versión
+	nant generate-assembly-infos
+	actualizar NEWS ChangeLog
+
+Entrada changelog debian.
+debchange -v ${version} --distribution unstable
+
+actualizar dalle.spec para fedora/redhat
+
+Hacer un tag en el repositorio
+svn copy --username=infjaf svn+ssh://infjaf@svn.code.sf.net/p/dalle/code/trunk  svn+ssh://infjaf@svn.code.sf.net/p/dalle/code/tags/dalle-${version} -m "Version ${version}"
+
+exportar desde el tag:
+svn export https://svn.code.sf.net/p/dalle/code/tags/dalle-${version} dalle-${version}
+
+crear el tar
+tar jcvf dalle_${version}.orig.tar.bz2 dalle-${version}
+
+
+construir en Ubuntu con 
+debuild -S
+y subir el archivo con 
+dput ppa:infjaf/dalle dalle_${version}_source.changes
+
+construir en debian con dpkg-buildpackage
+
+construir en fedora
+
+crear el tar para sourceforge
+mv dalle_${version}.orig.tar.bz2 dalle-${version}.tar.bz2
+
+hacer los zip para sourceforge
+nant make-zip

@@ -1,0 +1,102 @@
+FORMATO AST
+===========================
+Cabecera (en asccii)
+nº de archivos.
+
+Despues se repite para cada archivo :
+- nombre de archivo
+- '*'
+- posicion (toma como 0 el primer byte de datos)
+- '\n'
+
+
+seccion de datos: El contenido de los archivos concatenado uno detrás de otro
+
+
+FORMATO AST2
+===========================
+
+Cabecera -
+	id - 'AST2'
+	url - 'www.astroteam.tk'
+	filecount - (2 bytes)
+	
+Lista de ficheros (filecount bloques con este formato)
+	filesize (4 bytes)
+	blocks (4 bytes)
+	filenamelength (1 byte)
+	filename (filenamelength bytes)
+
+Archivos (filecount)
+	mark 3 char (
+		'SDT' para marcar el principio del primero
+		'FDA' para marcar el fin del anterior y comienzo de uno nuevo
+	)
+	NOTA- En modo debug de la version 2 pueden aparecer de 0 a 5 bytes arbitrarios despues del FDA.
+	
+	Bloques (al menos uno por archivo, aunque esté vacio, hasta el total de bloques)
+		block: 3 char ('BLD')
+		size:  2 bytes
+		crc :  4 bytes
+		data: (size bytes)
+
+crc - Simplemente suma el valor de todos los bytes de cada bloque.
+
+El archivo termina con un 'EOF' en ASCII
+
+
+
+AST3 
+======= 
+¿Ninguna release pública?
+
+ASTP y ASTPxxx
+====
+Multiparte
+¿Ninguna release pública?
+
+AST4
+=======
+¿Ninguna release pública?
+
+
+
+
+ASTR (v2006)
+===
+¿Ninguna release pública?
+
+
+ASMPxxx (v2006)
+====
+Multiparte
+¿Ninguna release pública?
+
+
+
+AFA y .AFP.xxx
+==============
+Formatos normal y multiparte de astrotite 200x
+Formato cerrado.
+
+
+http://www.astroteamrg.org/foro/index.php?showtopic=16755
+
+
+Harukaze 
+15 Dec 2009, 12:58 
+
+
+Si, si, es lo que necesitaba astroteam para volver a ser importante. Un archivo cerrado que nadie conoce y que nadie puede abrir...
+
+PD: que funcione en wine no lo hace multiplataforma. Publica las especificaciones del archivo y si a alguien le interesa lo hará multiplataforma. 
+
+
+matabyte 
+15 Dec 2009, 21:03 #21
+
+
+Bueno, ya tenéis las modificaciones para que podáis abrir y descomprimir archivos .rar y .zip con el Astrotite tan fácilmente como con el winrar.
+Harukaze, que lo use quien quiera, pero desde luego no voy a publicar las especificaciones XD, Que para eso me he matado 1 año de trabajo XD. 
+Y si, ya estoy trabajando en el porte a linux (y macos), pero no tengo ni el dinero ni el tiempo para hacerlo todo inmediatamente como comprenderás. 
+
