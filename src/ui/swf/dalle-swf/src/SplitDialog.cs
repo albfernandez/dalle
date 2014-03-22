@@ -300,12 +300,7 @@ namespace Dalle.UI.DalleSWF
 			t = null;
 
 		}
-		public override DialogResult ShowDialog ()
-		{
-			DialogResult dr = base.ShowDialog();
-			OnProgress(0,1);
-			return dr;
-		}
+
 
 		/// <summary>
 		/// Click handler for the cmdBrowse button.

@@ -132,12 +132,6 @@ namespace Dalle.UI.DalleSWF
 			this.ResumeLayout (false);
 			
 		}
-		public override DialogResult ShowDialog ()
-		{
-			DialogResult dr = base.ShowDialog();
-			OnProgress(0,1);
-			return dr;
-		}
 		protected virtual void OnProgress (long done, long total)
 		{
 			double fraction = ((double) done) / ((double)total);
