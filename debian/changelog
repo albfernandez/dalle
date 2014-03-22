@@ -1,8 +1,10 @@
 dalle (1.14.03-1) unstable; urgency=medium
 
   * Support for splitted zip files 
+  * update sharpzliplib
+  * better messages in case of broken files
 
- -- Alberto Fernández Martínez <infjaf@gmail.com>  Sun, 09 Mar 2014 16:58:57 +0100
+ -- Alberto Fernández Martínez <infjaf@gmail.com>  Sat, 22 Mar 2014 16:58:57 +0100
 
 dalle (1.13.01-1) unstable; urgency=low
 
