@@ -10,7 +10,9 @@
 	<property name="DESTDIR" value="/" overwrite="false" />
 	<property name="liblzma" value="liblzma.dll" />
 	<property name="libDalle" value="libDalle.dll"/>
-	<property name="buildDir" value="build"/>
+	<property name="build.output.dir" value="build"/>
+	<property name="sharpziplib.name" value="ICSharpCode.SharpZipLib" />
+	<property name="build.sharpziplib.path" value="${build.output.dir}/${sharpziplib.name}.dll" />
 	<property name="keyfile" value="dalle.key"/>
 
 
@@ -100,19 +102,31 @@
 		<delete dir="build" />
     </target>
 
-    <target name="build" depends="generate-mo,build-lib-lzma,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
+    <target name="build" depends="generate-mo,build-lib-lzma,build-sharpziplib,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
     
+    <target name="build-sharpziplib" description="compiles recent SharpZipLib">
+    	<mkdir dir="${build.output.dir}" />
+		<csc
+			target="library"
+			output="${build.sharpziplib.path}"			
+			debug="${debug}" 	
+			>
+			<sources>
+				<include name="src/external/sharpziplib/**.cs"/>
+			</sources>
+		</csc>    
+    </target>
     <target name="build-lib-lzma" description="compiles LZMA library">
-    	<mkdir dir="${buildDir}" />    	
-		<csc target="library" output="${buildDir}/${liblzma}" debug="${debug}">
+    	<mkdir dir="${build.output.dir}" />    	
+		<csc target="library" output="${build.output.dir}/${liblzma}" debug="${debug}">
 			<sources>
 				<include name="src/external/7zip/**.cs" />
 			</sources>
 		</csc>
 	</target>
     <target name="build-library" description="compiles dalle library">
-    	<mkdir dir="${buildDir}" />   	
-		<csc target="library" output="${buildDir}/${libDalle}" debug="${debug}">
+    	<mkdir dir="${build.output.dir}" />   	
+		<csc target="library" output="${build.output.dir}/${libDalle}" debug="${debug}">
 			<sources>
 				<include name="src/lib/**.cs" />
 			</sources>
@@ -120,9 +134,9 @@
 				<include name="pixmaps/*.*" />
 			</resources>
 			<references>
-				<include name="ICSharpCode.SharpZipLib.dll" />
+				<include name="${build.sharpziplib.path}" />
 				<include name="Mono.Posix.dll"/>
-				<include name="${buildDir}/${liblzma}"/>
+				<include name="${build.output.dir}/${liblzma}"/>
 			</references>
 		</csc>
 	</target>
@@ -132,7 +146,7 @@
 				<include name="src/ui/console/dalle-console/src/**.cs" />
 			</sources>
 			<references>
-				<include name="${buildDir}/${libDalle}"/>
+				<include name="${build.output.dir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 			</references>
 		</csc>
@@ -143,7 +157,7 @@
 				<include name="src/ui/console/dalle-sfv-console/src/**.cs" />
 			</sources>
 			<references>
-				<include name="${buildDir}/${libDalle}"/>
+				<include name="${build.output.dir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 			</references>
 		</csc>
@@ -157,7 +171,7 @@
 				<include name="src/ui/gtk/dalle-gtk/pixmaps/*.*" />
 			</resources>
 			<references>
-				<include name="${buildDir}/${libDalle}"/>
+				<include name="${build.output.dir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 			</references>
 			<pkg-references>
@@ -176,7 +190,7 @@
 			</resources>
 			
 			<references>
-				<include name="${buildDir}/${libDalle}"/>
+				<include name="${build.output.dir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 			</references>
 			<pkg-references>
@@ -192,7 +206,7 @@
 				<include name="src/ui/swf/dalle-swf/src/**.cs"/>
 			</sources>
 			<references>
-				<include name="${buildDir}/${libDalle}"/>
+				<include name="${build.output.dir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
 				<include name="System.Windows.Forms.dll"/>
 				<include name="System.Drawing.dll"/>
@@ -200,20 +214,17 @@
 		</csc>
 	</target>
 	<target name="make-zip" depends="build, build-dalle-swf">
-		<copy file="${buildDir}/dalle-swf.exe" tofile="${buildDir}/dalle.exe"/>
+		<copy file="${build.output.dir}/dalle-swf.exe" tofile="${build.output.dir}/dalle.exe"/>
 		<delete>
-			<fileset basedir="${buildDir}">
+			<fileset basedir="${build.output.dir}">
 				<include name="*.zip"/>
 			</fileset>
 		</delete>
-		<zip zipfile="${buildDir}/dalle-bin-${shortVersion}.zip" ziplevel="9">
-			<fileset basedir="${buildDir}" prefix="dalle-${shortVersion}">
+		<zip zipfile="${build.output.dir}/dalle-bin-${shortVersion}.zip" ziplevel="9">
+			<fileset basedir="${build.output.dir}" prefix="dalle-${shortVersion}">
 				<include name="*.exe"/>
 				<include name="*.dll"/>
 				<include name="locale/**"/>
-			</fileset>
-			<fileset basedir="/usr/lib/mono/2.0/" prefix="dalle-${shortVersion}">
-				<include name="ICSharpCode.SharpZipLib.dll"/>
 			</fileset>
 		</zip>
 	</target>
@@ -223,9 +234,9 @@
 				<include name="src/ui/console/dalle-crcs/src/**.cs" />
 			</sources>
 			<references>
-				<include name="${buildDir}/${libDalle}"/>
+				<include name="${build.output.dir}/${libDalle}"/>
 				<include name="Mono.Posix.dll"/>
-				<include name="ICSharpCode.SharpZipLib.dll" />
+				<include name="${build.sharpziplib.path}" />
 			</references>
 		</csc>
 	</target>
