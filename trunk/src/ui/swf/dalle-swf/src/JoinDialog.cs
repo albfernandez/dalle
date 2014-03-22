@@ -1,6 +1,6 @@
 /*
 
-    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -65,8 +65,7 @@ namespace Dalle.UI.DalleSWF
 		{
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
-			this.ControlBox = false;
-			this.Size = new Size (360, 170);
+			this.Size = new Size (350, 165);
 			this.MaximumSize = this.Size;
 			this.MinimumSize = this.Size;
 			//this.Text = Catalog.GetString("Merge");
@@ -133,6 +132,12 @@ namespace Dalle.UI.DalleSWF
 			this.ResumeLayout (false);
 			
 		}
+		public override DialogResult ShowDialog ()
+		{
+			DialogResult dr = base.ShowDialog();
+			OnProgress(0,1);
+			return dr;
+		}
 		protected virtual void OnProgress (long done, long total)
 		{
 			double fraction = ((double) done) / ((double)total);
@@ -189,6 +194,7 @@ namespace Dalle.UI.DalleSWF
 		}
 		protected void OnBegin ()
 		{
+			this.OnProgress(0,1);
 			this.DisableElements ();
 		}
 		protected void joinFile ()
@@ -239,6 +245,7 @@ namespace Dalle.UI.DalleSWF
 			openFileDialog1.ShowDialog ();
 
 			txtFilename.Text = openFileDialog1.FileName;
+			OnProgress(0,1);
 		}	
 		private void txtFilename_TextChanged (object sender, System.EventArgs e)
 		{

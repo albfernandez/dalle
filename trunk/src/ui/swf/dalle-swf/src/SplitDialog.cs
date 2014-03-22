@@ -1,6 +1,6 @@
 /*
 
-    Copyright (C) 2003-2013  Alberto Fernández <infjaf@gmail.com>
+    Copyright (C) 2003-2010  Alberto Fernández <infjaf@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -69,8 +69,7 @@ namespace Dalle.UI.DalleSWF
 		{
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
-			this.ControlBox = false;
-			this.Size = new Size (360, 280);
+			this.Size = new Size (340, 270);
 			this.MinimumSize = this.Size;
 			this.MaximumSize = this.Size;
 			//this.Text = Catalog.GetString("Merge");
@@ -176,6 +175,7 @@ namespace Dalle.UI.DalleSWF
 			}
 			long tamano = new FileInfo(this.txtFilename.Text).Length;
 			decimal nValue = Math.Ceiling(tamano/ (this.nudFragments.Value * 1024));
+			Console.WriteLine("nValue=" + nValue);
 			locked = true;
 			this.nudSize.Value = nValue;
 			locked = false;
@@ -300,7 +300,12 @@ namespace Dalle.UI.DalleSWF
 			t = null;
 
 		}
-
+		public override DialogResult ShowDialog ()
+		{
+			DialogResult dr = base.ShowDialog();
+			OnProgress(0,1);
+			return dr;
+		}
 
 		/// <summary>
 		/// Click handler for the cmdBrowse button.
@@ -318,6 +323,7 @@ namespace Dalle.UI.DalleSWF
 			openFileDialog1.ShowDialog ();
 			
 			txtFilename.Text = openFileDialog1.FileName;
+			OnProgress(0,1);
 		}
 		private void txtFilename_TextChanged (object sender, System.EventArgs e)
 		{
