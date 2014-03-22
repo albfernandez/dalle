@@ -177,7 +177,7 @@ namespace Dalle.UI.DalleGtk {
 			if (currentFolder != null && !String.Empty.Equals (currentFolder)){
 				fc.SetCurrentFolder (currentFolder);
 			}
-			
+			this.OnProgress(0,1);
 			if (fc.Run () == (int)ResponseType.Accept) {
 				this.currentFolder = fc.CurrentFolder;
 				this.FileEntry.Text = fc.Filename;
