@@ -85,7 +85,8 @@ namespace Dalle.Formatos.GnomeSplit
 			
 			for (i = 1; File.Exists (String.Format (baseName + ".{0:000}.gsp", i)); i++)
 			{
-				Stream fileInStream = File.OpenRead (String.Format (baseName + ".{0:000}.gsp", i));				
+				String nombreFragmento = String.Format (baseName + ".{0:000}.gsp", i);
+				Stream fileInStream = File.OpenRead (nombreFragmento);				
 				Stream inStream = fileInStream;
 				
 				if (i == 1) 
@@ -117,7 +118,7 @@ namespace Dalle.Formatos.GnomeSplit
 				if (i == fragmentosTotales && hasMd5) {
 					bytesRead = fileInStream.Read (buffer, 0, 32);
 					if (bytesRead != 32) {
-						throw new IOException ("Premature end of file");
+						throw new IOException ("Premature end of file:" + nombreFragmento);
 					}
 					fileMd5 = UtArrays.LeerTexto (buffer, 0, 32);					
 				}
