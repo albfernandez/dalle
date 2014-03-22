@@ -126,16 +126,13 @@ namespace Dalle.Formatos.Generico
 			long transferidos = 0;
 			OnProgress (0, info.Length);
 			Stream fos = UtilidadesFicheros.CreateWriter (dirDest + Path.DirectorySeparatorChar + info.OriginalFile);
-			for (int i = 1; i <= info.FragmentsNumber; i++) {
-				Stream fis = File.OpenRead (info.GetFragmentFullPath (i));
-				fis.Seek (info.GetOffset (i), SeekOrigin.Begin);
-				while ((leidos = fis.Read (buffer, 0, buffer.Length)) > 0) {
-					transferidos += leidos;
-					fos.Write (buffer, 0, leidos);
-					OnProgress (transferidos, info.Length);
-				}
-				fis.Close ();
+			Stream fis = new JoinStream (info);
+			while ((leidos = fis.Read(buffer, 0, buffer.Length)) > 0) {
+				transferidos += leidos;
+				fos.Write (buffer, 0, leidos);
+				OnProgress (transferidos, info.Length);
 			}
+			fis.Close ();
 			fos.Close ();
 		}
 		protected override void _Unir (string fichero, string dirDest)
