@@ -1,26 +1,9 @@
-Debian/Ubuntu
-
-svn export svn://svn.code.sf.net/p/dalle/code/trunk dalle-${version}
-tar jcvf dalle_${version}.orig.tar.bz2 dalle-${version}
-cd dalle-${version}
-debuild 
-
-Fedora
-svn export svn://svn.code.sf.net/p/dalle/code/trunk dalle-${version}
-tar jcvf dalle-${version}.tar.bz2 dalle-${version}
-cp dalle-${version}.tar.bz2 ~/rpmbuild/SOURCES/
-cp dalle-${version}/dalle.spec ~/rpmbuild/SPECS/
-cd ~/rpmbuild/SPECS/
-rpmbuild -ba dalle.spec
-
-
-
 
 Configurando el entorno:
 Debian / ubuntu
+apt-get install subversion git
 apt-get install devscripts debhelper
-apt-get install nant mono-mcs cli-common-dev
-apt-get install libgtk2.0-cil libglade2.0-cil libgnome2.24-cil 
+apt-get install nant mono-mcs cli-common-dev libgtk2.0-cil libglade2.0-cil libgnome2.24-cil 
 apt-get install libglade2.0-cil-dev libgnome2.0-cil-dev libgtk2.0-cil-dev libglib2.0-cil-dev
 
 
@@ -43,9 +26,6 @@ $ rpmdev-setuptree
 
 
 
-Notas internas.
-
-
 Preparando una release:
 
 
@@ -59,22 +39,22 @@ debchange -v ${version} --distribution unstable
 
 actualizar dalle.spec para fedora/redhat
 
-Hacer un tag en el repositorio
-svn copy --username=infjaf svn+ssh://infjaf@svn.code.sf.net/p/dalle/code/trunk  svn+ssh://infjaf@svn.code.sf.net/p/dalle/code/tags/dalle-${version} -m "Version ${version}"
+Hacer un tag en el repositorio: crear una release en el interface web de github dalle-${version}
 
 exportar desde el tag:
-svn export https://svn.code.sf.net/p/dalle/code/tags/dalle-${version} dalle-${version}
+svn export https://github.com/albfernandez/dalle/tags/dalle-${version} dalle-${version}
 
 crear el tar
 tar jcvf dalle_${version}.orig.tar.bz2 dalle-${version}
 
-crear el tar para sourceforge
-cp dalle_${version}.orig.tar.bz2 dalle-${version}.tar.bz2
-
-construir en Ubuntu con 
+construir en Ubuntu con:
 debuild -S
 y subir el archivo con 
 dput ppa:infjaf/dalle dalle_${version}_source.changes
+
+si se quiere generar la misma versión para distintos releases de ubuntu, hay que usar el mismo tar y 
+modificar el changelog para cada una de ellas 
+
 
 construir en debian con dpkg-buildpackage
 
@@ -84,6 +64,3 @@ cp dalle.spec ~/rpmbuild/SPECS/
 cd ~/rpmbuild/SPECS/
 rpm -ba dalle.spec
 
-
-hacer los zip para sourceforge
-nant make-zip
