@@ -3,6 +3,7 @@
 export MONO_DISABLE_SHM = 1
 
 override_dh_auto_build:
+    nant clean -nologo
 	nant -nologo -q build
 override_dh_install:
 	nant -nologo -q -D:DESTDIR=$(CURDIR)/debian/tmp  install

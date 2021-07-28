@@ -102,7 +102,7 @@
 		<delete dir="build" />
     </target>
 
-    <target name="build" depends="generate-mo,build-lib-lzma,build-sharpziplib,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk,build-openhacha-glade" />
+    <target name="build" depends="generate-mo,build-lib-lzma,build-sharpziplib,build-library,build-dalle-console,build-dalle-sfv-console,build-dalle-gtk" />
     
     <target name="build-sharpziplib" description="compiles recent SharpZipLib">
     	<mkdir dir="${build.output.dir}" />

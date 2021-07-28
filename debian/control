@@ -10,11 +10,8 @@ Build-Depends: debhelper (>= 7.0.50),
                libmono-sharpzip4.84-cil (>= 2.10),
                libmono-posix4.0-cil(>= 2.10), 
                libgtk2.0-cil (>= 2.10.2), 
-               libglade2.0-cil(>=1.0),
                libgnome2.24-cil (>= 2.24.0),                
-               cli-common-dev (>= 0.8~),
-               libglade2.0-cil-dev, 
-               libgnome2.0-cil-dev, 
+               cli-common-dev (>= 0.8),
                libgtk2.0-cil-dev, 
                libglib2.0-cil-dev
 Standards-Version: 3.9.4
@@ -24,7 +21,6 @@ Architecture: all
 Depends: ${misc:Depends},
 	mono-runtime (>= 2.10),
 	libmono-sharpzip4.84-cil (>= 2.10),
-	libgnome2.24-cil (>= 2.24.0),
 	libgtk2.0-cil (>= 2.12),
 	libmono-posix4.0-cil (>= 2.10)
 Description: File management tool
