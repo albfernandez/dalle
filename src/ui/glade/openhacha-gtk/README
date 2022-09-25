@@ -17,7 +17,7 @@
 	----------
 	
 	For the 0.3 release and up, OpenHacha works with libhacha2, from the Dalle 
-	project (http://dalle.sourceforge.net). This new library supports all Hacha
+	project (https://github.com/albfernandez/dalle). This new library supports all Hacha
 	file formats (v1, v2 and pro).
 
 	

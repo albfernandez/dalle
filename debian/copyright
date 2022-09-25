@@ -1,5 +1,5 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: http://dalle.sourceforge.net
+Source: https://github.com/albfernandez/dalle
 
 Files: *
 Copyright: 2003-2010, Alberto Fernández <infjaf@gmail.com>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
-<xs:schema id="formats" targetNamespace="http://dalle.sourceforge.net/formats.xsd" xmlns="http://dalle.sourceforge.net/formats.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema id="formats" targetNamespace="https://github.com/albfernandez/dalle/formats.xsd" xmlns="https://github.com/albfernandez/dalle/formats.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="format">
 		<xs:complexType>
 			<xs:sequence>

@@ -88,7 +88,7 @@ namespace Dalle
 			XmlDocument document = new XmlDocument();
 			document.Load (input);
 			nsmgr = new XmlNamespaceManager (document.NameTable);
-			nsmgr.AddNamespace ("t", "http://dalle.sourceforge.net/formats.xsd");
+			nsmgr.AddNamespace ("t", "https://github.com/albfernandez/dalle/formats.xsd");
 			XmlNodeList formatos = document.SelectNodes ("/t:formats/t:format", nsmgr);
 			
 			Formato[] list = new Formato [formatos.Count];
@@ -226,7 +226,7 @@ namespace Dalle
 
 		public static string GetField (XmlNode node, string selector)
 		{
-                XmlNode result = node.SelectSingleNode (selector, RenderFormatsPages.nsmgr);
+                XmlNode result = node.SelectSingleNode (selector, Dalle.RenderFormatPages.nsmgr);
 
                 if (result == null)
                         return String.Empty;
@@ -279,7 +279,7 @@ namespace Dalle
 			ret += GetInnerXml (node, "t:notes");
 			ret += "</blockquote>\n";
 			
-			ret = ret.Replace (" xmlns=\"http://dalle.sourceforge.net/formats.xsd\"", "");			
+			ret = ret.Replace (" xmlns=\"https://github.com/albfernandez/dalle/formats.xsd\"", "");			
 			return ret == "" ? ("Contenido " + Name ): ret;
 		}
 		
@@ -289,7 +289,7 @@ namespace Dalle
 			ret += "<table border=1>\n";
 			ret += "<tr><td>Nombre </td><td>" + Name + " </td></tr>\n";;
 			ret += "<tr><td>Nombre del programa </td><td>" + (ProgName == "" ? "&nbsp;":ProgName)+ " </td></tr>\n";
-			ret += "<tr><td>Web </td><td>" + (Web == "" ? "&nbsp;" : RenderFormatsPages.MakeWebRef (Web)) + " </td></tr>\n";
+			ret += "<tr><td>Web </td><td>" + (Web == "" ? "&nbsp;" : Dalle.RenderFormatPages.MakeWebRef (Web)) + " </td></tr>\n";
 			ret += "<tr><td>Licencia</td><td>" + (License == "" ? "&nbsp;" : License )+ "</td></tr>\n";
 			ret += "<tr><td>Une </td><td>" + (SupportsJoin == "" ? "&nbsp;" : SupportsJoin) + "</td></tr>\n";
 			ret += "<tr><td>Parte</td><td>" +(SupportsSplit =="" ? "&nbsp;" :  SupportsSplit) + "</td></tr>\n";
@@ -299,7 +299,7 @@ namespace Dalle
 		}
 		public static string GetInnerXml (XmlNode node, string selector)
 		{
-			XmlNode result = node.SelectSingleNode (selector, RenderFormatsPages.nsmgr);
+			XmlNode result = node.SelectSingleNode (selector, Dalle.RenderFormatPages.nsmgr);
 			if (result == null)
 				return String.Empty;
 			return result.InnerXml;

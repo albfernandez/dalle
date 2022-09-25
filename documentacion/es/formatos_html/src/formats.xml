@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<formats xmlns="http://dalle.sourceforge.net/formats.xsd">
+<formats xmlns="https://github.com/albfernandez/dalle/formats.xsd">
 	<format>
 		<name>axman3</name>
 		<progname>Axman 3</progname>

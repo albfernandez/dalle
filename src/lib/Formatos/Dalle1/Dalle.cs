@@ -45,7 +45,7 @@ namespace Dalle.Formatos.Dalle1
 		{
 			nombre = "dalle";
 			descripcion = "Dalle";
-			web = "http://dalle.sourceforge.net";
+			web = "https://github.com/albfernandez/dalle";
 			compatible = true;
 			parteFicheros = false;
 		}

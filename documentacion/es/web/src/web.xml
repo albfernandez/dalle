@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<web xmlns="https://albfernandez.github.io/dalle/web.xsd">
+<web xmlns="https://github.com/albfernandez/dalle/web.xsd">
 	<page>
 		<name>Home</name>
 		<filename>index</filename>

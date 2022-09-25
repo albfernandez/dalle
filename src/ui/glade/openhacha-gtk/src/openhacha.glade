@@ -395,7 +395,7 @@ Create a file from his fragments</property>
     <property name="version">0.7</property>
     <property name="copyright" translatable="yes">Copyright  (C) 2003-2004, Ramón Rey Vicente &lt;ramon.rey@hispalinux.es&gt;</property>
     <property name="comments" translatable="yes">OpenHacha, a "free as in freedom" implementation of Hacha</property>
-    <property name="website">http://dalle.sourceforge.net</property>
+    <property name="website">https://github.com/albfernandez/dalle</property>
     <property name="authors">Ramón Rey Vicente &lt;ramon.rey@hispalinux.es&gt; (Gtk# frontend, text mode client)
 Álvaro Peña &lt;apg@esware.com&gt; (HIG'ed the Gtk# interface)
 Alberto Fernández &lt;infjaf@gmail.com&gt; (libhacha2)

@@ -2,7 +2,7 @@ Source: dalle
 Section: utils
 Priority: optional
 Maintainer: Alberto Fernández Martínez <infjaf@gmail.com>
-Homepage: http://dalle.sourceforge.net/
+Homepage: https://github.com/albfernandez/dalle
 Build-Depends: debhelper (>= 7.0.50), 
                nant (>=0.85), 
                mono-runtime (>= 2.10), 

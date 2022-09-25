@@ -58,7 +58,7 @@ namespace Dalle.UI.DalleGtk
           this.Copyright = (asm.GetCustomAttributes (
                typeof (AssemblyCopyrightAttribute), false) [0]
                as AssemblyCopyrightAttribute).Copyright;
-          this.Website = "http://dalle.sourceforge.net";
+          this.Website = "https://github.com/albfernandez/dalle";
           this.License = 
 @"Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

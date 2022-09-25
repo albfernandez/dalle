@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
-<xs:schema id="contributors" targetNamespace="https://albfernandez.github.io/dalle/web.xsd" xmlns="https://albfernandez.github.io/dalle/web.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema id="contributors" targetNamespace="https://github.com/albfernandez/dalle/web.xsd" xmlns="https://github.com/albfernandez/dalle/web.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="page">
 		<xs:complexType>
 			<xs:sequence>

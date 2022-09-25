@@ -9,7 +9,7 @@ Version: 		%{version}
 Release: 		%{release}
 License: 		GPL
 Group: 			Utilities/File
-Url: 			http://dalle.sourceforge.net
+Url: 			https://github.com/albfernandez/dalle
 Vendor:     	Alberto Fernandez  <infjaf@gmail.com>
 Source: 		%{name}-%{version}.tar.bz2
 BuildRoot:  	/var/tmp/%{name}-%{version}
