@@ -47,7 +47,7 @@ namespace Dalle
 			XmlDocument document = new XmlDocument();
 			document.Load (input);
 			nsmgr = new XmlNamespaceManager (document.NameTable);
-			nsmgr.AddNamespace ("t", "http://dalle.sourceforge.net/web.xsd");
+			nsmgr.AddNamespace ("t", "https://albfernandez.github.io/dalle/web.xsd");
 			XmlNodeList paginas = document.SelectNodes ("/t:web/t:page", nsmgr);
 			
 			Pagina[] list = new Pagina [paginas.Count];
@@ -87,7 +87,7 @@ namespace Dalle
 				string salida = plantilla.Replace ("#TITLE#", "Dalle - " + p.Name);
 				salida = salida.Replace ("#CONTENT#", p.Content);
 				salida = salida.Replace ("#MENU#", indice);				
-				salida = salida.Replace (" xmlns=\"http://dalle.sourceforge.net/web.xsd\"", "");
+				salida = salida.Replace (" xmlns=\"https://albfernandez.github.io/dalle/web.xsd\"", "");
 				Fichero.GuardarTexto (destDir +Path.DirectorySeparatorChar +p.FileName + ".html", salida);
 			}
 				

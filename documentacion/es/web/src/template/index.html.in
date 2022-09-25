@@ -24,15 +24,15 @@
 </div>
 
 <div class="bottombanner">
-	<a href="http://www.mono-project.com/Main_Page">
+	<a href="https://www.mono-project.com/">
 		<img src="images/mono.png" style="border:0" alt="Mono" align="left" />
 	</a>
-	<a href="http://www.mono-project.com/GtkSharp">
+	<a href="https://www.mono-project.com/docs/gui/gtksharp/">
 		<img src="images/gtk.png" style="border:0" align="middle" alt="Gtk-Sharp"/>
 	</a>
-	<a href="http://sourceforge.net/">
-		<img align="right" src="http://sourceforge.net/sflogo.php?group_id=95720&amp;type=5"
-			width="203" height="60" style="border:0" alt="SourceForge.net" />
+	<a href="https://github.com">
+		<img align="right" src="images/GitHub_Logo.png"
+			width="203" height="60" style="border:0" alt="Github.com" />
 	</a>
 	
 </div>

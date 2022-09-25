@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<web xmlns="http://dalle.sourceforge.net/web.xsd">
+<web xmlns="https://albfernandez.github.io/dalle/web.xsd">
 	<page>
 		<name>Home</name>
 		<filename>index</filename>
@@ -83,10 +83,10 @@
 	sudo apt-get update
 	sudo apt-get install dalle
 	</pre>
-		<h2>Descarga desde la página de SourceForge</h2>
+		<h2>Descarga desde la página de GitHub</h2>
 			<p>Puedes descargarte el programa ya compilado así como las fuentes
-			de la <a href="http://sourceforge.net/project/showfiles.php?group_id=95720">
-			 página de descargas del proyecto </a> en SourceForge.</p>
+			de la <a href="https://github.com/albfernandez/dalle/releases">
+			 página de descargas del proyecto </a> en Github</p>
 			 
 			<p>En la página de descargas encontrarás:
 				<ul>
@@ -102,11 +102,10 @@
 						necesaria si trabajas con MS.NET.</li>
 				</ul>
 			</p>
-			<h2>Descargar las fuentes de Subversion</h2>
-			<p>Si quieres descargarte la última versión del
-			svn, solo tienes que usar el acceso anónimo.</p>
+			<h2>Descargar las fuentes de GitHub</h2>
+			<p>Si quieres descargarte la última versión de github, solo tienes que clonar el repositorio.</p>
 			<pre>
-    svn checkout svn://svn.code.sf.net/p/dalle/code/trunk dalle
+    git clone https://github.com/albfernandez/dalle.git
 			</pre>
 		</content>
 	</page>
@@ -143,7 +142,7 @@
 			<p>Si quieres colaborar: </p>
 			<ul>
 			<li> Participa en los foros y demás secciones en la 
-			<a href="http://sourceforge.net/projects/dalle/">página del proyecto.</a>
+			<a href="https://github.com/albfernandez/dalle">página del proyecto.</a>
 			</li>
 			<li>Enviame directamente un mail a &lt;infjaf_ARROBA_gmail.com&gt;.
 			</li>

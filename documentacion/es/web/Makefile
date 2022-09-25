@@ -20,10 +20,10 @@ $(SOURCEDIR)/NEWS: ../../../NEWS
 	cp $< $@
 	
 clean:
-	rm -f $(DESTDIR)/*.html *.exe $(DESTDIR)/*.css src/NEWS
+	rm -f $(DESTDIR)/*.html *.exe $(DESTDIR)/*.css src/NEWS *.exe.mdb
 
-upload:
-	 scp -r deploy/*.* infjaf@web.sourceforge.net:/home/project-web/dalle/htdocs
+# upload:
+#	 scp -r deploy/*.* infjaf@web.sourceforge.net:/home/project-web/dalle/htdocs
 	
 
 .PHONY: clean
