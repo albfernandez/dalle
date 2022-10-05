@@ -257,6 +257,11 @@ namespace Dalle.UI.DalleSWF
 			this.btnBrowse.Enabled = true;
 			this.btnJoin.Enabled = true;
 		}
+		public void Clear()
+		{
+			this.txtFilename.Text = "";
+			this.pb.Value = 0;
+		}
 	
 	}
 }

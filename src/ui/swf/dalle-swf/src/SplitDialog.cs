@@ -69,7 +69,7 @@ namespace Dalle.UI.DalleSWF
 		{
 			this.MinimizeBox = false;
 			this.MaximizeBox = false;
-			this.Size = new Size (340, 270);
+			this.Size = new Size (360, 290);
 			this.MinimumSize = this.Size;
 			this.MaximumSize = this.Size;
 			//this.Text = Catalog.GetString("Merge");
@@ -333,6 +333,13 @@ namespace Dalle.UI.DalleSWF
 				Manager.Instance.Stop();
 				this.EnableElements();
 			}
+		}
+		public void Clear()
+		{
+			this.txtFilename.Text = "";
+			this.nudSize.Value = 1;
+			this.nudFragments.Value = 1;
+			this.pb.Value = 0;
 		}
 
 	}

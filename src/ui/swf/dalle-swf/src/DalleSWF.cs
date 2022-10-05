@@ -155,10 +155,14 @@ namespace Dalle.UI.DalleSWF
 		
 		private void execute_clicked (object sender, EventArgs args)
 		{
-			if (this.rbSplit.Checked) {
-				SplitDialog.Instance.ShowDialog ();
+			if (this.rbSplit.Checked) 
+			{
+				SplitDialog.Instance.Clear();
+				SplitDialog.Instance.ShowDialog();
 			}
-			else if (this.rbMerge.Checked) {
+			else if (this.rbMerge.Checked) 
+			{
+				JoinDialog.Instance.Clear ();
 				JoinDialog.Instance.ShowDialog ();
 			}
 
